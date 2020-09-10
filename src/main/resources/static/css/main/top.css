@@ -1,0 +1,24 @@
+img{
+    height: 200px;
+}
+
+.card{
+    width: 16rem;
+}
+
+@media screen and (max-width: 480px) {
+    
+.card{
+    width: 10rem;
+}
+img{
+    max-height: 100px;
+}
+.card-title{
+    font-size:0.9rem;
+}
+p{
+    font-size:0.1rem;
+}
+    
+}

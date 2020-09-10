@@ -1,0 +1,9 @@
+span{
+    color:red;
+}
+@media screen and (max-width: 480px) {
+span{
+        color:aqua;
+    }
+    
+}
