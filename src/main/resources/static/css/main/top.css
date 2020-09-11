@@ -1,9 +1,54 @@
+.siori-list{
+    margin-bottom: 5rem;
+}
+.page-title{
+    font-size: 2rem;
+}
 img{
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.img-thumbnail{
     height: 200px;
 }
 
 .card{
     width: 16rem;
+    z-index: 0;
+    
+}
+.card:hover{
+    box-shadow: 10px 10px 10px #7fdbda;
+    transform: translateY(-10px);
+    transition-duration: 0.5s;
+}
+
+.fa-plus-circle{
+    color:#7fdbda;
+    margin-right:2rem;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+
+a:hover{
+    color:#febf63;
+    text-decoration: none;
+}
+
+p{
+    font-size: 0.8rem;
+}
+
+.create-siori {
+    position: fixed;
+    z-index: 1;
+}
+.icon-size{
+    font-size:2rem;
 }
 
 @media screen and (max-width: 480px) {
@@ -11,14 +56,21 @@ img{
 .card{
     width: 10rem;
 }
-img{
-    max-height: 100px;
+.img-thumbnail{
+    height: 120px;
 }
 .card-title{
-    font-size:0.9rem;
+    font-size:0.1rem;
 }
 p{
     font-size:0.1rem;
+}
+  
+.icon-size{
+    font-size:4rem;
+}
+.create-siori {
+    margin-left: 1rem;
 }
     
 }
