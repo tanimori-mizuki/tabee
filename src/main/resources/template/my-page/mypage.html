@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=yes">
+<link rel="stylesheet" href="../../static/css/mypage.css">
+<link rel="stylesheet"
+	href="https://cdn.materialdesignicons.com/5.5.55/css/materialdesignicons.min.css">
+
+
+<title>tabee ❘ マイページ</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg static-top">
+		<h4 class="header-txt">tabee</h4>
+	</nav>
+
+	<div class="wrapper">
+		<section class="page-section bg-white profile">
+			<div class="container">
+				<div class="row">
+					<div class="profile_img item">
+						<div class="icon">
+							<img class="profile_icon" alt="写真"
+								src="../../static/img/0_12087e427b6f20854c2cbe7a94969e26_500.jpg">
+						</div>
+					</div>
+					<div class="user_main item">
+						<h6 class="name">まさこ</h6>
+
+						<div class="edit-profile">
+							<button type="button" class="btn btn-outline-primary edit-btn">
+								<small class="prof-edit"><i class="far fa-edit"></i>&nbsp;&nbsp;プロフィールを編集</small>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<br>
+		<section class="page-section bg-white contents">
+			<div id="tabs">
+				<input id="memory" type="radio" name="tab_item" checked> <label
+					class="tab_item" for="memory"> <small> <i
+						class="far fa-clock"></i>&nbsp;&nbsp;思い出
+				</small>
+				</label> <input id="bookmark" type="radio" name="tab_item"> <label
+					class="tab_item" for="bookmark"> <small> <i
+						class="far fa-bookmark"></i>&nbsp;&nbsp;ブックマーク
+				</small>
+				</label> <input id="map" type="radio" name="tab_item"> <label
+					class="tab_item" for="map"> <small> <i
+						class="far fa-map"></i>&nbsp;&nbsp;地図
+				</small>
+				</label>
+
+				<!-- 思い出 -->
+				<div class="tab_content memory_content">
+					<div class="memory-list">
+						<div class="my-info">
+							<span class="my-icon"> <img alt=""
+								src="../../static/img/0_12087e427b6f20854c2cbe7a94969e26_500.jpg"
+								class="my-pic">
+							</span> <span class="my-name">まさこ</span>
+						</div>
+						<div class="memory-pics">
+							<img alt="" src="../../static/img/32627-01.jpg"
+								class="memory-pic">
+						</div>
+						<br>
+						<div class="memory-txt">千葉楽しかった。・・・</div>
+					</div>
+
+
+
+				</div>
+
+
+				<!-- ブックマーク -->
+				<div class="tab_content bookmark_content">
+					<div class="bookmark-list">
+						<div class="user-info">
+							<span class="users-icon"> <img alt=""
+								src="../../static/img/animal_beaver.png" class="users-pic">
+							</span> <span class="users-name">おかゆ</span>
+						</div>
+						<div class="bookmark-pics">
+							<img alt="" src="../../static/img/32627-01.jpg"
+								class="bookmark-pic">
+						</div>
+						<br>
+						<div class="bookmark-txt">会社の同期と3泊4日の沖縄旅！ほんとに最高だったー！・・・</div>
+					</div>
+					<br>
+					<hr>
+					<div class="bookmark-list">
+						<div class="user-info">
+							<span class="users-icon"> <img alt=""
+								src="../../static/img/animal_beaver.png" class="users-pic">
+							</span> <span class="users-name">大城舞@tabeeプロデューサー</span>
+						</div>
+						<div class="bookmark-pics">
+							<img alt="" src="../../static/img/32627-01.jpg"
+								class="bookmark-pic">
+						</div>
+						<br>
+						<div class="bookmark-txt">
+							こんにちは。大城です。先日、わが社がプロデュースするアイドル・のせまさ子のプロモーションのため、モンゴルへ行ってまいりました。・・・
+						</div>
+					</div>
+					<br>
+					<hr>
+					<div class="bookmark-list">
+						<div class="user-info">
+							<span class="users-icon"> <img alt=""
+								src="../../static/img/animal_beaver.png" class="users-pic">
+							</span> <span class="users-name">タニモリン@9/21~23東京参上！</span>
+
+						</div>
+						<div class="bookmark-pics">
+							<img alt="" src="../../static/img/32627-01.jpg"
+								class="memory-pic">
+						</div>
+						<br>
+						<div class="bookmark-txt">ガチャまじで当たらねえ。鬼畜すぎてムリ。</div>
+					</div>
+
+
+				</div>
+				<div class="tab_content map_content">
+					<div id="map"></div>
+
+				</div>
+			</div>
+
+
+
+		</section>
+		<br> <br>
+		<footer class="footer py-4">
+			<div class="">
+				<a class="btn btn-dark btn-social mx-2" href="#!"><i
+					class="fab fa-twitter"></i></a> <a class="btn btn-dark btn-social mx-2"
+					href="#!"><i class="fab fa-facebook-f"></i></a> <a
+					class="btn btn-dark btn-social mx-2" href="#!"><i
+					class="fab fa-linkedin-in"></i></a>
+			</div>
+			<br>
+			<div class="">Copyright © tabee 2020</div>
+
+		</footer>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+
+	<!-- google map api -->
+	<script
+		src="http://maps.google.com/maps/api/js?key=AIzaSyBC6do4eWd4qu6aSPBg-rvlevdvUO-IXn0&language=ja"></script>
+
+	<script type="text/javascript" src="../../static/js/google_map.js">
+		
+	</script>
+
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+		crossorigin="anonymous"></script>
+</body>
+</html>

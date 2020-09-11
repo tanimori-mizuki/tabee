@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://cdn.materialdesignicons.com/5.5.55/css/materialdesignicons.min.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=yes">
+<link rel="stylesheet" href="../../static/css/register.css">
+<title>tabee ❘ ユーザー登録</title>
+</head>
+<body>
+	<div id="wrapper">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-lg-8 mx-auto">
+					<h1 class="login-heading mb-4">tabee</h1>
+					<div class="sub-title">
+						<small> 気ままにブーンと旅に出よう。</small>
+					</div>
+					<br>
+					<form>
+						<div class="form-label-group">
+							<input type="text" id="inputUserName" class="form-control"
+								placeholder="ユーザー名" required autofocus> <label
+								for="inputUserName">ユーザー名</label>
+						</div>
+						<div class="form-label-group">
+							<input type="email" id="inputEmail" class="form-control"
+								placeholder="メールアドレス" required autofocus> <label
+								for="inputEmail">メールアドレス</label>
+						</div>
+
+						<div class="form-label-group">
+							<input type="password" id="inputPassword" class="form-control"
+								placeholder="パスワード" required> <span class="field-icon">
+								<i class="mdi mdi-eye toggle-password" id="eye"></i>
+							</span> <label for="inputPassword">パスワード</label>
+						</div>
+
+						<div class="form-label-group">
+							<input type="password" id="confirmPassword" class="form-control"
+								placeholder="確認パスワード" required autofocus> <label
+								for="confirmPassword">確認パスワード</label>
+						</div>
+
+						<button
+							class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+							type="submit">登録</button>
+						<br>
+						<div class="text-center">
+							<a class="small" href="login.html">ログインはこちら</a>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Footer-->
+		<footer class="footer py-4">
+			<div class="">
+				<a class="btn btn-dark btn-social mx-2" href="#!"><i
+					class="fab fa-twitter"></i></a> <a class="btn btn-dark btn-social mx-2"
+					href="#!"><i class="fab fa-facebook-f"></i></a> <a
+					class="btn btn-dark btn-social mx-2" href="#!"><i
+					class="fab fa-linkedin-in"></i></a>
+			</div>
+			<br>
+			<div class="">Copyright © tabee 2020</div>
+
+		</footer>
+
+	</div>
+
+	<!-- jquery CDN -->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+
+	<!-- password表示/非表示 -->
+	<script type="text/javascript" src="../../static/js/show_password.js"></script>
+</body>
+</html>
