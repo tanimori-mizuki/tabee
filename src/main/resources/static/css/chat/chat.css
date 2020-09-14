@@ -1,0 +1,116 @@
+body{
+	background-color: #d8f3f3;
+}
+
+/* チャット*/
+#chat-frame {
+  margin: auto;
+  padding: 1em 0.5em;
+  height: 80vh;
+  
+}
+
+.chat-talk {
+  overflow:hidden;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.chat-talk span {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-talk .talk-icon {
+  float: left;
+  width: auto;
+}
+
+.chat-talk .talk-content {
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  min-height: 50px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 0px 65px;
+  padding: 0.5em;
+}
+
+.chat-talk .talk-icon img {
+  width:  50px;       /* ※縦横を同値に */
+  height: 50px;       /* ※縦横を同値に */
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  
+  object-fit:cover;
+  vertical-align: bottom;
+  border: 2px solid #fff;
+}
+
+.chat-talk .talk-content:before {
+  position: absolute;
+  top: 15px;
+  left: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 10px solid transparent;
+  border-right-color: #FFFFFF;
+}
+
+.chat-talk.mytalk .talk-icon {
+  float: right;
+}
+
+.chat-talk.mytalk .talk-content {
+  margin: 0px 65px;
+  color: #000;
+  background: #78FF6C;
+}
+
+.chat-talk.mytalk .talk-content:before {
+  right: -20px;
+  left: auto;
+  border-color: transparent;
+  border-left-color: #78FF6C;
+}
+
+/* 送信フォーム*/
+#send-form{
+	background-color: white;
+	height: 80px;
+}
+
+.set-form{
+	text-align:  center;
+}
+
+.messagesend{
+	display: inline-block;     /* インラインブロック化 */
+}
+
+#send-btn{
+	display: none;  /* 本来のファイル選択フォームは非表示に */
+}
+
+/* ファイルボタン*/
+.filelabel {
+   background-color: #febf63;  /* 背景色 */
+   color: white;              /* 文字色 */
+   border: 2px solid orange;  /* 枠線 */
+   border-radius: 3em;        /* 角丸 */
+   padding: 9px 9px;         /* 内側の余白 */
+   display: inline-block;     /* インラインブロック化 */
+}
+
+.filelabel:hover {
+   opacity: 0.5;              /* 半透明 */
+   border: 2px solid #febf63;     /* 枠線(赤色) */
+   cursor: pointer;           /* マウス形状(ポインタ) */
+}
+
+#filesend {
+   display: none;  /* 本来のファイル選択フォームは非表示に */
+}
