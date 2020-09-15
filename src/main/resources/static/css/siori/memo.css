@@ -1,0 +1,22 @@
+.trim-image-circle{
+    width:  6rem;      
+    height: 6rem;      
+    border-radius: 50%;  
+}
+.card{
+    width: 16rem;    
+}
+.cover{
+    display: table;
+    width: 100%;
+}
+.coverimage{
+    display: table-cell;
+}
+
+.memo-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}

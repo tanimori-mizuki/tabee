@@ -1,0 +1,27 @@
+.btn-outline-primary {
+    color: #febf63;
+    border-color: #febf63;
+}
+.btn-outline-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-outline-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+.trim-image-circle{
+    margin-right:rem;
+    width:  10rem;      
+    height: 10rem;      
+    border-radius: 50%;  
+}
+.cover{
+    display: table;
+    width: 100%;
+}
+.coverimage{
+    display: table-cell;
+    text-align: right;
+}

@@ -4,11 +4,193 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/scrap/bootstrap.min.css}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/main/siori-register.css" th:href="@{/css/main/siori-register.css}">
 </head>
 <body>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+ 	  <div class="container">
+        <a class="navbar-brand" th:href="">
+        <span class="sample">tabee</span>
+        </a>
+         <!-- ハンバーガーメニュー -->
+    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+    		aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          	Menu<span class="navbar-toggler-icon"></span>
+    	</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        	<!-- 右寄せにするために記述 -->
+        	<ul class="navbar-nav mr-auto">
+        	</ul>
+        	
+            <ul class="navbar-nav">
+            	<li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
+                </li>
+                 <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   		<a class="dropdown-item" th:href="">マイページトップ</a>
+                    	<a class="dropdown-item" th:href="">各種設定</a>
+                    	<a class="dropdown-item" th:href="">FAQ</a>
+                    	<a class="dropdown-item" th:href="">お問い合わせ</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html" th:href="">ログアウト</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="page contact-page">
+        <section class="portfolio-block contact">
+            <!-- Start: Navigation Clean -->
+           <h3 class="text-center">新規しおり作成</h3>
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <label for="siori-title">しおりタイトル</label>
+                        <input class="form-control item" type="text" id="siori-title" placeholder="ぶらり旅">
+                    </div>
+                    <div class="form-group">
+                       <label for="departure">出発日</label>
+					    <input type="text" id="departure" name="departure" class="form-control item datepicker" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="return">帰宅日</label>
+                        <input class="form-control item datepicker" type="text" id="return" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">目的地//天気予報と連動させたいので登録方法考えたい</label>
+                        <select class="form-control item" type="text" id="destination" name="prefecture">
+                            <option value="" selected>メインの目的地</option>
+                            <option value="北海道">北海道</option>
+                            <option value="青森県">青森県</option>
+                            <option value="岩手県">岩手県</option>
+                            <option value="宮城県">宮城県</option>
+                            <option value="秋田県">秋田県</option>
+                            <option value="山形県">山形県</option>
+                            <option value="福島県">福島県</option>
+                            <option value="茨城県">茨城県</option>
+                            <option value="栃木県">栃木県</option>
+                            <option value="群馬県">群馬県</option>
+                            <option value="埼玉県">埼玉県</option>
+                            <option value="千葉県">千葉県</option>
+                            <option value="東京都">東京都</option>
+                            <option value="神奈川県">神奈川県</option>
+                            <option value="新潟県">新潟県</option>
+                            <option value="富山県">富山県</option>
+                            <option value="石川県">石川県</option>
+                            <option value="福井県">福井県</option>
+                            <option value="山梨県">山梨県</option>
+                            <option value="長野県">長野県</option>
+                            <option value="岐阜県">岐阜県</option>
+                            <option value="静岡県">静岡県</option>
+                            <option value="愛知県">愛知県</option>
+                            <option value="三重県">三重県</option>
+                            <option value="滋賀県">滋賀県</option>
+                            <option value="京都府">京都府</option>
+                            <option value="大阪府">大阪府</option>
+                            <option value="兵庫県">兵庫県</option>
+                            <option value="奈良県">奈良県</option>
+                            <option value="和歌山県">和歌山県</option>
+                            <option value="鳥取県">鳥取県</option>
+                            <option value="島根県">島根県</option>
+                            <option value="岡山県">岡山県</option>
+                            <option value="広島県">広島県</option>
+                            <option value="山口県">山口県</option>
+                            <option value="徳島県">徳島県</option>
+                            <option value="香川県">香川県</option>
+                            <option value="愛媛県">愛媛県</option>
+                            <option value="高知県">高知県</option>
+                            <option value="福岡県">福岡県</option>
+                            <option value="佐賀県">佐賀県</option>
+                            <option value="長崎県">長崎県</option>
+                            <option value="熊本県">熊本県</option>
+                            <option value="大分県">大分県</option>
+                            <option value="宮崎県">宮崎県</option>
+                            <option value="鹿児島県">鹿児島県</option>
+                            <option value="沖縄県">沖縄県</option>
+                        </select>
+                        <select class="form-control item" type="text" id="destination" name="prefecture">
+                            <option value="" selected>ここにもいくよの目的地</option>
+                            <option value="北海道">北海道</option>
+                            <option value="青森県">青森県</option>
+                            <option value="岩手県">岩手県</option>
+                            <option value="宮城県">宮城県</option>
+                            <option value="秋田県">秋田県</option>
+                            <option value="山形県">山形県</option>
+                            <option value="福島県">福島県</option>
+                            <option value="茨城県">茨城県</option>
+                            <option value="栃木県">栃木県</option>
+                            <option value="群馬県">群馬県</option>
+                            <option value="埼玉県">埼玉県</option>
+                            <option value="千葉県">千葉県</option>
+                            <option value="東京都">東京都</option>
+                            <option value="神奈川県">神奈川県</option>
+                            <option value="新潟県">新潟県</option>
+                            <option value="富山県">富山県</option>
+                            <option value="石川県">石川県</option>
+                            <option value="福井県">福井県</option>
+                            <option value="山梨県">山梨県</option>
+                            <option value="長野県">長野県</option>
+                            <option value="岐阜県">岐阜県</option>
+                            <option value="静岡県">静岡県</option>
+                            <option value="愛知県">愛知県</option>
+                            <option value="三重県">三重県</option>
+                            <option value="滋賀県">滋賀県</option>
+                            <option value="京都府">京都府</option>
+                            <option value="大阪府">大阪府</option>
+                            <option value="兵庫県">兵庫県</option>
+                            <option value="奈良県">奈良県</option>
+                            <option value="和歌山県">和歌山県</option>
+                            <option value="鳥取県">鳥取県</option>
+                            <option value="島根県">島根県</option>
+                            <option value="岡山県">岡山県</option>
+                            <option value="広島県">広島県</option>
+                            <option value="山口県">山口県</option>
+                            <option value="徳島県">徳島県</option>
+                            <option value="香川県">香川県</option>
+                            <option value="愛媛県">愛媛県</option>
+                            <option value="高知県">高知県</option>
+                            <option value="福岡県">福岡県</option>
+                            <option value="佐賀県">佐賀県</option>
+                            <option value="長崎県">長崎県</option>
+                            <option value="熊本県">熊本県</option>
+                            <option value="大分県">大分県</option>
+                            <option value="宮崎県">宮崎県</option>
+                            <option value="鹿児島県">鹿児島県</option>
+                            <option value="沖縄県">沖縄県</option>
+                        </select>
+                        <div class="text-right">目的地を追加する
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                    </div>                 
+                    <div class="cover">カバー画像
+                         <div class="coverimage">
+                             <img class="trim-image-circle" src="../../static/img/top/test_sample.jpg">
+                         </div>
+                    </div>
+                    <div>アップロード用のinputタグか、デフォルトの画像を表示させておく?</div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-outline-primary" type="button">作成</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script>
+	$(function() {
+		$(".datepicker").datepicker();
+	});
+</script>
 </body>
 </html>
