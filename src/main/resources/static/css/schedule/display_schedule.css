@@ -1,88 +1,77 @@
-.container {
-  margin-top: 15px;
+/*タブ切り替え*/
+.tab-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
 }
-.tab-group,
-.tab-group-vertical {
-   position: relative;
-   display: inline-block;
-   vertical-align: middle;
-   zoom: 1; /* Fix for IE7 */
-   *display: inline; /* Fix for IE7 */
+.tab-label,
+.tab-switch:checked~.tab-switch:last-of-type+.tab-label {
+    color: White;
+    background: LightGray;
+    margin-right: 5px;
+    padding: 3px 12px;
 }
-
-.tab-group > li, 
-.tab-group-vertical > li {
-    border: 1px solid #428bca;
-    border-radius: 4px;
-    position: relative;
-    float: left;
+.tab-label{
+    order:-1;
+    border-radius: 25px;
 }
-.tab-group > li.active > a, 
-.tab-group > li.active > a:hover, 
-.tab-group > li.active > a:focus,
-.tab-group-vertical > li.active > a, 
-.tab-group-vertical > li.active > a:hover, 
-.tab-group-vertical > li.active > a:focus {
-    background-color: #428bca;
-    color: #fff;
-}
-.tab-group > li > a,
-.tab-group-vertical > li > a {
-    border-radius: 0;
-}
-.tab-group > li > a:hover,
-.tab-group-vertical > li > a:hover {
-    border-radius: 4px;
-}
-
-.tab-group li + li {
-    margin-left: -1px;
-}
-
-.tab-group > li:not(:first-child):not(:last-child),
-.tab-group > li:not(:first-child):not(:last-child) > a:hover {
-  border-radius: 0;
-}
-.tab-group > li:first-child,
-.tab-group > li:first-child > a:hover {
-    margin-left: 0;
-}
-.tab-group > li:first-child:not(:last-child),
-.tab-group > li:first-child:not(:last-child) > a:hover {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.tab-group > li:last-child:not(:first-child),
-.tab-group > li:last-child:not(:first-child) > a:hover {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.tab-group-vertical > li {
-    display: block;
-    float: none;
+.tab-content,
+.tab-switch:checked~.tab-content:last-of-type {
     width: 100%;
-    max-width: 100%;
-    text-align:center;
+    display: none;
 }
-.tab-group-vertical > li + li {
-    margin-top: -1px;
-    margin-left: 0px;
+.tab-switch:checked+.tab-label,
+.tab-label:last-of-type {
+    background: DeepSkyBlue;
+}
+.tab-switch:checked+.tab-label+.tab-content,
+.tab-content:last-of-type {
+    display: block;
 }
 
-.tab-group-vertical > li:not(:first-child):not(:last-child),
-.tab-group-vertical > li:not(:first-child):not(:last-child) > a:hover {
-  border-radius: 0;
+/*テーブル*/
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
 }
-.tab-group-vertical > li:first-child:not(:last-child),
-.tab-group-vertical > li:first-child:not(:last-child) > a:hover {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
 }
-.tab-group-vertical > li:last-child:not(:first-child),
-.tab-group-vertical > li:last-child:not(:first-child) > a:hover {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 4px;
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+table td.icon.bird{
+  background-image: url(icon-bird.png)
+}
+
+table td.icon.whale{
+  background-image: url(icon-whale.png)
+}
+
+table td.icon.crab{
+  background-image: url(icon-crab.png)
+}
+.tab-order .tab-label:last-of-type {
+    order: -2;
+}
+.tab-switch {
+    display: none;
 }
