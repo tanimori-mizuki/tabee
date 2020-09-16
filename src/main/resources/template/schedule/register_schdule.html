@@ -2,9 +2,126 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>tabee | スケジュール</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
 </head>
 <body>
-
+	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+ 	  <div class="container">
+        <a class="navbar-brand" th:href="">
+        	<span class="sample">閉じる</span>
+        </a>
+        <div class="schedule-title">
+        	<span>スケジュール作成</span>
+        </div>
+        <div class="chat-icon">
+        	<span>完了</span>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="center">
+    	<div class="schedule">
+    		<span>スケジュール</span>
+       		 <table>
+  				<tr>
+    				<td class="icon bird">タイトル</td>
+    				<td>タイトル</td>
+  				</tr>
+  				<tr>
+   					<td class="icon whale">開始時刻</td>
+    				<td>00:00</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">終了時刻</td>
+    				<td>00:00</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">日付</td>
+    				<td>2020年9月4日(金)</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">時差</td>
+    				<td>UTC+9(日本・韓国)</td>
+  				</tr>
+			</table>
+			<br>
+			<span>スケジュールアイコン</span>
+			<table>
+  				<tr>
+    				<td class="icon bird">アイコン</td>
+  				</tr>
+  			</table>
+  			<br>
+			<span>情報</span>
+			<table>
+  				<tr>
+    				<td class="icon bird">場所を検索</td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">参考URL</td>
+    				<td class="icon bird">参考URL</td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">電話番号</td>
+    				<td class="icon bird">000-0000-0000</td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">住所</td>
+    				<td class="icon bird">東京都千代田区</td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">タップして位置情報を取得</td>
+  				</tr>
+  			</table>
+  			<br>
+  			<span>画像</span>
+			<table>
+  				<tr>
+    				<td class="icon bird">スケジュール画像を選択</td>
+  				</tr>
+  			</table>
+  			<br>
+  			<span>メモ</span>
+			<table>
+  				<tr>
+    				<td class="icon bird"><textarea></textarea></td>
+  				</tr>
+  			</table>
+  			<br>
+  			<span>費用</span>
+			<table>
+  				<tr>
+    				<td class="icon bird">金額</td>
+    				<td class="icon bird">金額</td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">通貨</td>
+    				<td class="icon bird">円(JPY)</td>
+  				</tr>
+  			</table>
+  			<br>
+  			<span>アラーム</span>
+			<table>
+  				<tr>
+    				<td class="icon bird">アラーム</td>
+    				<td class="icon bird"><input type="radio"></td>
+  				</tr>
+  				<tr>
+    				<td class="icon bird">10分前に通知</td>
+    				<td class="icon bird"><input type="radio"></td>
+  				</tr>
+  			</table>
+       	</div>
+    </div>
+    
+    
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="../../static/js/main/top.js"></script>
 </body>
 </html>
