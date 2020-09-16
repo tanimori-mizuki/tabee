@@ -1,6 +1,6 @@
 .trim-image-circle{
-    width:  6rem;      
-    height: 6rem;      
+    width:  4rem;      
+    height: 4rem;      
     border-radius: 50%;  
 }
 .card{
@@ -19,4 +19,60 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+}
+.memo-date{
+    font-size: 0.8rem;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+/*タブ関係*/
+.tab-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.tab-label {
+    color: White;
+    font-size: 1.0rem;
+    background: LightGray;
+    margin-right: 5px;
+    padding: 3px 12px;
+    order: -1;
+}
+.tab-content {
+    width: 100%;
+    display: none;
+}
+
+.tab-switch:checked+.tab-label {
+    background: #7fdbda;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+     display: block;
+}
+
+.tab-switch {
+    display: none;
+}
+@media screen and (max-width: 480px) {    
+.card{
+    width: 10rem;
+}
+.trim-image-circle{
+    width:  2rem;      
+    height: 2rem;      
+    border-radius: 50%;  
+}
+.memo-content {
+    font-size: 0.8rem;
+}    
+
+.memo-date{
+    font-size: 0.5rem;
+    line-height:1;
+}
 }

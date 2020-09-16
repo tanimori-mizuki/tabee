@@ -2,6 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="../../static/css/siori/memo.css">
@@ -43,77 +44,161 @@
         </div>
     </div>
 </nav>
-<div class="d-flex justify-content-around align-content-center text-center flex-wrap">
-    <div class="card">
-      <div class="card-header">
-        <div class="cover">
-               <div class="coverimage">
-                <img class="trim-image-circle" src="../../static/img/top/icon.png">
-               </div>おかゆ
-        </div>
-      2020年9月15日(火)17:34</div>
-      <div class="card-body">
-        <div class="memo-content">
-        メモ帳機能作成中！苦戦しています。横並びにしたいけどなんの技術を遣えばいいのかわかりません。とりあえず指定した行数以上は非表示にしようと思います。
-        </div>
-      </div>
+<div class="tab-wrap">
+    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">みんなのメモ</label>
+    <div class="tab-content">
+        <div class="d-flex justify-content-around align-content-center text-center flex-wrap">
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                           おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>               
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    沖縄ダイビングは12月もあり。泡盛のむ。残波探す。海人Tシャツ購入する。ジーマミー豆腐ドンキで買いまくる。お土産用含む。
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                           おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                横並びにしたいです。
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                        おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>               
+                </div>
+             </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    メモ欄の最適解とは。
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/test_sample.jpg">
+                    </div>
+                    <div>
+                        コウペンちゃん<br>
+                        <div class="memo-date">2020年9月15日(火)17:34</div>
+                    </div>  
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    旅行たのしみ～
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/test_sample.jpg">
+                       </div>
+                       <div>
+                        コウペンちゃん<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    今日は眠いなぁ。メモメモ。
+                </div>
+              </div>
+            </div>              
+        </div>   
     </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="cover">
-               <div class="coverimage">
-                <img class="trim-image-circle" src="../../static/img/top/icon.png">
-               </div>おかゆ
-        </div>
-      2020年9月15日(火)17:34</div>
-      <div class="card-body">
-        <div class="memo-content">
-        横並びにしたいです。
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="cover">
-               <div class="coverimage">
-                <img class="trim-image-circle" src="../../static/img/top/icon.png">
-               </div>おかゆ
-        </div>
-      2020年9月15日(火)17:34</div>
-      <div class="card-body">
-        <div class="memo-content">
-        5行目以降は非表示になるように設定しています。ここは共有用のページになる予定です。文章をかせぐのが大変です。
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="cover">
-               <div class="coverimage">
-                <img class="trim-image-circle" src="../../static/img/top/test_sample.jpg">
-               </div>コウペンちゃん
-        </div>
-      2020年9月15日(火)17:34</div>
-      <div class="card-body">
-        <div class="memo-content">
-        出勤して偉い！
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="cover">
-               <div class="coverimage">
-                <img class="trim-image-circle" src="../../static/img/top/pizza_tuchi3.jpg">
-               </div>店長
-        </div>
-      2020年9月15日(火)17:34</div>
-      <div class="card-body">
-        <div class="memo-content">
-        らくらくピザをよろしくお願いいたします！
-        </div>
-      </div>
-    </div>              
+    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">自分のメモ</label>
+    <div class="tab-content">
+        <div class="d-flex justify-content-around align-content-center text-center flex-wrap">
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                           おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>               
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    沖縄ダイビングは12月もあり。泡盛のむ。残波探す。海人Tシャツ購入する。ジーマミー豆腐ドンキで買いまくる。お土産用含む。
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                           おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="memo-content">
+                横並びにしたいです。
+                </div>
+              </div>
+            </div>
+            <div class="card m-3">
+              <div class="card-header">
+                <div class="cover">
+                       <div class="coverimage">
+                        <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                        おかゆ<br>
+                           <div class="memo-date">2020年9月15日(火)17:34</div>
+                       </div>               
+                </div>
+             </div>
+              <div class="card-body">
+                <div class="memo-content">
+                    メモ欄の最適解とは。
+                </div>
+              </div>
+            </div>              
+        </div>   
+    </div>  
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
