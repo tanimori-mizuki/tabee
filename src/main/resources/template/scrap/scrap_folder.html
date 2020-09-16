@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
     <link rel="stylesheet" href="../../static/css/scrap/styles.min.css" th:href="@{/css/scrap/styles.min.css}">
+    <link rel="stylesheet" href="../../static/css/scrap/fab.css" th:href="@{/css/scrap/fab.css}">
 </head>
 
 <body>
@@ -56,19 +57,12 @@
         <section class="portfolio-block projects compact-grid">
             <!-- Start: portfolio heading -->
             <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-                <div class="container"><a class="navbar-brand" href="../scrap/scrap_top.html">済州島海鮮食い倒れ旅</a>
-                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse"
-                         id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Menu</a>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="../scrap/scrap_make_folder.html">フォルダ作成</a><a class="dropdown-item" href="../scrap/scrap_edit_folder.html">フォルダ名編集・削除</a><a class="dropdown-item" href="../scrap/scrap_upload.html">画像・動画アップロード</a></div>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="container">
+                    <a class="navbar-brand" href="../scrap/scrap_top.html">済州島海鮮食い倒れ旅</a>
+
+                        <a id="edit" href="../scrap/scrap_edit_folder.html">
+                            <i class="fa fa-edit fa-lg edit"></i>
+                        </a>
                 </div>
             </nav>
             <!-- End: portfolio heading -->
@@ -81,12 +75,18 @@
                 <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image6.jpg"></a></div>
                 <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"></a></div>
             </div>
+            <a id="fab" href="../scrap/scrap_upload.html">
+                <i class="fa fa-plus"></i>
+            </a>
         </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="../../static/js/scrap/script.min.js"></script>
+<script>
+
+</script>
 </body>
 
 </html>

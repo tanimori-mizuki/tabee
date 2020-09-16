@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Scrap folder - tabee</title>
+    <title>Scrap make folder - tabee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/scrap/bootstrap.min.css}">
@@ -58,23 +58,10 @@
             <nav class="navbar navbar-light navbar-expand-md navigation-clean">
                 <div class="container">
                     <a class="navbar-brand" href="../scrap/scrap_top.html">スクラップ</a>
-                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse"
-                        id="navcol-2">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item"></li>
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Menu</a>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="../scrap/scrap_make_folder.html">フォルダ作成</a><a class="dropdown-item" href="../scrap/scrap_edit_folder.html">フォルダ名編集・削除</a></div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </nav>
             <!-- End: Navigation Clean -->
             <div class="container">
-                <div class="heading"></div>
                 <form>
                     <div class="form-group"><label for="name">フォルダ名</label><input class="form-control item" type="text" id="name"></div>
                     <div class="form-group"><button class="btn btn-outline-warning" type="button">作成</button></div>

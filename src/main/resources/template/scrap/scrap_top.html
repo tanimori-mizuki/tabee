@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
     <link rel="stylesheet" href="../../static/css/scrap/styles.min.css" th:href="@{/css/scrap/styles.min.css}">
+    <link rel="stylesheet" href="../../static/css/scrap/fab.css" th:href="@{/css/scrap/fab.css}">
 </head>
 
 <body>
@@ -46,7 +47,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="login.html" th:href="">ログアウト</a>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -55,22 +55,16 @@
         <section class="portfolio-block projects-cards">
             <!-- Start: Navigation Clean -->
             <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-                <div class="container"><a class="navbar-brand" href="../scrap/scrap_top.html">スクラップ</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container">
+                    <a class="navbar-brand" href="../scrap/scrap_top.html">スクラップ</a>
                     <div class="collapse navbar-collapse"
                         id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Menu</a>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="../scrap/scrap_make_folder.html">フォルダ作成</a><a class="dropdown-item" href="../scrap/scrap_edit_folder.html">フォルダ名編集・削除</a></div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </nav>
             <!-- End: Navigation Clean -->
             <div class="container">
-                <!-- Start: portfolio heading -->
-                <div class="heading"></div>
-                <!-- End: portfolio heading -->
+
                 <div class="row">
                     <div class="col-6 col-md-6 col-lg-4">
                         <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="../../static/img/scrap/image1.jpg" alt="Card Image"></a>
@@ -121,6 +115,9 @@
                         </div>
                     </div>
                 </div>
+                <a id="fab" href="../scrap/scrap_make_folder.html">
+                    <i class="fa fa-plus"></i>
+                </a>
             </div>
         </section>
     </main>
