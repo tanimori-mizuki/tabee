@@ -22,7 +22,17 @@ img{
 
 .fa-plus-circle{
     color:#7fdbda;
-    margin-right:2rem;
+    font-size:4rem;
+}
+.create-siori {
+    position: fixed;
+    z-index: 2;
+    bottom:2rem;
+    right:2rem; 
+}
+.create-siori a{
+    display: block;
+    text-decoration: none;
 }
 
 a{
@@ -38,9 +48,6 @@ p{
     font-size: 0.5rem;
 }
 
-.icon-size{
-    font-size:2rem;
-}
 .siori-edit {
   position: relative;
   }
@@ -71,7 +78,7 @@ p.edit-icon:hover {
 @media screen and (max-width: 480px) {
     
 .card{
-    width: 10rem;
+    width: 9rem;
 }
 img{
     height: 120px;
@@ -82,20 +89,16 @@ img{
 p{
     font-size:0.1rem;
 }
-  
-.icon-size{
-    font-size:4rem;
+.fa-plus-circle{
+    font-size: 4rem;        
 }
-.create-siori {
-    margin-left: 1rem;
-    position: fixed;
-    z-index: 2;
-}
+
     
 .form-label-group>input, .form-label-group>label {
 	width: 70%;
 
 }
+
 .btn-primary {
     width: 70%;
 }
