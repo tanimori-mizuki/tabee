@@ -63,6 +63,7 @@ p.edit-icon {
   }
 p.edit-icon:hover {
   color: black;
+  cursor: pointer;
   }
 
 .form-label-group>input, .form-label-group>label {

@@ -1,0 +1,53 @@
+.card{
+    position: relative;
+    width: 20rem;  
+    margin: 4rem auto;
+}
+.trim-image-circle{
+    width:  5rem;      
+    height: 5rem;      
+    border-radius: 50%;
+    border: 1px solid LightGray;
+}
+.memo-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+.memo-date{
+    font-size: 0.8rem;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.cover{
+    display: table;
+    width: 100%;
+}
+.coverimage{
+    display: table-cell;
+}
+.dropdown{
+    margin:1rem 10% auto auto;
+}
+.edit-icon{
+    position: fixed;
+    z-index: 2;
+    bottom:2rem;
+    right:2rem; 
+}
+.edit-icon:hover{
+    cursor: pointer;
+
+}
+.fa-pen{
+    font-size: 2rem;
+    color:white;
+    padding:1rem;
+    border-radius: 50%;
+    background-color: #7fdbda;
+}

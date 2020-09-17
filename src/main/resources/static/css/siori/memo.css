@@ -25,7 +25,8 @@ a:hover{
 .trim-image-circle{
     width:  4rem;      
     height: 4rem;      
-    border-radius: 50%;  
+    border-radius: 50%;
+    border: 1px solid LightGray
 }
 .card{
     width: 16rem;    
