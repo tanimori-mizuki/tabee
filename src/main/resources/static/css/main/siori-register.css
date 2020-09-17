@@ -25,3 +25,13 @@
     display: table-cell;
     text-align: right;
 }
+
+@media screen and (max-width: 480px) {
+.trim-image-circle{
+    margin-right:rem;
+    width:  7rem;      
+    height: 7rem;      
+    border-radius: 50%;  
+}    
+
+}
