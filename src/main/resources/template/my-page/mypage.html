@@ -133,8 +133,8 @@
 
 				</div>
 				<div class="tab_content map_content">
-					<div id="map"></div>
-
+					<div id="g-map"
+						style="width: 620px; height: 300px; margin-right: 20px;"></div>
 				</div>
 			</div>
 
@@ -155,6 +155,9 @@
 
 		</footer>
 	</div>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
@@ -167,14 +170,11 @@
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
 
-	<!-- google map api -->
-	<script
-		src="http://maps.google.com/maps/api/js?key=AIzaSyBC6do4eWd4qu6aSPBg-rvlevdvUO-IXn0&language=ja"></script>
+	<script async defer
+		src="http://maps.google.com/maps/api/js?key=AIzaSyBC6do4eWd4qu6aSPBg-rvlevdvUO-IXn0&language=ja&callback=initMap"></script>
 
-	<script type="text/javascript" src="../../static/js/google_map.js">
-		
-	</script>
-
+	<script type="text/javascript" src="../../static/js/google_map.js"></script>
+	
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 		crossorigin="anonymous"></script>
