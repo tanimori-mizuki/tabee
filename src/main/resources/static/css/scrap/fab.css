@@ -1,0 +1,29 @@
+#fab {/*円の部分*/
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;/*幅*/
+    height: 56px;/*高さ*/
+    background: #7fdbda;/*背景色*/
+    text-align: center;/*中央寄せ*/
+    border-radius: 50%;/*角丸く*/
+    transition: .10s;/*滑らかな動きに*/
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+
+#fab:hover {/*ホバー時*/
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#fab i {/*中央のアイコン*/
+    color: white;
+    line-height: 56px;/*＝幅と高さ*/
+    font-size: 25px;/*サイズ*/
+}
+.edit{
+    color: #7fdbda;
+    font-size: 2.0em;
+}
+
+
+

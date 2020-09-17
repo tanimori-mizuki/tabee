@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="../../static/css/register.css">
 <link rel="stylesheet" href="../../static/css/main/top.css" th:href="@{/css/main/top.css}">
+
 
 </head>
 <body>
@@ -46,55 +49,139 @@
         </div>
       </div>
     </nav>
+    <div class="siori-list text-center">
+        <p><span class="page-title">旅のしおりたち</span>
+            <span class="create-siori" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="しおりを作成">
+                <a href="siori-register.html">
+                  <i class="fas fa-plus-circle icon-size"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+　　<form>
+	    <div class="form-label-group">
+	        <div class="text-center"><label for="searchShiori" class="text-center">しおり名から検索</label></div>
+		    <input type="text" id="searchShiori" class="form-control"
+			    placeholder="しおり名" required>
+        </div>
+        <button	class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"	type="submit">検索</button><br>
+   </form>
+    <!--しおりがないとき-->
+<!--    <div class="siori-list text-center">
+        <p><span class="create-recommend">(しおりがないとき)<br>しおりを作成して旅に出よう！</span>
+            <span class="create-siori" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="しおりを作成">
+                <a href="siori-register.html">
+                  <i class="fas fa-plus-circle icon-size"></i>
+                </a>
+            </span>
+        </p>
+    </div>-->
     <div class="d-flex justify-content-around align-content-center text-center flex-wrap">
         <div class="flex-child">
-           <div class="card m-3">
-                <img class="card-img-top img-size" src="../../static/img/kyoto.jpeg" alt="Card image cap">
+           <div class="card m-3 siori-edit">
+              <a href="../siori/siori-info.html">
+                <img class="card-img-top" src="../../static/img/top/kyoto.jpeg" alt="Card image cap">
+              </a>
+                <div class="dropdown">
+                   <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <i class="fas fa-pen"></i>
+                   </p>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
+                        <a class="dropdown-item" href="#">しおりを共有</a>
+                    </div>
+                </div>
                 <div class="card-body">
-                        <h5 class="card-title">秋の京都抹茶旅</h5>
-                        <p class="card-text">2020年11月3日<br>|<br>2020年11月5日</p>
+                    <h6 class="card-title">秋の京都抹茶旅</h6>
+                    <p class="card-text">2020年11月3日<br>|<br>2020年11月5日</p>
                 </div>
             </div>
         </div>
         <div class="flex-child">
-             <div class="card m-3">
-                <img class="card-img-top img-size"
-                    src="../../static/img/okinawa_kanko-6.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">沖縄冬ダイビング</h5>
+             <div class="card m-3 siori-edit">
+                <a href="../siori/siori-info.html">
+                <img class="card-img-top"
+                    src="../../static/img/top/okinawa_kanko-6.jpg" alt="Card image cap">
+                </a>
+                <div class="dropdown">
+                   <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <i class="fas fa-pen"></i>
+                   </p>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
+                    <a class="dropdown-item" href="#">しおりを共有</a>
+                 </div>
+               </div>             
+               <div class="card-body">
+                    <h6 class="card-title">沖縄冬ダイビング</h6>
                     <p class="card-text">2020年12月1日<br>|<br>2020年12月5日</p>
+               </div>
+            　</div>
+        </div>
+        <div class="flex-child">
+          <div class="card m-3 siori-edit">
+            <a href="../siori/siori-info.html">
+                <img class="card-img-top" src="../../static/img/top/test_sample.jpg" alt="Card image cap">
+            </a>
+            <div class="dropdown">
+                <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-pen"></i>
+                </p>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
+                    <a class="dropdown-item" href="#">しおりを共有</a>
                 </div>
             </div>
-        </div>
-        <div class="flex-child">
-            <div class="card m-3">
-                <img class="card-img-top img-size" src="../../static/img/test_sample.jpg" alt="Card image cap">
-                 <div class="card-body">
-                     <h5 class="card-title">コウペンちゃんといっしょ</h5>
-                     <p class="card-text">2020年3月31日<br>|<br>2020年9月31日</p>
-                 </div>
+            <div class="card-body">
+                <h6 class="card-title">コウペンちゃんといっしょ</h6>
+                <p class="card-text">2020年3月31日<br>|<br>2020年9月31日</p>
             </div>
+          </div>
         </div>
         <div class="flex-child">
-            <div class="card m-3">
-                <img class="card-img-top img-size" src="../../static/img/wine.jpg" alt="Card image cap">
+            <div class="card m-3 siori-edit">
+                <a href="../siori/siori-info.html">
+                 <img class="card-img-top" src="../../static/img/top/wine.jpg" alt="Card image cap">
+                </a>
+                <div class="dropdown">
+                     <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <i class="fas fa-pen"></i>
+                     </p>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
+                        <a class="dropdown-item" href="#">しおりを共有</a>
+                      </div>
+                </div>                
                  <div class="card-body">
-                     <h5 class="card-title">山梨ワイン紀行</h5>
+                     <h6 class="card-title">山梨ワイン紀行</h6>
                      <p class="card-text">未定</p>
                  </div>
              </div>
         </div>
         <div class="flex-child">
-            <div class="card m-3">
-                <img class="card-img-top img-size" src="../../static/img/ponshu.jpg" alt="Card image cap">
-                 <div class="card-body">
-                     <h5 class="card-title">日本酒旅行</h5>
+            <div class="card m-3 siori-edit">
+               <a href="../siori/siori-info.html">
+                <img class="card-img-top" src="../../static/img/top/ponshu.jpg" alt="Card image cap"></a>
+                <div class="dropdownLink">
+                <div class="dropdown">
+                     <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <i class="fas fa-pen"></i>
+                     </p>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
+                        <a class="dropdown-item" href="#">しおりを共有</a>
+                      </div>
+                </div>
+                <div class="card-body">
+                     <h6 class="card-title">日本酒旅行</h6>
                      <p class="card-text">未定</p>
-                 </div>
+                </div>
              </div>
-        </div>    
+        </div>  
+    </div> 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="../../static/js/main/top.js"></script>
 </body>
 </html>

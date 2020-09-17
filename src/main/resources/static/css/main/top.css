@@ -1,10 +1,72 @@
-img{
-    height: 200px;
+
+.page-title{
+    font-size: 2rem;
+}
+.create-recommend{
+    font-size: 1.5rem;
 }
 
-.card{
-    width: 16rem;
+img{
+    object-fit: cover;
+    cursor: pointer;
+    height: 200px;
 }
+.card{
+    width: 16rem;    
+}
+.card:hover{
+    box-shadow: 10px 10px 10px #7fdbda;
+    transform: translateY(-10px);
+    transition-duration: 0.5s;
+}
+
+.fa-plus-circle{
+    color:#7fdbda;
+    margin-right:2rem;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+.flex-child:hover{
+    color:#febf63;
+    text-decoration: none;
+}  
+
+p{
+    font-size: 0.5rem;
+}
+
+.icon-size{
+    font-size:2rem;
+}
+.siori-edit {
+  position: relative;
+  }
+
+p.edit-icon {
+  position: absolute;
+  right: 50;
+  color: white;
+  background-color: rgb(0,0,0,0.1);
+  font-size: 1.0rem;
+  line-height: 1;
+  padding: 5px 10px;
+  }
+p.edit-icon:hover {
+  color: black;
+  }
+
+.form-label-group>input, .form-label-group>label {
+	width: 30%;
+
+}
+.btn-primary {
+    width: 30%;
+    margin-top: 10px;
+}
+
 
 @media screen and (max-width: 480px) {
     
@@ -12,13 +74,32 @@ img{
     width: 10rem;
 }
 img{
-    max-height: 100px;
+    height: 120px;
 }
 .card-title{
-    font-size:0.9rem;
+    font-size:0.1rem;
 }
 p{
     font-size:0.1rem;
 }
-    
+  
+.icon-size{
+    font-size:4rem;
 }
+.create-siori {
+    margin-left: 1rem;
+    position: fixed;
+    z-index: 2;
+}
+    
+.form-label-group>input, .form-label-group>label {
+	width: 70%;
+
+}
+.btn-primary {
+    width: 70%;
+}
+}
+
+
+
