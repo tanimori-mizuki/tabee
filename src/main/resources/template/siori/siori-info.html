@@ -5,19 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="../../static/css/siori/siori-info.css" th:href="@{/css/siori/siori-info.css}">
 </head>
 <body>
-<p>年月日: <input type="text" id="input1" /></p>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-<script>
-	$(function() {
-		$("#input1").datepicker();
-	});
-</script>
+    <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+        <div class="container">
+            <a class="navbar-brand" th:href="">
+                <span class="sample">tabee</span>
+            </a>
+            <!-- ハンバーガーメニュー -->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu<span class="navbar-toggler-icon"></span>
+                <!--           	<i class="fas fa-bars"></i> -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <!-- 右寄せにするために記述 -->
+                <ul class="navbar-nav mr-auto">
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:href="">マイページトップ</a>
+                            <a class="dropdown-item" th:href="">各種設定</a>
+                            <a class="dropdown-item" th:href="">FAQ</a>
+                            <a class="dropdown-item" th:href="">お問い合わせ</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="login.html" th:href="">ログアウト</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+       <a href="../main/top.html"><<しおり一覧へ</a>     
+        <div class="card">
+            <div class="card-header">
+                <div class="siori-content">
+                    沖縄ダイビング
+                </div> 
+                <br>
+            </div>
+            <div class="card-body">             
+                <div class="siori-content-title">
+                    旅行期間
+                </div>
+                <div class="siori-content">
+                    2020年12月1日(火)~2020年12月5日(土)
+                </div>
+                <br>
+                <div class="siori-content-title">
+                    メンバー
+                </div>
+                <div class="siori-content">
+                    <div class="cover">
+                      <div class="coverimage">
+                            <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                       </div>
+                       <div>
+                           おかゆ
+                       </div>               
+                    </div>  
+                </div>
+                <br>                            
+                <div class="siori-content-title">
+                    目的地
+                </div>
+                <div class="siori-content">
+                    沖縄県
+                </div>                           <br>
+                <div class="siori-content-title">
+                    天気
+                </div>
+                <div class="siori-content">
+                    晴れるよ
+                </div>                           <br>                             <div class="siori-content-title">
+                    費用合計
+                </div>
+                <div class="siori-content">
+                    55,555円
+                </div>                           <br>        
+            </div>
+        </div>
+    </div>
+    <div class="add-member">
+        <span data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="メンバーを招待する">
+            <a href="">
+              <i class="fas fa-user-plus"></i>
+            </a>
+        </span>
+    </div>      
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../../static/js/siori/siori-info.js"></script>
 </body>
 </html>

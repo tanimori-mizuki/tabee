@@ -20,19 +20,35 @@ img{
     transition-duration: 0.5s;
 }
 
-.fa-plus-circle{
-    color:#7fdbda;
-    font-size:4rem;
-}
 .create-siori {
     position: fixed;
     z-index: 2;
-    bottom:2rem;
-    right:2rem; 
+    bottom: 20px;
+    right: 20px;
 }
 .create-siori a{
     display: block;
     text-decoration: none;
+}
+
+#fab {/*円の部分*/
+    width: 60px;
+    height: 60px;
+    background: #7fdbda;
+    text-align: center;
+    border-radius: 50%;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+
+#fab:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#fab i {
+    color: white;
+    line-height: 60px;
+    font-size: 30px;
 }
 
 a{
