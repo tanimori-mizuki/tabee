@@ -52,3 +52,22 @@
 .fa-pen:hover {
     box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
 }
+
+#memo-delete:hover{
+    cursor: pointer;
+    
+}
+
+.btn-primary {
+    background-color: #febf63;
+    border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
