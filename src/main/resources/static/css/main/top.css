@@ -1,3 +1,94 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.btn-primary{
+    background-color: #febf63;
+	border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+div.search .btn-primary {
+    width: 30%;
+    margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 70%;
+  border-radius: 2rem;
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  display: block;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  cursor: text;
+  /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+.search{
+    margin-bottom: 2rem;
+}
+/*検索フォーム関連ここまで*/
 
 .page-title{
     font-size: 2rem;
@@ -86,11 +177,6 @@ p.edit-icon:hover {
 	width: 30%;
 
 }
-.btn-primary {
-    width: 30%;
-    margin-top: 10px;
-}
-
 
 @media screen and (max-width: 480px) {
     
@@ -116,7 +202,7 @@ p{
 
 }
 
-.btn-primary {
+div.search .btn-primary {
     width: 70%;
 }
 }
