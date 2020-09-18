@@ -52,158 +52,177 @@
         </div>
     </div>
 </nav>
-<main class="page lanidng-page"></main>
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <!-- Start: Navigation Clean -->
-            <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-                <div class="container"><a class="navbar-brand" href="checklist.html">チェックリスト</a>
-
+<main class="page lanidng-page">
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Start: Navigation Clean -->
+                    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+                        <div class="container">
+                            <a class="navbar-brand" href="checklist.html">チェックリスト</a>
+                            <div class="text-left edit-category">
+                                <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="カテゴリー一覧">
+                                    <a class="navbar-brand" href="categorylist.html">
+                                        <i class="fas fa-wrench edit"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- End: Navigation Clean -->
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">持ち物</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">お土産</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">リストを増やす</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="title">衣類</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="check1">
+                                                <label class="form-check-label" for="check1">
+                                                    <a href="checklist_edit.html">着替え3日分</a></label>
+                                            </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check2">
+                                                    <label class="form-check-label" for="check2">
+                                                        <a href="checklist_edit.html">タオル</a></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="title">交通</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check3">
+                                                    <label class="form-check-label" for="check3">
+                                                        <a href="checklist_edit.html">Suica</a></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check4">
+                                                    <label class="form-check-label" for="check4">
+                                                        <a href="checklist_edit.html">eチケット</a></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="title">お土産</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check1">
+                                                    <label class="form-check-label" for="check1">自分用</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check2">
+                                                    <label class="form-check-label" for="check2">家族用</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-3">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="title">リストの追加</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <form>
+                                                    <div class="form-group"><label for="title">タイトル</label>
+                                                        <input class="form-control item" type="text" id="title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-outline-warning" type="button">追加</button>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-            <!-- End: Navigation Clean -->
-            <div>
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">持ち物</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">お土産</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">リストを増やす</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="tab-1">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="title">衣類</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="check1">
-                                        <label class="form-check-label" for="check1">着替え3日分</label>
-                                    </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check2">
-                                            <label class="form-check-label" for="check2">タオル</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="title">交通</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check3">
-                                            <label class="form-check-label" for="check3">Suica</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check4">
-                                            <label class="form-check-label" for="check4">eチケット</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="tab-2">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="title">お土産</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check1">
-                                            <label class="form-check-label" for="check1">自分用</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check2">
-                                            <label class="form-check-label" for="check2">家族用</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="tab-3">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="title">リストの追加</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <form>
-                                            <div class="form-group"><label for="title">タイトル</label>
-                                                <input class="form-control item" type="text" id="title">
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-outline-warning" type="button">追加</button>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+            </div>
+            <div class="text-left create-folder">
+                <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="チェックリスト追加">
+                    <a id="fab" data-toggle="modal" data-target="#staticBackdrop">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </span>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <a href="new_checklist.html">チェックリストを作成する</a><br>
+                            <a href="new_category.html">カテゴリ追加</a><br>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <a id="fab" data-toggle="modal" data-target="#staticBackdrop">
-        <i class="fa fa-plus"></i>
-    </a>
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <a href="new_checklist.html">チェックリストを作成する</a><br>
-                    <a href="new_category.html">カテゴリ追加</a><br>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
+</main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+<script src="../../static/js/scrap/scrap.js"></script>
 <script src="../../static/js/scrap/script.min.js"></script>
 </body>
 
