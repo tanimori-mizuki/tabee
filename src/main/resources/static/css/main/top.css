@@ -12,7 +12,7 @@ img{
     height: 200px;
 }
 .card{
-    width: 16rem;    
+    width: 16rem;
 }
 .card:hover{
     box-shadow: 10px 10px 10px #7fdbda;
@@ -28,7 +28,7 @@ img{
     position: fixed;
     z-index: 2;
     bottom:2rem;
-    right:2rem; 
+    right:2rem;
 }
 .create-siori a{
     display: block;
@@ -42,7 +42,7 @@ a{
 .flex-child:hover{
     color:#febf63;
     text-decoration: none;
-}  
+}
 
 p{
     font-size: 0.5rem;
@@ -77,7 +77,7 @@ p.edit-icon:hover {
 
 
 @media screen and (max-width: 480px) {
-    
+
 .card{
     width: 9rem;
 }
@@ -91,10 +91,10 @@ p{
     font-size:0.1rem;
 }
 .fa-plus-circle{
-    font-size: 4rem;        
+    font-size: 4rem;
 }
 
-    
+
 .form-label-group>input, .form-label-group>label {
 	width: 70%;
 
@@ -104,6 +104,4 @@ p{
     width: 70%;
 }
 }
-
-
 
