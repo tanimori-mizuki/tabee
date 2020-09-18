@@ -1,5 +1,42 @@
+.card{
+    width: 40rem;  
+    margin: 4rem auto;
+}
+.trim-image-circle{
+    width:  5rem;      
+    height: 5rem;      
+    border-radius: 50%;
+    border: 1px solid LightGray;
+}
 
-@media screen and (max-width: 480px) {
+.cover{
+    display: table;
+    width: 100%;
+}
+.coverimage{
+    display: table-cell;
+}
 
-    
+.add-member {
+    position: fixed;
+    z-index: 2;
+    bottom:20px;
+    right:20px; 
+}
+.add-member a{
+    display: block;
+    text-decoration: none;
+}
+.fa-user-plus{
+    font-size: 2rem;
+    color:white;
+    padding:1rem 0.8rem;
+    border-radius: 50%;
+    background-color: #7fdbda;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+.fa-user-plus:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
 }

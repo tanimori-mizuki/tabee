@@ -2,6 +2,7 @@
     position: relative;
     width: 20rem;  
     margin: 4rem auto;
+    border: 0.1rem solid #7fdbda;
 }
 .trim-image-circle{
     width:  5rem;      
@@ -19,10 +20,7 @@
     font-size: 0.8rem;
 }
 .card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: white;
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    background-color: white;  
 }
 .cover{
     display: table;
@@ -31,14 +29,12 @@
 .coverimage{
     display: table-cell;
 }
-.dropdown{
-    margin:1rem 10% auto auto;
-}
+
 .edit-icon{
     position: fixed;
     z-index: 2;
-    bottom:2rem;
-    right:2rem; 
+    bottom:20px;
+    right:20px; 
 }
 .edit-icon:hover{
     cursor: pointer;
@@ -50,4 +46,28 @@
     padding:1rem;
     border-radius: 50%;
     background-color: #7fdbda;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+.fa-pen:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#memo-delete:hover{
+    cursor: pointer;
+    
+}
+
+.btn-primary {
+    background-color: #febf63;
+    border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
 }
