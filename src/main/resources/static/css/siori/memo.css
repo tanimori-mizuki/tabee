@@ -47,10 +47,11 @@ a:hover{
     width:  4rem;      
     height: 4rem;      
     border-radius: 50%;
-    border: 1px solid LightGray
+    border: 0.5px solid LightGray
 }
 .card{
-    width: 16rem;    
+    width: 16rem;
+    border: 1.5px solid #a8a6a6;
 }
 .card:hover{
     background-color: #fff8f8;

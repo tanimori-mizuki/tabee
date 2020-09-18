@@ -2,7 +2,7 @@
     position: relative;
     width: 20rem;  
     margin: 4rem auto;
-    border: 0.1rem solid #7fdbda;
+    border: 2px solid #7fdbda;
 }
 .trim-image-circle{
     width:  5rem;      
