@@ -24,3 +24,17 @@
     font-size: 30px;
 }
 
+.create-folder {
+    position: fixed;
+    z-index: 2;
+    bottom:3rem;
+    right:5rem;
+}
+.reate-folder a{
+    display: block;
+    text-decoration: none;
+}
+.edit{
+    color: #7fdbda;
+    font-size: 1.5em;
+}

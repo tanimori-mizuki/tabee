@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Scrap folder - tabee</title>
+    <title>Scrap make folder - tabee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/scrap/bootstrap.min.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-    <link rel="stylesheet" href="../../static/css/scrap/styles.min.css" th:href="@{/css/scrap/styles.min.css}">
-    <link rel="stylesheet" href="../../static/css/scrap/fab.css" th:href="@{/css/scrap/fab.css}">
+    <link rel="stylesheet" href="../../static/css/checklist/checklist.css" th:href="@{/css/checklist/checklist.css}">
+
 </head>
 
 <body>
@@ -53,48 +53,43 @@
         </div>
     </div>
 </nav>
-    <main class="page projets-page">
-        <section class="portfolio-block projects compact-grid">
-            <!-- Start: portfolio heading -->
-            <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-                <div class="container">
-                    <a class="navbar-brand" href="../scrap/scrap_top.html">済州島海鮮食い倒れ旅</a>
-                    <div class="text-left edit-folder">
-                        <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="フォルダ名編集・削除">
-                            <a id="edit" href="../scrap/scrap_edit_folder.html">
-                                <i class="fa fa-edit fa-lg edit"></i>
-                            </a>
-                        </span>
-                    </div>
+<main class="page contact-page">
+    <section class="portfolio-block contact">
+        <!-- Start: Navigation Clean -->
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+            <div class="container">
+                <a class="navbar-brand" href="../checklist/checklist.html">チェックリスト編集</a>
+            </div>
+        </nav>
+        <!-- End: Navigation Clean -->
+        <div class="container">
+            <form>
+                <div class="form-group"><label for="categoryTitle">タイトル</label>
+                    <input class="form-control item" type="text" id="categoryTitle" value="着替え3日分">
                 </div>
-            </nav>
-            <!-- End: portfolio heading -->
-            <div class="row no-gutters">
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image1.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image2.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image3.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image4.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="../scrap/scrap_detail.html"><img class="img-fluid image" src="../../static/img/scrap/image5.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="../../static/img/scrap/image6.jpg"></a></div>
-                <div class="col-6 col-md-6 col-lg-4 item zoom-on-hover"><a href="#"></a></div>
-            </div>
-            <div class="text-right create-folder">
-                <span data-toggle="popover" data-trigger="hover" data-placement="top" data-content="アップロード">
-                    <a id="fab" href="../scrap/scrap_upload.html">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </span>
-            </div>
-        </section>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    <script src="../../static/js/scrap/scrap.js"></script>
-    <script src="../../static/js/scrap/script.min.js"></script>
-<script>
-
-</script>
+                <div class="form-group">
+                    <label for="category">カテゴリー</label>
+                    <select class="form-control" id="category">
+                        <option>衣類</option>
+                        <option>貴重品</option>
+                        <option>交通</option>
+                        <option>モバイル関係</option>
+                        <option>その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-warning" type="button">追加</button>
+                    <button class="btn btn-outline-danger" type="button">削除</button>
+                </div>
+            </form>
+            <a href="checklist.html">戻る</a>
+        </div>
+    </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+<script src="../../static/js/scrap/script.min.js"></script>
 </body>
 
 </html>
