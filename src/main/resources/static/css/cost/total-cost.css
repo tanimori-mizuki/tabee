@@ -48,25 +48,27 @@ table thead tr{
 table tbody th {
   text-align: left;
   font-size: .8em;
-  width: 250px;
 }
 
 .txt{
    text-align: left;
    font-size: .75em;
+   text-align: center;
 }
 
 .price{
   text-align: right;
   color: #000;
   font-weight: bold;
-  width: 200px;
+}
+
+.category-name{
+	width: 30%;
 }
 
 .total-cost{
 	text-align: center;
 	font-size: 20px;
-	width: 320px;
 }
 
 .liquidation{
@@ -95,9 +97,7 @@ a:visited{
 	text-align: right;
 }
 
-td.txt{
-	text-align: center;
-}
+
 
 
 @media screen and (max-width: 600px) {
@@ -105,17 +105,20 @@ td.txt{
 }
 
 @media screen and (max-width: 400px) {
-  table{width: 100%;}
+  table{width: 90%;}
   
-  table tbody th {
-  width: 100px;
+  .text{
+  	display: none;
   }
   
-  .price{
-  width: 130px;
- }
- 
- .txt{
- width: 110px;
- }
+  .create-new .fas{
+	margin: 0 auto;
+	margin-left: 20px;
+	}
+	
+table th,
+table td {
+  padding: .35em 0.9em;
+  border-bottom: 1px solid #eee;
+}
 }
