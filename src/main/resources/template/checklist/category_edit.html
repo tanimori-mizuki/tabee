@@ -58,94 +58,28 @@
         <!-- Start: Navigation Clean -->
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
             <div class="container">
-                <a class="navbar-brand" href="../checklist/checklist.html">カテゴリーリスト</a>
+                <a class="navbar-brand" href="../checklist/checklist.html">カテゴリー編集</a>
             </div>
         </nav>
         <!-- End: Navigation Clean -->
         <div class="container">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th class="title">持ち物</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">衣類</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">貴重品</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">交通</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">モバイル関係</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">その他</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                    <thead>
-                    <tr>
-                        <th class="title">お土産</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">会社</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">プライベート</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <a href="category_edit.html">家族</a></label>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <a href="checklist.html">戻る</a>
+            <form>
+                <div class="form-group"><label for="categoryTitle">タイトル</label>
+                    <input class="form-control item" type="text" id="categoryTitle" value="衣類">
+                </div>
+                <div class="form-group">
+                    <label for="list">リスト</label>
+                    <select class="form-control" id="list">
+                        <option>持ち物</option>
+                        <option>お土産</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-warning" type="button">保存</button>
+                    <button class="btn btn-outline-danger" type="button">削除</button>
+                </div>
+            </form>
+            <a href="categorylist.html">戻る</a>
         </div>
     </section>
 </main>
