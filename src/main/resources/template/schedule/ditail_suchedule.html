@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>tabee | スケジュール</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+ 	  <div class="container">
+        <a class="navbar-brand" th:href="">
+        	<i class="fas fa-angle-left"></i>
+        	<span class="sample">戻る</span>
+        </a>
+        <div class="chat-icon">
+        	<span>編集</span>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="center">
+    	<div class="schedule">
+    	<span>1日目</span><span>2020年9月4日(金)UTC +9:00</span>
+    		<span>スケジュール</span>
+       		 <table>
+  				<tr>
+    				<td class="icon bird">8:50</td>
+    				<td>川崎駅集合</td>
+  				</tr>
+  				<tr>
+   					<td class="icon whale">電話番号</td>
+    				<td>000-0000-0000</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">URL</td>
+    				<td>URL</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">現在地</td>
+    				<td>神奈川県川崎市川崎区日進町</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">MAP表示</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">アラーム<br>
+    				オフ
+    				</td>
+    				<td class="icon crab">10分前通知<br>
+    				オフ
+    				</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">メモ</td>
+  				</tr>
+  				<tr>
+    				<td class="icon crab">費用</td>
+    				<td class="icon crab">0円</td>
+  				</tr>
+			</table>
+    	</div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="../../static/js/main/top.js"></script> 
+</body>
+</html>

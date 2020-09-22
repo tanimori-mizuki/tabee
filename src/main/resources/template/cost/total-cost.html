@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>tabee | 費用合算</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="../../static/css/cost/total-cost.css" th:href="@{/css/cost/total-cost.css}">
+</head>
+<body>
+
+<!-- ナビゲーションエリア -->
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+ 	<div class="container">
+       <a class="navbar-brand" th:href="">
+        	<i class="fas fa-angle-left"></i>
+        	<span class="sample">戻る</span>
+       </a>
+      <div>
+        	<span  class="trip-title">旅行タイトル</span>
+      </div>
+   </div>
+</nav>
+
+<!-- テーブル -->
+	<table>
+         <thead>
+        	<tr>
+                <th class="create"><a  class="create-new" href="#"><i class="fas fa-plus fa-2x"></i></a></th>
+                <th scope="col" class="total">
+                	<div class="total-cost">
+                		<span class="text">合計金額&emsp;</span>
+                		<span class="totalprice">66,630円</span>
+                	</div>
+                </th>
+                <th>
+        			<div class="liquidation">
+        				<a href="liquidation.html">清算</a>
+        			</div>
+        		</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr class="category"><th colspan="3"><span>交通費</span></th></tr>
+            <tr>
+                <th class="category-name">&emsp;<span>レンタカー</span></th>
+                <td data-label="ユーザ名" class="txt"><span class="user">たもり</span></td>
+                <td data-label="金額" class="price"><span>8,560</span>円</td>
+            </tr>
+            <tr>
+                <th class="category-name">&emsp;<span>高速代</span></th>
+                <td data-label="ユーザ名" class="txt"><span  class="user">たもり</span></td>
+                <td data-label="金額" class="price"><span>3,250</span>円</td>
+            </tr>
+           <tr class="category"><th colspan="3"><span>食費</span></th></tr>
+            <tr>
+                <th class="category-name">&emsp;<span>昼食代</span></th>
+                <td data-label="ユーザ名" class="txt"><span  class="user">おかゆ</span></td>
+                <td data-label="金額" class="price"><span  class="user">2,820</span>円</td>
+            </tr>
+            <tr>
+                <th class="category-name">&emsp;<span>夕食代</span></th>
+                <td data-label="ユーザ名" class="txt"><span  class="user">しろち</span></td>
+                <td data-label="金額" class="price"><span>4,000</span>円</td>
+            </tr>
+            <tr class="category"><th colspan="3"><span>宿泊費</span></th></tr>
+            <tr>
+                <th class="category-name">&emsp;<span>ホテル代</span></th>
+                <td data-label="ユーザ名" class="txt"><span  class="user">まさし</span></td>
+                <td data-label="金額" class="price"><span>20,000</span>円</td>
+            </tr>
+            <tr class="category"><th colspan="3"><span>娯楽費</span></th></tr>
+            <tr>
+                <th class="category-name">&emsp;<span>ユニバ代</span></th>
+                <td data-label="ユーザ名" class="txt"><span  class="user">まさし</span></td>
+                <td data-label="金額" class="price"><span>28,000</span>円</td>
+            </tr>
+        </tbody>
+    </table>   
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="../../static/js/main/top.js"></script>
+</body>
+</html>
