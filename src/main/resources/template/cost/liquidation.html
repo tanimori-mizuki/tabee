@@ -10,6 +10,97 @@
 </head>
 </head>
 <body>
+<!-- ナビゲーションエリア -->
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
+ 	<div class="container">
+       <a class="navbar-brand" th:href="">
+        	<i class="fas fa-angle-left"></i>
+        	<span class="sample">戻る</span>
+       </a>
+      <div>
+        	<span  class="trip-title">清算結果</span>
+      </div>
+   </div>
+</nav>
+
+<!-- テーブル -->
+	<table>
+         <thead>
+        	<tr>
+                <th class="create"><a  class="create-new" href="#"><i class="fas fa-plus fa-2x"></i></a></th>
+                <th scope="col" class="total">
+                	<div class="total-cost">
+                		<span class="text">合計金額&emsp;</span>
+                		<span class="totalprice">66,630円</span>
+                	</div>
+                </th>
+                <th>
+        			<div class="liquidation">
+        				<a href="#">清算</a>
+        			</div>
+        		</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- 清算方法 -->
+        	<tr class="clearing-method"><th colspan="3"><span>清算方法</span></th></tr>
+            <tr>
+                <th class="toUser">&emsp;
+                	<span>おかゆ</span>→<span>まさし</span>
+                </th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>13,433</span>円
+                </td>
+            </tr>
+            <tr>
+                <th class="toUser">&emsp;
+                	<span>しろち</span>→<span>まさし</span>
+                </th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>12,872</span>円
+                </td>
+            </tr>
+            <tr>
+                <th class="toUser">&emsp;
+                	<span>たもり</span>→<span>まさし</span>
+                </th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>5,293</span>円
+                </td>
+            </tr>
+            
+            <!-- メンバーごと -->
+        	<tr class="each-member"><th colspan="3"><span>メンバーごと(端数処理)</span></th></tr>
+            <tr>
+                <th class="toUser">&emsp;<span>たもり</span></th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>5,293</span>円
+                	<span>支払う</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="toUser">&emsp;<span>おかゆ</span></th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>13,433</span>円
+                	<span>支払う</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="toUser">&emsp;<span>しろち</span></th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>12,872</span>円
+                	<span>支払う</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="toUser">&emsp;<span>まさし</span></th>
+                <td colspan="2" data-label="金額" class="price">
+                	<span>31,598</span>円
+                	<span>受け取る</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 
 
