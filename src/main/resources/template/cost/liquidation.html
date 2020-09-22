@@ -6,7 +6,7 @@
 <title>tabee | 清算</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="../../static/css/cost/total-cost.css" th:href="@{/css/cost/total-cost.css}">
+<link rel="stylesheet" href="../../static/css/cost/liquidation.css" th:href="@{/css/cost/liquidation.css}">
 </head>
 </head>
 <body>
@@ -27,76 +27,96 @@
 	<table>
          <thead>
         	<tr>
-                <th class="create"><a  class="create-new" href="#"><i class="fas fa-plus fa-2x"></i></a></th>
-                <th scope="col" class="total">
+                <th scope="col" colspan="3" class="total">
                 	<div class="total-cost">
                 		<span class="text">合計金額&emsp;</span>
-                		<span class="totalprice">66,630円</span>
+                		<span class="totalprice">66,630</span>円<br>
+                		<span>一人当たりの金額&emsp;</span>
+                		<span>16,658</span>円
                 	</div>
                 </th>
-                <th>
-        			<div class="liquidation">
-        				<a href="#">清算</a>
-        			</div>
-        		</th>
             </tr>
         </thead>
         <tbody>
         <!-- 清算方法 -->
-        	<tr class="clearing-method"><th colspan="3"><span>清算方法</span></th></tr>
+        	<tr class="userName">
+        		<th colspan="2"><span>おかゆ</span></th>
+        		<td class="setting"><i class="fas fa-cog white"></i></td>
+        	</tr>
             <tr>
                 <th class="toUser">&emsp;
-                	<span>おかゆ</span>→<span>まさし</span>
+                	to<span>まさし</span>
                 </th>
-                <td colspan="2" data-label="金額" class="price">
+                <td data-label="金額" class="price">
                 	<span>13,433</span>円
                 </td>
+                <td>
+                	<div class="done">
+                		<button>
+                			<i class="fas fa-check"></i><br>
+                			<span>清算完了</span>
+                		</button>
+                	</div>
+                </td>
             </tr>
+            <tr class="userName">
+        		<th colspan="2"><span>しろち</span></th>
+        		<td class="setting"><i class="fas fa-cog white"></i></td>
+        	</tr>
             <tr>
                 <th class="toUser">&emsp;
-                	<span>しろち</span>→<span>まさし</span>
+                	to<span>まさし</span>
                 </th>
-                <td colspan="2" data-label="金額" class="price">
+                <td data-label="金額" class="price">
                 	<span>12,872</span>円
                 </td>
+                <td>
+                	<div class="done">
+                		<button>
+                			<i class="fas fa-check"></i><br>
+                			<span>清算完了</span>
+                		</button>
+                	</div>
+                </td>
             </tr>
+            <tr class="userName">
+        		<th colspan="2"><span>たもり</span></th>
+        		<td class="setting"><i class="fas fa-cog white"></i></td>
+        	</tr>
             <tr>
                 <th class="toUser">&emsp;
-                	<span>たもり</span>→<span>まさし</span>
+                	to<span>まさし</span>
                 </th>
-                <td colspan="2" data-label="金額" class="price">
+                <td data-label="金額" class="price">
                 	<span>5,293</span>円
                 </td>
-            </tr>
-            
-            <!-- メンバーごと -->
-        	<tr class="each-member"><th colspan="3"><span>メンバーごと(端数処理)</span></th></tr>
-            <tr>
-                <th class="toUser">&emsp;<span>たもり</span></th>
-                <td colspan="2" data-label="金額" class="price">
-                	<span>5,293</span>円
-                	<span>支払う</span>
+                <td>
+                	<div class="done">
+                		<button>
+                			<i class="fas fa-check"></i><br>
+                			<span>清算完了</span>
+                		</button>
+                	</div>
                 </td>
             </tr>
+            <tr class="userName">
+        		<th colspan="2"><span>まさし</span></th>
+        		<td class="setting"><i class="fas fa-cog white"></i></td>
+        	</tr>
             <tr>
-                <th class="toUser">&emsp;<span>おかゆ</span></th>
-                <td colspan="2" data-label="金額" class="price">
-                	<span>13,433</span>円
-                	<span>支払う</span>
+                <th class="toUser">&emsp;
+                	<span>清算なし</span>
+                </th>
+                <td data-label="金額" class="price">
+                	<span>-</span>円
                 </td>
-            </tr>
-            <tr>
-                <th class="toUser">&emsp;<span>しろち</span></th>
-                <td colspan="2" data-label="金額" class="price">
-                	<span>12,872</span>円
-                	<span>支払う</span>
-                </td>
-            </tr>
-            <tr>
-                <th class="toUser">&emsp;<span>まさし</span></th>
-                <td colspan="2" data-label="金額" class="price">
-                	<span>31,598</span>円
-                	<span>受け取る</span>
+                <td>
+                	<div class="done">
+                		<button>
+                			<i class="fas fa-check"></i><br>
+                			<span>清算完了</span>
+                		</button>
+                	</div>
                 </td>
             </tr>
         </tbody>
