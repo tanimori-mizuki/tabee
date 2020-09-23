@@ -6,7 +6,8 @@
 <title>tabee | スケジュール</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
+<link rel="stylesheet" href="../../static/css/siori/memo.css">
+<link rel="stylesheet" href="../../static/css/schedule/display_schedule.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
@@ -20,46 +21,102 @@
         	<span>2020年9月4日(金)-2020年9月5日(土)</span>
         </div>
         <div class="chat-icon">
-        	<i class="far fa-comment"></i>
+        	<i class="far fa-comment fa-2x"></i>
         </div>
       </div>
     </nav>
     
- 		<div class="tab-wrap">
-    		<input id="TAB-01" type="radio" name="TAB" class="tab-switch" />
-    		<label class="tab-label" for="TAB-01">一覧</label>
-    		<div class="tab-content">
-       		 	<div class="schedule-day">
-       		 		<span>1日目  </span>
-       		 		<span>2020年9月4日(金)UTC +9:00</span>
-       		 	</div>
-       		 	<div class="schedule-plan">
-       		 		<table>
-  						<tr>
-    						<td class="icon bird">08:50</td>
-    						<td>川崎駅集合</td>
-  						</tr>
-  						<tr>
-   						 	<td class="icon whale">09:00-20:00</td>
-    						<td>レンタカー予約</td>
-  						</tr>
-  						<tr>
-    						<td class="icon crab">10:30</td>
-    						<td>☆濃溝の滝</td>
-  						</tr>
-					</table>
-       		 	</div>
-    		</div>
-    		<input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
-    		<label class="tab-label" for="TAB-02">地図</label>
-    		<div class="tab-content">
-        		地図
-    		</div>
-		</div>
+    
+ 	<div class="tab-wrap">
+ 		<input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">一覧</label>
+ 		<div class="tab-content">
+ 			<div class="date">
+ 				<i class="fas fa-angle-double-left"></i>&emsp;
+ 				<span>2020/09/12(1日目/2日中)</span>&emsp;
+ 				<i class="fas fa-angle-double-right"></i>
+ 			</div>
+ 			<div class="schedule"><br><br>
+ 				<table>
+  					<tr>
+    					<th class="time-schedule">
+    						<span class="start">10:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-car"></i>
+    						<span>集合</span>
+    					</td>
+    					<td>
+    						<img alt="" src="">
+    					</td>
+  					</tr>
+  					<tr>
+    					<th class="time-schedule">
+    						<span class="start">12:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>昼食</span>
+    					</td>
+    					<td>
+    						<img alt="" src="">
+    					</td>
+  					</tr>
+  					<tr>
+    					<th class="time-schedule">
+    						<span class="start">13:00</span><br>
+    						<span class="finish">-17:00</span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="far fa-star"></i>
+    						<span>観光</span>
+    					</td>
+    					<td class="img_file">
+    						<img alt="" src="../../static/img/schedule/image1.jpeg">
+    					</td>
+  					</tr>
+  					<tr>
+    					<th class="time-schedule">
+    						<span class="start">18:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>夕食</span>
+    					</td>
+    					<td>
+    						<img alt="" src="">
+    					</td>
+  					</tr>
+  					<tr>
+    					<th class="time-schedule">
+    						<span class="start">19:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-hotel"></i>
+    						<span>ホテルチェックイン</span>
+    					</td>
+    					<td>
+    						<img alt="" src="">
+    					</td>
+  					</tr>
+				</table>
+ 			</div>
+ 		</div>
+ 	
+ 		<input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">地図</label>
+ 		<div class="tab-content">
+ 		
+ 		</div>
+ 	</div>
+ 	
+ 
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="../../static/js/main/top.js"></script>   
-<script src="../../static/js/schedule/display_schedule.js"></script>   
+<script src="../../static/js/siori/memo.js"></script>
 </body>
 </html>

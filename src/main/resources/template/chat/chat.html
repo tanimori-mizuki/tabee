@@ -23,6 +23,9 @@
     </nav>
     
     <div id="chat-frame">
+    	<div class="day">
+    		<p>2020年9月12日(土)</p>
+    	</div>
 		<p class="chat-talk">
     		<span class="talk-icon">
         		<img src="../../static/img/chat/N7v8VjWD_400x400.jpg" alt="tartgeticon" width="60" height="60"/>
@@ -35,27 +38,25 @@
     		</span>
     		<span class="talk-content">ない<br>今日は梶さんとコンサート</span>
 		</p>
-	</div>
-	
-	<div id="send-form">
-		<div class="set-form">
-			<label>
-				<!-- 見せる部分 -->
-				<span class="filelabel">
-					<i class="far fa-image"></i>
-				</span>
-				<!-- 本来の選択フォームは隠す -->
-				<input type="file" name="datafile" id="filesend">
-			</label>
-			<textarea cols="10" rows="1" class="message"></textarea>
-			<label>
-				<!-- 見せる部分 -->
-				<span class="messagesend">
-					<i class="fas fa-paper-plane"></i>
-				</span>
-				<!-- 本来の選択フォームは隠す -->
-				<button type="submit" id="send-btn"></button>
-			</label>
+		
+		<!-- 送信フォーム -->
+		<div id="send-form">
+			<div class="img_btn">
+				<label>
+					<!-- ▽見せる部分 -->
+      				<span class="filelabel" title="ファイルを選択">
+						<i class="far fa-image"></i>
+      				</span>
+      				<!-- ▽本来の選択フォームは隠す -->
+      				<input type="file" name="datafile" id="filesend">
+				</label>
+			</div>
+			<div class="textarea">
+				<textarea rows="1" cols="50"></textarea>
+			</div>
+			<div class="submit_btn">
+				<button type="submit"><i class="fas fa-paper-plane"></i></button>
+			</div>
 		</div>
 	</div>
 	

@@ -1,35 +1,44 @@
-/*ƒ^ƒuØ‚è‘Ö‚¦*/
-.tab-wrap {
-    display: flex;
-    flex-wrap: wrap;
+@charset "UTF-8";
+
+.tab-content{
     text-align: center;
 }
-.tab-label,
-.tab-switch:checked~.tab-switch:last-of-type+.tab-label {
-    color: White;
-    background: LightGray;
-    margin-right: 5px;
-    padding: 3px 12px;
-}
-.tab-label{
-    order:-1;
-    border-radius: 25px;
-}
-.tab-content,
-.tab-switch:checked~.tab-content:last-of-type {
-    width: 100%;
-    display: none;
-}
-.tab-switch:checked+.tab-label,
-.tab-label:last-of-type {
-    background: DeepSkyBlue;
-}
-.tab-switch:checked+.tab-label+.tab-content,
-.tab-content:last-of-type {
-    display: block;
+
+.date{
+	padding: 0.5em 1em;
+    margin: 0 auto;
+    color: #2c2c2f;
+    background: #7fdbda;/*èƒŒæ™¯è‰²*/
+    width: 30%;
+    position: relative;
+    top: 20px;
 }
 
-/*ƒe[ƒuƒ‹*/
+.time-schedule{
+	font-size: 18px;
+	color: #36c2c2;
+	width: 20%;
+}
+
+.finish{
+	font-size: 13px;
+}
+
+.schedule{
+	border: dashed 2px #5b8bd0;/*ç‚¹ç·š*/
+	margin: 0 auto;
+	width: 70%;
+}
+
+td.content{
+	text-align: left;
+}
+
+img{
+	width: 150px;  /* æ¨ªå¹…ã‚’150pxã« */
+}
+
+/*ãƒ†ãƒ¼ãƒ–ãƒ«CSS*/
 table{
   border-collapse: collapse;
   border-spacing: 0;
@@ -51,6 +60,10 @@ table th,table td{
   padding: 15px 0;
 }
 
+table td.img_file{
+	padding: 0 0;
+}
+
 table td.icon{
   background-size: 35px;
   background-position: left 5px center;
@@ -69,9 +82,21 @@ table td.icon.whale{
 table td.icon.crab{
   background-image: url(icon-crab.png)
 }
-.tab-order .tab-label:last-of-type {
-    order: -2;
-}
-.tab-switch {
-    display: none;
+
+
+@media screen and (max-width: 400px) {
+	.date{
+    	width: 60%;
+    	font-size: 12px;
+	}
+	
+	.schedule{
+		width: 95%;
+	}
+	
+	img{
+		width: 80px;  /* æ¨ªå¹…ã‚’80pxã« */
+	}
+
+	
 }

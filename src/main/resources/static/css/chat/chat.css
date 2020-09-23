@@ -1,13 +1,63 @@
-body{
-	background-color: #effafa;
+@charset "UTF-8";
+
+.day{
+    border-radius: 10px;/*è§’ã®ä¸¸ã¿*/
+    background: #FFF;
+    color: #33b7b7;/*æ–‡å­—è‰²*/
+    text-align: center;
+    width: 120px;
+    font-size: 12px;
+    margin: 0 auto;
 }
 
-/* ƒ`ƒƒƒbƒg*/
+.send-form{
+	display:inline-block;
+}
+
+.img_btn .textarea .submit_btn{
+	display: inline;
+  vertical-align: middle;
+}
+
+#send-form{
+	background-color: white;
+}
+
+/*é€ä¿¡ãƒœã‚¿ãƒ³*/
+button{
+	border: none;  /* æ ç·šã‚’æ¶ˆã™ */
+    outline: none; /* ã‚¯ãƒªãƒƒã‚¯ã—ãŸã¨ãã«è¡¨ç¤ºã•ã‚Œã‚‹æ ç·šã‚’æ¶ˆã™ */
+    background: transparent; /* èƒŒæ™¯ã®ç°è‰²ã‚’æ¶ˆã™ */
+}
+
+/*ç”»åƒæŒ¿å…¥*/
+.filelabel {
+   background-color: #ffffff;  /* èƒŒæ™¯è‰² */
+   color: white;              /* æ–‡å­—è‰² */
+   border: 2px solid #febf63;  /* æ ç·š */
+   border-radius: 3em;        /* è§’ä¸¸ */
+   padding: 12px 12px;         /* å†…å´ã®ä½™ç™½ */
+   display: inline-block;     /* ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ãƒ–ãƒ­ãƒƒã‚¯åŒ– */
+}
+.filelabel img {
+   vertical-align: bottom;    /* ç”»åƒã®å‚ç›´æ–¹å‘ã®é…ç½® */
+}
+.filelabel:hover {
+   opacity: 0.5;              /* åŠé€æ˜ */
+   border: 2px solid #febf63;     /* æ ç·š(èµ¤è‰²) */
+   cursor: pointer;           /* ãƒã‚¦ã‚¹å½¢çŠ¶(ãƒã‚¤ãƒ³ã‚¿) */
+}
+#filesend {
+   display: none;  /* æœ¬æ¥ã®ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠãƒ•ã‚©ãƒ¼ãƒ ã¯éè¡¨ç¤ºã« */
+}
+
+/* ãƒãƒ£ãƒƒãƒˆ*/
 #chat-frame {
   margin: auto;
   padding: 1em 0.5em;
   height: 80vh;
-  
+  width: 60%; 
+  background: #effafa;/*èƒŒæ™¯è‰²*/ 
 }
 
 .chat-talk {
@@ -34,18 +84,20 @@ body{
   min-height: 50px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 0px 65px;
+  margin: 0px 90px;
   padding: 0.5em;
 }
 
 .chat-talk .talk-icon img {
-  width:  50px;       /* ¦c‰¡‚ğ“¯’l‚É */
-  height: 50px;       /* ¦c‰¡‚ğ“¯’l‚É */
-  border-radius: 50%;  /* ŠpŠÛ”¼Œa‚ğ50%‚É‚·‚é(=‰~Œ`‚É‚·‚é) */
+  width:  50px;       /* â€»ç¸¦æ¨ªã‚’åŒå€¤ã« */
+  height: 50px;       /* â€»ç¸¦æ¨ªã‚’åŒå€¤ã« */
+  border-radius: 50%;  /* è§’ä¸¸åŠå¾„ã‚’50%ã«ã™ã‚‹(=å††å½¢ã«ã™ã‚‹) */
   
   object-fit:cover;
   vertical-align: bottom;
   border: 2px solid #fff;
+  margin-right: 15px;
+    margin-left: 15px;
 }
 
 .chat-talk .talk-content:before {
@@ -65,7 +117,7 @@ body{
 }
 
 .chat-talk.mytalk .talk-content {
-  margin: 0px 65px;
+  margin: 0px 90px;
   color: #000;
   background: #78FF6C;
 }
@@ -77,40 +129,21 @@ body{
   border-left-color: #78FF6C;
 }
 
-/* ‘—MƒtƒH[ƒ€*/
-#send-form{
-	background-color: white;
-	height: 80px;
-}
-
-.set-form{
-	text-align:  center;
-}
-
-.messagesend{
-	display: inline-block;     /* ƒCƒ“ƒ‰ƒCƒ“ƒuƒƒbƒN‰» */
-}
-
-#send-btn{
-	display: none;  /* –{—ˆ‚Ìƒtƒ@ƒCƒ‹‘I‘ğƒtƒH[ƒ€‚Í”ñ•\¦‚É */
-}
-
-/* ƒtƒ@ƒCƒ‹ƒ{ƒ^ƒ“*/
-.filelabel {
-   background-color: #febf63;  /* ”wŒiF */
-   color: white;              /* •¶šF */
-   border: 2px solid orange;  /* ˜gü */
-   border-radius: 3em;        /* ŠpŠÛ */
-   padding: 9px 9px;         /* “à‘¤‚Ì—]”’ */
-   display: inline-block;     /* ƒCƒ“ƒ‰ƒCƒ“ƒuƒƒbƒN‰» */
-}
-
-.filelabel:hover {
-   opacity: 0.5;              /* ”¼“§–¾ */
-   border: 2px solid #febf63;     /* ˜gü(ÔF) */
-   cursor: pointer;           /* ƒ}ƒEƒXŒ`ó(ƒ|ƒCƒ“ƒ^) */
-}
-
-#filesend {
-   display: none;  /* –{—ˆ‚Ìƒtƒ@ƒCƒ‹‘I‘ğƒtƒH[ƒ€‚Í”ñ•\¦‚É */
+@media screen and (max-width: 400px) {
+	#chat-frame {
+  		width: 95%; 
+	}
+	
+	.chat-talk .talk-content {
+  		margin: 0px 75px;
+	}
+	
+	.chat-talk.mytalk .talk-content {
+  		margin: 0px 75px;
+	}
+	
+	.chat-talk .talk-icon img {
+  		margin-right: 5px;
+    	margin-left: 5px;
+	}
 }
