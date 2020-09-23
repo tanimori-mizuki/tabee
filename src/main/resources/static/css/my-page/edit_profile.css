@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.main{
+	width: 50%;
+}
+
 .form-control {
 	border: none;
 	text-align: right;
@@ -11,6 +15,8 @@
 	-moz-box-shadow: none !important;
 	box-shadow: none !important;
 	-webkit-box-shadow: none !important;
+	border-bottom: 1px solid; 
+	transition: margin-right 4s;
 }
 
 
