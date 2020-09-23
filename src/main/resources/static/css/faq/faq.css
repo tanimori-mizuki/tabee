@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cp_qa {
+	border-top: 1px solid #1b2538;
+}
+
+.cp_qa .cp_actab {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 1px;
+	color: #1b2538;
+}
+
+.cp_qa .cp_actab input {
+	position: absolute;
+	opacity: 0;
+}
+
+.cp_qa .cp_actab label {
+	font-weight: bold;
+	line-height: 1.6;
+	position: relative;
+	display: block;
+	margin: 0 0 0 0;
+	padding: 1em 2em 1em 1em;
+	cursor: pointer;
+	border-bottom: 1px solid #1b2538;
+}
+
+.cp_qa .cp_actab label:hover {
+	color: #00838F;
+}
+
+/* 答え */
+.cp_qa .cp_actab .cp_actab-content {
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: max-height 0.5s ease;
+	transition: max-height 0.5s ease;
+	/*color: #ffffff;*/
+	background: #EEEEEE;
+	/*background: rgba(0, 131, 143, 0.5);*/
+}
+
+.cp_qa .cp_actab .cp_actab-content p {
+	margin: 1em 30em 3em 2em;
+}
+
+/* 質問を開いた時の仕様 */
+/* --答えの高さ */
+.cp_qa .cp_actab input:checked ~ .cp_actab-content {
+	max-height: 80em;
+}
+/* 質問をクリックした時のアイコンの動き */
+.cp_qa .cp_actab label::after {
+	line-height: 1.6;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: block;
+	width: 3em;
+	margin-top: -12.5px;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	text-align: center;
+}
+
+.cp_qa .cp_actab input[type=checkbox]+label::after {
+	content: '▼';
+}
+
+.cp_qa .cp_actab input[type=checkbox]:checked+label::after {
+	-webkit-transform: rotateX(180deg);
+	transform: rotateX(180deg);
+}
+
+.txt-width {
+	width: 900px;
+}
+
+.to-contact {
+	width: 300px;
+	border-radius: 50px;
+}
+
+.to-contact-btn {
+	text-align: center;
+}
+
+@media screen and (max-width:480px) { /* 480px以下に適用されるCSS（スマホ用） */
+	.txt-width {
+		width: 240px;
+		font-size: 0.9em;;
+	}
+	.question {
+		font-size: 20px;
+	}
+	.text-muted {
+		font-size: 65%
+	}
+}
