@@ -2,13 +2,118 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=yes">
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+<link rel="stylesheet" href="../../static/css/contact/contact.css">
+
+
+
+<title>tabee ❘ お問い合わせ</title>
 </head>
 <body>
+	<nav
+		class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"
+		th:fragment="menu">
+		<div class="container">
+			<a class="navbar-brand" th:href=""> <span class="sample">tabee</span>
+			</a>
+			<!-- ハンバーガーメニュー -->
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu<span class="navbar-toggler-icon"></span>
+				<!--           	<i class="fas fa-bars"></i> -->
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<!-- 右寄せにするために記述 -->
+				<ul class="navbar-nav mr-auto">
+				</ul>
+
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">みんなの思い出</a></li>
+					<li class="nav-item active dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">マイページ</a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="">マイページトップ</a> <a
+								class="dropdown-item" th:href="">各種設定</a> <a
+								class="dropdown-item" th:href="">FAQ</a> <a
+								class="dropdown-item" th:href="">お問い合わせ</a>
+						</div></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="login.html" th:href="">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<main>
+		<div class="container">
+			<div class="text-center">
+				<h3>お問い合わせフォーム</h3>
+			</div>
+			<br> <br>
+			<div class="form">
+				<form action="#" th:action="#" method="post">
+					<div class="form-group">
+						<label class="required"><small class="required-text">必須</small></label>
+						<label>ユーザー名</label> <input type="text" name="username"
+							class="form-control">
+
+					</div>
+					<br>
+					<div class="form-group">
+						<label class="required"><small class="required-text">必須</small></label>
+						<label>メールアドレス</label> <input type="email" name="email"
+							class="form-control">
+					</div>
+					<br>
+
+					<div class="form-group">
+						<label class="required"><small class="required-text">必須</small></label>
+						<label>お問い合わせ内容</label>
+						<textarea rows="10" cols="40" class="form-control"></textarea>
+					</div>
+					<br>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">送信</button>
+					</div>
+				</form>
+			</div>
+
+
+		</div>
+	</main>
+	<br>
+	<br>
+	<footer class="footer py-4">
+		<div class="">
+			<a class="btn btn-dark btn-social mx-2" href="#!"><i
+				class="fab fa-twitter"></i></a> <a class="btn btn-dark btn-social mx-2"
+				href="#!"><i class="fab fa-facebook"></i></a> <a
+				class="btn btn-dark btn-social mx-2" href="#!"><i
+				class="fab fa-linkedin-in"></i></a>
+		</div>
+		<br>
+		<div class="">Copyright © tabee 2020</div>
+
+	</footer>
+
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -22,5 +127,11 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
+
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+		crossorigin="anonymous"></script>
+
+	<script src="../../static/js/scrap/script.min.js"></script>
 </body>
 </html>
