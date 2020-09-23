@@ -7,67 +7,146 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
+<link rel="stylesheet" href="../../static/css/schedule/register_schedule.css" th:href="@{/css/schedule/register_schedule.css}">
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
  	  <div class="container">
         <a class="navbar-brand" th:href="">
-        	<i class="fas fa-angle-left"></i>
-        	<span class="sample">戻る</span>
+        	<span class="sample">閉じる</span>
         </a>
+        <div class="schedule-title">
+        	<span>スケジュール詳細</span>
+        </div>
         <div class="chat-icon">
         	<span>編集</span>
         </div>
       </div>
     </nav>
     
-    <div class="center">
-    	<div class="schedule">
-    	<span>1日目</span><span>2020年9月4日(金)UTC +9:00</span>
-    		<span>スケジュール</span>
-       		 <table>
+    <div class="tab-wrap">
+    	<div class="schedule-creation">
+    		<table>
   				<tr>
-    				<td class="icon bird">8:50</td>
-    				<td>川崎駅集合</td>
+  					<td colspan="2" class="scheduleItem">スケジュール</td>
   				</tr>
   				<tr>
-   					<td class="icon whale">電話番号</td>
-    				<td>000-0000-0000</td>
+    				<th>タイトル</th>
+    				<td><input type="text" value=""></td>
   				</tr>
   				<tr>
-    				<td class="icon crab">URL</td>
-    				<td>URL</td>
+    				<th>
+  						<div class="input input--checkbox input--primary">
+        					<label>
+          						<input type="checkbox" checked disabled>
+          						<span class="input__box"></span>
+          						<span>開始時刻</span>
+        					</label>
+      					</div>
+  					</th>
+  					<th>
+  						<input type="time">
+  					</th>
   				</tr>
   				<tr>
-    				<td class="icon crab">現在地</td>
-    				<td>神奈川県川崎市川崎区日進町</td>
+    				<th>
+  						<div class="input input--checkbox input--primary">
+        					<label>
+          						<input type="checkbox" checked disabled>
+          						<span class="input__box"></span>
+          						<span>終了時刻</span>
+        					</label>
+      					</div>
+  					</th>
+  					<th>
+  						<input type="time">
+  					</th>
   				</tr>
   				<tr>
-    				<td class="icon crab">MAP表示</td>
+    				<th>
+  						<div class="input input--checkbox input--primary">
+        					<label>
+          						<input type="checkbox" checked disabled>
+          						<span class="input__box"></span>
+          						<span>日付</span>
+        					</label>
+      					</div>
+  					</th>
+  					<th>
+  						<input type="date">
+  					</th>
   				</tr>
   				<tr>
-    				<td class="icon crab">アラーム<br>
-    				オフ
-    				</td>
-    				<td class="icon crab">10分前通知<br>
-    				オフ
-    				</td>
+  					<td  colspan="2"  class="scheduleItem">スケジュールアイコン</td>
   				</tr>
   				<tr>
-    				<td class="icon crab">メモ</td>
+  					<td  colspan="2">
+  						<div>
+  							<ul class="horizontal-list">
+  								<li class="item"><span>なし</span></li>
+  								<li class="item"><i class="fas fa-car fa-2x"></i></li>
+  								<li class="item"><i class="fas fa-utensils fa-2x"></i></li>
+  								<li class="item"><i class="far fa-star fa-2x"></i></li>
+  								<li class="item"><i class="fas fa-hotel fa-2x"></i></li>
+  							</ul>
+  						</div>
+  					</td>
   				</tr>
   				<tr>
-    				<td class="icon crab">費用</td>
-    				<td class="icon crab">0円</td>
+  					<td  colspan="2"  class="scheduleItem">情報</td>
+  				</tr>
+  				<tr>
+  					<td  colspan="2">場所を検索</td>
+  				</tr>
+  				<tr>
+  					<td>参考URL</td>
+  					<td><input type="text"></td>
+  				</tr>
+  				<tr>
+  					<td>電話番号</td>
+  					<td><input type="text"></td>
+  				</tr>
+  				<tr>
+  					<td>住所</td>
+  					<td><input type="text"></td>
+  				</tr>
+  				<tr>
+  					<td  colspan="2">タップして位置情報を取得</td>
+  				</tr>
+  				<tr>
+  					<td  colspan="2"  class="scheduleItem">画像</td>
+  				</tr>
+  				<tr>
+  					<td>スケジュール画像を選択</td>
+  					<td>
+  						<div class="img_btn">
+							<label>
+								<!-- ▽見せる部分 -->
+      							<span class="filelabel" title="ファイルを選択">
+									<i class="fas fa-plus-circle fa-2x"></i>
+      							</span>
+      							<!-- ▽本来の選択フォームは隠す -->
+      							<input type="file" name="datafile" id="filesend">
+							</label>
+						</div>
+  					</td>
+  				</tr>
+  				<tr>
+  					<td  colspan="2"  class="scheduleItem">費用</td>
+  				</tr>
+  				<tr>
+  					<td>金額</td>
+  					<td><input type="text"></td>
   				</tr>
 			</table>
     	</div>
     </div>
-
-
+    
+    
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="../../static/js/main/top.js"></script> 
+<script src="../../static/js/main/top.js"></script>
+<script src="../../static/js/schedule/register_schedule.js"></script>
 </body>
 </html>

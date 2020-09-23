@@ -1,8 +1,11 @@
 @charset "UTF-8";
 
 .tab-wrap{
+	width: 60%;
 	margin-top: 70px;
 	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .schedule-creation{
@@ -69,7 +72,13 @@ table th,table td{
 
 @media screen and (max-width: 400px) {
   table{width: 100%;}
+
+.tab-wrap{
+	width: 100%;
+	margin-top: 70px;
+	margin-bottom: 50px;
 }
+
 
 table th{
 	width: 70px;
@@ -77,4 +86,5 @@ table th{
 
 .schedule-creation{
 	width: 95%;
+}
 }
