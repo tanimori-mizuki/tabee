@@ -1,0 +1,68 @@
+.siori-content-title{
+    color: #727171;
+}
+.siori-content{
+    font-size: 1.2rem;
+}
+.trim-image-circle{
+    object-fit: cover;
+    width:  4rem;      
+    height: 4rem;      
+    border-radius: 50%;
+    border: 1px solid LightGray;
+}
+
+.cover{
+    display: table;
+    width: 100%;
+    margin:1rem 0;
+    padding:0.5rem;
+    border-bottom: 1px solid LightGray;
+}
+.cover:hover{
+    border: 2px solid #7fdbda;
+    cursor: pointer;
+}
+
+.coverimage{
+    display: table-cell;
+}
+.member-name{
+    margin-left: 1rem;
+}
+.btn-primary{
+    background-color: #febf63;
+	border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+/*メンバー追加*/
+.add-member {
+    position: fixed;
+    z-index: 2;
+    bottom:20px;
+    right:20px; 
+}
+.add-member a{
+    display: block;
+    text-decoration: none;
+}
+.fa-user-plus{
+    font-size: 2rem;
+    color:white;
+    padding:1rem 0.8rem;
+    border-radius: 50%;
+    background-color: #7fdbda;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+.fa-user-plus:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}

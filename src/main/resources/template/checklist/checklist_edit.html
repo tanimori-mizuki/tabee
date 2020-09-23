@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-    <link rel="stylesheet" href="../../static/css/scrap/styles.min.css" th:href="@{/css/scrap/styles.min.css}">
+    <link rel="stylesheet" href="../../static/css/checklist/checklist.css" th:href="@{/css/checklist/checklist.css}">
+
 </head>
 
 <body>
@@ -52,28 +53,43 @@
         </div>
     </div>
 </nav>
-    <main class="page contact-page">
-        <section class="portfolio-block contact">
-            <!-- Start: Navigation Clean -->
-            <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-                <div class="container">
-                    <a class="navbar-brand" href="../scrap/scrap_top.html">スクラップ</a>
-                </div>
-            </nav>
-            <!-- End: Navigation Clean -->
+<main class="page contact-page">
+    <section class="portfolio-block contact">
+        <!-- Start: Navigation Clean -->
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean">
             <div class="container">
-                <form>
-                    <div class="form-group"><label for="name">フォルダ名</label><input class="form-control item" type="text" id="name"></div>
-                    <div class="form-group"><button class="btn btn-outline-warning" type="button">作成</button></div>
-                </form>
-                <a href="scrap_top.html">戻る</a>
+                <a class="navbar-brand" href="../checklist/checklist.html">チェックリスト編集</a>
             </div>
-        </section>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    <script src="../../static/js/scrap/script.min.js"></script>
+        </nav>
+        <!-- End: Navigation Clean -->
+        <div class="container">
+            <form>
+                <div class="form-group"><label for="categoryTitle">タイトル</label>
+                    <input class="form-control item" type="text" id="categoryTitle" value="着替え3日分">
+                </div>
+                <div class="form-group">
+                    <label for="category">カテゴリー</label>
+                    <select class="form-control" id="category">
+                        <option>衣類</option>
+                        <option>貴重品</option>
+                        <option>交通</option>
+                        <option>モバイル関係</option>
+                        <option>その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-warning" type="button">追加</button>
+                    <button class="btn btn-outline-danger" type="button">削除</button>
+                </div>
+            </form>
+            <a href="checklist.html">戻る</a>
+        </div>
+    </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+<script src="../../static/js/scrap/script.min.js"></script>
 </body>
 
 </html>

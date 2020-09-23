@@ -1,3 +1,6 @@
+.title{
+    background: #7fdbda;
+}
 #fab {/*円の部分*/
     position: fixed;
     bottom: 20px;
@@ -20,21 +23,18 @@
     line-height: 60px;
     font-size: 30px;
 }
-.edit{
-    color: #7fdbda;
-    font-size: 2.0em;
-}
 
 .create-folder {
     position: fixed;
     z-index: 2;
-    bottom:5rem;
-    right:3rem;
+    bottom:3rem;
+    right:5rem;
 }
 .reate-folder a{
     display: block;
     text-decoration: none;
 }
-
-
-
+.edit{
+    color: #7fdbda;
+    font-size: 1.5em;
+}

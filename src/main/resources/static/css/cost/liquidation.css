@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.mb-3, .my-3 {
+    margin-bottom: 5rem!important;
+}
+
+.trip-title{
+	text-align: center;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  width: 650px;
+      box-shadow: 0 0 15px -6px #00000073;
+}
+
+table tr {
+  background-color: #fff;
+}
+
+table tbody tr:hover{
+  background-color: #fffae9;
+}
+
+table th,
+table td {
+  padding: .35em 1em;
+  border-bottom: 1px solid #eee;
+}
+
+table thead th {
+    font-size: .90em;
+    padding: 1em;
+}
+
+table thead tr{
+  background-color: #feb443;
+  color:#fff;
+}
+
+table tbody th {
+  text-align: left;
+  font-size: .8em;
+}
+
+tr.userName{
+	background-color: #d9d9d9;
+}
+
+.done{
+	text-align: right;
+}
+
+.done .fas{
+	margin: 0 auto;
+}
+
+.setting{
+	text-align: right;
+}
+
+.white{
+	color: #ffffff;
+}
+
+button{
+	border: none;  /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}
+
+.txt{
+   text-align: left;
+   font-size: .75em;
+   text-align: center;
+}
+
+.price{
+  text-align: right;
+  color: #48cccc;
+  font-weight: bold;
+  width: 400px;
+}
+
+.total-cost{
+	text-align: right;
+	font-size: 20px;
+}
+
+.liquidation{
+	text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  table{width: 100%;}
+}
+
+@media screen and (max-width: 400px) {
+  table{width: 90%;}
+  
+.total-cost{
+	font-size: 18px;
+}
+  
+  .create-new .fas{
+	margin: 0 auto;
+	margin-left: 20px;
+	}
+	
+table th,
+table td {
+  padding: .35em 0.9em;
+  border-bottom: 1px solid #eee;
+}
+
+.price{
+  text-align: right;
+  color: #48cccc;
+  font-weight: bold;
+  width: 130px;
+}
+}

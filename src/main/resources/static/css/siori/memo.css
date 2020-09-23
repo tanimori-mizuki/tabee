@@ -1,10 +1,62 @@
+.fa-plus-circle{
+    color:#7fdbda;
+    font-size: 4rem;
+}
+
+.create-memo {
+    position: fixed;
+    z-index: 2;
+    bottom:20px;
+    right:20px; 
+}
+.create-memo a{
+    display: block;
+    text-decoration: none;
+}
+
+#fab {/*????*/
+    width: 60px;
+    height: 60px;
+    background: #7fdbda;
+    text-align: center;
+    border-radius: 50%;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*?*/
+}
+
+#fab:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#fab i {
+    color: white;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+a:hover{
+    color:black;
+    text-decoration: none;
+}
+
 .trim-image-circle{
-    width:  6rem;      
-    height: 6rem;      
-    border-radius: 50%;  
+    width:  4rem;      
+    height: 4rem;      
+    border-radius: 50%;
+    border: 0.5px solid LightGray
 }
 .card{
-    width: 16rem;    
+    width: 16rem;
+    border: 1.5px solid #a8a6a6;
+}
+.card:hover{
+    background-color: #fff8f8;
+    border: 2px solid #7fdbda;
+    cursor: pointer; 
 }
 .cover{
     display: table;
@@ -19,4 +71,60 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+}
+.memo-date{
+    font-size: 0.8rem;
+}
+.card-header {
+    background-color: white;
+}
+/*ƒ^ƒuŠÖŒW*/
+.tab-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.tab-label {
+    color: White;
+    font-size: 1.0rem;
+    background: LightGray;
+    margin-right: 5px;
+    padding: 3px 12px;
+    order: -1;
+}
+.tab-label:hover{
+    cursor: pointer;
+}
+.tab-content {
+    width: 100%;
+    display: none;
+}
+
+.tab-switch:checked+.tab-label {
+    background: #7fdbda;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+     display: block;
+}
+
+.tab-switch {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {    
+.card{
+    width: 9rem;
+}
+.trim-image-circle{
+    width:  2rem;      
+    height: 2rem;       
+}
+.memo-content {
+    font-size: 0.8rem;
+}    
+
+.memo-date{
+    font-size: 0.5rem;
+    line-height:1;
+}
 }

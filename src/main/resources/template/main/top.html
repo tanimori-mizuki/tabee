@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/scrap/bootstrap.min.css}">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="../../static/css/register.css">
 <link rel="stylesheet" href="../../static/css/main/top.css" th:href="@{/css/main/top.css}">
-
-
 </head>
 <body>
  	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
@@ -50,12 +48,7 @@
       </div>
     </nav>
     <div class="siori-list text-center">
-        <p><span class="page-title">旅のしおりたち</span>
-            <span class="create-siori" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="しおりを作成">
-                <a href="siori-register.html">
-                  <i class="fas fa-plus-circle icon-size"></i>
-                </a>
-            </span>
+        <p><span class="page-title">さぁ、旅に出よう！</span>
         </p>
     </div>
 　　<form>
@@ -64,7 +57,9 @@
 		    <input type="text" id="searchShiori" class="form-control"
 			    placeholder="しおり名" required>
         </div>
-        <button	class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"	type="submit">検索</button><br>
+        <div class="search">
+            <button	class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"	type="submit">検索</button>
+        </div>
    </form>
     <!--しおりがないとき-->
 <!--    <div class="siori-list text-center">
@@ -88,7 +83,8 @@
                    </p>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
-                        <a class="dropdown-item" href="#">しおりを共有</a>
+                        <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModalCenterShare"href="#">しおりを共有</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">しおりを削除</a>   
                     </div>
                 </div>
                 <div class="card-body">
@@ -109,7 +105,8 @@
                    </p>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
-                    <a class="dropdown-item" href="#">しおりを共有</a>
+                    <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModalCenterShare"href="#">しおりを共有</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">しおりを削除</a>   
                  </div>
                </div>             
                <div class="card-body">
@@ -129,7 +126,8 @@
                 </p>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
-                    <a class="dropdown-item" href="#">しおりを共有</a>
+                    <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModalCenterShare"href="#">しおりを共有</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">しおりを削除</a>            
                 </div>
             </div>
             <div class="card-body">
@@ -149,7 +147,8 @@
                      </p>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
-                        <a class="dropdown-item" href="#">しおりを共有</a>
+                        <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModalCenterShare"href="#">しおりを共有</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">しおりを削除</a> 
                       </div>
                 </div>                
                  <div class="card-body">
@@ -169,7 +168,8 @@
                      </p>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="../siori/siori-info.html">しおりの管理</a>
-                        <a class="dropdown-item" href="#">しおりを共有</a>
+                        <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModalCenterShare"href="#">しおりを共有</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenterDelete">しおりを削除</a> 
                       </div>
                 </div>
                 <div class="card-body">
@@ -178,7 +178,39 @@
                 </div>
              </div>
         </div>  
+    </div>
+    <!-- Modal share-->
+    <div class="modal fade" id="exampleModalCenterShare" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>招待用URLをコピー</div><br>
+            <div>LINEで招待</div>
+          </div>
+        </div>
+      </div>
+    </div>     
+    <!-- Modal delete-->
+    <div class="modal fade" id="exampleModalCenterDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>このしおりを削除しますか？</div>
+          </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+            <button type="button" class="btn btn-primary">削除</button>
+         </div>
+        </div>
+      </div>
     </div> 
+    <div class="text-right create-siori">
+        <span data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="しおりを作成">
+            <a id="fab" href="siori-register.html">
+                <i class="fa fa-plus"></i>
+            </a>
+        </span>
+    </div>     
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

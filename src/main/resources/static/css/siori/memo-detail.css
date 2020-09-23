@@ -1,0 +1,73 @@
+.card{
+    position: relative;
+    width: 20rem;  
+    margin: 4rem auto;
+    border: 2px solid #7fdbda;
+}
+.trim-image-circle{
+    width:  5rem;      
+    height: 5rem;      
+    border-radius: 50%;
+    border: 1px solid LightGray;
+}
+.memo-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+.memo-date{
+    font-size: 0.8rem;
+}
+.card-header {
+    background-color: white;  
+}
+.cover{
+    display: table;
+    width: 100%;
+}
+.coverimage{
+    display: table-cell;
+}
+
+.edit-icon{
+    position: fixed;
+    z-index: 2;
+    bottom:20px;
+    right:20px; 
+}
+.edit-icon:hover{
+    cursor: pointer;
+
+}
+.fa-pen{
+    font-size: 2rem;
+    color:white;
+    padding:1rem;
+    border-radius: 50%;
+    background-color: #7fdbda;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+}
+.fa-pen:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#memo-delete:hover{
+    cursor: pointer;
+    
+}
+
+.btn-primary {
+    background-color: #febf63;
+    border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
