@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.tab-wrap{
+	margin-top: 70px;
+	margin-bottom: 50px;
+}
+
+.schedule-creation{
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+    border: double 5px #7fdbda;
+}
+
+.scheduleItem{
+	text-align: left;
+	background-color: #dfdfdf;
+	padding: 0 0;
+}
+
+ul.horizontal-list{
+	margin: 0 0;
+}
+
+.horizontal-list{
+	list-style: none;
+	overflow: hidden;
+}
+
+.horizontal-list li{
+	text-decoration: none;
+	float: left;
+	padding: 5px;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+/*画像挿入*/
+.filelabel {
+   display: inline-block;     /* インラインブロック化 */
+}
+
+#filesend {
+   display: none;  /* 本来のファイル選択フォームは非表示に */
+}
+
+.img_btn{
+	text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  table{width: 100%;}
+}
+
+table th{
+	width: 70px;
+}
+
+.schedule-creation{
+	width: 95%;
+}
