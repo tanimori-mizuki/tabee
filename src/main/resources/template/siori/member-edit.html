@@ -46,87 +46,90 @@
         </div>
       </div>
     </nav>
-    <main class="page contact-page">
-        <section class="portfolio-block contact">
-            <div class="container">
-               <h3 class="text-center">メンバー編集</h3>
-                <form>
-                    <div class="form-group">
-                        <div class="siori-content-title">
-                        メンバー(4)
-                        </div>
-                    <div class="siori-content">
-                       <a data-toggle="modal" data-target="#exampleModalCenterDelete">
-                        <div class="cover">
-                          <div class="coverimage">
-                                <img class="trim-image-circle" src="../../static/img/top/icon.png">
-                              <span class="member-name">おかゆ(しおり作成者)</span> 
-                          </div>
-                        </div>
-                        </a>
-                        <a data-toggle="modal" data-target="#exampleModalCenterDelete">
+    <div class="container">
+        <a href="siori-info.html"><<しおり情報へ</a>        
+        <main class="page contact-page">
+            <section class="portfolio-block contact">
+                <div class="container">
+                   <h3 class="text-center">メンバー編集</h3>
+                    <form>
+                        <div class="form-group">
+                            <div class="siori-content-title">
+                            メンバー(4)
+                            </div>
+                        <div class="siori-content">
+                           <a data-toggle="modal" data-target="#exampleModalCenterDelete">
                             <div class="cover">
                               <div class="coverimage">
-                                    <img class="trim-image-circle" src="../../static/img/top/siro.jpg">
-                                  <span class="member-name">しろちー</span> 
+                                    <img class="trim-image-circle" src="../../static/img/top/icon.png">
+                                  <span class="member-name">おかゆ(しおり作成者)</span> 
                               </div>
                             </div>
+                            </a>
+                            <a data-toggle="modal" data-target="#exampleModalCenterDelete">
+                                <div class="cover">
+                                  <div class="coverimage">
+                                        <img class="trim-image-circle" src="../../static/img/top/siro.jpg">
+                                      <span class="member-name">しろちー</span> 
+                                  </div>
+                                </div>
+                            </a>
+                            <a data-toggle="modal" data-target="#exampleModalCenterDelete">                       
+                                <div class="cover">
+                                  <div class="coverimage">
+                                        <img class="trim-image-circle" src="../../static/img/top/tamo.jpg">
+                                      <span class="member-name">たも</span> 
+                                  </div>
+                                </div>
+                            </a>    
+                            <a data-toggle="modal" data-target="#exampleModalCenterDelete">                       
+                                <div class="cover">
+                                  <div class="coverimage">
+                                        <img class="trim-image-circle" src="../../static/img/top/masako.jpg">
+                                      <span class="member-name">まさこ</span> 
+                                  </div>
+                                </div> 
+                            </a>      
+                        </div>  
+                       </div>     
+                    </form>
+                </div>
+                <div class="add-member">
+                    <span data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="メンバーを招待する">
+                        <!-- trigger modal -->
+                         <a data-toggle="modal" data-target="#exampleModalCenterAdd">
+                          <i class="fas fa-user-plus"></i>
                         </a>
-                        <a data-toggle="modal" data-target="#exampleModalCenterDelete">                       
-                            <div class="cover">
-                              <div class="coverimage">
-                                    <img class="trim-image-circle" src="../../static/img/top/tamo.jpg">
-                                  <span class="member-name">たも</span> 
-                              </div>
-                            </div>
-                        </a>    
-                        <a data-toggle="modal" data-target="#exampleModalCenterDelete">                       
-                            <div class="cover">
-                              <div class="coverimage">
-                                    <img class="trim-image-circle" src="../../static/img/top/masako.jpg">
-                                  <span class="member-name">まさこ</span> 
-                              </div>
-                            </div> 
-                        </a>      
-                    </div>  
-                   </div>     
-                </form>
-            </div>
-            <div class="add-member">
-                <span data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="メンバーを招待する">
-                    <!-- trigger modal -->
-                     <a data-toggle="modal" data-target="#exampleModalCenterAdd">
-                      <i class="fas fa-user-plus"></i>
-                    </a>
-                </span>
-            </div>
-            <!-- Modal Delete-->
-            <div class="modal fade" id="exampleModalCenterDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <div>〇〇を削除しますか？</div>
-                  </div>
-                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
-                    <button type="button" class="btn btn-primary">削除</button>
+                    </span>
                 </div>
-                </div>
-              </div>
-            </div>
-            <!-- Modal addMember-->
-            <div class="modal fade" id="exampleModalCenterAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <div>招待用URLをコピー</div><br>
-                    <div>LINEで招待</div>
+                <!-- Modal Delete-->
+                <div class="modal fade" id="exampleModalCenterDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div>〇〇を削除しますか？</div>
+                      </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+                        <button type="button" class="btn btn-primary">削除</button>
+                    </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>                
-        </section>
-    </main>
+                <!-- Modal addMember-->
+                <div class="modal fade" id="exampleModalCenterAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div>招待用URLをコピー</div><br>
+                        <div>LINEで招待</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+            </section>
+        </main>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
