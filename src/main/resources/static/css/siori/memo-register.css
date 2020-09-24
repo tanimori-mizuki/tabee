@@ -17,6 +17,30 @@ textarea{
 	border-color: #fe9f12;
 }
 
+.img-fluid{
+    flex-shrink: 0;
+    width: 100%; 
+    height: 100px;
+    object-fit: cover; 
+    display: block;
+    opacity: .7;
+}
+
+.registered-img{
+    background: #000;
+    position: relative;
+}
+.fas{
+    position: absolute;
+    color: white;
+    top: 40%;
+    left:43%;
+    font-size:2rem;
+}
+.fas:hover{
+    color: black;
+}
+
 /*toggleSwitch*/
 .toggle-input {
   position: absolute;
@@ -64,4 +88,26 @@ textarea{
 .toggle-switch {
   position: relative;
   margin:0.5rem 1rem;
+}
+
+.btn-primary {
+    background-color: #febf63;
+    border-color: #febf63;
+}
+.btn-primary:hover{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-primary:active{
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+@media screen and (max-width: 480px) {
+.fas{
+    left:40%;
+}
+    
+    
 }
