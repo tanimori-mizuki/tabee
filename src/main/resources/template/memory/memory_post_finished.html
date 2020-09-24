@@ -26,6 +26,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<nav
 		class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"
 		th:fragment="menu">
@@ -68,61 +69,29 @@
 	</nav>
 	<main>
 		<div class="container main">
-			<h4 style="color: gray;">思い出を投稿</h4><br>
-			<form action="#" method="post" class="form">
-				<div class="form-group">
-					<label for="input-image">写真を選択</label> <input type="file"
-						name="image" class="form-control" id="input-image">
-				</div>
+			<div>
+				<h5 class="finished-msg">投稿が完了しました！</h5>
+				<br> <br>
 
-				<div class="form-group">
-					<label for="input-title">タイトル</label> <input type="text"
-						name="title" class="form-control" id="input-title"
-						placeholder="（例）2泊3日の伊豆半島旅行">
-				</div>
-
-				<div class="form-group">
-					<label for="input-memory">思い出</label>
-					<textarea rows="20" cols="30" class="form-control"
-						name="memory-content" id="input-memory"
-						placeholder="1文字以上1000文字以下で入力"></textarea>
-				</div>
-
-				<div class="form-group">
-					<label for="input-tag">タグ</label> <input type="text" name="tag"
-						class="form-control" id="input-tag" placeholder="スペースで複数入力">
-				</div>
-				<br>
-				<div class="form-group item-frame">
-					<label class="text" for="toggle">スケジュールを公開する</label> <span
-						class="toggle-btn p-right"> <input type='checkbox'
-						id="toggle" class="checkbox" name="isPublic" checked="checked">
-						<label class="switch" for="toggle"></label>
-					</span>
-				</div>
-
-				<div class="edit-schedule">
-					<label>投稿用にスケジュールを編集</label> <a
-						href="../schedule/register_schdule.html"> <span
-						class="p-right" style="color: gray;">編集画面へ ≻</span>
-					</a>
-				</div>
-
-				<br> <br> <br>
 				<div class="submit-btn">
-					<a href="memory_confirm.html">
-						<button type="button" class="btn btn-primary">確認画面へ</button>
+					<a href="memory.html">
+						<button type="submit" class="btn btn-primary">投稿を見る</button>
 					</a>
 				</div>
-			</form>
+				<div class="back-btn">
+					<a href="#">
+						<button type="button" class="btn btn-secondary">トップへ戻る</button>
+					</a>
+				</div>
+			</div>
+
+
 
 		</div>
 
 
-
 	</main>
-	<br>
-	<br>
+
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -132,10 +101,5 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
 	<script src="../../static/js/scrap/scrap.js"></script>
 	<script src="../../static/js/scrap/script.min.js"></script>
-	<script type="text/javascript" src="../../static/js/memory/memory.js"></script>
-
-
-
-
 </body>
 </html>
