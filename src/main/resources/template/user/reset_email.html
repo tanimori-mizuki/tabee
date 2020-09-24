@@ -62,25 +62,21 @@
 			</div>
 		</div>
 	</nav>
+
 	<main>
 		<div class="container">
 			<br>
-			<h4 style="text-align: center; color: gray;">パスワード再設定</h4>
-			<br>
-			<br>
+			<h4 style="text-align: center; color: gray;">メールアドレス再設定</h4>
+			<br> <br>
 
 			<div class="form">
 				<form action="#" th:action="#" method="post">
 					<div class="form-group">
-						<label>新しいパスワード</label> <input type="password" name="newPassword"
+						<label style="color: gray;">新しいメールアドレス</label> <input type="email" name="newEmail"
 							class="form-control" required>
 
 					</div>
-					<br>
-					<div class="form-group">
-						<label>新しいパスワード【確認用】</label> <input type="password"
-							name="confirmPassword" class="form-control" required>
-					</div>
+
 					<br> <br>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">送信</button>
@@ -91,16 +87,18 @@
 	</main>
 
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
+
+
+
+
+
 	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+	<script src="../../static/js/scrap/scrap.js"></script>
+	<script src="../../static/js/scrap/script.min.js"></script>
 </body>
 </html>
