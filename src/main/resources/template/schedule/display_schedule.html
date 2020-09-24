@@ -13,30 +13,57 @@
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
  	  <div class="container">
         <a class="navbar-brand" th:href="">
-        	<i class="fas fa-angle-left"></i>
-        	<span class="sample">戻る</span>
+        <span class="sample">tabee</span>
         </a>
-        <div class="schedule-title">
-        	<span>北海道旅行</span><br>
-        	<span>2020年9月4日(金)-2020年9月5日(土)</span>
-        </div>
-        <div class="chat-icon">
-        	<a href="../chat/chat.html"><i class="far fa-comment fa-2x"></i></a>
+         <!-- ハンバーガーメニュー -->
+    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+    		aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          	Menu<span class="navbar-toggler-icon"></span>
+    	</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        	<!-- 右寄せにするために記述 -->
+        	<ul class="navbar-nav mr-auto">
+        	</ul>
+        	
+            <ul class="navbar-nav">
+            	<li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
+                </li>
+                 <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   		<a class="dropdown-item" th:href="">マイページトップ</a>
+                    	<a class="dropdown-item" th:href="">各種設定</a>
+                    	<a class="dropdown-item" th:href="">FAQ</a>
+                    	<a class="dropdown-item" th:href="">お問い合わせ</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html" th:href="">ログアウト</a>
+                </li>
+            </ul>
         </div>
       </div>
     </nav>
     
-    
+<!-- スケジュール一覧 -->
+<h1 class="schedule-title">
+	<span>聖地巡り</span><br>
+	<span>2020年9月22日(火)</span>~<span>2020年9月24日(木)</span>
+</h1>
  	<div class="tab-wrap">
  		<input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">一覧</label>
  		<div class="tab-content">
- 			<div class="date">
- 				<i class="fas fa-angle-double-left"></i>&emsp;
- 				<span>2020/09/12(1日目/2日中)</span>&emsp;
- 				<i class="fas fa-angle-double-right"></i>
- 			</div>
- 			<div class="schedule"><br><br>
+ 			<div class="schedule">
  				<table>
+ 					<tr>
+ 						<td class="schedule-days">
+ 							<span>1日目</span>
+ 						</td>
+ 						<td  class="schedule-day">
+ 							<span>2020年9月22日(火)</span>
+ 						</td>
+ 					</tr>
   					<tr data-href="http://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC">
     					<th class="time-schedule">
     						<span class="start">10:00</span><br>
@@ -45,9 +72,6 @@
     					<td colspan="2" class="content">
     						<i class="fas fa-car"></i>
     						<span>集合</span>
-    					</td>
-    					<td>
-    						<img alt="" src="">
     					</td>
   					</tr>
   					<tr data-href="register_schedule.html">
@@ -59,9 +83,6 @@
     						<i class="fas fa-utensils"></i>
     						<span>昼食</span>
     					</td>
-    					<td>
-    						<img alt="" src="">
-    					</td>
   					</tr>
   					<tr data-href="register_schedule.html">
     					<th class="time-schedule">
@@ -71,9 +92,6 @@
     					<td colspan="2" class="content">
     						<i class="far fa-star"></i>
     						<span>観光</span>
-    					</td>
-    					<td class="img_file">
-    						<img alt="" src="../../static/img/schedule/image1.jpeg">
     					</td>
   					</tr>
   					<tr data-href="register_schedule.html">
@@ -85,8 +103,63 @@
     						<i class="fas fa-utensils"></i>
     						<span>夕食</span>
     					</td>
-    					<td>
-    						<img alt="" src="">
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">19:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-hotel"></i>
+    						<span>ホテルチェックイン</span>
+    					</td>
+  					</tr>
+  					<tr>
+ 						<td class="schedule-days">
+ 							<span>2日目</span>
+ 						</td>
+ 						<td  class="schedule-day">
+ 							<span>2020年9月23日(水)</span>
+ 						</td>
+ 					</tr>
+  					<tr data-href="http://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC">
+    					<th class="time-schedule">
+    						<span class="start">10:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-car"></i>
+    						<span>集合</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">12:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>昼食</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">13:00</span><br>
+    						<span class="finish">-17:00</span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="far fa-star"></i>
+    						<span>観光</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">18:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>夕食</span>
     					</td>
   					</tr>
   					<tr data-href="register_schedule.html">
@@ -98,14 +171,70 @@
     						<i class="fas fa-hotel"></i>
     						<span>ホテルチェックイン</span>
     					</td>
-    					<td>
-    						<img alt="" src="">
+  					</tr>
+  					<tr>
+ 						<td class="schedule-days">
+ 							<span>3日目</span>
+ 						</td>
+ 						<td  class="schedule-day">
+ 							<span>2020年9月24日(木)</span>
+ 						</td>
+ 					</tr>
+  					<tr data-href="http://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC">
+    					<th class="time-schedule">
+    						<span class="start">10:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-car"></i>
+    						<span>集合</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">12:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>昼食</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">13:00</span><br>
+    						<span class="finish">-17:00</span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="far fa-star"></i>
+    						<span>観光</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">18:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-utensils"></i>
+    						<span>夕食</span>
+    					</td>
+  					</tr>
+  					<tr data-href="register_schedule.html">
+    					<th class="time-schedule">
+    						<span class="start">19:00</span><br>
+    						<span class="finish"></span>
+    					</th>
+    					<td colspan="2" class="content">
+    						<i class="fas fa-hotel"></i>
+    						<span>ホテルチェックイン</span>
     					</td>
   					</tr>
 				</table>
  			</div>
  		</div>
- 	
+ 		
+<!-- 地図 --> 	
  		<input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">地図</label>
  		<div class="tab-content">
  		
