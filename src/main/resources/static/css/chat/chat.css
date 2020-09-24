@@ -10,18 +10,29 @@
     margin: 0 auto;
 }
 
-.send-form{
-	display:inline-block;
-}
-
 .img_btn .textarea .submit_btn{
-	display: inline;
+  display: inline;
   vertical-align: middle;
 }
 
-#send-form{
-	background-color: white;
+.img_btn{
+	float:  left;   /* 回り込み指定 */
 }
+
+ .send_message{
+ float:  left;   /* 回り込み指定 */
+ }
+ 
+.send-form{
+	padding: 5px 5px;
+	height: 50px;
+	width: 100%;
+	top:
+ }
+ 
+ .send-form{
+ 	background-color: white;
+ }
 
 /*送信ボタン*/
 button{
@@ -32,8 +43,6 @@ button{
 
 /*画像挿入*/
 .filelabel {
-   background-color: #ffffff;  /* 背景色 */
-   color: white;              /* 文字色 */
    border: 2px solid #febf63;  /* 枠線 */
    border-radius: 3em;        /* 角丸 */
    padding: 12px 12px;         /* 内側の余白 */
@@ -52,6 +61,10 @@ button{
 }
 
 /* チャット*/
+.userName{
+	font-size: 10px;
+}
+
 #chat-frame {
   margin: auto;
   padding: 1em 0.5em;
@@ -127,6 +140,17 @@ button{
   left: auto;
   border-color: transparent;
   border-left-color: #78FF6C;
+}
+
+textarea{
+  width: calc(100% -100px);/*常に送信ボタンの横幅を引いたサイズに動的に計算*/
+  height: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 @media screen and (max-width: 400px) {
