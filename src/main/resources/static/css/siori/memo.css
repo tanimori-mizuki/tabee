@@ -14,6 +14,23 @@
     text-decoration: none;
 }
 
+.card-img-top{
+    object-fit: cover;
+    height: 100px;
+    
+}
+.memo-img {
+  position: relative;
+  height: 100px;
+}
+.img-count{
+    position: absolute;
+    color: white;
+    top: 20%;
+    left:45%;
+    font-size:2rem;
+}
+
 #fab {/*????*/
     width: 60px;
     height: 60px;
