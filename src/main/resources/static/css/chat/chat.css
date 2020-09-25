@@ -26,8 +26,10 @@
 .send-form{
 	padding: 5px 5px;
 	height: 50px;
-	width: 100%;
-	top:
+	width: 58.6%;
+	position: fixed; /* 要素の位置を固定する */
+	margin-top: 300px;
+	margin-right: 2px;
  }
  
  .send-form{
@@ -41,9 +43,14 @@ button{
     background: transparent; /* 背景の灰色を消す */
 }
 
+.submit_btn{
+	position: relative;
+	left: 400px;
+	top: 3px;
+}
+
 /*画像挿入*/
 .filelabel {
-   border: 2px solid #febf63;  /* 枠線 */
    border-radius: 3em;        /* 角丸 */
    padding: 12px 12px;         /* 内側の余白 */
    display: inline-block;     /* インラインブロック化 */
@@ -169,5 +176,9 @@ textarea{
 	.chat-talk .talk-icon img {
   		margin-right: 5px;
     	margin-left: 5px;
+	}
+	
+	.submit_btn{
+		top: 3px;
 	}
 }
