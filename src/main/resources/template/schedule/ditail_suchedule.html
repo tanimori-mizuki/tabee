@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
 <link rel="stylesheet" href="../../static/css/schedule/register_schedule.css" th:href="@{/css/schedule/register_schedule.css}">
+<link rel="stylesheet" href="../../static/css/siori/siori-info.css" th:href="@{/css/siori/siori-info.css}">
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
@@ -45,7 +46,93 @@
         </div>
       </div>
     </nav>
-    
+ 	
+ 	 <div class="container">
+        <div class="card">
+ <table>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">スケジュール</td>
+  				</tr>
+  				<tr>
+    				<th>
+    					<span class="start">13:00</span><br>
+    					<span class="finish">-17:00</span>
+    				</th>
+    				<td>
+    					<i class="far fa-star"></i>
+    					<span>観光</span>
+    				</td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">電話番号</td>
+  				</tr>
+  				<tr>
+  					<td><span>0120-555-555</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">URL</td>
+  				</tr>
+  				<tr>
+  					<td><span>https://google.com</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">現在地</td>
+  				</tr>
+  				<tr>
+  					<td><span>神奈川県川崎市</span></td>
+  				</tr>
+  				<tr>
+  					<td>現在地図</td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">メモ</td>
+  				</tr>
+  				<tr>
+  					<td><span>川崎市観光</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">費用</td>
+  				</tr>
+  				<tr>
+  					<td><span>5,000</span>円</td>
+  				</tr>
+			</table>
+        </div>
+    </div>
+    <div class="add-member">
+        <span data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="メンバーを招待する">
+            <!-- trigger modal -->
+             <a data-toggle="modal" data-target="#exampleModalCenter">
+              <i class="fas fa-user-plus"></i>
+            </a>
+        </span>
+    </div>
+   <!-- Modal member-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>招待用URLをコピー</div><br>
+            <div>LINEで招待</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal delete-->
+    <div class="modal fade" id="exampleModalCenterDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>このしおりを削除しますか？</div>
+          </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+            <button type="button" class="btn btn-primary">削除</button>
+         </div>
+        </div>
+      </div>
+    </div> 
+ 	  
     <h1 class="schedule-title">
 		<span>スケジュール詳細</span>
 	</h1>
