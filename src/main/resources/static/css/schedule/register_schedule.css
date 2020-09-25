@@ -25,6 +25,7 @@ h1{
 	text-align: left;
 	background-color: #7fdbda;
 	padding: 0 0;
+	color: white;
 }
 
 ul.horizontal-list{
@@ -63,13 +64,18 @@ table th,table td{
   padding: 15px 0 10px 30px;
 }
 
-/*カレンダー・時刻の表示非表示*/
-.day-time{
-	display:none;
+.input-field{
 }
 
-input[type="checkbox"]:checked + input[type="date"]{
-  display: block;
+/*カレンダー・時刻の表示非表示*/
+#departure{
+	display:none;
+}
+#finishTime{
+	display:none;
+}
+#startTime{
+	display:none;
 }
 
 /*画像挿入*/
@@ -149,7 +155,6 @@ input[type="checkbox"]:checked + input[type="date"]{
   margin-left: 12px;
   display: block;
   font-size: 15px;
-  font-weight: bold;
 }
 
 @media screen and (max-width: 400px) {
