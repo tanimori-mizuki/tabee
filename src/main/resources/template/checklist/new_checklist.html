@@ -55,6 +55,8 @@
 </nav>
 <main class="page contact-page">
     <section class="portfolio-block contact">
+        <div class="d-flex align-items-center justify-content-center">
+        <div class="col-md-8">
         <!-- Start: Navigation Clean -->
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
             <div class="container">
@@ -64,11 +66,12 @@
         <!-- End: Navigation Clean -->
         <div class="container">
             <form>
-                <div class="form-group"><label for="title">タイトル</label>
-                    <input class="form-control item" type="text" id="title">
+                <div class="form-group"><label for="checklistTitle">タイトル
+                    <input class="form-control item" type="text" id="checklistTitle">
+                </label>
                 </div>
                 <div class="form-group">
-                    <label for="category">カテゴリー</label>
+                    <label for="category">カテゴリー
                     <select class="form-control" id="category">
                         <option>衣類</option>
                         <option>貴重品</option>
@@ -76,10 +79,11 @@
                         <option>モバイル関係</option>
                         <option>その他</option>
                     </select>
+                    </label>
                 </div>
                 <div class="form-group">
+                    <p style="color:#5f9ea0;">メンバーと共有(有効にすると、このしおりに参加している他メンバーと共有できます)：</p>
                     <div class="toggle-switch">
-                        <p>メンバーと共有(有効にすると、このしおりに参加している他メンバーと共有できます)：</p>
                         <input id="toggle" class="toggle-input" type="checkbox">
                         <label for="toggle" class="toggle-label">
                         </label>
@@ -88,6 +92,8 @@
                 <div class="form-group"><button class="btn btn-outline-warning" type="button">作成</button></div>
             </form>
             <a href="checklist.html">戻る</a>
+        </div>
+        </div>
         </div>
     </section>
 </main>

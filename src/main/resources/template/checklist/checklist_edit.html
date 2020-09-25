@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Scrap make folder - tabee</title>
+    <title>Edit checklist - tabee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/scrap/bootstrap.min.css}">
@@ -55,6 +55,8 @@
 </nav>
 <main class="page contact-page">
     <section class="portfolio-block contact">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="col-md-8">
         <!-- Start: Navigation Clean -->
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
             <div class="container">
@@ -64,11 +66,11 @@
         <!-- End: Navigation Clean -->
         <div class="container">
             <form>
-                <div class="form-group"><label for="categoryTitle">タイトル</label>
-                    <input class="form-control item" type="text" id="categoryTitle" value="着替え3日分">
+                <div class="form-group"><label for="categoryTitle">タイトル
+                    <input class="form-control item" type="text" id="categoryTitle" value="着替え3日分"></label>
                 </div>
                 <div class="form-group">
-                    <label for="category">カテゴリー</label>
+                    <label for="category">カテゴリー
                     <select class="form-control" id="category">
                         <option>衣類</option>
                         <option>貴重品</option>
@@ -76,13 +78,13 @@
                         <option>モバイル関係</option>
                         <option>その他</option>
                     </select>
+                    </label>
                 </div>
                 <div class="form-group">
+                    <p style="color:#5f9ea0;">メンバーと共有(有効にすると、このしおりに参加している他メンバーと共有できます)：</p>
                     <div class="toggle-switch">
-                        <p>メンバーと共有(有効にすると、このしおりに参加している他メンバーと共有できます)：</p>
                         <input id="toggle" class="toggle-input" type="checkbox">
-                        <label for="toggle" class="toggle-label">
-                        </label>
+                        <label for="toggle" class="toggle-label"></label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -91,6 +93,8 @@
                 </div>
             </form>
             <a href="checklist.html">戻る</a>
+        </div>
+            </div>
         </div>
     </section>
 </main>
