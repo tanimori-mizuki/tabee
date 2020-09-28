@@ -12,6 +12,21 @@
 	color: #fff;
 }
 
+.btn-primary {
+	background-color: #febf63;
+	border-color: #febf63;
+}
+
+.btn-primary:hover {
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
+.btn-primary:active {
+	background-color: #fe9f12;
+	border-color: #fe9f12;
+}
+
 .prof-edit {
 	padding: 0 20px;
 }
@@ -57,32 +72,17 @@
 	margin-top: -18%;
 }
 
-.plofile_img {
-	position: absolute;
-	left: 50px;
-	top: 50px;
-}
-
-.icon {
-	width: 100px;
-	height: 100px;
-	border: 1px transparent;
+.icon-image img {
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
 	border-radius: 50%;
-	margin-left: 30px;
-	margin-top: 20px;
-	position: relative;
-	overflow: hidden;
-}
-
-.profile_icon {
-	position: absolute;
-	width: 100px;; /* ※縦横を同値に */
-	height: auto; /* ※縦横を同値に */
-	margin: 0 auto;
+	margin-left: 20px;
+	margin-top: 10px;
 }
 
 .user_main {
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-left: 20px;
 }
 
@@ -203,3 +203,56 @@ footer {
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.memory-link {
+	color: black;
+}
+
+.memory-link:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.dd-toggle {
+	float: right;
+	color: black;
+}
+
+.dd-toggle:hover {
+	color: gray;
+}
+
+.dd-toggle::after {
+	display: none !important;
+}
+
+#g-map {
+	width: 320px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 769px) {
+	.icon-image img {
+		width: 120px;
+		height: 120px;
+		object-fit: cover;
+		border-radius: 50%;
+		margin-left: 35px;
+		margin-top: 20px;
+	}
+	
+	.user_main {
+		margin-top: 50px;
+		margin-left: 30px;
+	}
+	
+	.wrapper {
+		width: 70%;
+		margin: 0 auto;
+	}
+	#g-map {
+		width: 900px;
+		height: 600px;
+		margin: 0 auto;
+	}
+}

@@ -8,7 +8,7 @@
 	crossorigin="anonymous">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=yes">
-<link rel="stylesheet" href="../../static/css/mypage.css">
+<link rel="stylesheet" href="../../static/css/my-page/mypage.css">
 <link rel="stylesheet"
 	href="https://cdn.materialdesignicons.com/5.5.55/css/materialdesignicons.min.css">
 
@@ -16,8 +16,45 @@
 <title>tabee ❘ マイページ</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg static-top">
-		<h4 class="header-txt">tabee</h4>
+	<nav
+		class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"
+		th:fragment="menu">
+		<div class="container">
+			<a class="navbar-brand" th:href=""> <span class="sample">tabee</span>
+			</a>
+			<!-- ハンバーガーメニュー -->
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu<span class="navbar-toggler-icon"></span>
+				<!--           	<i class="fas fa-bars"></i> -->
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<!-- 右寄せにするために記述 -->
+				<ul class="navbar-nav mr-auto">
+				</ul>
+
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link" href=""
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">みんなの思い出</a></li>
+					<li class="nav-item active dropdown"><a
+						class="nav-link dropdown-toggle" href=""
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">マイページ</a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="">マイページトップ</a> <a
+								class="dropdown-item" th:href="">各種設定</a> <a
+								class="dropdown-item" th:href="">FAQ</a> <a
+								class="dropdown-item" th:href="">お問い合わせ</a>
+						</div></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="login.html" th:href="">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 
 	<div class="wrapper">
@@ -26,19 +63,22 @@
 				<div class="row">
 					<div class="profile_img item">
 						<div class="icon">
-							<img class="profile_icon" alt="写真"
-								src="../../static/img/0_12087e427b6f20854c2cbe7a94969e26_500.jpg">
+							<div class="icon-image">
+								<img src="../../static/img/chat/N7v8VjWD_400x400.jpg">
+							</div>
 						</div>
 					</div>
 					<div class="user_main item">
-						<h6 class="name">まさこ</h6>
+							<h6 class="name">まさこ</h6>
 
-						<div class="edit-profile">
-							<button type="button" class="btn btn-outline-primary edit-btn">
-								<small class="prof-edit"><i class="far fa-edit"></i>&nbsp;&nbsp;プロフィールを編集</small>
-							</button>
+							<div class="edit-profile">
+								<a href="edit_profile.html">
+									<button type="button" class="btn btn-outline-primary edit-btn">
+										<small class="prof-edit"><i class="far fa-edit"></i>&nbsp;&nbsp;プロフィールを編集</small>
+									</button>
+								</a>
+							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -61,19 +101,58 @@
 
 				<!-- 思い出 -->
 				<div class="tab_content memory_content">
-					<div class="memory-list">
-						<div class="my-info">
-							<span class="my-icon"> <img alt=""
-								src="../../static/img/0_12087e427b6f20854c2cbe7a94969e26_500.jpg"
-								class="my-pic">
-							</span> <span class="my-name">まさこ</span>
+					<a href="../memory/memory_detail.html" class="memory-link">
+						<div class="memory-list">
+							<div class="my-info">
+								<span class="my-icon"> <img alt=""
+									src="../../static/img/0_12087e427b6f20854c2cbe7a94969e26_500.jpg"
+									class="my-pic">
+								</span> <span class="my-name">まさこ</span>
+							</div>
+							<div class="memory-pics">
+								<img alt="" src="../../static/img/32627-01.jpg"
+									class="memory-pic">
+							</div>
+							<br>
+							<h5 class="memory-title">
+								千葉旅行 <a class="btn btn-link dd-toggle" href="#" role="button"
+									id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-ellipsis-v menu"></i>
+								</a> <span class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item" href="#">教える</a> <a
+									class="dropdown-item" href="#">URLをコピー</a> <a
+									class="dropdown-item bookmark-link" href="#"
+									data-toggle="modal" data-target="#delete-post-modal"
+									class="modal-open">投稿を削除</a>
+								</span>
+
+							</h5>
+							<div class="memory-txt">千葉楽しかった。・・・</div>
+							<br> <label><i class="fas fa-eye"></i></label>&nbsp;<span>256</span>
 						</div>
-						<div class="memory-pics">
-							<img alt="" src="../../static/img/32627-01.jpg"
-								class="memory-pic">
+					</a>
+
+					<!-- delete post modal -->
+					<div class="modal fade" id="delete-post-modal" tabindex="-1"
+						role="dialog" aria-labelledby="logout-modal" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">確認</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">この投稿を削除しますか？</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">閉じる</button>
+									<button type="button" class="btn btn-primary">はい</button>
+								</div>
+							</div>
 						</div>
-						<br>
-						<div class="memory-txt">千葉楽しかった。・・・</div>
 					</div>
 
 
@@ -83,58 +162,219 @@
 
 				<!-- ブックマーク -->
 				<div class="tab_content bookmark_content">
-					<div class="bookmark-list">
-						<div class="user-info">
-							<span class="users-icon"> <img alt=""
-								src="../../static/img/animal_beaver.png" class="users-pic">
-							</span> <span class="users-name">おかゆ</span>
-						</div>
-						<div class="bookmark-pics">
-							<img alt="" src="../../static/img/32627-01.jpg"
-								class="bookmark-pic">
-						</div>
-						<br>
-						<div class="bookmark-txt">会社の同期と3泊4日の沖縄旅！ほんとに最高だったー！・・・</div>
-					</div>
-					<br>
-					<hr>
-					<div class="bookmark-list">
-						<div class="user-info">
-							<span class="users-icon"> <img alt=""
-								src="../../static/img/animal_beaver.png" class="users-pic">
-							</span> <span class="users-name">大城舞@tabeeプロデューサー</span>
-						</div>
-						<div class="bookmark-pics">
-							<img alt="" src="../../static/img/32627-01.jpg"
-								class="bookmark-pic">
-						</div>
-						<br>
-						<div class="bookmark-txt">
-							こんにちは。大城です。先日、わが社がプロデュースするアイドル・のせまさ子のプロモーションのため、モンゴルへ行ってまいりました。・・・
-						</div>
-					</div>
-					<br>
-					<hr>
-					<div class="bookmark-list">
-						<div class="user-info">
-							<span class="users-icon"> <img alt=""
-								src="../../static/img/animal_beaver.png" class="users-pic">
-							</span> <span class="users-name">タニモリン@9/21~23東京参上！</span>
+					<a href="../memory/memory_detail.html" class="memory-link">
+						<div class="bookmark-list">
+							<div class="user-info">
+								<span class="users-icon"> <img alt=""
+									src="../../static/img/animal_beaver.png" class="users-pic">
+								</span> <span class="users-name">おかゆ</span>
+							</div>
+							<div class="bookmark-pics">
+								<img alt="" src="../../static/img/32627-01.jpg"
+									class="bookmark-pic">
+							</div>
+							<br>
+							<h5 class="bookmark-title">
+								沖縄旅 <a class="btn btn-link dd-toggle" href="#" role="button"
+									id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-ellipsis-v menu"></i>
+								</a> <span class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item" href="#">教える</a> <a
+									class="dropdown-item" href="#">URLをコピー</a> <a
+									class="dropdown-item bookmark-link" href="#" class="modal-open">ブックマークから削除</a>
+								</span>
 
+							</h5>
+							<br>
+							<div class="bookmark-txt">会社の同期と3泊4日の沖縄旅！ほんとに最高だったー！・・・</div>
+							<br> <label><i class="fas fa-eye"></i></label>&nbsp;<span>256</span>
 						</div>
-						<div class="bookmark-pics">
-							<img alt="" src="../../static/img/32627-01.jpg"
-								class="memory-pic">
+					</a> <br>
+					<hr>
+					<a href="../memory/memory_detail.html" class="memory-link">
+						<div class="bookmark-list">
+							<div class="user-info">
+								<span class="users-icon"> <img alt=""
+									src="../../static/img/animal_beaver.png" class="users-pic">
+								</span> <span class="users-name">大城舞@tabeeプロデューサー</span>
+							</div>
+							<div class="bookmark-pics">
+								<img alt="" src="../../static/img/32627-01.jpg"
+									class="bookmark-pic">
+							</div>
+							<br>
+							<h5 class="bookmark-title">
+								まさこをプロデュース in モンゴル<a class="btn btn-link dd-toggle" href="#"
+									role="button" id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-ellipsis-v menu"></i>
+								</a> <span class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item" href="#">教える</a> <a
+									class="dropdown-item" href="#">URLをコピー</a> <a
+									class="dropdown-item bookmark-link" href="#" class="modal-open">ブックマークから削除</a>
+								</span>
+
+							</h5>
+							<br>
+							<div class="bookmark-txt">
+								こんにちは。大城です。先日、わが社がプロデュースするアイドル・のせまさ子のプロモーションのため、モンゴルへ行ってまいりました。・・・
+							</div>
+							<br> <label><i class="fas fa-eye"></i></label>&nbsp;<span>256</span>
 						</div>
-						<br>
-						<div class="bookmark-txt">ガチャまじで当たらねえ。鬼畜すぎてムリ。</div>
-					</div>
+					</a> <br>
+					<hr>
+					<a href="../memory/memory_detail.html" class="memory-link">
+						<div class="bookmark-list">
+							<div class="user-info">
+								<span class="users-icon"> <img alt=""
+									src="../../static/img/animal_beaver.png" class="users-pic">
+								</span> <span class="users-name">タニモリン@9/21~23東京参上！</span>
+
+							</div>
+							<div class="bookmark-pics">
+								<img alt="" src="../../static/img/32627-01.jpg"
+									class="memory-pic">
+							</div>
+							<br>
+							<h5 class="bookmark-title">
+								わたしと小鳥とガチャと <a class="btn btn-link dd-toggle" href="#"
+									role="button" id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-ellipsis-v menu"></i>
+								</a> <span class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item" href="#">教える</a> <a
+									class="dropdown-item" href="#">URLをコピー</a> <a
+									class="dropdown-item bookmark-link" href="#" class="modal-open">ブックマークから削除</a>
+								</span>
+
+							</h5>
+							<br>
+							<div class="bookmark-txt">ガチャまじで当たらねえ。鬼畜すぎてムリ。</div>
+							<br> <label><i class="fas fa-eye"></i></label>&nbsp;<span>256</span>
+						</div>
+					</a>
 
 
 				</div>
 				<div class="tab_content map_content">
-					<div id="g-map"
-						style="width: 620px; height: 300px; margin-right: 20px;"></div>
+					<input type="text" id="search" value="池袋駅付近のカフェ"
+						style="width: 200px;" />
+					<button type="button" value="検索" onClick="SearchGo()"
+						class="btn btn-primary"
+						style="padding: 1px 5px; margin-bottom: 5px;">検索</button>
+					<div id="g-map"></div>
+
+					<script type="text/javascript">
+
+						// マップのインスタンス生成
+						function initMap() {
+							var opts = {
+								zoom : 15, // 倍率
+								center : new google.maps.LatLng(35.709984,
+										139.810703)
+							// 初期表示の緯度経度設定
+							};
+
+							// #g-map要素にMapクラスの新しいインスタンスを作成
+							var map = new google.maps.Map(document
+									.getElementById("g-map"), opts);
+
+							// 検索の条件を指定（緯度経度、半径、検索の分類）
+							var request = {
+								location : opts.center,
+								radius : 1000, // 表示する半径領域を設定(1 = 1M)
+								types : [ 'cafe' ]
+							// typesプロパティの施設タイプを設定
+							};
+
+							var service = new google.maps.places.PlacesService(
+									map);
+							service.search(request, Result_Places);
+						}
+
+						// 検索結果を受け取る
+						function Result_Places(results, status) {
+							// Placesが検索に成功したかをチェック
+							if (status == google.maps.places.PlacesServiceStatus.OK) {
+								for (var i = 0; i < results.length; i++) {
+									// 検索結果の数だけ反復処理を変数placeに格納
+									var place = results[i];
+									console.log(place);
+									createMarker({
+										text : place.name,
+										position : place.geometry.location
+									});
+								}
+							}
+						}
+
+						// 入力キーワードと表示範囲を設定
+						function SearchGo() {
+							var initPos = new google.maps.LatLng(0, 0);
+							var mapOptions = {
+								center : initPos,
+								zoom : 0,
+								mapTypeId : google.maps.MapTypeId.ROADMAP
+							};
+
+							// #g-map要素にMapクラスの新しいインスタンスを作成
+							map = new google.maps.Map(document
+									.getElementById("g-map"), mapOptions);
+							service = new google.maps.places.PlacesService(map);
+
+							// input要素に入力されたキーワードを検索の条件に設定
+							var myword = document.getElementById("search");
+							var request = {
+								query : myword.value,
+								radius : 5000,
+								location : map.getCenter()
+							};
+							service.textSearch(request, result_search);
+						}
+
+						// 検索の結果を受け取る
+						function result_search(results, status) {
+							var bounds = new google.maps.LatLngBounds();
+							for (var i = 0; i < results.length; i++) {
+								createMarker({
+									position : results[i].geometry.location,
+									text : results[i].name,
+									rating : results[i].rating,
+									map : map
+								});
+								bounds.extend(results[i].geometry.location);
+							}
+							map.fitBounds(bounds);
+						}
+
+						// 該当する位置にマーカーを表示
+						function createMarker(options) {
+
+							// マップ情報を保持しているmyMapオブジェクトを指定
+							options.map = map;
+
+							// Markcrクラスのオブジェクトmarkerを作成
+							var marker = new google.maps.Marker(options);
+
+							// 各施設の吹き出し(情報ウインドウ)に表示させる処理
+													
+							var infoWnd = new google.maps.InfoWindow();
+							infoWnd.setContent(options.text);
+
+							// addListenerメソッドを使ってイベントリスナーを登録
+							google.maps.event.addListener(marker, 'click',
+									function() {
+										infoWnd.open(map, marker);
+
+									});
+
+							return marker;
+						}
+					</script>
+
+					<script async defer
+						src="http://maps.google.com/maps/api/js?key=AIzaSyBC6do4eWd4qu6aSPBg-rvlevdvUO-IXn0&language=ja&callback=initMap&libraries=places"></script>
 				</div>
 			</div>
 
@@ -170,11 +410,8 @@
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
 
-	<script async defer
-		src="http://maps.google.com/maps/api/js?key=AIzaSyBC6do4eWd4qu6aSPBg-rvlevdvUO-IXn0&language=ja&callback=initMap"></script>
 
-	<script type="text/javascript" src="../../static/js/google_map.js"></script>
-	
+
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 		crossorigin="anonymous"></script>

@@ -54,40 +54,57 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container main">
+	<div>
+		<br>
+		<div class="text-center">
+			<h5 style="color: gray;">プロフィール設定</h5>
+		</div>
+		<br>
 		<div class="form">
-			<form>
+			<form action="mypage.html" th:action="#" method="post">
 				<fieldset>
-					<div class="input-info">
-						<input id="username" name="username" type="text"
-							class="form-control" value="まさこ" /> <label for="name">ユーザー名</label>
-						<span class="focus_line"></span>
+					<div class="icon">
+					<label>
+						<div class="icon-image filelabel">
+							<img src="../../static/img/chat/N7v8VjWD_400x400.jpg">
+							<div class="mask">
+								<div class="caption">アイコンを変更</div>
+							</div>
+						</div>
+						<input type="file" name="datafile" id="filesend">
+						
 					</div>
-					<br>
-					<div class="input-info">
-						<input id="email" name="email" type="text" class="form-control"
-							value="masako@gmail.com" /> <label for="email">メールアドレス</label> <span
-							class="focus_line"></span>
-					</div>
-					<br>
-					<div class="input-info">
-						<input id="line" name="line" type="text" class="form-control"
-							value="@line" /> <label for="line">LINE</label> <span
-							class="focus_line"></span>
+					
+					<div class="editable">
+						<div class="item">
+							<input id="username" name="username" class="form-control"
+								type="text" value="まさこ"> <label for="username"><small>ユーザー名</small></label>
+						</div>
+						<br>
+
+						<div class="item">
+							<input id="email" name="email" class="form-control" type="email"
+								value="registered-email@gmail.com" readonly="readonly">
+							<label for="username"><small>メールアドレス</small><br> <a
+								href="../user/reset_email.html"><small>変更する</small></a></label>
+						</div>
+
+
+						<br> <br>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">変更を保存</button>
+						</div>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-		<br>
+
 		<br>
 
 		<div class="text-center">
 			<div>
-				<a data-toggle="modal" data-target="#logout-modal"><span>ログアウト</span></a>
-			</div>
-			<br>
-			<div>
-				<a data-toggle="modal" data-target="#delete-user-modal"><span>アカウントを削除</span></a>
+				<a data-toggle="modal" data-target="#delete-user-modal"
+					class="modal-open"><small>アカウントを削除</small></a>
 			</div>
 		</div>
 
@@ -97,7 +114,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel"></h5>
+						<h5 class="modal-title" id="exampleModalLabel">ログアウト</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -126,12 +143,11 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">...</div>
+					<div class="modal-body">このアカウントを削除してもよろしいですか？</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
+							data-dismiss="modal">閉じる</button>
+						<button type="button" class="btn btn-primary">はい</button>
 					</div>
 				</div>
 			</div>

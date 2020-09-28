@@ -1,62 +1,234 @@
 @charset "UTF-8";
 
-.main{
-	width: 50%;
+.btn-primary {
+	background-color: #febf63;
+	border-color: #febf63;
+	border-radius: 50px;
 }
 
-.form-control {
-	border: none;
-	text-align: right;
+.btn-secondary {
+	border-radius: 50px;
 }
 
-.form-control:focus {
-	outline: none;
-	-webkit-box-shadow : none !important;
-	-moz-box-shadow: none !important;
-	box-shadow: none !important;
-	-webkit-box-shadow: none !important;
-	border-bottom: 1px solid; 
-	transition: margin-right 4s;
+.btn-primary:hover {
+	background-color: #fe9f12;
+	border-color: #fe9f12;
 }
 
+.edit-btn {
+	width: 40%;
+}
 
+.container {
+	width: 100%;
+}
 
-.img-icon {
-	position: relative;
-	top: -40px;
+.form {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.required-text {
+	color: #fff;
+	padding: 1px 5px;
+}
+
+.btn-social {
+	height: 2.5rem;
+	width: 2.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border-radius: 100%;
+}
+
+body, #wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+footer {
+	margin-top: auto;
 	text-align: center;
+	font-size: 0.9rem;
+	font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.profile_icon {
-	width: 280px;
-	height: 280px;
-	border-radius: 50%;
-	background-position: center center;
+.modal-open {
+	cursor: pointer;
 }
 
-img {
-	vertical-align: middle;
-	border-style: none;
-}
-
-fieldset div {
+fieldset .item {
 	display: flex;
 	align-items: center;
 }
 
 label {
 	order: 1;
-	width: 10em;
+	width: 15em;
 	padding-right: 0.5em;
 }
 
-input, textarea, select {
+input {
 	order: 2;
 	flex: 1 1 auto;
 }
 
+.icon-image {
+	width: 100px;
+	height: 100px;
+	position: relative; /* 相対位置指定 */
+}
+
+.icon-image .caption {
+	font-size: 130%;
+	text-align: center;
+	padding-top: 80px;
+	color: #fff;
+}
+
+.icon-image .mask {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	position: absolute; /* 絶対位置指定 */
+	top: 0;
+	left: 0;
+	opacity: 0; /* マスクを表示しない */
+	background-color: rgba(0, 0, 0, 0.4); /* マスクは半透明 */
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	position: absolute;
+}
+
+.icon-image:hover .mask {
+	opacity: 1; /* マスクを表示する */
+}
+
+.icon-image img {
+	position: absolute;
+	left: -1px;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	z-index: 2;
+}
+
+.editable {
+	position: relative;
+	margin-top: -60px;
+	padding: 20px 15px;
+	padding-top: 80px;
+	z-index: 1;
+	border: 1px solid lightgray;
+	border-radius: 3%;
+	
+}
+
+.form-control {
+	text-align: right;
+}
+
+.icon-image {
+	width: 100px;
+	height: 100px;
+	position: relative; /* 相対位置指定 */
+	overflow: hidden;
+}
+
+.icon-image .caption {
+	font-size: 40%;
+	text-align: center;
+	padding-top: 50px;
+	color: #fff;
+}
+
+.icon-image .mask {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	position: absolute; /* 絶対位置指定 */
+	top: 0;
+	left: 0;
+	opacity: 1; /* マスクを表示しない */
+	background-color: rgba(0, 0, 0, 0.4); /* マスクは半透明 */
+	z-index: 3;
+}
+
+.filelabel {
+	display: inline-block; /* インラインブロック化 */
+}
+
+.filelabel img {
+	vertical-align: bottom; /* 画像の垂直方向の配置 */
+}
+
+#filesend {
+	display: none; /* 本来のファイル選択フォームは非表示に */
+}
+
 @media screen and (min-width: 769px) {
 	.form {
-		
+		width: 31em;
+		margin: 0 auto;
+	}
+	.icon-image img {
+		position: absolute;
+		width: 150px;
+		height: 150px;
+		object-fit: cover;
+		border-radius: 50%;
+		z-index: 2;
+	}
+	.editable {
+		position: relative;
+		width: 100%;
+		padding: 20px 10px;
+		padding-top: 100px;
+		margin-top: -80px;
+		z-index: 1;
+	}
+	.icon-image {
+		width: 150px;
+		height: 150px;
+		position: relative; /* 相対位置指定 */
+		overflow: hidden;
+	}
+	.icon-image .caption {
+		font-size: 80%;
+		text-align: center;
+		padding-top: 80px;
+		color: #fff;
+	}
+	.icon-image .mask {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		position: absolute; /* 絶対位置指定 */
+		top: 0;
+		left: 0;
+		opacity: 0; /* マスクを表示しない */
+		background-color: rgba(0, 0, 0, 0.4); /* マスクは半透明 */
+		-webkit-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	.icon-image:hover .mask {
+		opacity: 1; /* マスクを表示する */
+		cursor: pointer;
+		z-index: 3;
+	}
+	.filelabel {
+		display: inline-block; /* インラインブロック化 */
+	}
+	.filelabel img {
+		vertical-align: bottom; /* 画像の垂直方向の配置 */
+	}
+	#filesend {
+		display: none; /* 本来のファイル選択フォームは非表示に */
 	}
 }
