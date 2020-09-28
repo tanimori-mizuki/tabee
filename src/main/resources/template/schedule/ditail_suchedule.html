@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
 <link rel="stylesheet" href="../../static/css/schedule/register_schedule.css" th:href="@{/css/schedule/register_schedule.css}">
+<link rel="stylesheet" href="../../static/css/schedule/ditail_schedule.css" th:href="@{/css/schedule/ditail_schedule.css}">
 <link rel="stylesheet" href="../../static/css/siori/siori-info.css" th:href="@{/css/siori/siori-info.css}">
 <link rel="stylesheet" href="../../static/css/main/siori-register.css" th:href="@{/css/main/siori-register.css}">
 </head>
@@ -49,7 +50,7 @@
     </nav>
  	
  	 <div class="container">
-        <div class="card">
+        <div class="schedule">
  			<table>
   				<tr>
   					<td colspan="2" class="scheduleItem">スケジュール</td>
@@ -59,7 +60,7 @@
     					<span class="start">13:00</span><br>
     					<span class="finish">-17:00</span>
     				</th>
-    				<td>
+    				<td class="suchedule-content">
     					<i class="far fa-star"></i>
     					<span>観光</span>
     				</td>
@@ -68,22 +69,22 @@
   					<td colspan="2" class="scheduleItem">電話番号</td>
   				</tr>
   				<tr>
-  					<td><span>0120-555-555</span></td>
+  					<td colspan="2"><span>0120-555-555</span></td>
   				</tr>
   				<tr>
   					<td colspan="2" class="scheduleItem">URL</td>
   				</tr>
   				<tr>
-  					<td><span>https://google.com</span></td>
+  					<td colspan="2"><span>https://google.com</span></td>
   				</tr>
   				<tr>
   					<td colspan="2" class="scheduleItem">現在地</td>
   				</tr>
   				<tr>
-  					<td><span>神奈川県川崎市</span></td>
+  					<td colspan="2"><span>神奈川県川崎市</span></td>
   				</tr>
   				<tr>
-  					<td>現在地図</td>
+  					<td colspan="2">現在地図</td>
   				</tr>
   				<tr>
   					<td colspan="2" class="scheduleItem">メモ</td>

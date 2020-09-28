@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.suchedule-content{
+	width: 400px;
+}
+
+.schedule{
+    width: 30rem;
+    margin: 4rem auto 1rem auto;
+    border: 1.5px solid #a8a6a6;
+}
+
+.schedule {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
