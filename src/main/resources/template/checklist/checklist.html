@@ -47,7 +47,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="login.html" th:href="">ログアウト</a>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -55,14 +54,14 @@
 <main class="page lanidng-page">
     <section class="portfolio-block contact">
         <div class="container">
-            <div class="card">
-                <div class="card-body">
+            <div class="d-flex align-items-center justify-content-center">
+            <div class="col-md-8">
                     <!-- Start: Navigation Clean -->
                     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
                         <div class="container">
                             <a class="navbar-brand" href="checklist.html">チェックリスト</a>
                             <div class="text-left edit-category">
-                                <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="カテゴリー一覧">
+                                <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="カテゴリ一覧">
                                     <a class="navbar-brand" href="categorylist.html">
                                         <i class="fas fa-wrench edit"></i>
                                     </a>
@@ -71,11 +70,12 @@
                         </div>
                     </nav>
                     <!-- End: Navigation Clean -->
-                    <div>
+                <div class="d-flex align-items-left justify-content-left">
+                    <div class="col-md-10">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">持ち物</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-1">持ち物</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">お土産</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">リストを増やす</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">リスト追加</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="tab-1">
@@ -175,12 +175,14 @@
                                             <th class="title">リストの追加</th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         <tr>
                                             <td>
                                                 <form>
-                                                    <div class="form-group"><label for="title">タイトル</label>
-                                                        <input class="form-control item" type="text" id="title">
+                                                    <div class="form-group"><label for="listName">リスト名
+                                                        <input class="form-control item" type="text" id="listName">
+                                                    </label>
                                                     </div>
                                                     <div class="form-group">
                                                         <button class="btn btn-outline-warning" type="button">追加</button>
@@ -190,30 +192,22 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                </div>
                 </div>
             </div>
-            <div class="text-left create-folder">
-                <span data-toggle="popover" data-trigger="hover" data-placement="left" data-content="チェックリスト追加">
+            <div class="dropdown create-folder">
+                <p class="edit-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <a id="fab" data-toggle="modal" data-target="#staticBackdrop">
-                        <i class="fa fa-plus"></i>
+                       <i class="fa fa-plus"></i>
                     </a>
-                </span>
-            </div>
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <a href="new_checklist.html">チェックリストを作成する</a><br>
-                            <a href="new_category.html">カテゴリ追加</a><br>
-                        </div>
-                    </div>
+                </p>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="new_checklist.html">チェックリスト作成</a>
+                    <a class="dropdown-item" href="new_category.html">カテゴリ追加</a>
                 </div>
             </div>
         </div>
