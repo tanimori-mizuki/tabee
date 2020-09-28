@@ -1,184 +1,226 @@
 @charset "UTF-8";
 
-.day{
-    border-radius: 10px;/*角の丸み*/
-    background: #FFF;
-    color: #33b7b7;/*文字色*/
-    text-align: center;
-    width: 120px;
-    font-size: 12px;
+/*/////////////////////////////////////////////////
+//LINE風チャット画面(会話方式)を記事に表示する方法
+/////////////////////////////////////////////////*/
+
+.line__container {
+  padding:0;
+  background: #7fdbda;
+  overflow: hidden;
+  max-width: 400px;
+  margin: 20px auto;
+  font-size: 80%;
+}
+
+/* タイトル部分 */
+.line__container .line__title {
+  background: #1e6868;
+  padding: 10px;
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+
+/* 会話部分 */
+.line__container .line__contents {
+  padding: 10px;
+  overflow: hidden;
+  line-height: 135%;
+}
+
+.line__container .scroll {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.line__container .scroll::-webkit-scrollbar {
+	display:none;
+}
+
+/* スタンプ画像最大幅 */
+.line__container .stamp img {
+  max-width:150px;
+}
+
+/* 相手の会話 */
+.line__container .line__left {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    max-width: 80%;
+    clear: both;
+}
+
+.text{
+	margin-top: 5px;
+}
+
+/* アイコン画像 */
+.line__container .line__left figure {
+    width: 50px;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* 正方形を用意 */
+.line__container .line__left figure img{
+    border-radius: 50%;
+    width:  50px;       /* ※縦横を同値に */
+    height: 50px;       /* ※縦横を同値に */
+    object-fit: cover;
+}
+
+.line__container .line__left .line__left-text {
+  margin-left: 70px;
+}
+
+.line__container .line__left .line__left-text .name {
+  font-size: 80%;
+  color: #ffffff;
+}
+
+/* コメントエリア */
+.line__container .line__left .text {
+  position: relative;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+/* 吹き出し */
+.line__container .line__left .text::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -10px;
+  top: 10px;
+  border-right: 20px solid #ffffff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 自分の会話 */
+.line__container .line__right {
+    position: relative;
+    display: block;
+    margin: 5px 0;
+    max-width: 75%;
+    float: right;
+    margin-right: 15px;
+    clear: both;
+}
+
+/* コメントエリア */
+.line__container .line__right .text {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #8de055;
+  margin: 0;
+  margin-left: 80px;
+}
+
+/* 吹き出し */
+.line__container .line__right .text::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -10px;
+  top: 10px;
+  border-left: 20px solid #8de055;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 自分がスタンプを送る時 */
+.line__container .line__right .stamp {
+  position: relative;
+  margin-left: 80px;
+}
+
+/* 既読エリア */
+.line__container .line__right .date {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100px;
+  text-align: right;
+  left: -30px;
+  bottom: 0px;
+  font-size: 80%;
+  color: #ffffff;
+}
+
+/*入力する場所*/
+#input-field{
+    width: 400px;
+    height: 45px;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 1px solid #777;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+    background-color: #FFF;
     margin: 0 auto;
 }
 
-.img_btn .textarea .submit_btn{
-  display: inline;
-  vertical-align: middle;
+#chat-input{
+    height: 25px;
+    width: 67%;
+    display: block;
+    font-size: 14px;
+    color: #000;
+    box-sizing: border-box;
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding-left: 10px;
+    margin: auto 10px;
 }
-
-.img_btn{
-	float:  left;   /* 回り込み指定 */
+#chat-input:focus{
+    border: 1.3px solid #8873FF;
+    outline: 0;
 }
-
- .send_message{
- float:  left;   /* 回り込み指定 */
- }
- 
-.send-form{
-	padding: 5px 5px;
-	height: 50px;
-	width: 58.6%;
-	position: fixed; /* 要素の位置を固定する */
-	margin-top: 300px;
-	margin-right: 2px;
- }
- 
- .send-form{
- 	background-color: white;
- }
-
 /*送信ボタン*/
-button{
-	border: none;  /* 枠線を消す */
-    outline: none; /* クリックしたときに表示される枠線を消す */
-    background: transparent; /* 背景の灰色を消す */
+#chat-button{
+    cursor: pointer;
+    height: 25px;
+    width: 15%;
+    margin: auto ;
+    margin-right: 10px;
+    font-size: 13px;
+    background: #7fdbda;
+    color: white;
+    display: block;
+    /*デフォルトのボーダーを消す*/
+    border: none;
+    box-sizing: border-box;
+    border-radius: 6.5px;
+}
+#chat-button:focus{
+    outline: 0;
+    background: #A899FF;
 }
 
-.submit_btn{
-	position: relative;
-	left: 400px;
-	top: 3px;
-}
-
-/*画像挿入*/
+/*ファイルボタン*/
 .filelabel {
+   font-size: 15px;
    border-radius: 3em;        /* 角丸 */
-   padding: 12px 12px;         /* 内側の余白 */
+   padding: 12px 9px;         /* 内側の余白 */
    display: inline-block;     /* インラインブロック化 */
 }
 .filelabel img {
    vertical-align: bottom;    /* 画像の垂直方向の配置 */
 }
-.filelabel:hover {
-   opacity: 0.5;              /* 半透明 */
-   border: 2px solid #febf63;     /* 枠線(赤色) */
-   cursor: pointer;           /* マウス形状(ポインタ) */
-}
+
 #filesend {
    display: none;  /* 本来のファイル選択フォームは非表示に */
-}
-
-/* チャット*/
-.userName{
-	font-size: 10px;
-}
-
-#chat-frame {
-  margin: auto;
-  padding: 1em 0.5em;
-  height: 80vh;
-  width: 60%; 
-  background: #effafa;/*背景色*/ 
-}
-
-.chat-talk {
-  overflow:hidden;
-  margin: 0 0 1em 0;
-  padding: 0;
-}
-
-.chat-talk span {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-.chat-talk .talk-icon {
-  float: left;
-  width: auto;
-}
-
-.chat-talk .talk-content {
-  position: relative;
-  box-sizing: border-box;
-  width: auto;
-  min-height: 50px;
-  border-radius: 10px;
-  background-color: #fff;
-  margin: 0px 90px;
-  padding: 0.5em;
-}
-
-.chat-talk .talk-icon img {
-  width:  50px;       /* ※縦横を同値に */
-  height: 50px;       /* ※縦横を同値に */
-  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  
-  object-fit:cover;
-  vertical-align: bottom;
-  border: 2px solid #fff;
-  margin-right: 15px;
-    margin-left: 15px;
-}
-
-.chat-talk .talk-content:before {
-  position: absolute;
-  top: 15px;
-  left: -20px;
-  display: block;
-  width: 0;
-  height: 0;
-  content: '';
-  border: 10px solid transparent;
-  border-right-color: #FFFFFF;
-}
-
-.chat-talk.mytalk .talk-icon {
-  float: right;
-}
-
-.chat-talk.mytalk .talk-content {
-  margin: 0px 90px;
-  color: #000;
-  background: #78FF6C;
-}
-
-.chat-talk.mytalk .talk-content:before {
-  right: -20px;
-  left: auto;
-  border-color: transparent;
-  border-left-color: #78FF6C;
-}
-
-textarea{
-  width: calc(100% -100px);/*常に送信ボタンの横幅を引いたサイズに動的に計算*/
-  height: 40px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-@media screen and (max-width: 400px) {
-	#chat-frame {
-  		width: 95%; 
-	}
-	
-	.chat-talk .talk-content {
-  		margin: 0px 75px;
-	}
-	
-	.chat-talk.mytalk .talk-content {
-  		margin: 0px 75px;
-	}
-	
-	.chat-talk .talk-icon img {
-  		margin-right: 5px;
-    	margin-left: 5px;
-	}
-	
-	.submit_btn{
-		top: 3px;
-	}
 }
