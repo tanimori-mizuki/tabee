@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.chat{
+	font-size: 30px;
+}
+
+.toChat{
+	color: white;
+}
+
 h1{
 	text-align: center;
 	font-size: 20px;
