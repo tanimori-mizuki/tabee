@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.information{
+		width: 300px;
+	}
+
 .toggle-switch{
 	text-align: right;
 }
@@ -13,9 +17,17 @@
 	margin: 0 auto;
 }
 
+.form-group{
+	margin-top: 2rem;
+}
+
 /*チェックボタン*/
 .person-check{
 	text-align: right;
+}
+
+.input-money{
+	 display: none;
 }
 
 input[type=checkbox] {

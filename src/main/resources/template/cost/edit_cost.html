@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<title>tabee | 費用合算</title>
+<title>tabee | 費用編集</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="../../static/css/cost/total-cost.css" th:href="@{/css/cost/total-cost.css}">
 <link rel="stylesheet" href="../../static/css/cost/edit_cost.css" th:href="@{/css/cost/edit_cost.css}">
+<link rel="stylesheet" href="../../static/css/cost/register_cost.css" th:href="@{/css/cost/register_cost.css}">
+<link rel="stylesheet" href="../../static/css/main/siori-register.css" th:href="@{/css/main/siori-register.css}">
 <link rel="stylesheet" href="../../static/css/siori/memo-register.css">
 </head>
 <body>
@@ -52,16 +56,16 @@
 	<table>
          <thead>
         	<tr>
-                <td>
-                	<input type="text">
+                <td colspan="2" class="cost-title">
+	                <input class="form-control item" type="text" id="title" placeholder="タイトル" value="レンタカー">
                 </td>
             </tr>
         </thead>
         <tbody>
         	<tr>
-        		<th><i class="fas fa-tags cost-icon"></i>&ensp;カテゴリー</th>
-        		<th>
-        			<select>
+        		<td><i class="fas fa-tags cost-icon"></i>&ensp;カテゴリー</td>
+        		<td class="information">
+        			<select class="form-control item" type="text" id="destination" name="prefecture">
         				<option>カテゴリーなし</option>
         				<option>交通費</option>
         				<option>食費</option>
@@ -69,21 +73,21 @@
         				<option>娯楽費</option>
         				<option>その他</option>
         			</select>
-        		</th>
+        		</td>
         	</tr>
        		<tr>
-       			<th><i class="fas fa-yen-sign cost-icon"></i>&ensp;金額</th>
-       			<th>
-       				<input type="text">
-       			</th>
+       			<td><i class="fas fa-yen-sign cost-icon"></i>&ensp;金額</td>
+       			<td class="information">
+       				<input class="form-control item" type="text" id="money" placeholder="金額" value="8,560">
+       			</td>
        		</tr>
        		<tr>
        			<th colspan="2" class="person">支払った人</th>
        		</tr>
        		<tr>
-       			<td>おかゆ</td>
-       			<td>
-       				<select>
+       			<td>たもり</td>
+       			<td class="information">
+       				<select class="form-control item" type="text" id="destination" name="prefecture">
         				<option>おかゆ</option>
         				<option>たもり</option>
         				<option>まさし</option>
@@ -96,9 +100,9 @@
        		</tr>
        		<tr>
        			<td><i class="fas fa-user-friends cost-icon"></i>&ensp;個別精算モード</td>
-       			<td>
+       			<td class="information">
        				<div class="toggle-switch">
-                      <input id="toggle" class="toggle-input" type='checkbox'>
+                      <input id="toggle" class="toggle-input" type='checkbox' name="toggle">
                       <label for="toggle" class="toggle-label">
                       </label>
                     </div>    
@@ -106,26 +110,63 @@
        		</tr>
        		<tr>
        			<td>たもり</td>
-       			<td></td>
+       			<td class="information">
+       				<div class="person-check">
+       					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
+						<label for="02-A" class="checkbox02"></label>
+       				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
+       			</td>
        		</tr>
        		<tr>
        			<td>おかゆ</td>
-       			<td></td>
+       			<td class="information">
+       				<div class="person-check">
+       					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
+						<label for="02-A" class="checkbox02"></label>
+       				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
+       			</td>
        		</tr>
        		<tr>
        			<td>しろち</td>
-       			<td></td>
+       			<td class="information">
+       				<div class="person-check">
+       					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
+						<label for="02-A" class="checkbox02"></label>
+       				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
+       			</td>
        		</tr>
        		<tr>
        			<td>のせ</td>
-       			<td></td>
+       			<td class="information">
+       				<div class="person-check">
+       					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
+						<label for="02-A" class="checkbox02"></label>
+       				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
+       			</td>
        		</tr>
         </tbody>
-    </table>   
+    </table>
+    <div class="form-group text-center">
+         <button class="btn btn-outline-primary" type="button">完了</button>
+         <button class="btn btn-outline-danger" type="button">削除</button>
+    </div>  
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="../../static/js/main/top.js"></script>
+<script src="../../static/js/cost/change_togle.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<title>tabee | 費用合算</title>
+<title>tabee | 費用登録</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
@@ -102,7 +102,7 @@
        			<td><i class="fas fa-user-friends cost-icon"></i>&ensp;個別精算モード</td>
        			<td class="information">
        				<div class="toggle-switch">
-                      <input id="toggle" class="toggle-input" type='checkbox'>
+                      <input id="toggle" class="toggle-input" type='checkbox' name="toggle">
                       <label for="toggle" class="toggle-label">
                       </label>
                     </div>    
@@ -115,6 +115,9 @@
        					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
 						<label for="02-A" class="checkbox02"></label>
        				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
        			</td>
        		</tr>
        		<tr>
@@ -123,6 +126,9 @@
        				<div class="person-check">
        					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
 						<label for="02-A" class="checkbox02"></label>
+       				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
        				</div>
        			</td>
        		</tr>
@@ -133,6 +139,9 @@
        					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
 						<label for="02-A" class="checkbox02"></label>
        				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
        			</td>
        		</tr>
        		<tr>
@@ -142,15 +151,22 @@
        					<input type="checkbox" id="02-A" name="checkbox02" checked="checked">
 						<label for="02-A" class="checkbox02"></label>
        				</div>
+       				<div class="input-money">
+       					<input class="form-control item" type="text" id="money" placeholder="金額" value="金額">
+       				</div>
        			</td>
        		</tr>
         </tbody>
-    </table>   
+    </table> 
+    <div class="form-group text-center">
+         <button class="btn btn-outline-primary" type="button">完了</button>
+    </div>  
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 <script src="../../static/js/main/top.js"></script>
+<script src="../../static/js/cost/change_togle.js"></script>
 </body>
 </html>
