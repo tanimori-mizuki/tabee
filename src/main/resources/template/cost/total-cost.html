@@ -12,22 +12,50 @@
 
 <!-- ナビゲーションエリア -->
 <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
- 	<div class="container">
-       <a class="navbar-brand" th:href="">
-        	<i class="fas fa-angle-left"></i>
-        	<span class="sample">戻る</span>
-       </a>
-      <div>
-        	<span  class="trip-title">旅行タイトル</span>
+ 	  <div class="container">
+        <a class="navbar-brand" th:href="">
+        <span class="sample">tabee</span>
+        </a>
+         <!-- ハンバーガーメニュー -->
+    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+    		aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          	Menu<span class="navbar-toggler-icon"></span>
+    	</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        	<!-- 右寄せにするために記述 -->
+        	<ul class="navbar-nav mr-auto">
+        	</ul>
+        	
+            <ul class="navbar-nav">
+            	<li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
+                </li>
+                 <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   		<a class="dropdown-item" th:href="">マイページトップ</a>
+                    	<a class="dropdown-item" th:href="">各種設定</a>
+                    	<a class="dropdown-item" th:href="">FAQ</a>
+                    	<a class="dropdown-item" th:href="">お問い合わせ</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html" th:href="">ログアウト</a>
+                </li>
+            </ul>
+        </div>
       </div>
-   </div>
-</nav>
+    </nav>
 
 <!-- テーブル -->
 	<table>
          <thead>
         	<tr>
-                <th class="create"><a  class="create-new" href="#"><i class="fas fa-plus fa-2x"></i></a></th>
+                <th class="create">
+                	<div class="create-cost">
+                		<a  class="create-new" href="register_cost.html"><i class="fas fa-plus fa-2x"></i></a>
+                	</div>
+                </th>
                 <th scope="col" class="total">
                 	<div class="total-cost">
                 		<span class="text">合計金額&emsp;</span>
@@ -43,35 +71,35 @@
         </thead>
         <tbody>
         	<tr class="category"><th colspan="3"><span>交通費</span></th></tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>レンタカー</span></th>
                 <td data-label="ユーザ名" class="txt"><span class="user">たもり</span></td>
                 <td data-label="金額" class="price"><span>8,560</span>円</td>
             </tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>高速代</span></th>
                 <td data-label="ユーザ名" class="txt"><span  class="user">たもり</span></td>
                 <td data-label="金額" class="price"><span>3,250</span>円</td>
             </tr>
            <tr class="category"><th colspan="3"><span>食費</span></th></tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>昼食代</span></th>
                 <td data-label="ユーザ名" class="txt"><span  class="user">おかゆ</span></td>
                 <td data-label="金額" class="price"><span  class="user">2,820</span>円</td>
             </tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>夕食代</span></th>
                 <td data-label="ユーザ名" class="txt"><span  class="user">しろち</span></td>
                 <td data-label="金額" class="price"><span>4,000</span>円</td>
             </tr>
             <tr class="category"><th colspan="3"><span>宿泊費</span></th></tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>ホテル代</span></th>
                 <td data-label="ユーザ名" class="txt"><span  class="user">まさし</span></td>
                 <td data-label="金額" class="price"><span>20,000</span>円</td>
             </tr>
             <tr class="category"><th colspan="3"><span>娯楽費</span></th></tr>
-            <tr>
+            <tr data-href="#">
                 <th class="category-name">&emsp;<span>ユニバ代</span></th>
                 <td data-label="ユーザ名" class="txt"><span  class="user">まさし</span></td>
                 <td data-label="金額" class="price"><span>28,000</span>円</td>

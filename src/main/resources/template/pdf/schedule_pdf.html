@@ -10,43 +10,7 @@
 <link rel="stylesheet" href="../../static/css/schedule/display_schedule.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
- 	  <div class="container">
-        <a class="navbar-brand" th:href="">
-        <span class="sample">tabee</span>
-        </a>
-         <!-- ハンバーガーメニュー -->
-    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
-    		aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          	Menu<span class="navbar-toggler-icon"></span>
-    	</button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        	<!-- 右寄せにするために記述 -->
-        	<ul class="navbar-nav mr-auto">
-        	</ul>
-        	
-            <ul class="navbar-nav">
-            	<li class="nav-item active">
-                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
-                </li>
-                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                   		<a class="dropdown-item" th:href="">マイページトップ</a>
-                    	<a class="dropdown-item" th:href="">各種設定</a>
-                    	<a class="dropdown-item" th:href="">FAQ</a>
-                    	<a class="dropdown-item" th:href="">お問い合わせ</a>
-                    </div>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="login.html" th:href="">ログアウト</a>
-                </li>
-            </ul>
-        </div>
-      </div>
-        <div class="chat"><a href="../chat/chat.html"><i class="far fa-comment toChat"></i></a></div>
-    </nav>
-    
+
 <!-- スケジュール一覧 -->
 <h1 class="schedule-title">
 	<span>聖地巡り</span><br>
@@ -234,29 +198,10 @@
 				</table>
  			</div>
  		</div>
- 		
-<!-- 地図 --> 	
- 		<input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">地図</label>
- 		<div class="tab-content">
- 		
- 		</div>
- 		
- 		<!-- スケジュール追加 -->
- 		<div class="text-right create-folder">
-             <span data-toggle="popover" data-trigger="hover" data-placement="top">
-                  <a id="fab" href="register_schdule.html">
-                     <i class="fa fa-plus"></i>
-                  </a>
-            </span>
-         </div>
  	</div>
- 	
- 
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ 		
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="../../static/js/main/top.js"></script>   
-<script src="../../static/js/siori/memo.js"></script>
-<script src="../../static/js/schedule/display_schedule.js"></script>
 </body>
 </html>
