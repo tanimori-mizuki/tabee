@@ -7,67 +7,110 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="../../static/css/schedule/display_schedule.css" th:href="@{/css/schedule/display_schedule.css}">
+<link rel="stylesheet" href="../../static/css/schedule/register_schedule.css" th:href="@{/css/schedule/register_schedule.css}">
+<link rel="stylesheet" href="../../static/css/schedule/ditail_schedule.css" th:href="@{/css/schedule/ditail_schedule.css}">
+<link rel="stylesheet" href="../../static/css/siori/siori-info.css" th:href="@{/css/siori/siori-info.css}">
+<link rel="stylesheet" href="../../static/css/main/siori-register.css" th:href="@{/css/main/siori-register.css}">
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-warning mb-3"  th:fragment="menu">
  	  <div class="container">
         <a class="navbar-brand" th:href="">
-        	<i class="fas fa-angle-left"></i>
-        	<span class="sample">戻る</span>
+        <span class="sample">tabee</span>
         </a>
-        <div class="chat-icon">
-        	<span>編集</span>
+         <!-- ハンバーガーメニュー -->
+    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+    		aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          	Menu<span class="navbar-toggler-icon"></span>
+    	</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        	<!-- 右寄せにするために記述 -->
+        	<ul class="navbar-nav mr-auto">
+        	</ul>
+        	
+            <ul class="navbar-nav">
+            	<li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">みんなの思い出</a>
+                </li>
+                 <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   		<a class="dropdown-item" th:href="">マイページトップ</a>
+                    	<a class="dropdown-item" th:href="">各種設定</a>
+                    	<a class="dropdown-item" th:href="">FAQ</a>
+                    	<a class="dropdown-item" th:href="">お問い合わせ</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html" th:href="">ログアウト</a>
+                </li>
+            </ul>
         </div>
       </div>
     </nav>
-    
-    <div class="center">
-    	<div class="schedule">
-    	<span>1日目</span><span>2020年9月4日(金)UTC +9:00</span>
-    		<span>スケジュール</span>
-       		 <table>
+ 	
+ 	 <div class="container">
+        <div class="schedule">
+ 			<table>
   				<tr>
-    				<td class="icon bird">8:50</td>
-    				<td>川崎駅集合</td>
+  					<td colspan="2" class="scheduleItem">&ensp;スケジュール</td>
   				</tr>
   				<tr>
-   					<td class="icon whale">電話番号</td>
-    				<td>000-0000-0000</td>
-  				</tr>
-  				<tr>
-    				<td class="icon crab">URL</td>
-    				<td>URL</td>
-  				</tr>
-  				<tr>
-    				<td class="icon crab">現在地</td>
-    				<td>神奈川県川崎市川崎区日進町</td>
-  				</tr>
-  				<tr>
-    				<td class="icon crab">MAP表示</td>
-  				</tr>
-  				<tr>
-    				<td class="icon crab">アラーム<br>
-    				オフ
-    				</td>
-    				<td class="icon crab">10分前通知<br>
-    				オフ
+    				<th>
+    					<span class="start">13:00</span><br>
+    					<span class="finish">-17:00</span>
+    				</th>
+    				<td class="suchedule-content">
+    					<i class="far fa-star"></i>
+    					<span>観光</span>
     				</td>
   				</tr>
   				<tr>
-    				<td class="icon crab">メモ</td>
+  					<td colspan="2" class="scheduleItem">&ensp;電話番号</td>
   				</tr>
   				<tr>
-    				<td class="icon crab">費用</td>
-    				<td class="icon crab">0円</td>
+  					<td colspan="2"><span>0120-555-555</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">&ensp;URL</td>
+  				</tr>
+  				<tr>
+  					<td colspan="2"><span>https://google.com</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">&ensp;現在地</td>
+  				</tr>
+  				<tr>
+  					<td colspan="2"><span>神奈川県川崎市</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2">現在地図</td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">&ensp;メモ</td>
+  				</tr>
+  				<tr>
+  					<td><span>川崎市観光</span></td>
+  				</tr>
+  				<tr>
+  					<td colspan="2" class="scheduleItem">&ensp;費用</td>
+  				</tr>
+  				<tr>
+  					<td><span>5,000</span>円</td>
   				</tr>
 			</table>
+        </div>
+        <div class="form-group text-center">
+         	<button class="btn btn-outline-primary" type="button">編集</button>
     	</div>
     </div>
-
-
+    
+ 	  
+    
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="../../static/js/main/top.js"></script> 
+<script src="../../static/js/main/top.js"></script>
+<script src="../../static/js/schedule/register_schedule.js"></script>
 </body>
 </html>

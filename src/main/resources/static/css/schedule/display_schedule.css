@@ -1,35 +1,89 @@
-/*�^�u�؂�ւ�*/
-.tab-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-}
-.tab-label,
-.tab-switch:checked~.tab-switch:last-of-type+.tab-label {
-    color: White;
-    background: LightGray;
-    margin-right: 5px;
-    padding: 3px 12px;
-}
-.tab-label{
-    order:-1;
-    border-radius: 25px;
-}
-.tab-content,
-.tab-switch:checked~.tab-content:last-of-type {
-    width: 100%;
-    display: none;
-}
-.tab-switch:checked+.tab-label,
-.tab-label:last-of-type {
-    background: DeepSkyBlue;
-}
-.tab-switch:checked+.tab-label+.tab-content,
-.tab-content:last-of-type {
-    display: block;
+@charset "UTF-8";
+
+.chat{
+	font-size: 30px;
 }
 
-/*�e�[�u��*/
+.toChat{
+	color: white;
+}
+
+h1{
+	text-align: center;
+	font-size: 20px;
+	margin-top: 50px;
+}
+
+.tab-wrap{
+	margin: 50px;
+}
+
+/*スケジュール作成アイコン*/
+#fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #7fdbda;
+    text-align: center;
+    border-radius: 50%;
+    transition: .10s;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);
+}
+
+#fab:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgb(147, 180, 238);
+}
+
+#fab i {
+    color: white;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+.tab-content{
+    text-align: center;
+}
+/*
+.date{
+	padding: 0.5em 1em;
+    margin: 0 auto;
+    color: #2c2c2f;
+    background: #7fdbda;/*背景色
+    width: 30%;
+    position: relative;
+    top: 20px;
+}
+*/
+
+.time-schedule{
+	font-size: 18px;
+	color: #36c2c2;
+	width: 20%;
+}
+
+.finish{
+	font-size: 13px;
+}
+
+.schedule{
+	border: solid 2px #c0c0c0;
+	border-radius: 3px;
+	margin: 20px auto;
+	width: 70%;
+}
+
+td.content{
+	text-align: left;
+	padding: 0 0 0 30px;
+}
+
+img{
+	width: 150px;  /* 横幅を150pxに */
+}
+
+/*テーブルCSS*/
 table{
   border-collapse: collapse;
   border-spacing: 0;
@@ -51,6 +105,10 @@ table th,table td{
   padding: 15px 0;
 }
 
+table td.img_file{
+	padding: 0 0;
+}
+
 table td.icon{
   background-size: 35px;
   background-position: left 5px center;
@@ -69,9 +127,44 @@ table td.icon.whale{
 table td.icon.crab{
   background-image: url(icon-crab.png)
 }
-.tab-order .tab-label:last-of-type {
-    order: -2;
+
+.schedule-days{
+	background-color: #efefef;
+	text-align: left;
+	width: 200px;
+	padding:0 15px 0 0;
 }
-.tab-switch {
-    display: none;
+
+.schedule-day{
+	background-color: #efefef;
+	text-align: center;
+	padding:0 200px 0 0;
+	width: 100%;
+}
+
+
+@media screen and (max-width: 400px) {
+	h1{
+		margin-top: 50px;
+		margin-bottom: 30px;
+	}
+	
+	.tab-wrap{
+		margin: 0 0 30px 0;
+	}
+	
+	.date{
+    	width: 80%;
+    	font-size: 12px;
+	}
+	
+	.schedule{
+		width: 95%;
+	}
+	
+	img{
+		width: 80px;  /* 横幅を80pxに */
+	}
+
+	
 }

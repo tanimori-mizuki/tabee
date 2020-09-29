@@ -26,7 +26,7 @@ table tr {
 }
 
 table tbody tr:hover{
-  background-color: #fffae9;
+  background-color: #e4f8f8;
 }
 
 table th,
@@ -41,7 +41,7 @@ table thead th {
 }
 
 table thead tr{
-  background-color: #feb443;
+  background-color: #7fdbda;
   color:#fff;
 }
 
@@ -51,7 +51,7 @@ table tbody th {
 }
 
 tr.userName{
-	background-color: #d9d9d9;
+	background-color: #eaeaea;
 }
 
 .done{

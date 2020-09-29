@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+h1{
+	text-align: center;
+	font-size: 20px;
+	margin-top: 50px;
+}
+
+.tab-wrap{
+	width: 60%;
+	margin-top: 70px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.schedule-creation{
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+    border: solid 2px #c0c0c0;/*点線*/
+}
+
+.scheduleItem{
+	text-align: left;
+	background-color: #7fdbda;
+	padding: 0 0;
+	color: white;
+}
+
+ul.horizontal-list{
+	margin: 0 0;
+}
+
+.horizontal-list{
+	list-style: none;
+	overflow: hidden;
+}
+
+.horizontal-list li{
+	text-decoration: none;
+	float: left;
+	padding: 5px;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: left;
+  width: 25%;
+  padding: 15px 0 10px 30px;
+}
+
+.input-field{
+}
+
+/*カレンダー・時刻の表示非表示*/
+#departure{
+	display:none;
+}
+#finishTime{
+	display:none;
+}
+#startTime{
+	display:none;
+}
+
+/*画像挿入*/
+.filelabel {
+   display: inline-block;     /* インラインブロック化 */
+}
+
+#filesend {
+   display: none;  /* 本来のファイル選択フォームは非表示に */
+}
+
+.img_btn{
+	text-align: center;
+}
+
+/*チェックボックス*/
+.ECM_CheckboxInput {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ECM_CheckboxInput-Input {
+  margin: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.ECM_CheckboxInput:hover{
+  background: rgba(0,0,0,.05) !important;
+}
+
+.ECM_CheckboxInput-Input:focus + .ECM_CheckboxInput-DummyInput{
+  border: dashed 2px #7fdbda;
+}
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput {
+  background: #7fdbda;
+}
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 30%;
+  height: 4px;
+  border-radius: 2px;
+  transform: translate(-6px, 5px) rotateZ(-135deg);
+  transform-origin: 2px 2px;
+  background: #FFFFFF;
+}
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 25%;
+  left: 65%;
+  width: 76%;
+  height: 4px;
+  border-radius: 2px;
+  transform: translate(-6px, 5px) rotateZ(-45deg);
+  transform-origin: 2px 2px;
+  background: #FFFFFF;
+}
+.ECM_CheckboxInput-DummyInput {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: solid 2px transparent;
+  background: rgba(0,0,0, .1);
+  border-radius: 4px;
+}
+.ECM_CheckboxInput-LabelText {
+  margin-left: 12px;
+  display: block;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 400px) {
+  table{width: 100%;}
+
+.tab-wrap{
+	width: 100%;
+	margin-top: 70px;
+	margin-bottom: 50px;
+}
+
+
+table th{
+	width: 70px;
+}
+
+.schedule-creation{
+	width: 95%;
+}
+}

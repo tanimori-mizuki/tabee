@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+.information{
+		width: 300px;
+	}
+
+.toggle-switch{
+	text-align: right;
+}
+
+.cost-title{
+	height: 70px;
+}
+
+#title{
+	width: 300px;
+	margin: 0 auto;
+}
+
+.form-group{
+	margin-top: 2rem;
+}
+
+/*チェックボタン*/
+.person-check{
+	text-align: right;
+}
+
+.input-money{
+	 display: none;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+.checkbox02 {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0px 25px;
+    position: relative;
+    width: auto;
+}
+.checkbox02::before {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 6px;
+    margin-top: -5px;
+    position: absolute;
+    top: 60%;
+    width: 16px;
+}
+.checkbox02::after {
+    border-right: 6px solid #00cccc;
+    border-bottom: 3px solid #00cccc;
+    content: '';
+    display: block;
+    height: 20px;
+    left: 12px;
+    margin-top: -13px;
+    opacity: 0;
+    position: absolute;
+    top: 60%;
+    transform: rotate(45deg);
+    width: 9px;
+}
+input[type=checkbox]:checked + .checkbox02::before {
+    border-color: #666;
+}
+input[type=checkbox]:checked + .checkbox02::after {
+    opacity: 1;
+}
+
+@media screen and (max-width: 400px) {
+	.information{
+		width: 200px;
+	}
+}
