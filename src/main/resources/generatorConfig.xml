@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- myBatis使用に必要となるファイルを自動生成 -->
+
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+  
+ <generatorConfiguration>
+	<!-- MySQLに接続するConnectorJのjarファイルを指定 -->
+	<classPathEntry location="C:\Users\mysql-connector-java-8.0.22\mysql-connector-java-8.0.22.jar"/>
+	
+	<!-- DB接続先URL指定 -->
+	<context id="MySQL" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" 
+						connectionURL="jdbc:mysql://localhost:3306/tabee?serverTimezone=JST"
+						userId="root"
+						password="your_own_password">
+		</jdbcConnection>
+		
+		<!-- 自動生成ファイルの格納先ファイルパス指定 -->
+		<!-- 【作成ファイル１】Domainクラス : テーブルカラムを読み込んでフィールド変数・getter/setter設定 -->
+		<!-- 【作成ファイル２】Exampleクラス : Mapper引数として与えることで、where句のように働く -->
+		<javaModelGenerator targetPackage="com.example.domain" targetProject="src/main/java">
+			<!-- enableSubPackagesが実際のパッケージの計算方法を制御 -->
+			<!-- trueの場合、計算されたパッケージは、targetPackageに加えて、テーブルのカタログとスキーマ（存在する場合）のサブパッケージになる。-->
+			<property name="enableSubPackages" value="true"/>
+			
+			<!-- このプロパティは、Ibatorがデータベースから返された文字フィールドから空白を削除するコードを追加するかどうかを選択するために使用されます。-->
+			<!-- これは、データベースがVARCHARフィールドではなくCHARフィールドにデータを格納している場合に役立ちます。-->
+			<!-- trueの場合、Ibatorは文字フィールドをトリミングするコードを挿入します。 -->
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+		
+		<!-- 【作成ファイル３】XMLファイル -->
+		<!-- DBから取得した値をどのドメインに格納するかマッピング定義する -->
+		<!-- Javaから渡された値をどのように解釈するかマッピング定義する -->
+		<!-- Mapperインターフェースに宣言されたメソッドに対応するSQLを記述する -->
+		<!-- myBatisGeneratorで自動生成すると、基本的なSQLはデフォルトで書いておいてくれる -->
+		<sqlMapGenerator targetPackage="com.example.mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		
+		<!-- 【作成ファイル４】Mapperインターフェース -->
+		<!-- 前述したXML上のSQLを呼び出す -->
+		<!-- myBatisGeneratorで自動生成すると、insertやdeleteなど基本的な機能はデフォルトで書いておいてくれる -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+	
+		<!-- DB名とテーブル名 -->
+		<table schema="tabee" tableName="users" />
+		<table schema="tabee" tableName="scraps" />
+		<table schema="tabee" tableName="images" />
+		<table schema="tabee" tableName="tabs" />
+		<table schema="tabee" tableName="tab_contents" />
+		<table schema="tabee" tableName="categories" />
+		<table schema="tabee" tableName="category_contents" />
+		<table schema="tabee" tableName="check_items" />
+		<table schema="tabee" tableName="shioris" />
+		<table schema="tabee" tableName="destinations" />
+		<table schema="tabee" tableName="members" />
+		<table schema="tabee" tableName="memos" />
+		<table schema="tabee" tableName="memo_images" />
+		<table schema="tabee" tableName="schedules" />
+		<table schema="tabee" tableName="schedule_icons" />
+		<table schema="tabee" tableName="messages" />
+		<table schema="tabee" tableName="reads" />
+		<table schema="tabee" tableName="contacts" />
+		<table schema="tabee" tableName="memories" />
+		<table schema="tabee" tableName="had_hashtags" />
+		<table schema="tabee" tableName="memory_images" />
+		<table schema="tabee" tableName="sche_for_posts" />
+		<table schema="tabee" tableName="favorites" />
+		<table schema="tabee" tableName="bookmarks" />
+		<table schema="tabee" tableName="costs" />
+		<table schema="tabee" tableName="split_members" />
+		<table schema="tabee" tableName="individual_costs" />
+		<table schema="tabee" tableName="had_cost_categories" />
+		<table schema="tabee" tableName="cost_categories" />
+	
+	</context>
+</generatorConfiguration>

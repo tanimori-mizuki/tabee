@@ -82,7 +82,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-			<!-- MyBatis Generator -->
 			<plugin>        
           		<groupId>org.mybatis.generator</groupId>
           		<artifactId>mybatis-generator-maven-plugin</artifactId>
