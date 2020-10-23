@@ -18,4 +18,7 @@ public class RegisterUserForm {
 	private String email;
 	/** パスワード */
 	private String password;
+	/** 確認用パスワード */
+	private String confirmPassword;
+
 }

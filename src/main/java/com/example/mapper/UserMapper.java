@@ -17,6 +17,15 @@ public interface UserMapper {
 	 * 
 	 */
 	public Integer insert(User user);
+	
+	
+	/**
+	 * メールアドレスで1件検索します.
+	 * 
+	 * @param email メールアドレス
+	 * @return ユーザー情報
+	 */
+	public User findByEmail(String email);
 
 	
 	int countByExample(UserExample example);
