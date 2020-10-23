@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.example.domain.User">
+  <resultMap id="userResultMap" type="com.example.domain.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -93,11 +93,28 @@
   </select>
   
   <!-- 1件検索 -->
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="userResultMap">
     select 
     <include refid="Base_Column_List" />
     from users
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- メールアドレスで1件検索 -->
+  <select id="findByEmail" resultMap="userResultMap">
+  		SELECT 
+  		id,
+  		name,
+  		email,
+  		password,
+  		created_at,
+  		updated_at,
+  		image_path,
+  		deleted
+  		FROM
+  		users
+  		WHERE email = #{email}
+  		AND deleted = '0'
   </select>
   
   <!-- 1件削除 -->
@@ -116,10 +133,10 @@
   
   <!-- インサート -->
   <insert id="insert" parameterType="com.example.domain.User">
-    insert into users (id, name, email, 
-      password, created_at, updated_at, 
-      image_path, deleted)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+    INSERT INTO users 
+    (id, name, email, password, created_at, updated_at, image_path, deleted)
+    VALUES 
+    (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
       #{imagePath,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT})
   </insert>
