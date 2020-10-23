@@ -3,4 +3,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/powerpro?serverTimezone=JST
     username: root
-    password: your_own_password
+    password: mysqlmysql
+    
+    
+# ローカル環境での起動ポート番号の設定
+server:
+  port: 8080
+  
+  
+# 環境変数(デプロイ時に変更)
+# ローカル環境のOrigin
+# 設定クラスにてこのオリジンのCORSを許可する
+environments:
+  originUrl: http://localhost:8888
