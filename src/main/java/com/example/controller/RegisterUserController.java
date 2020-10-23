@@ -27,6 +27,4 @@ public class RegisterUserController {
 	public User registerUser(@RequestBody RegisterUserForm form) {
 		return registerUserSevice.registerUser(form);
 	}
-	
-
 }

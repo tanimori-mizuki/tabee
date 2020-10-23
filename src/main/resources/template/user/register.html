@@ -28,28 +28,28 @@
 						<small> 気ままにブーンと旅に出よう。</small>
 					</div>
 					<br>
-					<form>
+					<form th:action="@{/user/register}" th:object="${registerUserForm}">
 						<div class="form-label-group">
 							<input type="text" id="inputUserName" class="form-control"
-								placeholder="ユーザー名" required autofocus> <label
+								placeholder="ユーザー名" th:field="*{name}" required autofocus> <label
 								for="inputUserName">ユーザー名</label>
 						</div>
 						<div class="form-label-group">
 							<input type="email" id="inputEmail" class="form-control"
-								placeholder="メールアドレス" required autofocus> <label
+								placeholder="メールアドレス" th:field="*{email}" required autofocus> <label
 								for="inputEmail">メールアドレス</label>
 						</div>
 
 						<div class="form-label-group">
 							<input type="password" id="inputPassword" class="form-control"
-								placeholder="パスワード" required> <span class="field-icon">
+								placeholder="パスワード" th:field="*{password}" required> <span class="field-icon">
 								<i class="mdi mdi-eye toggle-password" id="eye"></i>
 							</span> <label for="inputPassword">パスワード</label>
 						</div>
 
 						<div class="form-label-group">
 							<input type="password" id="confirmPassword" class="form-control"
-								placeholder="確認パスワード" required autofocus> <label
+								placeholder="確認パスワード" th:field="*{confirmPassword}" required autofocus> <label
 								for="confirmPassword">確認パスワード</label>
 						</div>
 
