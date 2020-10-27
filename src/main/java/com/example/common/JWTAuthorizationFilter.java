@@ -31,74 +31,76 @@ import io.jsonwebtoken.Jwts;
  * 
  * ヘッダにあるtokenを取り出し、検証.
  * 
+ * ※現段階では使用しない.
+ * 
  * @author masashi.nose
  *
  */
-public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+public class JWTAuthorizationFilter {
 
-	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
-		super(authenticationManager);
-	}
-	
-	@Override
-	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException{
-		String header = req.getHeader(HEADER_STRING);
-//		Enumeration<String> headers = req.getHeaderNames();
-		
-		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
-			chain.doFilter(req, res);
-			return;
-		}
-		
-		//AuthorizationヘッダのBearer Prefixである場合
-		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
-		
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		chain.doFilter(req, res);
-		
-		
-	}
-	
-	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest req) throws ExpiredJwtException{
-		String token = req.getHeader(HEADER_STRING);
-		
-		if(token != null) {
-			try {
-				String user = Jwts.parser().setSigningKey(SECRET_KEY.getBytes())
-								.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody()
-								.getSubject();
-				
-				Claims claims = Jwts.parser().setSigningKey(SECRET_KEY.getBytes())
-								.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody();
-				
-				List grants = (List)claims.get("role");
-				
-				String[] roleArray = new String[grants.size()];
-				for(int i = 0; i < grants.size(); i++) {
-					LinkedHashMap grant = (LinkedHashMap)grants.get(i);
-					String roleStr = (String) grant.get("authority");
-					roleArray[i] = roleStr;
-					
-					
-				}
-				
-				if(user != null) {
-					List<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(roleArray);
-					return new UsernamePasswordAuthenticationToken(user, null, roles);
-					
-				}
-				
-				return null;
-								
-			}catch (ExpiredJwtException e) {
-				logger.error("Expired JWT token");
-				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
-			}
-			
-			
-		}
-		return null;
-	}
+//	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
+//		super(authenticationManager);
+//	}
+//	
+//	@Override
+//	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException{
+//		String header = req.getHeader(HEADER_STRING);
+////		Enumeration<String> headers = req.getHeaderNames();
+//		
+//		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
+//			chain.doFilter(req, res);
+//			return;
+//		}
+//		
+//		//AuthorizationヘッダのBearer Prefixである場合
+//		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+//		
+//		SecurityContextHolder.getContext().setAuthentication(authentication);
+//		chain.doFilter(req, res);
+//		
+//		
+//	}
+//	
+//	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest req) throws ExpiredJwtException{
+//		String token = req.getHeader(HEADER_STRING);
+//		
+//		if(token != null) {
+//			try {
+//				String user = Jwts.parser().setSigningKey(SECRET_KEY.getBytes())
+//								.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody()
+//								.getSubject();
+//				
+//				Claims claims = Jwts.parser().setSigningKey(SECRET_KEY.getBytes())
+//								.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody();
+//				
+//				List grants = (List)claims.get("role");
+//				
+//				String[] roleArray = new String[grants.size()];
+//				for(int i = 0; i < grants.size(); i++) {
+//					LinkedHashMap grant = (LinkedHashMap)grants.get(i);
+//					String roleStr = (String) grant.get("authority");
+//					roleArray[i] = roleStr;
+//					
+//					
+//				}
+//				
+//				if(user != null) {
+//					List<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(roleArray);
+//					return new UsernamePasswordAuthenticationToken(user, null, roles);
+//					
+//				}
+//				
+//				return null;
+//								
+//			}catch (ExpiredJwtException e) {
+//				logger.error("Expired JWT token");
+//				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
+//			}
+//			
+//			
+//		}
+//		return null;
+//	}
 	
 	
 }

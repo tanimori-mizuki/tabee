@@ -39,67 +39,69 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * 
  * login用のパスでアクセスされた際に、IDとパスワードを取り出しtokenを発行、responseヘッダにセット.
  * 
+ * ※現段階では使用しない.
+ * 
  * @author masashi.nose
  *
  */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
-	private static final Logger lOGGER = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
-	
-	private AuthenticationManager authenticationManager;
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	//コンストラクタ
-	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.authenticationManager = authenticationManager;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-		
-		//ログイン用のパスを変更
-		setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(LOGIN_URL, "POST"));
-		
-		//ログイン用のID・PWのパラメータ名を変更
-		setUsernameParameter(LOGIN_ID);
-		setPasswordParameter(PASSWORD);
-	}
-	
-	/**
-	 * 認証処理
-	 * 
-	 * @param req リクエスト
-	 * @param res　レスポンス
-	 * @return　認証情報
-	 * @throws AuthenticationException
-	 */
-	@Override
-	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException{
-		try {
-			//requestパラメータからユーザー情報を読み取る
-			LoginForm loginForm = new ObjectMapper().readValue(req.getInputStream(), LoginForm.class);
-			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword(), new ArrayList<>()));
-			
-			
-		}catch (IOException e) {
-			lOGGER.error(e.getMessage());
-			throw new RuntimeException(e);
-		}
-		
-		
-	}
-	
-	/**
-	 * 認証に成功した場合の処理
-	 *
-	 */
-	@Override
-	protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException, ServletException{
-		
-		//loginIdからtokenを設定してヘッダにセットする.
-		String token = Jwts.builder().setSubject(((User)auth.getPrincipal()).getUsername())
-						.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-						.signWith(SignatureAlgorithm.HS512, SECRET_KEY.getBytes()).claim("role", auth.getAuthorities()).compact();
-		
-		res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-		
-		
-	}
+//	private static final Logger lOGGER = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
+//	
+//	private AuthenticationManager authenticationManager;
+//	private BCryptPasswordEncoder bCryptPasswordEncoder;
+//	
+//	//コンストラクタ
+//	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, BCryptPasswordEncoder bCryptPasswordEncoder) {
+//		this.authenticationManager = authenticationManager;
+//		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+//		
+//		//ログイン用のパスを変更
+//		setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(LOGIN_URL, "POST"));
+//		
+//		//ログイン用のID・PWのパラメータ名を変更
+//		setUsernameParameter(LOGIN_ID);
+//		setPasswordParameter(PASSWORD);
+//	}
+//	
+//	/**
+//	 * 認証処理
+//	 * 
+//	 * @param req リクエスト
+//	 * @param res　レスポンス
+//	 * @return　認証情報
+//	 * @throws AuthenticationException
+//	 */
+//	@Override
+//	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException{
+//		try {
+//			//requestパラメータからユーザー情報を読み取る
+//			LoginForm loginForm = new ObjectMapper().readValue(req.getInputStream(), LoginForm.class);
+//			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword(), new ArrayList<>()));
+//			
+//			
+//		}catch (IOException e) {
+//			lOGGER.error(e.getMessage());
+//			throw new RuntimeException(e);
+//		}
+//		
+//		
+//	}
+//	
+//	/**
+//	 * 認証に成功した場合の処理
+//	 *
+//	 */
+//	@Override
+//	protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException, ServletException{
+//		
+//		//loginIdからtokenを設定してヘッダにセットする.
+//		String token = Jwts.builder().setSubject(((User)auth.getPrincipal()).getUsername())
+//						.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+//						.signWith(SignatureAlgorithm.HS512, SECRET_KEY.getBytes()).claim("role", auth.getAuthorities()).compact();
+//		
+//		res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+//		
+//		
+//	}
 }
