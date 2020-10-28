@@ -1,7 +1,7 @@
 package com.example.mapper;
 
 import com.example.domain.CategoryContent;
-import com.example.example.CategoryContentsExample;
+import com.example.example.CategoryContentExample;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface CategoryContentsMapper {
+public interface CategoryContentMapper {
     
-	int countByExample(CategoryContentsExample example);
+	int countByExample(CategoryContentExample example);
 
-    int deleteByExample(CategoryContentsExample example);
+    int deleteByExample(CategoryContentExample example);
 
     int deleteByPrimaryKey(Integer id);
 
@@ -21,13 +21,13 @@ public interface CategoryContentsMapper {
 
     int insertSelective(CategoryContent record);
 
-    List<CategoryContent> selectByExample(CategoryContentsExample example);
+    List<CategoryContent> selectByExample(CategoryContentExample example);
 
     CategoryContent selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") CategoryContent record, @Param("example") CategoryContentsExample example);
+    int updateByExampleSelective(@Param("record") CategoryContent record, @Param("example") CategoryContentExample example);
 
-    int updateByExample(@Param("record") CategoryContent record, @Param("example") CategoryContentsExample example);
+    int updateByExample(@Param("record") CategoryContent record, @Param("example") CategoryContentExample example);
 
     int updateByPrimaryKeySelective(CategoryContent record);
 

@@ -3,7 +3,7 @@ package com.example.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryContentsExample {
+public class CategoryContentExample {
    
     protected String orderByClause;
 
@@ -11,7 +11,7 @@ public class CategoryContentsExample {
 
     protected List<Criteria> oredCriteria;
    
-    public CategoryContentsExample() {
+    public CategoryContentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
     
