@@ -1,0 +1,46 @@
+/*費用カテゴリーテーブルへの初期データ*/
+insert into tabee.cost_categories (cost_category_name) values ('カテゴリーなし');
+insert into tabee.cost_categories (cost_category_name) values ('交通費');
+insert into tabee.cost_categories (cost_category_name) values ('食費');
+insert into tabee.cost_categories (cost_category_name) values ('宿泊費');
+insert into tabee.cost_categories (cost_category_name) values ('娯楽');
+insert into tabee.cost_categories (cost_category_name) values ('その他');
+
+/*カテゴリーコンテンツテーブルへの初期データ*/
+insert into category_contents (category_name) values ('貴重品');
+insert into category_contents (category_name) values ('衣類');
+insert into category_contents (category_name) values ('交通');
+insert into category_contents (category_name) values ('食料品');
+insert into category_contents (category_name) values ('その他');
+insert into category_contents (category_name) values ('会社');
+insert into category_contents (category_name) values ('家族');
+insert into category_contents (category_name) values ('プライベート');
+
+/*タブコンテンツテーブルへの初期データ*/
+insert into tabee.tab_contents (tab_name) values ('持ち物');
+insert into tabee.tab_contents (tab_name) values ('お土産');
+
+
+/*ハッシュタグテーブル初期へのデータ*/
+insert into tabee.hashtags (name) values ('家族旅行');
+insert into tabee.hashtags (name) values ('GoToトラベル');
+insert into tabee.hashtags (name) values ('社員旅行');
+insert into tabee.hashtags (name) values ('観光');
+insert into tabee.hashtags (name) values ('旅');
+
+
+
+/*ユーザサンプルデータ*/
+insert into tabee.users (name, email, password, created_at, updated_at, image_path) values ('佐藤タビオ', 'tabio@mail.com', 'password', '2020-10-10 15:00:00', '2020-10-12 14:00:00', 'image');
+insert into tabee.users (name, email, password, created_at, updated_at, image_path) values ('鈴木タビコ', 'tabiko@mail.com', 'password', '2020-10-15 15:00:00', '2020-10-16 14:00:00', 'image');
+
+/*しおりサンプルデータ*/
+insert into tabee.shioris (title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('旅のしおり2', '2020-10-25', '2020-10-26', 'image2', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
+
+/*スケジュールサンプルデータ*/
+insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, cost, creator_id, created_at, updater_id, updated_at, version) values (1, 'お昼ご飯', '12:00:00', '13:00:00', '2020-10-17', '現地集合です。', '1200', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1);
+insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, cost, creator_id, created_at, updater_id, updated_at, version) values (1, '夕ご飯', '18:00:00', '19:00:00', '2020-10-17', '餃子です。', '1000', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
+
+/*メモサンプルデータ*/
+insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ', 1, '0', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1);
+insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ2', 1, '0', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
