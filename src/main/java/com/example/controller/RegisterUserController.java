@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.domain.User;
+//import com.example.domain.User;
 import com.example.form.RegisterUserForm;
 import com.example.service.RegisterUserSevice;
 
@@ -20,11 +20,12 @@ import com.example.service.RegisterUserSevice;
 @RequestMapping("/user")
 public class RegisterUserController {
 	
-	@Autowired
-	private RegisterUserSevice registerUserSevice;
-	
-	@PostMapping("/register")
-	public User registerUser(@RequestBody RegisterUserForm form) {
-		return registerUserSevice.registerUser(form);
-	}
+//	@Autowired
+//	private RegisterUserSevice registerUserSevice;
+//	
+//	@PostMapping("/register")
+//	public User registerUser(@RequestBody RegisterUserForm form) {
+//		System.out.println("called");
+//		return registerUserSevice.registerUser(form);
+//	}
 }

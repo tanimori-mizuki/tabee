@@ -1,14 +1,21 @@
 package com.example.common;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -41,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/img/**", "/lib/**", "/fonts/**");
+		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 	}
 
 	/**
@@ -54,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 				http
 					.cors()	//cors有効化の設定
-					.configurationSource(corsConfigurationSourceForLogin()) 
+					.configurationSource(corsConfigurationSource()) 
 				
 				.and()	//認可に関する設定
 					.authorizeRequests().antMatchers("/**").permitAll()
@@ -62,12 +70,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				
 				.and()	//ログインに関する設定
 					.formLogin()	
-					.loginPage("/user_login")	// ログイン画面に遷移させるパス(ログイン認証が必要なパスを指定し、かつログインされていないとこのパスに遷移される)
-					.loginProcessingUrl("/login")	// ログイン可否判定するパス
-					.failureUrl("/user_login?error=true")	// ログイン失敗時に遷移させるパス
-					.defaultSuccessUrl("/", false)	// 第1引数:デフォルトでログイン成功時に遷移させるパス / 第2引数: true :認証後常に第1引数のパスに遷移 | false:認証されてなくて一度ログイン画面に飛ばされてもログインしたら指定したURLに遷移
-					.usernameParameter("email")	// 認証時に使用するユーザ名のリクエストパラメータ名
-					.passwordParameter("password")	// 認証時に使用するパスワードのリクエストパラメータ名
+//					.loginPage("/user_login")	// ログイン画面に遷移させるパス(ログイン認証が必要なパスを指定し、かつログインされていないとこのパスに遷移される)
+//					.loginProcessingUrl("/login")	// ログイン可否判定するパス
+//					.failureUrl("/user_login?error=true")	// ログイン失敗時に遷移させるパス
+//					.defaultSuccessUrl("/", false)	// 第1引数:デフォルトでログイン成功時に遷移させるパス / 第2引数: true :認証後常に第1引数のパスに遷移 | false:認証されてなくて一度ログイン画面に飛ばされてもログインしたら指定したURLに遷移
+//					.usernameParameter("email")	// 認証時に使用するユーザ名のリクエストパラメータ名
+//					.passwordParameter("password")	// 認証時に使用するパスワードのリクエストパラメータ名
 				
 				.and()	// ログアウトに関する設定
 					.logout()
@@ -75,6 +83,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.logoutSuccessUrl("/user_login")	// ログアウト後に遷移させるパス(ここではログイン画面を設定)
 					.deleteCookies("JSESSIONID")	// ログアウト後、Cookieに保存されているセッションIDを削除
 					.invalidateHttpSession(true);	// true:ログアウト後、セッションを無効にする false:セッションを無効にしない
+					
+				http
+				.csrf().disable()
+				.authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()//allow CORS option calls
+				.anyRequest().authenticated();
+
+				http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 	}
 
@@ -83,17 +99,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * 
 	 * @return
 	 */
-	private CorsConfigurationSource corsConfigurationSourceForLogin() {
+	@Bean
+	private CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		
+		corsConfiguration.setAllowCredentials(true);
 		corsConfiguration.addAllowedHeader(CorsConfiguration.ALL); // HEADERの制限
 		corsConfiguration.addAllowedMethod(CorsConfiguration.ALL); // メソッドの制限
 		corsConfiguration.addAllowedOrigin("http://localhost:8888/ROOT"); // オリジンの制限
 		corsConfiguration.addAllowedOrigin(envConfig.getOriginUrl() + "/**");
+		System.out.println(corsConfiguration);
+		
+		List<String> exposedHeaderList = new ArrayList<>();
+		exposedHeaderList.add("Authorization");
+		corsConfiguration.setExposedHeaders(exposedHeaderList); // レスポンスヘッダへのアクセス制限
+		corsConfiguration.getAllowedHeaders();
+		
 
 		UrlBasedCorsConfigurationSource corsSource = new UrlBasedCorsConfigurationSource();
 		corsSource.registerCorsConfiguration("/**", corsConfiguration); // 第1引数：適用されるパス 第2引数：制限内容
+	
 		return corsSource;
 	}
+	
+
 
 	/**
 	 * 「認証」に関する設定. 
