@@ -1,11 +1,13 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.example.domain.User;
 //import com.example.domain.User;
 import com.example.form.RegisterUserForm;
 import com.example.service.RegisterUserSevice;
@@ -16,16 +18,17 @@ import com.example.service.RegisterUserSevice;
  * @author masashi.nose
  *
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class RegisterUserController {
 	
-//	@Autowired
-//	private RegisterUserSevice registerUserSevice;
-//	
-//	@PostMapping("/register")
-//	public User registerUser(@RequestBody RegisterUserForm form) {
-//		System.out.println("called");
-//		return registerUserSevice.registerUser(form);
-//	}
+	@Autowired
+	private RegisterUserSevice registerUserSevice;
+	
+	@CrossOrigin
+	@PostMapping("/register")
+	public User registerUser(@RequestBody RegisterUserForm form) {
+		System.out.println("called");
+		return registerUserSevice.registerUser(form);
+	}
 }
