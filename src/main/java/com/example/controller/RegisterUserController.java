@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.User;
-//import com.example.domain.User;
 import com.example.form.RegisterUserForm;
 import com.example.service.RegisterUserSevice;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * ユーザー情報を登録するコントローラ.
@@ -23,12 +23,29 @@ import com.example.service.RegisterUserSevice;
 public class RegisterUserController {
 	
 	@Autowired
-	private RegisterUserSevice registerUserSevice;
+	private RegisterUserSevice registerUserService;
 	
-	@CrossOrigin
 	@PostMapping("/register")
-	public User registerUser(@RequestBody RegisterUserForm form) {
+	public String registerUser(@RequestBody String body) {
 		System.out.println("called");
-		return registerUserSevice.registerUser(form);
+		System.out.println(body);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			
+			User user = mapper.readValue(body, User.class);
+			System.out.println(user.getId());
+			System.out.println(user.getName());
+			System.out.println(user.getEmail());
+			String jsonData = mapper.writeValueAsString(registerUserService.registerUser(user));
+			System.out.println("json: " + jsonData);
+			return jsonData;
+		
+		}catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return null;
 	}
 }

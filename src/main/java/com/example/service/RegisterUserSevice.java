@@ -31,11 +31,7 @@ public class RegisterUserSevice {
 	 * @param form フォーム
 	 * @return 登録ユーザー情報
 	 */
-	public User registerUser(RegisterUserForm form) {
-		User user = new User();
-		user.setName(form.getName());
-		user.setEmail(form.getEmail());
-		user.setPassword(form.getPassword());
+	public User registerUser(User user) {
 		
 		return user;
 		
