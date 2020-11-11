@@ -98,7 +98,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.Bookmarks" >
+  <insert id="insert" parameterType="com.example.domain.Bookmark" >
     insert into bookmarks (id, memory_id, user_id
       )
     values (#{id,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}

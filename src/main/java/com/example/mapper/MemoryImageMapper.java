@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface MemoryImagesMapper {
+public interface MemoryImageMapper {
 	
     int countByExample(MemoryImageExample example);
 

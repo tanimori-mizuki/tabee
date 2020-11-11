@@ -30,22 +30,24 @@ public class RegisterUserController {
 		System.out.println("called");
 		System.out.println(body);
 		
-		ObjectMapper mapper = new ObjectMapper();
+		return "success!";
 		
-		try {
-			
-			User user = mapper.readValue(body, User.class);
-			System.out.println(user.getId());
-			System.out.println(user.getName());
-			System.out.println(user.getEmail());
-			String jsonData = mapper.writeValueAsString(registerUserService.registerUser(user));
-			System.out.println("json: " + jsonData);
-			return jsonData;
-		
-		}catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		
-		return null;
+//		ObjectMapper mapper = new ObjectMapper();
+//		
+//		try {
+//			
+//			User user = mapper.readValue(body, User.class);
+//			System.out.println(user.getId());
+//			System.out.println(user.getName());
+//			System.out.println(user.getEmail());
+//			String jsonData = mapper.writeValueAsString(registerUserService.registerUser(user));
+//			System.out.println("json: " + jsonData);
+//			return jsonData;
+//		
+//		}catch (Exception e) {
+//			System.err.println(e.getMessage());
+//		}
+//		
+//		return null;
 	}
 }
