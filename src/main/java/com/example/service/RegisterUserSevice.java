@@ -1,6 +1,9 @@
 package com.example.service;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +27,9 @@ public class RegisterUserSevice {
 
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	/**
 	 * ユーザー登録を行います.
@@ -31,23 +37,21 @@ public class RegisterUserSevice {
 	 * @param form フォーム
 	 * @return 登録ユーザー情報
 	 */
-	public User registerUser(User user) {
+	public User registerUser(RegisterUserForm form) {
+		User user = new User();
+		user.setName(form.getName());
+		user.setEmail(form.getEmail());
+		String encodedPassword = passwordEncoder.encode(form.getPassword());
+		user.setPassword(encodedPassword);
+		user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+		user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 		
-		return user;
+		userMapper.insert(user);
 		
-////		user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-////		user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
-////
-////		userMapper.insert(user);
-////		User newUser = userMapper.findByEmail(form.getEmail());
-////		
-////		return newUser;
+		User newUser = userMapper.findByEmail(form.getEmail());
 		
+		return newUser;
 		
-		
-		
-		
-
 	}
 }
 

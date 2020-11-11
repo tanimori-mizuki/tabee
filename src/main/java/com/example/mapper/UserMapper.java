@@ -10,18 +10,33 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
+
+	/**
+	 * ユーザー登録.
+	 * 
+	 * @param user ユーザー情報
+	 * @return 
+	 */
+	public int insert(User user);
 	
-    int countByExample(UserExample example);
+	/**
+	 * 
+	 * メールアドレスで1件検索
+	 * 
+	 * @param email メールアドレス
+	 * @return
+	 */
+	public User findByEmail(String email);
 
-    int deleteByExample(UserExample example);
+	int countByExample(UserExample example);
 
-    int insert(User record);
+	int deleteByExample(UserExample example);
 
-    int insertSelective(User record);
+	int insertSelective(User record);
 
-    List<User> selectByExample(UserExample example);
+	List<User> selectByExample(UserExample example);
 
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+	int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+	int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 }
