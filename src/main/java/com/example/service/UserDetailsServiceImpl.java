@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.example.mapper.UserMapper;
+//import com.example.mapper.UserMapper;
 
 /**
  * 
@@ -20,30 +20,30 @@ import com.example.mapper.UserMapper;
  * @author masashi.nose
  *
  */
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl {
 
-	@Autowired
-	private UserMapper userMapper;
-	
-	/*
-	 * 
-	 * @see org.springframework.security.core.userdetails.UserDetailsService#
-	 * loadUserByUsername(java.lang.String) DBから検索をし、ログイン情報を構成して返す。
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-		com.example.domain.User user = userMapper.findByEmail(email);
-		
-		if(user == null) {
-			throw new UsernameNotFoundException("そのメールアドレスは登録されていません。");
-			
-		}
-		
-		//権限付与
-		Collection<GrantedAuthority> authorityList = new ArrayList<>();
-		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
-		UserDetails loginUser = User.withUsername(user.getEmail()).password(user.getPassword()).authorities(authorityList).build();
-
-		return loginUser;
-	}
+//	@Autowired
+//	private UserMapper userMapper;
+//	
+//	/*
+//	 * 
+//	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+//	 * loadUserByUsername(java.lang.String) DBから検索をし、ログイン情報を構成して返す。
+//	 */
+//	@Override
+//	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+//		com.example.domain.User user = userMapper.findByEmail(email);
+//		
+//		if(user == null) {
+//			throw new UsernameNotFoundException("そのメールアドレスは登録されていません。");
+//			
+//		}
+//		
+//		//権限付与
+//		Collection<GrantedAuthority> authorityList = new ArrayList<>();
+//		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		UserDetails loginUser = User.withUsername(user.getEmail()).password(user.getPassword()).authorities(authorityList).build();
+//
+//		return loginUser;
+//	}
 }

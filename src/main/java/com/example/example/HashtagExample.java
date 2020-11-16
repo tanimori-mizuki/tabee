@@ -3,15 +3,15 @@ package com.example.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteExample {
-    
+public class HashtagExample {
+   
 	protected String orderByClause;
-    
+
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public FavoriteExample() {
+    public HashtagExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -57,6 +57,7 @@ public class FavoriteExample {
         Criteria criteria = new Criteria();
         return criteria;
     }
+
     public void clear() {
         oredCriteria.clear();
         orderByClause = null;
@@ -160,63 +161,73 @@ public class FavoriteExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdIsNull() {
-            addCriterion("memory_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdIsNotNull() {
-            addCriterion("memory_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdEqualTo(Integer value) {
-            addCriterion("memory_id =", value, "memoryId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdNotEqualTo(Integer value) {
-            addCriterion("memory_id <>", value, "memoryId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdGreaterThan(Integer value) {
-            addCriterion("memory_id >", value, "memoryId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("memory_id >=", value, "memoryId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdLessThan(Integer value) {
-            addCriterion("memory_id <", value, "memoryId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdLessThanOrEqualTo(Integer value) {
-            addCriterion("memory_id <=", value, "memoryId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdIn(List<Integer> values) {
-            addCriterion("memory_id in", values, "memoryId");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdNotIn(List<Integer> values) {
-            addCriterion("memory_id not in", values, "memoryId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdBetween(Integer value1, Integer value2) {
-            addCriterion("memory_id between", value1, value2, "memoryId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMemoryIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("memory_id not between", value1, value2, "memoryId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 

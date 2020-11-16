@@ -1,27 +1,20 @@
 package com.example.domain;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import lombok.Data;
 
 @Data
 public class User {
+   
+    private Integer id;
+    private String name;
+    private String email;
+    private String password;
+    private Date createdAt;
+    private Date updatedAt;
+    private String imagePath;
+    private Byte deleted;
 
-	/** ID */
-	private Long id;
-	/** ユーザー名 */
-	private String name;
-	/** メールアドレス */
-	private String email;
-	/** パスワード */
-	private String password;
-	/** 登録日時 */
-	private Timestamp createdAt;
-	/** 更新日時 */
-	private Timestamp updatedAt;
-	/** 画像パス */
-	private String imagePath;
-	/** 削除フラグ */
-	private boolean deleted;
-
+   
 }

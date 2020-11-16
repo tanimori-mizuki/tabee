@@ -1,7 +1,8 @@
 package com.example.mapper;
 
 import com.example.domain.User;
-import com.example.domain.UserExample;
+import com.example.example.UserExample;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,47 +12,31 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
 	/**
-	 * ユーザー情報を登録します.
+	 * ユーザー登録.
 	 * 
 	 * @param user ユーザー情報
-	 * 
+	 * @return 
 	 */
-	public Integer insert(User user);
-	
+	public int insert(User user);
 	
 	/**
-	 * メールアドレスで1件検索します.
+	 * 
+	 * メールアドレスで1件検索
 	 * 
 	 * @param email メールアドレス
-	 * @return ユーザー情報
+	 * @return
 	 */
 	public User findByEmail(String email);
 
-	
 	int countByExample(UserExample example);
 
-    int deleteByExample(UserExample example);
+	int deleteByExample(UserExample example);
 
-    
-    int deleteByPrimaryKey(Long id);
+	int insertSelective(User record);
 
-  
-    int insertSelective(User record);
+	List<User> selectByExample(UserExample example);
 
-  
-    List<User> selectByExample(UserExample example);
+	int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
-  
-    User selectByPrimaryKey(Long id);
-
-  
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-  
-    int updateByPrimaryKeySelective(User record);
- 
-    int updateByPrimaryKey(User record);
+	int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 }
