@@ -104,6 +104,23 @@
   		email = #{email}
   </select>
   
+   <select id="findByEmailAndPassword" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT 
+  		id,
+  		name,
+  		email,
+  		password,
+  		image_path
+  	FROM
+  		users
+  	WHERE
+  		email = #{email}
+  	AND
+  		password = #{password}
+  </select>
+  
+  
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -185,6 +202,7 @@
       </if>
     </trim>
   </insert>
+  
   <select id="countByExample" parameterType="com.example.example.UserExample" resultType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated

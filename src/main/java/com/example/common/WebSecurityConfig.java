@@ -46,8 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .addFilter(new JWTAuthenticationFilter(authenticationManager(), bCryptPasswordEncoder()))
 		    .addFilter(new JWTAuthorizationFilter(authenticationManager())).sessionManagement()
 		    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		    ;
-		
 		 
 		 http	//認可に関する設定
 			.authorizeRequests().antMatchers("/**").permitAll()

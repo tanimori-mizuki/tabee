@@ -27,6 +27,15 @@ public interface UserMapper {
 	 * @return
 	 */
 	public User findByEmail(String email);
+	
+	/**
+	 * メールアドレスとパスワードで1件検索.
+	 * 
+	 * @param email メールアドレス
+	 * @param password　パスワード
+	 * @return　.
+	 */
+	public User findByEmailAndPassword(String email, String password);
 
 	int countByExample(UserExample example);
 

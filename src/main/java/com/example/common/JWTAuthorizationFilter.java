@@ -44,6 +44,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		String header = req.getHeader(HEADER_STRING);
 		Enumeration<String> headers = req.getHeaderNames();
 		
+		System.out.println("ヘッダーの中身");
+		System.out.println(header);
+		System.out.println(headers);
+		
 		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
 			chain.doFilter(req, res);
 			return;
