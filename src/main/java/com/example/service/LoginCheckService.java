@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,25 +23,39 @@ public class LoginCheckService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	/**
 	 * メールアドレスとパスワードが合っているか確認.
 	 * 
-	 * @param email　メールアドレス
-	 * @param password　パスワード
+	 * @param email    メールアドレス
+	 * @param password パスワード
 	 * @return
 	 */
 	public User findByEmailAndPassword(String email, String password) {
-		User user = userMapper.findByEmail(email);
+
+		System.out.println("----------ログインチェックサービス到達----------");
 		
-		if(user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
+		UserExample example = new UserExample();
+		example.createCriteria().andEmailEqualTo(email);
+
+		List<User> userList = userMapper.selectByExample(example);
+		User user = userList.get(0);
+		System.out.println("【メルアドで1件検索結果】" + user);
+
+		if (user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
+			System.out.println("【メルアド＆パスワード一致】");
 			return user;
-		
-		}else {
-			return null;
+			
+		} else {
+			System.out.println("email & passoword NOT matched!");
+			User holdUser = new User();
+			holdUser.setId(0);
+			
+			return holdUser;
 		}
+
 	}
 }

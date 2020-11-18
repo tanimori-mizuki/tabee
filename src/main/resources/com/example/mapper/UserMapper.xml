@@ -71,7 +71,6 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-   
     id, name, email, password, created_at, updated_at, image_path, deleted
   </sql>
   

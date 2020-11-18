@@ -39,7 +39,6 @@ public class CategoryContentExample {
         oredCriteria.add(criteria);
     }
 
-   
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
         oredCriteria.add(criteria);
@@ -54,20 +53,17 @@ public class CategoryContentExample {
         return criteria;
     }
 
-  
     protected Criteria createCriteriaInternal() {
         Criteria criteria = new Criteria();
         return criteria;
     }
 
-   
     public void clear() {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
     }
 
-   
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 
@@ -242,7 +238,7 @@ public class CategoryContentExample {
             super();
         }
     }
- 
+
     public static class Criterion {
         private String condition;
 

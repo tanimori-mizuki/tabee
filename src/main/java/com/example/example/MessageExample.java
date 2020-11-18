@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 public class MessageExample {
-    protected String orderByClause;
+
+	protected String orderByClause;
 
     protected boolean distinct;
 

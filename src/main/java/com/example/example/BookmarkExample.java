@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookmarkExample {
-   
+	
     protected String orderByClause;
 
     protected boolean distinct;

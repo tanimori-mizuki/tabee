@@ -35,6 +35,8 @@ import io.jsonwebtoken.Jwts;
  */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 
+	 private AuthenticationManager authenticationManager;
+	
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
 		super(authenticationManager);
 	}
@@ -61,12 +63,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		
 	}
 	
-	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) throws ExpiredJwtException{
+	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request){
 		String token = request.getHeader(HEADER_STRING);
+		System.out.println(token);
 		
 		if(token != null) {
 			
-			try {
+//			try {
 				
 				//どのような権限を持っているか調べる
 				String user = Jwts.parser()
@@ -75,10 +78,17 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 						.getBody()
 						.getSubject();
 				
+				System.out.println("権限調べた結果");
+				System.out.println(user);
+				
 				Claims claims = Jwts.parser().setSigningKey(SECRET.getBytes())
 						.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody();
 				
+				System.out.println("claims");
+				System.out.println(claims);
+				
 				List grants = (List) claims.get("role");
+				System.out.println(grants);
 				
 				String[] arrayRole = new String[grants.size()];
 				
@@ -96,10 +106,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 				
 				return null;
 				
-			}catch (ExpiredJwtException e) {
-				logger.error("Expired JWT token");
-				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
-			}
+//			}catch (ExpiredJwtException e) {
+//				logger.error("Expired JWT token");
+//				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
+//			}
 		}
 		return null;
 	}
