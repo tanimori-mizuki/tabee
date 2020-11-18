@@ -1,4 +1,11 @@
+-- tabeeデータベースの作成
+CREATE DATABASE IF NOT EXISTS `tabee` DEFAULT CHARACTER SET utf8MB4 ;
+
+-- MySQLでは使用するDATABASEを明確に宣言しなければならない
+USE `tabee` ;
+
 /*ユーザー*/
+DROP TABLE IF EXISTS `tabee`.`users` ;
 CREATE TABLE `users` (
 `id` int NOT NULL AUTO_INCREMENT,
 `name` varchar(255) NOT NULL,
@@ -13,6 +20,7 @@ UNIQUE KEY `id_UNIQUE` (`id`)
 ) ;
 
 /*しおり*/
+DROP TABLE IF EXISTS `tabee`.`shioris` ;
 CREATE TABLE `shioris` (
 `id` int NOT NULL AUTO_INCREMENT,
 `title` varchar(255) NOT NULL,
@@ -28,11 +36,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `shiori_creator_id_idx` (`creator_id`),
 KEY `shiori_updater_id_idx` (`updater_id`),
-CONSTRAINT `shiori_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `shiori_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `shiori_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `shiori_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ;
 
 /*タブコンテンツ*/
+DROP TABLE IF EXISTS `tabee`.`tab_contents` ;
 CREATE TABLE `tab_contents` (
 `id` int NOT NULL AUTO_INCREMENT,
 `tab_name` varchar(255) NOT NULL,
@@ -43,6 +52,7 @@ UNIQUE KEY `tab_name_UNIQUE` (`tab_name`)
 
 
 /*タブ*/
+DROP TABLE IF EXISTS `tabee`.`tabs` ;
 CREATE TABLE `tabs` (
 `id` int NOT NULL AUTO_INCREMENT,
 `tab_content_id` int NOT NULL,
@@ -58,15 +68,14 @@ KEY `updater_id_idx` (`updater_id`),
 KEY `creator_id_idx` (`creator_id`),
 KEY `tab_shiori_id_idx` (`shiori_id`),
 KEY `tab_tab_content_id_idx` (`tab_content_id`),
-CONSTRAINT `tab_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `tab_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `tab_tab_content_id` FOREIGN KEY (`tab_content_id`) REFERENCES `tab_contents` (`id`),
-CONSTRAINT `tab_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `tab_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `tab_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `tab_tab_content_id` FOREIGN KEY (`tab_content_id`) REFERENCES `tab_contents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `tab_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-
 /*カテゴリーコンテンツ*/
+DROP TABLE IF EXISTS `tabee`.`category_contents` ;
 CREATE TABLE `category_contents` (
 `id` int NOT NULL AUTO_INCREMENT,
 `category_name` varchar(255) NOT NULL,
@@ -78,6 +87,7 @@ UNIQUE KEY `category_name_UNIQUE` (`category_name`)
 
 
 /*カテゴリー*/
+DROP TABLE IF EXISTS `tabee`.`categories` ;
 CREATE TABLE `categories` (
 `id` int NOT NULL AUTO_INCREMENT,
 `tab_id` int NOT NULL,
@@ -95,17 +105,14 @@ KEY `updater_id_idx` (`updater_id`),
 KEY `category_creator_id_idx` (`creator_id`),
 KEY `category_updater_id_idx` (`updater_id`),
 KEY `ca_category_content_id_idx` (`category_content_id`),
-CONSTRAINT `ca_category_content_id` FOREIGN KEY (`category_content_id`) REFERENCES `category_contents` (`id`),
-CONSTRAINT `category_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `category_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`),
-CONSTRAINT `tab_id` FOREIGN KEY (`tab_id`) REFERENCES `tabs` (`id`)
+CONSTRAINT `ca_category_content_id` FOREIGN KEY (`category_content_id`) REFERENCES `category_contents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `category_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `category_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `tab_id` FOREIGN KEY (`tab_id`) REFERENCES `tabs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-
-
-
 /*チェックリスト*/
+DROP TABLE IF EXISTS `tabee`.`check_items` ;
 CREATE TABLE `check_items` (
 `id` int NOT NULL AUTO_INCREMENT,
 `check_title` varchar(255) NOT NULL,
@@ -124,13 +131,14 @@ KEY `ch_category_id_idx` (`category_id`),
 KEY `ch_tab_id_idx` (`tab_id`),
 KEY `ch_creator_id_idx` (`creator_id`),
 KEY `ch_updater_id_idx` (`updater_id`),
-CONSTRAINT `ch_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-CONSTRAINT `ch_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `ch_tab_id` FOREIGN KEY (`tab_id`) REFERENCES `tabs` (`id`),
-CONSTRAINT `ch_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `ch_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `ch_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `ch_tab_id` FOREIGN KEY (`tab_id`) REFERENCES `tabs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `ch_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*目的地*/
+DROP TABLE IF EXISTS `tabee`.`destinations` ;
 CREATE TABLE `destinations` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
@@ -145,12 +153,13 @@ UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `destination_shiori_id_idx` (`shiori_id`),
 KEY `des_creator_id_idx` (`creator_id`),
 KEY `des_updater_id_idx` (`updater_id`),
-CONSTRAINT `des_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `des_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`),
-CONSTRAINT `destination_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`)
+CONSTRAINT `des_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `des_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `destination_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*スケジュールアイコン*/
+DROP TABLE IF EXISTS `tabee`.`schedule_icons` ;
 CREATE TABLE `schedule_icons` (
 `id` int NOT NULL AUTO_INCREMENT,
 `image_path` varchar(255) NOT NULL,
@@ -159,6 +168,7 @@ UNIQUE KEY `id_UNIQUE` (`id`)
 ); 
 
 /*スケジュール*/
+DROP TABLE IF EXISTS `tabee`.`schedules` ;
 CREATE TABLE `schedules` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
@@ -184,13 +194,14 @@ KEY `sche_shiori_id_idx` (`shiori_id`),
 KEY `sche_creator_id_idx` (`creator_id`),
 KEY `sche_updater_id_idx` (`updater_id`),
 KEY `sche_icon_id_idx` (`icon_id`),
-CONSTRAINT `sche_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`),
-CONSTRAINT `sche_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `sche_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `sche_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `sche_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `sche_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*スクラップ*/
+DROP TABLE IF EXISTS `tabee`.`scraps` ;
 CREATE TABLE `scraps` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
@@ -205,12 +216,13 @@ UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `scrap_creator_id_idx` (`creator_id`),
 KEY `scrap_updater_id_idx` (`updater_id`),
 KEY `scrap_shiori_id_idx` (`shiori_id`),
-CONSTRAINT `scrap_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `scrap_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `scrap_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `scrap_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `scrap_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `scrap_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*スクラップ保存用画像*/
+DROP TABLE IF EXISTS `tabee`.`images` ;
 CREATE TABLE `images` (
 `id` int NOT NULL AUTO_INCREMENT,
 `scrap_id` int NOT NULL,
@@ -221,11 +233,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `id_idx` (`scrap_id`),
 KEY `image_creator_id_idx` (`creator_id`),
-CONSTRAINT `image_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `image_scrap_id` FOREIGN KEY (`scrap_id`) REFERENCES `scraps` (`id`)
+CONSTRAINT `image_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `image_scrap_id` FOREIGN KEY (`scrap_id`) REFERENCES `scraps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*費用*/
+DROP TABLE IF EXISTS `tabee`.`costs` ;
 CREATE TABLE `costs` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
@@ -245,13 +258,14 @@ KEY `cost_shiori_id_idx` (`shiori_id`),
 KEY `cost_creator_id_idx` (`creator_id`),
 KEY `cost_updater_id_idx` (`updater_id`),
 KEY `cost_payer_id_idx` (`payer_id`),
-CONSTRAINT `cost_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `cost_payer_id` FOREIGN KEY (`payer_id`) REFERENCES `users` (`id`),
-CONSTRAINT `cost_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `cost_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `cost_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `cost_payer_id` FOREIGN KEY (`payer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `cost_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `cost_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*費用カテゴリー*/
+DROP TABLE IF EXISTS `tabee`.`cost_categories` ;
 CREATE TABLE `cost_categories` (
 `id` int NOT NULL AUTO_INCREMENT,
 `cost_category_name` varchar(255) NOT NULL,
@@ -260,6 +274,7 @@ UNIQUE KEY `id_UNIQUE` (`id`)
 ); 
 
 /*費用カテゴリー関連付け*/
+DROP TABLE IF EXISTS `tabee`.`had_cost_categories` ;
 CREATE TABLE `had_cost_categories` (
 `id` int NOT NULL AUTO_INCREMENT,
 `cost_id` int NOT NULL,
@@ -268,11 +283,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `hc_cost_id_idx` (`cost_id`),
 KEY `hc_cost_category_id_idx` (`cost_category_id`),
-CONSTRAINT `hc_cost_category_id` FOREIGN KEY (`cost_category_id`) REFERENCES `cost_categories` (`id`),
-CONSTRAINT `hc_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`)
+CONSTRAINT `hc_cost_category_id` FOREIGN KEY (`cost_category_id`) REFERENCES `cost_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `hc_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*個別費用*/
+DROP TABLE IF EXISTS `tabee`.`individual_costs` ;
 CREATE TABLE `individual_costs` (
 `id` int NOT NULL AUTO_INCREMENT,
 `cost_id` int NOT NULL,
@@ -289,13 +305,14 @@ KEY `indiv_cost_id_idx` (`cost_id`),
 KEY `indiv_user_id_idx` (`individual_user_id`),
 KEY `indiv_creator_id_idx` (`creator_id`),
 KEY `indiv_updater_id_idx` (`updater_id`),
-CONSTRAINT `indiv_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`),
-CONSTRAINT `indiv_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `indiv_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`),
-CONSTRAINT `indiv_user_id` FOREIGN KEY (`individual_user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `indiv_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `indiv_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `indiv_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `indiv_user_id` FOREIGN KEY (`individual_user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*割勘対象*/
+DROP TABLE IF EXISTS `tabee`.`split_members` ;
 CREATE TABLE `split_members` (
 `id` int NOT NULL AUTO_INCREMENT,
 `cost_id` int NOT NULL,
@@ -313,13 +330,14 @@ KEY `split_cost_id_idx` (`cost_id`),
 KEY `split_user_id_idx` (`individual_user_id`),
 KEY `split_creator_id_idx` (`creator_id`),
 KEY `split_updater_id_idx` (`updater_id`),
-CONSTRAINT `split_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`),
-CONSTRAINT `split_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `split_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`),
-CONSTRAINT `split_user_id` FOREIGN KEY (`individual_user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `split_cost_id` FOREIGN KEY (`cost_id`) REFERENCES `costs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `split_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `split_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `split_user_id` FOREIGN KEY (`individual_user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*メモ*/
+DROP TABLE IF EXISTS `tabee`.`memos` ;
 CREATE TABLE `memos` (
 `id` int NOT NULL AUTO_INCREMENT,
 `content` varchar(255) NOT NULL,
@@ -335,12 +353,13 @@ UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `memo_creator_id_idx` (`creator_id`),
 KEY `memo_updater_id_idx` (`updater_id`),
 KEY `memo_shiori_id_idx` (`shiori_id`),
-CONSTRAINT `memo_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `memo_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `memo_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`)
+CONSTRAINT `memo_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `memo_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `memo_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*メモ画像*/
+DROP TABLE IF EXISTS `tabee`.`memo_images` ;
 CREATE TABLE `memo_images` (
 `id` int NOT NULL AUTO_INCREMENT,
 `memo_id` int NOT NULL,
@@ -351,11 +370,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `m_image_memo_id_idx` (`memo_id`),
 KEY `m_image_creator_id_idx` (`creator_id`),
-CONSTRAINT `m_image_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-CONSTRAINT `m_image_memo_id` FOREIGN KEY (`memo_id`) REFERENCES `memos` (`id`)
+CONSTRAINT `m_image_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `m_image_memo_id` FOREIGN KEY (`memo_id`) REFERENCES `memos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*メンバー*/
+DROP TABLE IF EXISTS `tabee`.`members` ;
 CREATE TABLE `members` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
@@ -364,11 +384,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `member_shiori_id_idx` (`shiori_id`),
 KEY `member_user_id_idx` (`user_id`),
-CONSTRAINT `member_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`),
-CONSTRAINT `member_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `member_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `member_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*思い出*/
+DROP TABLE IF EXISTS `tabee`.`memories` ;
 CREATE TABLE `memories` (
 `id` int NOT NULL AUTO_INCREMENT,
 `user_id` int NOT NULL,
@@ -379,10 +400,11 @@ CREATE TABLE `memories` (
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `memory_user_id_idx` (`user_id`),
-CONSTRAINT `memory_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `memory_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*思い出用画像*/
+DROP TABLE IF EXISTS `tabee`.`memory_images` ;
 CREATE TABLE `memory_images` (
 `id` int NOT NULL AUTO_INCREMENT,
 `memory_id` int NOT NULL,
@@ -390,10 +412,11 @@ CREATE TABLE `memory_images` (
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `mi_memory_id_idx` (`memory_id`),
-CONSTRAINT `mi_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`)
+CONSTRAINT `mi_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*投稿用スケジュール*/
+DROP TABLE IF EXISTS `tabee`.`sche_for_posts` ;
 CREATE TABLE `sche_for_posts` (
 `id` int NOT NULL AUTO_INCREMENT,
 `schedule_id` int NOT NULL,
@@ -414,13 +437,13 @@ UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `post_sche_id_idx` (`schedule_id`),
 KEY `post_memory_id_idx` (`memory_id`),
 KEY `post_sche_icon_id_idx` (`icon_id`),
-CONSTRAINT `post_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`),
-CONSTRAINT `post_sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`),
-CONSTRAINT `post_sche_id` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`id`),
-
+CONSTRAINT `post_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `post_sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `post_sche_id` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*ハッシュタグ*/
+DROP TABLE IF EXISTS `tabee`.`hashtags` ;
 CREATE TABLE `hashtags` (
 `id` int NOT NULL AUTO_INCREMENT,
 `name` varchar(255) NOT NULL,
@@ -428,10 +451,11 @@ CREATE TABLE `hashtags` (
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `hashtag_user_id_idx` (`user_id`),
-CONSTRAINT `hashtag_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `hashtag_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*ハッシュタグ関連付け*/
+DROP TABLE IF EXISTS `tabee`.`had_hashtags` ;
 CREATE TABLE `had_hashtags` (
 `id` int NOT NULL AUTO_INCREMENT,
 `memory_id` int NOT NULL,
@@ -440,11 +464,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `hh_memory_id_idx` (`memory_id`),
 KEY `hh_hashtag_id_idx` (`hashtag_id`),
-CONSTRAINT `hh_hashtag_id` FOREIGN KEY (`hashtag_id`) REFERENCES `hashtags` (`id`),
-CONSTRAINT `hh_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`)
+CONSTRAINT `hh_hashtag_id` FOREIGN KEY (`hashtag_id`) REFERENCES `hashtags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `hh_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*チャットメッセージ*/
+DROP TABLE IF EXISTS `tabee`.`messages` ;
 CREATE TABLE `messages` (
 `id` int NOT NULL AUTO_INCREMENT,
 `user_id` int NOT NULL,
@@ -456,11 +481,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `message_user_id_idx` (`user_id`),
 KEY `shiori_id_idx` (`shiori_id`),
-CONSTRAINT `message_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-CONSTRAINT `shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`)
+CONSTRAINT `message_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*既読*/
+DROP TABLE IF EXISTS `tabee`.`reads` ;
 CREATE TABLE `reads` (
 `id` int NOT NULL AUTO_INCREMENT,
 `user_id` int NOT NULL,
@@ -470,11 +496,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `read_user_id_idx` (`user_id`),
 KEY `message_id_idx` (`message_id`),
-CONSTRAINT `read_message_id` FOREIGN KEY (`message_id`) REFERENCES `messages` (`id`),
-CONSTRAINT `read_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `read_message_id` FOREIGN KEY (`message_id`) REFERENCES `messages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `read_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*お気に入り*/
+DROP TABLE IF EXISTS `tabee`.`favorites` ;
 CREATE TABLE `favorites` (
 `id` int NOT NULL AUTO_INCREMENT,
 `memory_id` int NOT NULL,
@@ -483,11 +510,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `fav_memory_id_idx` (`memory_id`),
 KEY `fav_user_id_idx` (`user_id`),
-CONSTRAINT `fav_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`),
-CONSTRAINT `fav_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `fav_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `fav_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 /*ブックマーク*/
+DROP TABLE IF EXISTS `tabee`.`bookmarks` ;
 CREATE TABLE `bookmarks` (
 `id` int NOT NULL AUTO_INCREMENT,
 `memory_id` int NOT NULL,
@@ -496,11 +524,12 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `bm_memory_id_idx` (`memory_id`),
 KEY `bm_user_id_idx` (`user_id`),
-CONSTRAINT `bm_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`),
-CONSTRAINT `bm_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+CONSTRAINT `bm_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `bm_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*お問い合わせ*/
+DROP TABLE IF EXISTS `tabee`.`contacts` ;
 CREATE TABLE `contacts` (
 `id` int NOT NULL AUTO_INCREMENT,
 `name` varchar(255) NOT NULL,

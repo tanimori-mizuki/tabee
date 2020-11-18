@@ -28,14 +28,19 @@ insert into tabee.hashtags (name) values ('社員旅行');
 insert into tabee.hashtags (name) values ('観光');
 insert into tabee.hashtags (name) values ('旅');
 
-
-
 /*ユーザサンプルデータ*/
-insert into tabee.users (name, email, password, created_at, updated_at, image_path) values ('佐藤タビオ', 'tabio@mail.com', 'password', '2020-10-10 15:00:00', '2020-10-12 14:00:00', 'image');
-insert into tabee.users (name, email, password, created_at, updated_at, image_path) values ('鈴木タビコ', 'tabiko@mail.com', 'password', '2020-10-15 15:00:00', '2020-10-16 14:00:00', 'image');
+insert into tabee.users (name, email, password, created_at, updated_at, image_path) values
+ ('佐藤タビオ', 'tabio@mail.com', 'password', '2020-10-10 15:00:00', '2020-10-12 14:00:00', 'image'),
+ ('鈴木タビコ', 'tabiko@mail.com', 'password', '2020-10-15 15:00:00', '2020-10-16 14:00:00', 'image'),
+('田中はち', 'tnk@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'image'),
+('渋谷ハチ公', 'hachi-pochi@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'image');
 
 /*しおりサンプルデータ*/
 insert into tabee.shioris (title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('旅のしおり2', '2020-10-25', '2020-10-26', 'image2', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
+
+-- メンバーサンプルデータ
+insert into tabee.members(shiori_id,user_id) values
+(1,1),(1,2),(1,3),(1,4);
 
 /*スケジュールサンプルデータ*/
 insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, cost, creator_id, created_at, updater_id, updated_at, version) values (1, 'お昼ご飯', '12:00:00', '13:00:00', '2020-10-17', '現地集合です。', '1200', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1);
