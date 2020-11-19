@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,8 +44,8 @@ public class RegisterUserSevice {
 		user.setEmail(form.getEmail());
 		String encodedPassword = passwordEncoder.encode(form.getPassword());
 		user.setPassword(encodedPassword);
-		user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-		user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+		user.setCreatedAt(LocalDateTime.now());
+		user.setUpdatedAt(LocalDateTime.now());
 		
 		userMapper.insert(user);
 		

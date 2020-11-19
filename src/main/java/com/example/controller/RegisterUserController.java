@@ -21,16 +21,20 @@ import com.example.service.RegisterUserSevice;
 @RestController
 @RequestMapping("/user")
 public class RegisterUserController {
-	
+
 	@Autowired
 	private RegisterUserSevice registerUserService;
-	
+
+	/**
+	 * ユーザー登録.
+	 * 
+	 * @param form
+	 * @return
+	 */
 	@PostMapping("/register")
 	public User registerUser(@RequestBody RegisterUserForm form) {
-		System.out.println(form);
-
 		return registerUserService.registerUser(form);
-		
+
 	}
-	
+
 }
