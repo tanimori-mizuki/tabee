@@ -8,9 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.domain.User;
+import com.example.domain.user.User;
 import com.example.form.RegisterUserForm;
-import com.example.mapper.UserMapper;
+import com.example.mapper.user.UserMapper;
 
 //import com.example.domain.User;
 //import com.example.form.RegisterUserForm;

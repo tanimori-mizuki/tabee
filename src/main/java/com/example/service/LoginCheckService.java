@@ -7,9 +7,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.domain.User;
-import com.example.example.UserExample;
-import com.example.mapper.UserMapper;
+import com.example.domain.user.User;
+import com.example.example.user.UserExample;
+import com.example.mapper.user.UserMapper;
 
 /**
  * ログインチェックするサービス.

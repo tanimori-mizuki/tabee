@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.mapper.UserMapper;
+import com.example.mapper.user.UserMapper;
 
 //import com.example.mapper.UserMapper;
 
@@ -39,7 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
 		System.out.println("----------UserDetailsServiceimpl called!----------");
-		com.example.domain.User user = userMapper.findByEmail(email);
+		com.example.domain.user.User user = userMapper.findByEmail(email);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("そのメールアドレスは登録されていません。");
