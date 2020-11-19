@@ -7,9 +7,8 @@
     <result column="schedule_id" property="scheduleId" jdbcType="INTEGER" />
     <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="start_at" property="startAt" jdbcType="TIME" />
-    <result column="finish_at" property="finishAt" jdbcType="TIME" />
-    <result column="date" property="date" jdbcType="DATE" />
+    <result column="start_at" property="startAt" jdbcType="TIMESTAMP" />
+    <result column="finish_at" property="finishAt" jdbcType="TIMESTAMP" />
     <result column="icon_id" property="iconId" jdbcType="INTEGER" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="destination" property="destination" jdbcType="VARCHAR" />
@@ -121,12 +120,12 @@
   
     insert into sche_for_posts (id, schedule_id, memory_id, 
       title, start_at, finish_at, 
-      date, icon_id, tel, destination, 
+      icon_id, tel, destination, 
       url, address, memo, 
       cost)
     values (#{id,jdbcType=INTEGER}, #{scheduleId,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, 
       #{title,jdbcType=VARCHAR}, #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, 
-      #{date,jdbcType=DATE}, #{iconId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
+      #{iconId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
       #{cost,jdbcType=INTEGER})
   </insert>
@@ -151,9 +150,6 @@
       </if>
       <if test="finishAt != null" >
         finish_at,
-      </if>
-      <if test="date != null" >
-        date,
       </if>
       <if test="iconId != null" >
         icon_id,
@@ -195,9 +191,6 @@
       </if>
       <if test="finishAt != null" >
         #{finishAt,jdbcType=TIME},
-      </if>
-      <if test="date != null" >
-        #{date,jdbcType=DATE},
       </if>
       <if test="iconId != null" >
         #{iconId,jdbcType=INTEGER},
@@ -251,9 +244,6 @@
       <if test="record.finishAt != null" >
         finish_at = #{record.finishAt,jdbcType=TIME},
       </if>
-      <if test="record.date != null" >
-        date = #{record.date,jdbcType=DATE},
-      </if>
       <if test="record.iconId != null" >
         icon_id = #{record.iconId,jdbcType=INTEGER},
       </if>
@@ -289,7 +279,6 @@
       title = #{record.title,jdbcType=VARCHAR},
       start_at = #{record.startAt,jdbcType=TIME},
       finish_at = #{record.finishAt,jdbcType=TIME},
-      date = #{record.date,jdbcType=DATE},
       icon_id = #{record.iconId,jdbcType=INTEGER},
       tel = #{record.tel,jdbcType=VARCHAR},
       destination = #{record.destination,jdbcType=VARCHAR},
@@ -319,9 +308,6 @@
       </if>
       <if test="finishAt != null" >
         finish_at = #{finishAt,jdbcType=TIME},
-      </if>
-      <if test="date != null" >
-        date = #{date,jdbcType=DATE},
       </if>
       <if test="iconId != null" >
         icon_id = #{iconId,jdbcType=INTEGER},
@@ -355,7 +341,6 @@
       title = #{title,jdbcType=VARCHAR},
       start_at = #{startAt,jdbcType=TIME},
       finish_at = #{finishAt,jdbcType=TIME},
-      date = #{date,jdbcType=DATE},
       icon_id = #{iconId,jdbcType=INTEGER},
       tel = #{tel,jdbcType=VARCHAR},
       destination = #{destination,jdbcType=VARCHAR},

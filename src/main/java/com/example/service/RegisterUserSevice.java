@@ -1,6 +1,5 @@
 package com.example.service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,6 @@ import com.example.domain.User;
 import com.example.form.RegisterUserForm;
 import com.example.mapper.UserMapper;
 
-//import com.example.domain.User;
-//import com.example.form.RegisterUserForm;
-//import com.example.mapper.UserMapper;
 
 /**
  * ユーザー登録を行うサービスクラス.
