@@ -30,13 +30,13 @@ insert into tabee.hashtags (name) values ('旅');
 
 /*ユーザサンプルデータ*/
 insert into tabee.users (name, email, password, created_at, updated_at, image_path) values
- ('佐藤タビオ', 'tabio@mail.com', 'password', '2020-10-10 15:00:00', '2020-10-12 14:00:00', 'image'),
- ('鈴木タビコ', 'tabiko@mail.com', 'password', '2020-10-15 15:00:00', '2020-10-16 14:00:00', 'image'),
-('田中はち', 'tnk@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'image'),
-('渋谷ハチ公', 'hachi-pochi@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'image');
+ ('佐藤タビオ', 'tabio@mail.com', 'password', '2020-10-10 15:00:00', '2020-10-12 14:00:00', 'icon.png'),
+ ('鈴木タビコ', 'tabiko@mail.com', 'password', '2020-10-15 15:00:00', '2020-10-16 14:00:00', 'siro.jpg'),
+('田中はち', 'tnk@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'tamo.jpg'),
+('渋谷ハチ公', 'hachi-pochi@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'masako.jpg');
 
 /*しおりサンプルデータ*/
-insert into tabee.shioris (title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('旅のしおり2', '2020-10-25', '2020-10-26', 'image2', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
+insert into tabee.shioris (title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('旅のしおり2', '2020-10-25', '2020-10-26', 'ponshu.jpg', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
 
 -- メンバーサンプルデータ
 insert into tabee.members(shiori_id,user_id) values
@@ -48,4 +48,10 @@ insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, 
 
 /*メモサンプルデータ*/
 insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ', 1, '0', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1);
-insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ2', 1, '0', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
+insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ2', 1, '1', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
+
+-- メモイメージ
+insert into tabee.memo_images (memo_id, image_path,creator_id, created_at) values
+(1, 'ponshu.jpg', 1, '2019-10-16 18:00:00')
+,(1, 'wine.jpg', 1, '2019-10-16 18:00:00')
+,(2, 'kyoto.jpg', 2, '2019-10-16 18:00:00');
