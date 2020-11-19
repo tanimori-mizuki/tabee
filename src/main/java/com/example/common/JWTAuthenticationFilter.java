@@ -84,13 +84,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			System.out.println("【username】" + loginForm.getEmail());
 			System.out.println("【password】" + loginForm.getPassword());
 			
-			Authentication auth = null;
-			System.out.println(auth);
-			Authentication auth2 = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword(), new ArrayList<>()));
-			System.out.println(auth2);
-			
-//			Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword(), new ArrayList<>()));
-			System.out.println("【Authentication return】");
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword(), new ArrayList<>()));
 		
 		}catch (IOException e) {

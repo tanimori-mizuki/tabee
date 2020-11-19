@@ -35,7 +35,7 @@ import io.jsonwebtoken.Jwts;
  */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 
-	 private AuthenticationManager authenticationManager;
+	private AuthenticationManager authenticationManager;
 	
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
 		super(authenticationManager);
@@ -43,12 +43,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException{
-		String header = req.getHeader(HEADER_STRING);
-		Enumeration<String> headers = req.getHeaderNames();
+		System.out.println("-----JWT認可処理（doFilterInternalメソッド）-----");
 		
-		System.out.println("ヘッダーの中身");
-		System.out.println(header);
-		System.out.println(headers);
+		String header = req.getHeader(HEADER_STRING);
+		
+		System.out.println("【Authorizationヘッダーの中身】" + header);
 		
 		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
 			chain.doFilter(req, res);
@@ -56,39 +55,50 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		}
 		
 		//AuthorizationヘッダのBearer Prefixである場合
+		//リクエストからsuthentication認証情報取得
 		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+		System.out.println("【Authentication】" + authentication);
 		
+		//取得した認証情報をログイン情報としてセット
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		chain.doFilter(req, res);
 		
 	}
 	
+	/**
+	 * リクエストから認証情報取得
+	 * 
+	 * @param request
+	 * @return
+	 */
 	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request){
+		System.out.println("-----getAuthenticationメソッド-----");
+		
 		String token = request.getHeader(HEADER_STRING);
-		System.out.println(token);
+		System.out.println("【トークン】" + token);
 		
 		if(token != null) {
 			
-//			try {
+			try {
 				
-				//どのような権限を持っているか調べる
-				String user = Jwts.parser()
+				//JWTをデコードし、ユーザーのメールアドレス取得
+				String userEmail = Jwts.parser()
 						.setSigningKey(SECRET.getBytes())
 						.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 						.getBody()
 						.getSubject();
 				
-				System.out.println("権限調べた結果");
-				System.out.println(user);
+				System.out.println("【userEmail】" + userEmail);
 				
+				//JWTをデコードし、claimを取得
+				//ClaimとはJSONのkey, valueの一対（例: {"iss":"joe", "exp":1300819380,}）
 				Claims claims = Jwts.parser().setSigningKey(SECRET.getBytes())
 						.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody();
+				System.out.println("【claims】" + claims);
 				
-				System.out.println("claims");
-				System.out.println(claims);
-				
+				//取得したclaimからキー【role】を取得→権限が取得
 				List grants = (List) claims.get("role");
-				System.out.println(grants);
+				System.out.println("【grantsリスト】" + grants);
 				
 				String[] arrayRole = new String[grants.size()];
 				
@@ -99,17 +109,18 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 					
 				}
 				
-				if(user != null) {
+				if(userEmail != null) {
 					List<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(arrayRole);
-					return new UsernamePasswordAuthenticationToken(user, null, roles);
+					System.out.println("【roles】" + roles);
+					return new UsernamePasswordAuthenticationToken(userEmail, null, roles);
 				}
 				
 				return null;
 				
-//			}catch (ExpiredJwtException e) {
-//				logger.error("Expired JWT token");
-//				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
-//			}
+			}catch (ExpiredJwtException e) {
+				logger.error("Expired JWT token");
+				throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "ログインの有効期限が切れました。ログインをやり直してください。");
+			}
 		}
 		return null;
 	}

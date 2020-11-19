@@ -90,9 +90,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 
 		 System.out.println("【許可されたオリジン】" + corsConfiguration.getAllowedOrigins());
 		 
+		 //デフォルト以外のヘッダはexposeに設定しないとJS側で読み取れない
 		 List<String> exposedHeaderList = new ArrayList<>();
 		 exposedHeaderList.add("Authorization");
-		 corsConfiguration.setExposedHeaders(exposedHeaderList); // レスポンスヘッダへのアクセス制限
+		 corsConfiguration.setExposedHeaders(exposedHeaderList); 
 		 
 		 UrlBasedCorsConfigurationSource corsSource = new UrlBasedCorsConfigurationSource();
 		 corsSource.registerCorsConfiguration("/**", corsConfiguration);
@@ -115,7 +116,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  */
 	 @Autowired
 	 public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
-		 System.out.println("----------configureAuth----------");
 		 auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	 }
 	 
