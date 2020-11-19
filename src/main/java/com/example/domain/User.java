@@ -29,7 +29,7 @@ public class User {
     /**作成日時*/
     private LocalDateTime createdAt;
     /**更新日時*/
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
     /**アイコン画像*/
     private String imagePath;
     /**削除フラグ*/
