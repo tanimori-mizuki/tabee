@@ -23,7 +23,7 @@
     <result column="m_updater_id" property="updaterId" jdbcType="INTEGER" />
     <result column="m_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
     <result column="m_version" property="version" jdbcType="INTEGER" />
-   	<association property="user" javaType="User">
+   	<association property="user" javaType="com.example.domain.user.User">
 	    <id column="um_id" property="id" jdbcType="INTEGER" />
 	    <result column="um_name" property="name" jdbcType="VARCHAR" />
 	    <result column="um_email" property="email" jdbcType="VARCHAR" />
@@ -42,7 +42,7 @@
     <result column="mi_image_path" property="imagePath" jdbcType="VARCHAR" />
     <result column="mi_creator_id" property="creatorId" jdbcType="INTEGER" />
     <result column="mi_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	<association property="user" javaType="User">
+	<association property="user" javaType="com.example.domain.user.User">
 		    <id column="umi_id" property="id" jdbcType="INTEGER" />
 		    <result column="umi_name" property="name" jdbcType="VARCHAR" />
 		    <result column="umi_email" property="email" jdbcType="VARCHAR" />
