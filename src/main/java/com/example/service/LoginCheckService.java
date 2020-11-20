@@ -42,12 +42,10 @@ public class LoginCheckService {
 		example.createCriteria().andEmailEqualTo(email);
 
 		List<User> userList = userMapper.selectByExample(example);
-		User user = userList.get(0);
-		System.out.println("【メルアドで1件検索結果】" + user);
 
-		if (user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
+		if (userList.size() != 0 && bCryptPasswordEncoder.matches(password, userList.get(0).getPassword())) {
 			System.out.println("【メルアド＆パスワード一致】");
-			return user;
+			return userList.get(0);
 			
 		} else {
 			System.out.println("email & passoword NOT matched!");
