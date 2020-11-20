@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.ScheForPostMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.ScheForPost" >
+<mapper namespace="com.example.mapper.memory.ScheForPostMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.memory.ScheForPost" >
    
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="schedule_id" property="scheduleId" jdbcType="INTEGER" />
@@ -82,7 +82,7 @@
     id, schedule_id, memory_id, title, start_at, finish_at, date, icon_id, tel, destination, 
     url, address, memo, cost
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.ScheForPostExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memory.ScheForPostExample" >
    
     select
     <if test="distinct" >
@@ -109,14 +109,14 @@
     delete from sche_for_posts
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.ScheForPostExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.memory.ScheForPostExample" >
    
     delete from sche_for_posts
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.ScheForPost" >
+  <insert id="insert" parameterType="com.example.domain.memory.ScheForPost" >
   
     insert into sche_for_posts (id, schedule_id, memory_id, 
       title, start_at, finish_at, 
@@ -129,7 +129,7 @@
       #{url,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
       #{cost,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.ScheForPost" >
+  <insert id="insertSelective" parameterType="com.example.domain.memory.ScheForPost" >
     
     insert into sche_for_posts
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -215,7 +215,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.ScheForPostExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.example.example.memory.ScheForPostExample" resultType="java.lang.Integer" >
    
     select count(*) from sche_for_posts
     <if test="_parameter != null" >
@@ -290,7 +290,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.ScheForPost" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.memory.ScheForPost" >
    
     update sche_for_posts
     <set >
@@ -333,7 +333,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.ScheForPost" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.memory.ScheForPost" >
    
     update sche_for_posts
     set schedule_id = #{scheduleId,jdbcType=INTEGER},

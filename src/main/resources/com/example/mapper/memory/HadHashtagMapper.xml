@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.HadHashtagMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.HadHashtag" >
+<mapper namespace="com.example.mapper.memory.HadHashtagMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.memory.HadHashtag" >
    
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
@@ -71,7 +71,7 @@
   
     id, memory_id, hashtag_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.HadHashtagExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memory.HadHashtagExample" >
   
     select
     <if test="distinct" >
@@ -98,21 +98,21 @@
     delete from had_hashtags
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.HadHashtagExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.memory.HadHashtagExample" >
     
     delete from had_hashtags
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.HadHashtag" >
+  <insert id="insert" parameterType="com.example.domain.memory.HadHashtag" >
    
     insert into had_hashtags (id, memory_id, hashtag_id
       )
     values (#{id,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, #{hashtagId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.HadHashtag" >
+  <insert id="insertSelective" parameterType="com.example.domain.memory.HadHashtag" >
    
     insert into had_hashtags
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -138,7 +138,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.HadHashtagExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.example.example.memory.HadHashtagExample" resultType="java.lang.Integer" >
   
     select count(*) from had_hashtags
     <if test="_parameter != null" >
@@ -174,7 +174,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.HadHashtag" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.memory.HadHashtag" >
   
     update had_hashtags
     <set >
@@ -187,7 +187,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.HadHashtag" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.memory.HadHashtag" >
   
     update had_hashtags
     set memory_id = #{memoryId,jdbcType=INTEGER},
