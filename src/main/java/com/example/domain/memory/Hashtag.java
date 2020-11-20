@@ -1,5 +1,7 @@
 package com.example.domain.memory;
 
+import com.example.domain.user.User;
+
 import lombok.Data;
 
 /**

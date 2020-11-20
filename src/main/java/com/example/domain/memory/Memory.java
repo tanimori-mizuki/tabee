@@ -2,6 +2,9 @@ package com.example.domain.memory;
 
 import java.time.LocalDateTime;
 
+import com.example.domain.shiori.Shiori;
+import com.example.domain.user.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -3,6 +3,9 @@ package com.example.domain.schedule;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.example.domain.shiori.Shiori;
+import com.example.domain.user.User;
+
 import lombok.Data;
 
 /**
