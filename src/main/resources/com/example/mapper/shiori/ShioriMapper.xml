@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.ShioriMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.Shiori" >
+<mapper namespace="com.example.mapper.shiori.ShioriMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.shiori.Shiori" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="dep_at" property="depAt" jdbcType="DATE" />
@@ -13,6 +13,31 @@
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
     <result column="version" property="version" jdbcType="INTEGER" />
   </resultMap>
+  <!--テーブル結合用ResultMap  -->
+    <resultMap id="ShioriResultMap" type="com.example.domain.shiori.Shiori" >
+	    <id column="s_id" property="id" jdbcType="INTEGER" />
+	    <result column="s_title" property="title" jdbcType="VARCHAR" />
+	    <result column="s_dep_at" property="depAt" jdbcType="DATE" />
+	    <result column="s_return_at" property="returnAt" jdbcType="DATE" />
+	    <result column="s_image_path" property="imagePath" jdbcType="VARCHAR" />
+	    <result column="s_creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="s_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	    <result column="s_updater_id" property="updaterId" jdbcType="INTEGER" />
+	    <result column="s_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	    <result column="s_version" property="version" jdbcType="INTEGER" />
+	    <collection property="userList" resultMap="UserResultMap" />
+  </resultMap>
+    <resultMap id="UserResultMap" type="com.example.domain.user.User">
+    <id column="u_id" jdbcType="INTEGER" property="id" />
+    <result column="u_name" jdbcType="VARCHAR" property="name" />
+    <result column="u_email" jdbcType="VARCHAR" property="email" />
+    <result column="u_password" jdbcType="VARCHAR" property="password" />
+    <result column="u_created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="u_updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="u_image_path" jdbcType="VARCHAR" property="imagePath" />
+    <result column="u_deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -75,7 +100,40 @@
     id, title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, 
     version
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.ShioriExample" >
+  <sql id="Shioris_Column_List">
+  	s.id AS s_id,s.title AS s_title,s.dep_at AS s_dep_at
+	,s.return_at AS s_return_at,s.image_path AS s_image_path
+	,s.creator_id AS s_creator_id,s.created_at AS s_created_at
+	,s.updater_id AS s_updater_id,s.updated_at s_updated_at,s.version AS s_version
+  </sql>
+  <sql id="Users_Column_List">
+	,u.id AS u_id,u.name AS u_name,u.email AS u_email,u.password AS u_password,u.created_at AS u_created_at
+	,u.updated_at AS u_updated_at,u.image_path AS u_image_path,u.deleted AS u_deleted
+  </sql>
+  <sql id="Shioris_Table">
+  	FROM shioris s
+  </sql>
+  <sql id="Members_Table">
+  	LEFT JOIN members mb
+	ON s.id=mb.shiori_id
+  </sql>
+  <sql id="Users_Table">
+	LEFT JOIN users u
+	ON mb.user_id=u.id
+  </sql>
+  <!--ログインユーザIDからしおり情報取得  -->
+  <select id="selectByUserId" resultMap="ShioriResultMap">
+   SELECT
+   <include refid="Shioris_Column_List"/>
+   <include refid="Users_Column_List"/>
+   <include refid="Shioris_Table"/>
+   <include refid="Members_Table"/>
+   <include refid="Users_Table"/>
+   WHERE u.id=#{userId,jdbcType=INTEGER}
+   ORDER BY u.id;
+  </select>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.ShioriExample" >
     select
     <if test="distinct" >
       distinct
@@ -99,13 +157,13 @@
     delete from shioris
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.ShioriExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.shiori.ShioriExample" >
     delete from shioris
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.Shiori" >
+  <insert id="insert" parameterType="com.example.domain.shiori.Shiori" >
     insert into shioris (id, title, dep_at, 
       return_at, image_path, creator_id, 
       created_at, updater_id, updated_at, 
@@ -115,7 +173,7 @@
       #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.Shiori" >
+  <insert id="insertSelective" parameterType="com.example.domain.shiori.Shiori" >
     insert into shioris
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -182,7 +240,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.ShioriExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.example.example.shiori.ShioriExample" resultType="java.lang.Integer" >
     select count(*) from shioris
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -242,7 +300,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.Shiori" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.shiori.Shiori" >
     update shioris
     <set >
       <if test="title != null" >
@@ -275,7 +333,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.Shiori" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.shiori.Shiori" >
     update shioris
     set title = #{title,jdbcType=VARCHAR},
       dep_at = #{depAt,jdbcType=DATE},
