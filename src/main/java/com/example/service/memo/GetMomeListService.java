@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.domain.Memo;
-import com.example.mapper.MemoMapper;
+import com.example.domain.memo.Memo;
+import com.example.mapper.memo.MemoMapper;
 
 /**
  * メモ情報を取得するサービス.
