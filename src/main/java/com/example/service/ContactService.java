@@ -1,9 +1,8 @@
 package com.example.service;
 
-import com.example.domain.Contact;
+import com.example.domain.common.Contact;
 import com.example.form.ContactForm;
-import com.example.mapper.ContactMapper;
-import com.example.mapper.UserMapper;
+import com.example.mapper.common.ContactMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
