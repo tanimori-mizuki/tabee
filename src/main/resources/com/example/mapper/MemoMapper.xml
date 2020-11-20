@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mapper.MemoMapper" >
   <resultMap id="BaseResultMap" type="com.example.domain.Memo" >
-   
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
@@ -13,8 +12,49 @@
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
     <result column="version" property="version" jdbcType="INTEGER" />
   </resultMap>
+  <!--テーブル結合用ResultMap  -->
+  <resultMap  id="MemoResultMap" type="Memo">
+    <id column="m_id" property="id" jdbcType="INTEGER" />
+    <result column="m_content" property="content" jdbcType="VARCHAR" />
+    <result column="m_shiori_id" property="shioriId" jdbcType="INTEGER" />
+    <result column="m_is_locked" property="isLocked" jdbcType="TINYINT" />
+    <result column="m_creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="m_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="m_updater_id" property="updaterId" jdbcType="INTEGER" />
+    <result column="m_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="m_version" property="version" jdbcType="INTEGER" />
+   	<association property="user" javaType="User">
+	    <id column="um_id" property="id" jdbcType="INTEGER" />
+	    <result column="um_name" property="name" jdbcType="VARCHAR" />
+	    <result column="um_email" property="email" jdbcType="VARCHAR" />
+	    <result column="um_password" property="password" jdbcType="CHAR" />
+	    <result column="um_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	    <result column="um_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	    <result column="um_image_path" property="imagePath" jdbcType="VARCHAR" />
+	    <result column="um_deleted" jdbcType="TINYINT" property="deleted" />
+	    <result column="um_version" property="version" jdbcType="INTEGER" />
+	</association>
+    <collection property="memoImageList" resultMap="MemoImageResultMap" />
+  </resultMap>
+  <resultMap id="MemoImageResultMap" type="MemoImage" >
+    <id column="mi_id" property="id" jdbcType="INTEGER" />
+    <result column="mi_memo_id" property="memoId" jdbcType="INTEGER" />
+    <result column="mi_image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="mi_creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="mi_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	<association property="user" javaType="User">
+		    <id column="umi_id" property="id" jdbcType="INTEGER" />
+		    <result column="umi_name" property="name" jdbcType="VARCHAR" />
+		    <result column="umi_email" property="email" jdbcType="VARCHAR" />
+		    <result column="umi_password" property="password" jdbcType="CHAR" />
+		    <result column="umi_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+		    <result column="umi_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+		    <result column="umi_image_path" property="imagePath" jdbcType="VARCHAR" />
+		    <result column="umi_deleted" jdbcType="TINYINT" property="deleted" />
+		    <result column="umi_version" property="version" jdbcType="INTEGER" />
+	</association>
+  </resultMap>
   <sql id="Example_Where_Clause" >
-   
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -44,7 +84,6 @@
     </where>
   </sql>
   <sql id="Update_By_Example_Where_Clause" >
-   
     <where >
       <foreach collection="example.oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -74,12 +113,53 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-   
     id, content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, 
     version
   </sql>
+  <sql id="Memos_Column_List">
+ 	m.id AS m_id,m.content AS m_content,m.shiori_id AS m_shiori_id,m.is_locked AS m_is_locked
+	,m.creator_id AS m_creator_id,m.created_at AS m_created_at,m.updater_id AS m_updater_id,m.updated_at AS m_updated_at
+	,m.version AS m_version
+  </sql>
+  <sql id="User_ForMemos_Column_List">
+	,um.id AS um_id,um.name AS um_name,um.email AS um_email,um.password AS um_password,um.created_at AS um_created_at
+	,um.updated_at AS um_updated_at,um.image_path AS um_image_path,um.deleted AS um_deleted
+  </sql>
+  <sql id="Memo_Images_Column_List">
+ 	 ,mi.id AS mi_id,mi.memo_id AS mi_memo_id,mi.image_path AS mi_image_path,mi.creator_id AS mi_creator_id,mi.created_at AS mi_created_at
+  </sql>
+  <sql id="Users_ForMemoImages_Column_List">
+  	,umi.id AS umi_id,umi.name AS umi_name,umi.email AS umi_email,umi.password AS umi_password,umi.created_at AS umi_created_at
+	,umi.updated_at AS umi_updated_at,umi.image_path AS umi_image_path,umi.deleted AS umi_deleted
+  </sql>
+  <sql id="Memos_Table">
+  	FROM memos m
+  </sql>
+  <sql id="Users_ForMemos_Table">
+   LEFT JOIN users um ON m.creator_id =um.id
+  </sql>
+  <sql id="Memo_Images_Table">
+ 	LEFT JOIN memo_images mi ON m.id=mi.memo_id
+  </sql>
+  <sql id="Users_ForMemoImages_Tabel">
+	LEFT JOIN users umi ON mi.creator_id=umi.id 	
+  </sql>
+  <!--メモ一覧表示 -->
+  <select id="selectByshioriId" resultMap="MemoResultMap">
+	SELECT
+		<include refid="Memos_Column_List"/>
+		<include refid="User_ForMemos_Column_List"/>
+		<include refid="Memo_Images_Column_List"/>
+		<include refid="Users_ForMemoImages_Column_List"/>
+		<include refid="Memos_Table"/>
+		<include refid="Users_ForMemos_Table"/>
+		<include refid="Memo_Images_Table"/>
+		<include refid="Users_ForMemoImages_Tabel"/>
+	WHERE m.shiori_id=#{shioriId,jdbcType=INTEGER}
+	ORDER BY m.created_at;
+  </select>
+  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.MemoExample" >
-   
     select
     <if test="distinct" >
       distinct
