@@ -1,7 +1,9 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.user.UserMapper">
   <resultMap id="BaseResultMap" type="com.example.domain.user.User">
+
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -73,8 +75,13 @@
   <sql id="Base_Column_List">
     id, name, email, password, created_at, updated_at, image_path, deleted
   </sql>
+<<<<<<< HEAD
   
   <select id="selectByExample" parameterType="com.example.example.user.UserExample" resultMap="BaseResultMap">
+=======
+  
+  <select id="selectByExample" parameterType="com.example.example.UserExample" resultMap="BaseResultMap">
+>>>>>>> feature/contact2
    
     select
     <if test="distinct">

@@ -1,7 +1,7 @@
 package com.example.controller;
 
 
-import com.example.domain.Contact;
+import com.example.domain.common.Contact;
 import com.example.form.ContactForm;
 import com.example.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
