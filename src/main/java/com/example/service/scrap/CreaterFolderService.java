@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.scrap.Scrap;
+import com.example.form.scrap.CreateFolderForm;
 import com.example.mapper.scrap.ScrapMapper;
 
 /**
@@ -20,8 +21,8 @@ public class CreaterFolderService {
 	@Autowired
 	private ScrapMapper scrapMapper;
 	
-	public Scrap createFolder() {
-		
+	public Scrap createFolder(CreateFolderForm form) {
+		Scrap scrap = scrapMapper.insertSelective(form);
 	}
 
 }
