@@ -31,7 +31,7 @@ public class CreaterFolderService {
 	 */
 	public Scrap createFolder(CreateFolderForm form) {
 		
-		System.out.println("フォルダー名" + form.getFolderName());
+		System.out.println("フォルダー名：" + form.getFolderName());
 		
 		// スクラップに値をセット
 		Scrap scrap = new Scrap();
@@ -39,6 +39,8 @@ public class CreaterFolderService {
 		scrap.setName(form.getFolderName());
 		scrap.setCreatorId(7);
 		scrap.setCreatedAt(new Date());
+		scrap.setUpdaterId(7);
+		scrap.setUpdatedAt(new Date());
 		scrap.setVersion(1); 	// 初期装備
 		
 		// 日付の確認用ログ
