@@ -4,8 +4,11 @@ import com.example.domain.scrap.Scrap;
 import com.example.example.scrap.ScrapExample;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ScrapMapper {
 
     int countByExample(ScrapExample example);
