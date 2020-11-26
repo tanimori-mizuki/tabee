@@ -4,6 +4,15 @@ spring:
     url: jdbc:mysql://localhost:3306/tabee?serverTimezone=JST&useUnicode=true&characterEncoding=utf8
     username: root
     password: mysqlmysql
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ma.nose9413@gmail.com
+    password: nkcpbzcktobslwvu
+    properties:
+      mail.smtp:
+        auth: true
+        starttls.enable: true 
         
 # ローカル環境での起動ポート番号の設定
 server:
@@ -22,4 +31,6 @@ mybatis:
     mapUnderscoreToCamelCase: true
 # 自動マッピング機能. FULL が指定された場合、ネストされた結果などの複雑なものも含めて全てが自動マッピングの対象.
     auto-mapping-behavior: full
+    
+
 

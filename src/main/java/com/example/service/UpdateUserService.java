@@ -7,12 +7,10 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,6 +40,7 @@ public class UpdateUserService {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	@Autowired
 	private MailSender sender;
 	
 	/**
@@ -62,25 +61,59 @@ public class UpdateUserService {
 	 * @param email
 	 */
 	public void registerResetPassword(ResetPassword resetPassword, String email) {
+		System.out.println("【ServiceのEmail】:　" + email);
+		System.out.println("【Serviceのresetpassword】:　" + resetPassword);
+		
 		LocalDateTime expireDate = LocalDateTime.now();
 		expireDate.plusMinutes(5);
+		
+		System.out.println("【期限】: " + expireDate);
 
 		UUID uuid = UUID.randomUUID();
 		String randomUrl = uuid.toString();
-
-		User user = findByEmail(email);
 		
-		if(user == null) {
-			throw new UsernameNotFoundException("入力されたメールアドレスは登録されていません。");
-		}
+		System.out.println("【uuid】: " + uuid);
+		System.out.println("【randomURL】" + randomUrl);
 
-		resetPassword.setUserId(user.getId());
-		resetPassword.setRandomUrl(randomUrl);
-		resetPassword.setExpireDate(expireDate);
-		resetPasswordMapper.insertSelective(resetPassword);
+		UserExample example = new UserExample();
+		example.createCriteria().andEmailEqualTo(email);
+		
+		try {
+			List<User> userList = userMapper.selectByExample(example);
+			System.out.println("【email一致ユーザー】 : " + userList.get(0));
+			User user = userList.get(0);
+			
+//		if(user == null) {
+//			System.out.println("ユーザーいない！");
+//			throw new UsernameNotFoundException("入力されたメールアドレスは登録されていません。");
+//		}
+			
+			resetPassword.setUserId(user.getId());
+			resetPassword.setRandomUrl(randomUrl);
+			resetPassword.setExpireDate(expireDate);
+			System.out.println("【resetPassword】 : " + resetPassword);
+			
+			resetPasswordMapper.insertSelective(resetPassword);
+			
+		}catch (Exception e) {
+			throw new UsernameNotFoundException("そのメールアドレスは登録されていません。");
+		}
+		
 	}
 	
+	
+	
+	/**
+	 * メール内容セット + 送信
+	 * 
+	 * @param resetPassword
+	 * @param email
+	 */
 	public void sendResetPasswordMail(ResetPassword resetPassword, String email) {
+		System.out.println("メール送信メソッドだよ");
+		System.out.println("【sendResetPasswordMailのemail】: " + email);
+		System.out.println("【sendResetPasswordMailのresetPassword】: " + resetPassword);
+		
 		String url = "http://localhost:8888/reset_password" + "?randomUrl=" + resetPassword.getRandomUrl();
 		String to = email;
 		String subject = "【tabee】パスワード変更はこちら";
@@ -92,15 +125,27 @@ public class UpdateUserService {
 		text.append("\n\n\n");
 		text.append("こちらのメールに心あたりのない場合は破棄してください。");
 		
+		System.out.println("【URL】 : " + url);
+		System.out.println("【to】 : " + to);
+		System.out.println("【subject】 : " + subject);
+		
 		sendMail(to, subject, text.toString());
 		
 	}
 	
+	/**
+	 * メール送信メソッド
+	 * 
+	 * @param to
+	 * @param subject
+	 * @param text
+	 */
 	public void sendMail(String to, String subject, String text) {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(to);
 		msg.setSubject(subject);
 		msg.setText(text);
+		System.out.println("【msg】: " + msg);
 		
 		sender.send(msg);
 		
@@ -112,13 +157,11 @@ public class UpdateUserService {
 	 * @param user
 	 * @return
 	 */
-	public int UpdatePasswordById(UpdatePasswordForm form) {
+	public int UpdatePasswordById(UpdatePasswordForm form, HttpServletRequest req) {
 		System.out.println("【フォームのユーザーID】：　" + form.getId());
 		System.out.println("【フォームのパスワード】：　" + form.getPassword());
-		UserExample example1 = new UserExample();
-		example1.createCriteria().andIdEqualTo(Integer.parseInt(form.getId()));
-		List<User> userList = userMapper.selectByExample(example1);
-		System.out.println("【更新前パスワード】：" + userList.get(0).getPassword());
+		
+		
 
 		User user = new User();
 		user.setId(Integer.parseInt(form.getId()));

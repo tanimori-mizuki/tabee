@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * パスワードリセット用のDTO.
@@ -13,6 +14,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ResetPassword {
 	/** ID */
 	private Integer id;

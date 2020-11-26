@@ -75,7 +75,6 @@
   </sql>
   
   <select id="selectByExample" parameterType="com.example.example.user.UserExample" resultMap="BaseResultMap">
-   
     select
     <if test="distinct">
       distinct

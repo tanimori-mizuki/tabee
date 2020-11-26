@@ -1,15 +1,19 @@
 package com.example.controller;
 
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.domain.user.User;
 import com.example.dto.ResetPassword;
+import com.example.form.CheckEmailForm;
 import com.example.form.UpdatePasswordForm;
 import com.example.service.UpdateUserService;
+
 
 /**
  * ユーザー情報更新系のコントローラ.
@@ -25,16 +29,28 @@ public class UpdateUserController {
 	private UpdateUserService updateUserService;
 
 	
+	/**
+	 * パスワード変更時のメールアドレスチェック
+	 * チェックOKであればユーザー宛にメール送信
+	 * 
+	 * @param form
+	 * @param resetPassword
+	 * @throws Exception 
+	 */
 	@PostMapping("/checkEmail")
-	public void sendResetPasswordMail(@RequestBody String email, ResetPassword resetPassword) {
-		System.out.println("【メールアドレス】: " + email);
+	public void sendResetPasswordMail(@RequestBody CheckEmailForm form, ResetPassword resetPassword) throws Exception {
 		
-		updateUserService.registerResetPassword(resetPassword, email);
-		updateUserService.sendResetPasswordMail(resetPassword, email);
+		try {
+
+			updateUserService.registerResetPassword(resetPassword, form.getEmail());
+			updateUserService.sendResetPasswordMail(resetPassword, form.getEmail());
 		
-		System.out.println("メール送信完了");
+		}catch (Exception e) {
+		
+			throw new Exception();
+		
+		}
 	}
-	
 	
 	/**
 	 * パスワードを更新.
@@ -42,8 +58,10 @@ public class UpdateUserController {
 	 * @param form
 	 */
 	@PostMapping("/updatePassword")
-	public void updatePassword(@RequestBody UpdatePasswordForm form) {
-		updateUserService.UpdatePasswordById(form);
+	public void updatePassword(@RequestBody UpdatePasswordForm form, HttpServletRequest req) {
+		System.out.println("controller called!");
+		System.out.println("【controllerでのform】: "+ form);
+		updateUserService.UpdatePasswordById(form, req);
 	}
 
 }

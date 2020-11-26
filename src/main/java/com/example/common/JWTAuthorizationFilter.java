@@ -50,6 +50,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		System.out.println("【Authorizationヘッダーの中身】" + header);
 		
 		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
+			System.out.println("ヘッダーがnullだよ");
 			chain.doFilter(req, res);
 			return;
 		}
