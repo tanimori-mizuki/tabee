@@ -49,7 +49,7 @@
 		</javaClientGenerator>
 	
 		<!-- DB名とテーブル名 -->
-		<table schema="tabee" tableName="users" />
+		<table schema="tabee" tableName="reset_password" />
 		<!-- 
 		<table schema="tabee" tableName="scraps" />
 		<table schema="tabee" tableName="images" />

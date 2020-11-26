@@ -4,6 +4,7 @@ import static com.example.common.SecurityConstants.EXPIRATION_TIME;
 import static com.example.common.SecurityConstants.HEADER_STRING;
 import static com.example.common.SecurityConstants.LOGIN_ID;
 import static com.example.common.SecurityConstants.LOGIN_URL;
+import static com.example.common.SecurityConstants.REGISTER_URL;
 import static com.example.common.SecurityConstants.PASSWORD;
 import static com.example.common.SecurityConstants.SECRET;
 import static com.example.common.SecurityConstants.TOKEN_PREFIX;
@@ -61,10 +62,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		//ログイン用のID/PWのパラメータ名を変更する
 		setUsernameParameter(LOGIN_ID);
 		setPasswordParameter(PASSWORD);
-		
-		System.out.println("【ログインURL】" + LOGIN_URL);
-		System.out.println("【LOGIN ID】" + LOGIN_ID);
-		System.out.println("【PASSWORD】" + PASSWORD);
 		
 	}
 	
