@@ -24,7 +24,7 @@ public class ShowMemoListController {
 	private GetMomeListService getMemoListService;
 	
 	/**
-	 * メモ一覧を表示する.
+	 * メモ一覧を取得する.
 	 * @param shioriId　しおりID
 	 * @return　メモ一覧
 	 */
@@ -34,5 +34,8 @@ public class ShowMemoListController {
 		List <Memo> memoList=getMemoListService.getMemoList(shioriId);
 		return memoList;
 	}
+	
+	
+	
 
 }
