@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class UpdatePasswordForm {
 	/** ID */
-	private String id;
+	private String userId;
 	/** パスワード */
 	private String password;
 	/** 確認用パスワード */

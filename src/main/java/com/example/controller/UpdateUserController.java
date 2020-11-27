@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.user.ResetPassword;
+import com.example.domain.user.User;
 import com.example.form.CheckEmailForm;
 import com.example.form.UpdatePasswordForm;
 import com.example.service.UpdateUserService;
@@ -38,12 +39,14 @@ public class UpdateUserController {
 	 * @throws Exception 
 	 */
 	@PostMapping("/checkEmail")
-	public void sendResetPasswordMail(@RequestBody CheckEmailForm form, ResetPassword resetPassword) throws Exception {
+	public User sendResetPasswordMail(@RequestBody CheckEmailForm form, ResetPassword resetPassword) throws Exception {
 		
 		try {
 
-			updateUserService.registerResetPassword(resetPassword, form.getEmail());
+			User user = updateUserService.registerResetPassword(resetPassword, form.getEmail());
 			updateUserService.sendResetPasswordMail(resetPassword, form.getEmail());
+			
+			return user;
 			
 			
 		}catch (Exception e) {
@@ -59,10 +62,8 @@ public class UpdateUserController {
 	 * @param form
 	 */
 	@PostMapping("/updatePassword")
-	public void updatePassword(@RequestBody UpdatePasswordForm form, ResetPassword resetPassword, HttpServletRequest req) {
-		System.out.println("controller called!");
-		System.out.println("【controllerでのform】: "+ form);
-		updateUserService.UpdatePasswordById(form, resetPassword, req);
+	public void updatePassword(@RequestBody UpdatePasswordForm form) {
+		updateUserService.UpdatePassword(form);
 	}
 
 }
