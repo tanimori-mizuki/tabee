@@ -31,6 +31,11 @@ public interface MemoMapper {
 
     int insert(Memo record);
 
+    /**
+     * メモ情報を挿入する.
+     * @param record　メモ情報
+     * @return　成功件数
+     */
     int insertSelective(Memo record);
 
     List<Memo> selectByExample(MemoExample example);
