@@ -47,11 +47,16 @@ insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, 
 insert into tabee.schedules (shiori_id, title, start_at, finish_at, date, memo, cost, creator_id, created_at, updater_id, updated_at, version) values (1, '夕ご飯', '18:00:00', '19:00:00', '2020-10-17', '餃子です。', '1000', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
 
 /*メモサンプルデータ*/
-insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ', 1, '0', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1);
-insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values ('サンプルメモ2', 1, '1', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1);
+insert into tabee.memos (content, shiori_id, is_locked, creator_id, created_at, updater_id, updated_at, version) values 
+('サンプルメモ', 1, '0', 1, '2019-10-16 18:00:00', 1, '2019-10-16 18:00:00', 1),
+ ('サンプルメモ2', 1, '1', 1, '2019-10-16 19:00:00', 1, '2019-10-16 19:00:00', 1),
+  ('サンプルメモ3', 1, '1', 2, '2019-10-16 19:00:00', 2, '2019-10-16 19:00:00', 1),
+   ('サンプルメモ4', 1, '1', 2, '2019-10-16 19:00:00', 2, '2019-10-16 19:00:00', 1);
 
 -- メモイメージ
 insert into tabee.memo_images (memo_id, image_path,creator_id, created_at) values
 (1, 'ponshu.jpg', 1, '2019-10-16 18:00:00')
 ,(1, 'wine.jpg', 1, '2019-10-16 18:00:00')
-,(2, 'kyoto.jpg', 2, '2019-10-16 18:00:00');
+,(2, 'kyoto.jpeg', 2, '2019-10-16 18:00:00')
+,(3, 'ponshu.jpg', 1, '2019-10-16 18:00:00')
+,(4, 'okinawa_kanko-6.jpg', 1, '2019-10-16 18:00:00');
