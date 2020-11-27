@@ -1,12 +1,12 @@
-package com.example.mapper.dto;
+package com.example.mapper.user;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.example.dto.ResetPassword;
-import com.example.dto.ResetPasswordExample;
+import com.example.domain.user.ResetPassword;
+import com.example.example.user.ResetPasswordExample;
 
 @Mapper
 public interface ResetPasswordMapper {

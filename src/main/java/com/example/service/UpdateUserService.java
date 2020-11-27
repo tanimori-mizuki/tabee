@@ -14,11 +14,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.domain.user.ResetPassword;
 import com.example.domain.user.User;
-import com.example.dto.ResetPassword;
+import com.example.example.user.ResetPasswordExample;
 import com.example.example.user.UserExample;
 import com.example.form.UpdatePasswordForm;
-import com.example.mapper.dto.ResetPasswordMapper;
+import com.example.mapper.user.ResetPasswordMapper;
 import com.example.mapper.user.UserMapper;
 
 /**
@@ -82,11 +83,6 @@ public class UpdateUserService {
 			List<User> userList = userMapper.selectByExample(example);
 			System.out.println("【email一致ユーザー】 : " + userList.get(0));
 			User user = userList.get(0);
-			
-//		if(user == null) {
-//			System.out.println("ユーザーいない！");
-//			throw new UsernameNotFoundException("入力されたメールアドレスは登録されていません。");
-//		}
 			
 			resetPassword.setUserId(user.getId());
 			resetPassword.setRandomUrl(randomUrl);
@@ -157,24 +153,46 @@ public class UpdateUserService {
 	 * @param user
 	 * @return
 	 */
-	public int UpdatePasswordById(UpdatePasswordForm form, HttpServletRequest req) {
-		System.out.println("【フォームのユーザーID】：　" + form.getId());
+	public int UpdatePasswordById(UpdatePasswordForm form, ResetPassword resetPassword, HttpServletRequest req) {
 		System.out.println("【フォームのパスワード】：　" + form.getPassword());
+		System.out.println("【resetPassword】: " + resetPassword);
+		
+		ResetPasswordExample example = new ResetPasswordExample();
+		example.createCriteria().andRandomUrlEqualTo(resetPassword.getRandomUrl());
+		
+		List<ResetPassword> resetPasswordList = resetPasswordMapper.selectByExample(example);
+		System.out.println(resetPasswordList);
+		
+		UserExample userExample = new UserExample();
+		example.createCriteria().andUserIdEqualTo(resetPasswordList.get(0).getUserId());
+		List<User> userList = userMapper.selectByExample(userExample);
+		System.out.println(userList);
+		
+		User user = userList.get(0);
+		user.setPassword(form.getPassword());
+		System.out.println(user);
+		
+		return userMapper.updateByExampleSelective(user, userExample);
 		
 		
+		
+		
+		
+		
+		
 
-		User user = new User();
-		user.setId(Integer.parseInt(form.getId()));
-		user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
-
-		UserExample example = new UserExample();
-		example.createCriteria().andIdEqualTo(user.getId());
-		userMapper.updateByExampleSelective(user, example);
-
-		List<User> newUserList = userMapper.selectByExample(example);
-		System.out.println("【更新後パスワード】: " + newUserList.get(0).getPassword());
-
-		return 1;
+//		User user = new User();
+//		user.setId(Integer.parseInt(form.getId()));
+//		user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
+//
+//		UserExample example = new UserExample();
+//		example.createCriteria().andIdEqualTo(user.getId());
+//		userMapper.updateByExampleSelective(user, example);
+//
+//		List<User> newUserList = userMapper.selectByExample(example);
+//		System.out.println("【更新後パスワード】: " + newUserList.get(0).getPassword());
+//
+//		return 1;
 
 	}
 
