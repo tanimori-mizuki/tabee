@@ -130,7 +130,7 @@
    <include refid="Members_Table"/>
    <include refid="Users_Table"/>
    WHERE s.id=(SELECT shiori_id FROM members WHERE user_id=#{userId,jdbcType=INTEGER})
-   ORDER BY s.created_at;
+   ORDER BY s.created_at DESC;
   </select>
   
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.ShioriExample" >

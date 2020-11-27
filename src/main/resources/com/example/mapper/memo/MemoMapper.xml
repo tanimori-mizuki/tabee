@@ -156,7 +156,7 @@
 		<include refid="Memo_Images_Table"/>
 		<include refid="Users_ForMemoImages_Tabel"/>
 	WHERE m.shiori_id=#{shioriId,jdbcType=INTEGER}
-	ORDER BY m.created_at;
+	ORDER BY m.created_at DESC;
   </select>
   
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memo.MemoExample" >
