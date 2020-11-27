@@ -7,6 +7,7 @@
     <result column="dep_at" property="depAt" jdbcType="DATE" />
     <result column="return_at" property="returnAt" jdbcType="DATE" />
     <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="total_cost" property="totalCost" jdbcType="INTEGER" />
     <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updater_id" property="updaterId" jdbcType="INTEGER" />
@@ -20,6 +21,7 @@
 	    <result column="s_dep_at" property="depAt" jdbcType="DATE" />
 	    <result column="s_return_at" property="returnAt" jdbcType="DATE" />
 	    <result column="s_image_path" property="imagePath" jdbcType="VARCHAR" />
+	    <result column="s_total_cost" property="totalCost" jdbcType="INTEGER" />
 	    <result column="s_creator_id" property="creatorId" jdbcType="INTEGER" />
 	    <result column="s_created_at" property="createdAt" jdbcType="TIMESTAMP" />
 	    <result column="s_updater_id" property="updaterId" jdbcType="INTEGER" />
@@ -97,12 +99,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, 
+    id, title, dep_at, return_at, image_path, total_cost,creator_id, created_at, updater_id, updated_at, 
     version
   </sql>
   <sql id="Shioris_Column_List">
   	s.id AS s_id,s.title AS s_title,s.dep_at AS s_dep_at
-	,s.return_at AS s_return_at,s.image_path AS s_image_path
+	,s.return_at AS s_return_at,s.image_path AS s_image_path,s.total_cost AS s_total_cost
 	,s.creator_id AS s_creator_id,s.created_at AS s_created_at
 	,s.updater_id AS s_updater_id,s.updated_at s_updated_at,s.version AS s_version
   </sql>
@@ -315,6 +317,9 @@
       <if test="imagePath != null" >
         image_path = #{imagePath,jdbcType=VARCHAR},
       </if>
+      <if test="totalCost != null" >
+        total_cost = #{totalCost,jdbcType=INTEGER},
+      </if>
       <if test="creatorId != null" >
         creator_id = #{creatorId,jdbcType=INTEGER},
       </if>
@@ -339,6 +344,7 @@
       dep_at = #{depAt,jdbcType=DATE},
       return_at = #{returnAt,jdbcType=DATE},
       image_path = #{imagePath,jdbcType=VARCHAR},
+      total_cost = #{totalCost,jdbcType=INTEGER},
       creator_id = #{creatorId,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updater_id = #{updaterId,jdbcType=INTEGER},

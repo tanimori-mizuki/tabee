@@ -29,6 +29,8 @@ public class Shiori {
     private Date returnAt;
     /**画像名*/
     private String imagePath;
+    /**費用合計*/   
+    private Integer totalCost;
     /**作成者ID*/
     private Integer creatorId;
     /**作成日時*/
