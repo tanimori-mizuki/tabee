@@ -43,5 +43,7 @@ public class Shiori {
     private Integer version;
     /**ユーザリスト*/
     private List<User> userList;
+    /**目的地リスト*/    
+    private List <Destination> destinationList;
     
 }
