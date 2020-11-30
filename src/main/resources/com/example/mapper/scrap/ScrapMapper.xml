@@ -12,6 +12,12 @@
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
     <result column="version" property="version" jdbcType="INTEGER" />
   </resultMap>
+  
+  <!-- 全件検索 -->
+  <select id="findAll" resultType="com.example.domain.scrap.Scrap" resultMap="BaseResultMap">
+  		select id,shiori_id,name,creator_id,created_at,updater_id,updated_at,version from tabee.scraps ORDER BY id
+  </select>
+  
   <sql id="Example_Where_Clause" >
     
     <where >

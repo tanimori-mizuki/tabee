@@ -2,6 +2,7 @@ package com.example.service.scrap;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class CreaterFolderService {
 	 * @param form　
 	 * @return インサートされたスクラップ情報
 	 */
-	public Scrap createFolder(CreateFolderForm form) {
+	public List<Scrap> createFolder(CreateFolderForm form) {
 		
 		System.out.println("フォルダー名：" + form.getFolderName());
 		
@@ -50,12 +51,9 @@ public class CreaterFolderService {
 		// scrapテーブルにインサート
 		scrapMapper.insertSelective(scrap);
 		
-		// 一件検索
-		Scrap newScrap = new Scrap();
-		newScrap = scrapMapper.selectByPrimaryKey(1);
-		System.out.println(newScrap);
+		List<Scrap> scrapList = scrapMapper.findAll();
 		
-		return newScrap;
+		return scrapList;
 		
 	}
 

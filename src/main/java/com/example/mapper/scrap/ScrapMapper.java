@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ScrapMapper {
+	
+	List<Scrap> findAll();
 
     int countByExample(ScrapExample example);
 

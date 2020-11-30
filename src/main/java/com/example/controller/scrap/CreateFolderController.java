@@ -1,5 +1,7 @@
 package com.example.controller.scrap;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +20,7 @@ public class CreateFolderController {
 	private CreaterFolderService createFolderService;
 	
 	@PostMapping("/create_folder")
-	public Scrap createFolder(@RequestBody CreateFolderForm form) {
+	public List<Scrap> createFolder(@RequestBody CreateFolderForm form) {
 		return createFolderService.createFolder(form);
 	}
 
