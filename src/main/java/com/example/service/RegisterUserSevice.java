@@ -65,7 +65,7 @@ public class RegisterUserSevice {
 		
 		User newUser = userMapper.findByEmail(form.getEmail());
 		
-		sendRegisterCompleteMail(form);
+//		sendRegisterCompleteMail(form);
 		
 		return newUser;
 		

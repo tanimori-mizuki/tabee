@@ -50,4 +50,6 @@ public interface UserMapper {
 
 	int updateByExample(@Param("user") User user, @Param("example") UserExample example);
 	
+	public int updateByPrimaryKeySelective(@Param("user") User user);
+	
 }

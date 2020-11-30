@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -16,8 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.user.ResetPassword;
 import com.example.domain.user.User;
-import com.example.example.user.ResetPasswordExample;
 import com.example.example.user.UserExample;
+import com.example.form.UpdateEmailForm;
 import com.example.form.UpdatePasswordForm;
 import com.example.mapper.user.ResetPasswordMapper;
 import com.example.mapper.user.UserMapper;
@@ -73,7 +72,7 @@ public class UpdateUserService {
 		example.createCriteria().andEmailEqualTo(email);
 
 		try {
-			
+
 			List<User> userList = userMapper.selectByExample(example);
 			User user = userList.get(0);
 
@@ -146,5 +145,48 @@ public class UpdateUserService {
 		user.setUpdatedAt(LocalDateTime.now());
 
 		return userMapper.updateByExampleSelective(user, userExample);
+	}
+
+	/**
+	 * メールアドレスを更新.
+	 * 
+	 * @param form
+	 * @return
+	 * @throws Exception
+	 */
+	public User UpdateEmail(UpdateEmailForm form) throws Exception {
+		//入力されたメールアドレスの重複検証
+		UserExample emailExample = new UserExample();
+		emailExample.createCriteria().andEmailEqualTo(form.getEmail());
+		
+		List<User> userListByEmail = userMapper.selectByExample(emailExample);
+			
+		if(userListByEmail.size() != 0) {
+			throw new Exception("そのメールアドレスはすでに登録されています。");
+		}
+
+		//フォームで入力された情報をオブジェクトにセット
+		//メールアドレス更新
+		User user = new User();
+		user.setId(Integer.parseInt(form.getUserId()));
+		user.setEmail(form.getEmail());
+		user.setUpdatedAt(LocalDateTime.now());
+		
+		UserExample example = new UserExample();
+		example.createCriteria().andIdEqualTo(user.getId());
+		
+		userMapper.updateByExampleSelective(user, example);
+
+		//更新されたメールアドレスが入ったユーザー情報をリターン
+		UserExample newEmailExample = new UserExample();
+		emailExample.createCriteria().andEmailEqualTo(form.getEmail());
+
+		try {
+			List<User> userList = userMapper.selectByExample(newEmailExample);
+			return userList.get(0);
+
+		} catch (Exception e) {
+			throw new UsernameNotFoundException("入力されたメールアドレスでの更新処理が正常に処理できませんでした。");
+		}
 	}
 }
