@@ -1,11 +1,19 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tabee?serverTimezone=JST
+    url: jdbc:mysql://localhost:3306/tabee?serverTimezone=JST&useUnicode=true&characterEncoding=utf8
     username: root
     password: mysqlmysql
-    
-    
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ma.nose9413@gmail.com
+    password: nkcpbzcktobslwvu
+    properties:
+      mail.smtp:
+        auth: true
+        starttls.enable: true 
+        
 # ローカル環境での起動ポート番号の設定
 server:
   port: 8080
@@ -16,3 +24,13 @@ server:
 # 設定クラスにてこのオリジンのCORSを許可する
 environments:
   originUrl: http://localhost:8888
+  
+mybatis:
+  configuration:
+#   スネークケースからキャメルケースへの変換
+    mapUnderscoreToCamelCase: true
+# 自動マッピング機能. FULL が指定された場合、ネストされた結果などの複雑なものも含めて全てが自動マッピングの対象.
+    auto-mapping-behavior: full
+    
+
+

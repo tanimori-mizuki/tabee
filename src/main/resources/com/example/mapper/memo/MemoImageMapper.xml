@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.common.ContactMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.common.Contact" >
+<mapper namespace="com.example.mapper.MemoImageMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.MemoImage" >
    
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="send_at" property="sendAt" jdbcType="TIMESTAMP" />
+    <result column="memo_id" property="memoId" jdbcType="INTEGER" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
    
@@ -70,17 +70,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-  
-    id, name, email, content, send_at
+   
+    id, memo_id, image_path, creator_id, created_at
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.common.ContactExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.MemoImageExample" >
    
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from contacts
+    from memo_images
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,91 +92,91 @@
    
     select 
     <include refid="Base_Column_List" />
-    from contacts
+    from memo_images
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-  
-    delete from contacts
+   
+    delete from memo_images
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.common.ContactExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.MemoImageExample" >
    
-    delete from contacts
+    delete from memo_images
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.common.Contact" >
+  <insert id="insert" parameterType="com.example.domain.MemoImage" >
    
-    insert into contacts (id, name, email, 
-      content, send_at)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{sendAt,jdbcType=TIMESTAMP})
+    insert into memo_images (id, memo_id, image_path, 
+      creator_id, created_at)
+    values (#{id,jdbcType=INTEGER}, #{memoId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.common.Contact" >
+  <insert id="insertSelective" parameterType="com.example.domain.MemoImage" >
    
-    insert into contacts
+    insert into memo_images
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="memoId != null" >
+        memo_id,
       </if>
-      <if test="email != null" >
-        email,
+      <if test="imagePath != null" >
+        image_path,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="creatorId != null" >
+        creator_id,
       </if>
-      <if test="sendAt != null" >
-        send_at,
+      <if test="createdAt != null" >
+        created_at,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="memoId != null" >
+        #{memoId,jdbcType=INTEGER},
       </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
       </if>
-      <if test="sendAt != null" >
-        #{sendAt,jdbcType=TIMESTAMP},
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.common.ContactExample" resultType="java.lang.Integer" >
-    
-    select count(*) from contacts
+  <select id="countByExample" parameterType="com.example.example.MemoImageExample" resultType="java.lang.Integer" >
+  
+    select count(*) from memo_images
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
    
-    update contacts
+    update memo_images
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.memoId != null" >
+        memo_id = #{record.memoId,jdbcType=INTEGER},
       </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.imagePath != null" >
+        image_path = #{record.imagePath,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="record.creatorId != null" >
+        creator_id = #{record.creatorId,jdbcType=INTEGER},
       </if>
-      <if test="record.sendAt != null" >
-        send_at = #{record.sendAt,jdbcType=TIMESTAMP},
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -184,43 +184,43 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-   
-    update contacts
+  
+    update memo_images
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      send_at = #{record.sendAt,jdbcType=TIMESTAMP}
+      memo_id = #{record.memoId,jdbcType=INTEGER},
+      image_path = #{record.imagePath,jdbcType=VARCHAR},
+      creator_id = #{record.creatorId,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.common.Contact" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.MemoImage" >
    
-    update contacts
+    update memo_images
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="memoId != null" >
+        memo_id = #{memoId,jdbcType=INTEGER},
       </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
       </if>
-      <if test="sendAt != null" >
-        send_at = #{sendAt,jdbcType=TIMESTAMP},
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.common.Contact" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.MemoImage" >
   
-    update contacts
-    set name = #{name,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      send_at = #{sendAt,jdbcType=TIMESTAMP}
+    update memo_images
+    set memo_id = #{memoId,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

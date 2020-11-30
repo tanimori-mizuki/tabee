@@ -36,7 +36,8 @@ public interface UserMapper {
 	 * @return　.
 	 */
 	public User findByEmailAndPassword(String email, String password);
-
+	
+	
 	int countByExample(UserExample example);
 
 	int deleteByExample(UserExample example);
@@ -45,7 +46,8 @@ public interface UserMapper {
 
 	List<User> selectByExample(UserExample example);
 
-	int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+	int updateByExampleSelective(@Param("user") User user, @Param("example") UserExample example);
 
-	int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+	int updateByExample(@Param("user") User user, @Param("example") UserExample example);
+	
 }

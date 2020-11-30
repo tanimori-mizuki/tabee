@@ -537,3 +537,14 @@ CREATE TABLE `contacts` (
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`)
 ); 
+
+/* パスワードリセット */
+DROP TABLE IF EXISTS `tabee`.`reset_password` ;
+CREATE TABLE `reset_password` (
+`id` int NOT NULL AUTO_INCREMENT,
+`user_id` int NOT NULL,
+`random_url` varchar(255) NOT NULL,
+`expire_date` datetime NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `id_UNIQUE` (`id`)
+); 
