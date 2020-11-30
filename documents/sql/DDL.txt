@@ -27,6 +27,7 @@ CREATE TABLE `shioris` (
 `dep_at` date DEFAULT NULL,
 `return_at` date DEFAULT NULL,
 `image_path` varchar(255) DEFAULT NULL,
+`total_cost` int DEFAULT '0',
 `creator_id` int NOT NULL,
 `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `updater_id` int NOT NULL,
