@@ -18,7 +18,7 @@ import com.example.service.shiori.GetShioriByUserIdService;
  *
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/shiori")
 public class ShowShioriListController {
 	
 	@Autowired
@@ -37,5 +37,23 @@ public class ShowShioriListController {
 		return getShioriByUserIdService.getShioriByUserId(1);
 		
 	}
+	
+	/**
+	 * しおり情報を取得する.
+	 * @param loginUser ログイン者情報
+	 * @return　しおり情報
+	 */
+	@GetMapping("/getShioriByUserId")
+	public List <Shiori> showShioriInfo(Integer id){
+		System.out.println("【id】 " + id);
+		
+		System.out.println("【IDで取得したしおり情報】 " + getShioriByUserIdService.getShioriByUserId(id));
+		List<Shiori> shioriList = getShioriByUserIdService.getShioriByUserId(id);
+		System.out.println("shioriList: " + shioriList);
+		return shioriList;
+		
+	}
+	
+	
 
 }
