@@ -22,4 +22,8 @@ mybatis:
     mapUnderscoreToCamelCase: true
 # 自動マッピング機能. FULL が指定された場合、ネストされた結果などの複雑なものも含めて全てが自動マッピングの対象.
     auto-mapping-behavior: full
+    
+# 画像をアップロードする場所を指定
+path:
+  uploadPath: "src/main/resources/static/images/"
 
