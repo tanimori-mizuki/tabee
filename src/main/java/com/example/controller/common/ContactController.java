@@ -1,9 +1,8 @@
-package com.example.controller;
+package com.example.controller.common;
 
 
-import com.example.domain.common.Contact;
-import com.example.form.ContactForm;
-import com.example.service.ContactService;
+import com.example.form.common.ContactForm;
+import com.example.service.common.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
