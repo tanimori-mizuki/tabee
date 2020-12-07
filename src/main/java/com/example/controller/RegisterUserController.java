@@ -32,6 +32,7 @@ public class RegisterUserController {
 	 */
 	@PostMapping("/register")
 	public User registerUser(@RequestBody RegisterUserForm form) throws Exception {
+		System.out.println(form);
 		try {
 			return registerUserService.registerUser(form);
 			

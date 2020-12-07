@@ -160,8 +160,8 @@
       #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=INTEGER}, #{url,jdbcType=LONGVARCHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.example.domain.Schedule" >
-   
     insert into schedules
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -270,6 +270,7 @@
       </if>
     </trim>
   </insert>
+  
   <select id="countByExample" parameterType="com.example.example.ScheduleExample" resultType="java.lang.Integer" >
    
     select count(*) from schedules
