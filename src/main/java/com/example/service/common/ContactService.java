@@ -1,7 +1,7 @@
-package com.example.service;
+package com.example.service.common;
 
 import com.example.domain.common.Contact;
-import com.example.form.ContactForm;
+import com.example.form.common.ContactForm;
 import com.example.mapper.common.ContactMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ public class ContactService {
 
     @Autowired
     private ContactMapper contactMapper;
-
     /**
-     * 問合せ内容を登録するメソッド.
+     * 問合せ内容を登録するメソッド¥]
+     *
      *
      * @param form フォーム
      */
