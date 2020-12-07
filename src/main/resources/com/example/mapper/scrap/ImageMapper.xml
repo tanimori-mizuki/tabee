@@ -9,6 +9,12 @@
     <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
   </resultMap>
+  
+  <!-- 全件検索 -->
+  <select id="findAll" resultType="com.example.domain.scrap.Image" resultMap="BaseResultMap">
+  		select id,scrap_id,image_path,creator_id,created_at from tabee.images ORDER BY id;
+  </select>
+  
   <sql id="Example_Where_Clause" >
   
     <where >
