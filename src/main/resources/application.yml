@@ -33,4 +33,7 @@ mybatis:
     auto-mapping-behavior: full
     
 
+# 画像をアップロードする場所を指定
+path:
+  uploadPath: "src/main/resources/static/images/"
 
