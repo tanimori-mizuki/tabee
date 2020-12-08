@@ -33,6 +33,7 @@ public interface MemoMapper {
 
     /**
      * メモ情報を挿入する.
+     * 自動採番で主キーが返ってくる
      * @param record　メモ情報
      * @return　成功件数
      */
