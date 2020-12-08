@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.MemoImageMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.MemoImage" >
+<mapper namespace="com.example.mapper.memo.MemoImageMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.memo.MemoImage" >
    
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="memo_id" property="memoId" jdbcType="INTEGER" />
@@ -73,7 +73,17 @@
    
     id, memo_id, image_path, creator_id, created_at
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.MemoImageExample" >
+  
+  <!--メモ画像を複数件一括挿入 -->
+  <insert id="insertMemoImageList" useGeneratedKeys="true" keyProperty="id">
+  	    insert into memo_images (memo_id, image_path, 
+      creator_id, created_at) values 
+    <foreach item="mi" collection="memoImageList" separator=",">
+    (#{mi.memoId}, #{mi.imagePath}, #{mi.creatorId}, #{mi.createdAt})
+  	</foreach>
+ 	</insert> 	
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memo.MemoImageExample" >
    
     select
     <if test="distinct" >
@@ -100,21 +110,21 @@
     delete from memo_images
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.MemoImageExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.memo.MemoImageExample" >
    
     delete from memo_images
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.MemoImage" >
+  <insert id="insert" parameterType="com.example.domain.memo.MemoImage" >
    
     insert into memo_images (id, memo_id, image_path, 
       creator_id, created_at)
     values (#{id,jdbcType=INTEGER}, #{memoId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
       #{creatorId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.MemoImage" >
+  <insert id="insertSelective" parameterType="com.example.domain.memo.MemoImage" >
    
     insert into memo_images
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -152,7 +162,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.MemoImageExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.example.example.memo.MemoImageExample" resultType="java.lang.Integer" >
   
     select count(*) from memo_images
     <if test="_parameter != null" >
@@ -195,7 +205,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.MemoImage" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.memo.MemoImage" >
    
     update memo_images
     <set >
@@ -214,7 +224,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.MemoImage" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.memo.MemoImage" >
   
     update memo_images
     set memo_id = #{memoId,jdbcType=INTEGER},
