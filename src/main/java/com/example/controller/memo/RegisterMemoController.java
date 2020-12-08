@@ -30,7 +30,7 @@ public class RegisterMemoController {
 	 * @param form
 	 */
 	@PostMapping("/do")
-	public void registerMemo(@RequestPart("OBJ") RegisterMemoForm form,@RequestParam(value = "file", required = false) List<MultipartFile> uploadFileList ){
+	public void registerMemo(@RequestPart("OBJ") RegisterMemoForm form,@RequestParam(value = "file", required = false) List<MultipartFile> uploadFileList )throws Exception{
 		registerMemoService.registerMemo(form,uploadFileList);
 	}
 	
