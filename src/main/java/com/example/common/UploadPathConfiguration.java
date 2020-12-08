@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
+/**
+ * 画像ファイルアップロードの設定クラス.
+ * @author mizuki.tanimori
+ *
+ */
 @Component
 @ConfigurationProperties(prefix = "path")
 @Data
