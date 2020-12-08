@@ -203,7 +203,8 @@
       #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.memo.Memo" >
+  <!--useGeneratedKeys="true"で自動採番されたidを返す  -->
+  <insert id="insertSelective" parameterType="com.example.domain.memo.Memo" useGeneratedKeys="true" keyProperty="id">
    
     insert into memos
     <trim prefix="(" suffix=")" suffixOverrides="," >
