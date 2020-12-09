@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.memo.Memo;
 import com.example.domain.memo.MemoImage;
+import com.example.domain.user.User;
 import com.example.mapper.memo.MemoMapper;
+import com.example.service.shiori.GetShioriByUserIdService;
 
 /**
  * メモ情報を取得するサービス.
@@ -28,6 +30,9 @@ public class GetMomeListService {
 
 	@Autowired
 	private UploadPathConfiguration uploadPathConfiguration;
+	
+	@Autowired
+	private GetShioriByUserIdService getShioriByUserIdService;
 
 	/**
 	 * メモリストを取得する.
@@ -40,15 +45,22 @@ public class GetMomeListService {
 		if (memoList.size() == 0) {
 			return null;
 		}
+				
 		for (Memo memo : memoList) {
+			
+			//ユーザーが登録した画像がある場合サーバーサイドで処理
+			if(memo.getUser().getImagePath()!=null) {
+				//ファイルディレクトリは後日確認する
+				getShioriByUserIdService.setUserImage(memo.getUser(), memo.getUser().getImagePath(), "shiori/");
+			}
+			
 			List<MemoImage> memoImageList = memo.getMemoImageList();
-
+			//メモ画像の処理
 			if (memoImageList.size() != 0) {
 				int count = 0;
 				for (MemoImage memoImage : memoImageList) {
 
 					String uploadPath = uploadPathConfiguration.getUploadPath() + "memo/" + memoImage.getImagePath();
-					System.out.println("service内のupload" + uploadPath);
 					try (FileInputStream fis = new FileInputStream(uploadPath);) {
 						StringBuffer data = new StringBuffer();
 						ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -80,4 +92,6 @@ public class GetMomeListService {
 
 		return memoList;
 	}
+	
+
 }
