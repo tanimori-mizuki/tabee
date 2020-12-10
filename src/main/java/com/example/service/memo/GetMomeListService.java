@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.memo.Memo;
 import com.example.domain.memo.MemoImage;
-import com.example.domain.user.User;
 import com.example.mapper.memo.MemoMapper;
 import com.example.service.shiori.GetShioriByUserIdService;
 
