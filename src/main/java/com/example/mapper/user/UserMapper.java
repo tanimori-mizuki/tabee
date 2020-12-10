@@ -36,6 +36,14 @@ public interface UserMapper {
 	 * @return　.
 	 */
 	public User findByEmailAndPassword(String email, String password);
+
+	/**
+	 * ユーザーIDからユーザー情報を取得.
+	 *
+	 * @param userId ユーザーID
+	 * @return ユーザー情報
+	 */
+	public User findByUserId(Integer userId);
 	
 	
 	int countByExample(UserExample example);
