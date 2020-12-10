@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.user;
 
 import java.util.Map;
 
