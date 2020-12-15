@@ -41,12 +41,22 @@ public interface MemoMapper {
 
     List<Memo> selectByExample(MemoExample example);
 
+    /**
+     * 主キーからメモ情報を取得する.
+     * @param id メモID
+     * @return　メモ情報
+     */
     Memo selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Memo record, @Param("example") MemoExample example);
 
     int updateByExample(@Param("record") Memo record, @Param("example") MemoExample example);
 
+    /**
+     * 主キーでメモ情報を更新する.
+     * @param record メモ情報
+     * @return　更新件数
+     */
     int updateByPrimaryKeySelective(Memo record);
 
     int updateByPrimaryKey(Memo record);

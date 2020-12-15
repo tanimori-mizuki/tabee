@@ -27,19 +27,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.memo.Memo;
 import com.example.domain.memo.MemoImage;
-import com.example.form.memo.RegisterMemoForm;
+import com.example.form.memo.EditMemoForm;
 import com.example.mapper.memo.MemoImageMapper;
 import com.example.mapper.memo.MemoMapper;
 
 /**
- * メモ情報を登録するサービス.
+ * メモ情報の更新を行うサービス.
  * 
  * @author yuri.okada
  *
  */
 @Service
 @Transactional
-public class RegisterMemoService {
+public class EditMemoService {
 
 	@Autowired
 	private MemoMapper memoMapper;
@@ -51,33 +51,32 @@ public class RegisterMemoService {
 	private UploadPathConfiguration uploadPathConfiguration;
 
 	/**
-	 * メモ情報を登録する.
+	 * メモ情報を更新する.
 	 * 
-	 * @return 成功件数
 	 */
-	public void registerMemo(RegisterMemoForm form, List<MultipartFile> uploadFileList) throws Exception {
-		
-			Memo memo = new Memo();
-			BeanUtils.copyProperties(form, memo);
-			memo.setCreatedAt(LocalDateTime.now());
-			memo.setUpdaterId(form.getCreatorId());
-			memo.setUpdatedAt(LocalDateTime.now());
-			memo.setVersion(1);
-			memoMapper.insertSelective(memo);
+	public void editMemo(EditMemoForm form, List<MultipartFile> uploadFileList) throws Exception {
 
-			List<MemoImage> memoImageList = new ArrayList<>();
-			Iterator<ImageWriter> writers = null;
-			// 画像の拡張子チェック
-			if (uploadFileList != null) {
-				String fileExtension = null;
-				for (MultipartFile uploadFile : uploadFileList) {
-					// jpg,png以外のファイル形式が指定された場合に例外発生
-					fileExtension = getExtension(uploadFile.getOriginalFilename());
-					if (!"jpg".equals(fileExtension) && !"png".equals(fileExtension)) {
-						System.err.println("拡張子エラー");
-						throw new IllegalArgumentException();
-					}
+		Memo memo = new Memo();
+		BeanUtils.copyProperties(form, memo);
+		memo.setCreatedAt(LocalDateTime.now());
+		memo.setUpdaterId(form.getCreatorId());
+		memo.setUpdatedAt(LocalDateTime.now());
+		memo.setVersion(form.getVersion() + 1);
+		memoMapper.updateByPrimaryKeySelective(memo);
+
+		List<MemoImage> memoImageList = new ArrayList<>();
+		Iterator<ImageWriter> writers = null;
+		// 画像の拡張子チェック
+		if (uploadFileList != null) {
+			String fileExtension = null;
+			for (MultipartFile uploadFile : uploadFileList) {
+				// jpg,png以外のファイル形式が指定された場合に例外発生
+				fileExtension = getExtension(uploadFile.getOriginalFilename());
+				if (!"jpg".equals(fileExtension) && !"png".equals(fileExtension)) {
+					System.err.println("拡張子エラー");
+					throw new IllegalArgumentException();
 				}
+			}
 			try {
 				for (MultipartFile uploadFile : uploadFileList) {
 

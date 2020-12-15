@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.form.RegisterMemoForm;
+import com.example.form.memo.RegisterMemoForm;
 import com.example.service.memo.RegisterMemoService;
 
 /**
