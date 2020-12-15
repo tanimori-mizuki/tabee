@@ -1,7 +1,12 @@
-package com.example.form;
+package com.example.form.memo;
 
 import lombok.Data;
 
+/**
+ * メモ登録情報を受け取るフォーム
+ * @author yuri.okada
+ *
+ */
 @Data
 public class RegisterMemoForm {
 	

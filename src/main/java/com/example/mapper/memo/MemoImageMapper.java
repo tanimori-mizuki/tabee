@@ -27,6 +27,11 @@ public interface MemoImageMapper {
 
     int deleteByExample(MemoImageExample example);
 
+    /**
+     * 主キーからメモ画像を削除する.
+     * @param id　主キー
+     * @return　成功件数
+     */
     int deleteByPrimaryKey(Integer id);
 
     int insert(MemoImage record);
