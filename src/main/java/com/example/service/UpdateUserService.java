@@ -189,4 +189,15 @@ public class UpdateUserService {
 			throw new UsernameNotFoundException("入力されたメールアドレスでの更新処理が正常に処理できませんでした。");
 		}
 	}
+
+	/**
+	 * ユーザーIDでユーザー情報を取得するメソッド.
+	 *
+	 * @param userId ユーザーID
+	 * @return ユーザー情報
+	 */
+	public User findByUserId(Integer userId){
+		User profileList = userMapper.selectByUserId(userId);
+		return profileList;
+	}
 }

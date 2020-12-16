@@ -43,7 +43,7 @@ public interface UserMapper {
 	 * @param userId ユーザーID
 	 * @return ユーザー情報
 	 */
-	public User findByUserId(Integer userId);
+	public User selectByUserId(@Param("userId") Integer userId);
 	
 	
 	int countByExample(UserExample example);
