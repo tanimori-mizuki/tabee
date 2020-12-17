@@ -4,7 +4,7 @@ import com.example.common.MailConfiguration;
 import com.example.domain.common.Contact;
 import com.example.form.common.ContactForm;
 import com.example.mapper.common.ContactMapper;
-import com.sun.tools.doclets.standard.Standard;
+//import com.sun.tools.doclets.standard.Standard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

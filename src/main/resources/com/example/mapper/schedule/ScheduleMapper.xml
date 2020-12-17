@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.ScheduleMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.Schedule" >
-   
+<mapper namespace="com.example.mapper.schedule.ScheduleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.schedule.Schedule" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="start_at" property="startAt" jdbcType="TIMESTAMP" />
     <result column="finish_at" property="finishAt" jdbcType="TIMESTAMP" />
-    <result column="icon_id" property="iconId" jdbcType="INTEGER" />
-    <result column="destination" property="destination" jdbcType="VARCHAR" />
+    <result column="icon_path" property="iconPath" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="memo" property="memo" jdbcType="VARCHAR" />
@@ -19,13 +18,105 @@
     <result column="updater_id" property="updaterId" jdbcType="INTEGER" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
     <result column="version" property="version" jdbcType="INTEGER" />
+   </resultMap>
+  
+  <!-- 結合用ResultMap -->
+  <resultMap id="ScheduleResultMap" type="com.example.domain.schedule.Schedule" >
+    <id column="sc_id" property="id" jdbcType="INTEGER" />
+    <result column="sc_shiori_id" property="shioriId" jdbcType="INTEGER" />
+    <result column="sc_title" property="title" jdbcType="VARCHAR" />
+    <result column="sc_start_at" property="startAt" jdbcType="TIMESTAMP" />
+    <result column="sc_finish_at" property="finishAt" jdbcType="TIMESTAMP" />
+    <result column="sc_icon_path" property="iconPath" jdbcType="VARCHAR" />
+    <result column="sc_url" property="url" jdbcType="VARCHAR" />
+    <result column="sc_address" property="address" jdbcType="VARCHAR" />
+    <result column="sc_tel" property="tel" jdbcType="VARCHAR" />
+    <result column="sc_memo" property="memo" jdbcType="VARCHAR" />
+    <result column="sc_cost" property="cost" jdbcType="INTEGER" />
+    <result column="sc_creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="sc_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="sc_updater_id" property="updaterId" jdbcType="INTEGER" />
+    <result column="sc_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="sc_version" property="version" jdbcType="INTEGER" />
+  	
+  	<association property="user" javaType="com.example.domain.user.User">
+  	  <id column="us_id" property="id" jdbcType="INTEGER" />
+	  <result column="us_name" property="name" jdbcType="VARCHAR" />
+	  <result column="us_email" property="email" jdbcType="VARCHAR" />
+	  <result column="us_password" property="password" jdbcType="CHAR" />
+	  <result column="us_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	  <result column="us_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  <result column="us_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  <result column="us_deleted" jdbcType="TINYINT" property="deleted" />
+  	</association>
+  	
+  	<association property="shiori" javaType="com.example.domain.shiori.Shiori">
+  	  <id column="sh_id" property="id" jdbcType="INTEGER"/>
+  	  <result column="sh_title" property="title" jdbcType="VARCHAR"/>
+  	  <result column="sh_dep_at" property="depAt" jdbcType="VARCHAR"/>
+  	  <result column="sh_return_at" property="returnAt" jdbcType="VARCHAR"/>
+  	  <result column="sh_image_path" property="imagePath" jdbcType="VARCHAR"/>
+  	  <result column="sh_total_cost" property="totalCost" jdbcType="INTEGER"/>
+  	  <result column="sh_creator_id" property="creatorId" jdbcType="INTEGER"/>
+  	  <result column="sh_created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+  	  <result column="sh_updater_id" property="updaterId" jdbcType="INTEGER"/>
+  	  <result column="sh_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+  	  <result column="sh_version" property="version" jdbcType="INTEGER"/>
+	  
+	  <association property="user" javaType="com.example.domain.user.User">
+  	  	<id column="ush_id" property="id" jdbcType="INTEGER" />
+	  	<result column="ush_name" property="name" jdbcType="VARCHAR" />
+	  	<result column="ush_email" property="email" jdbcType="VARCHAR" />
+	  	<result column="ush_password" property="password" jdbcType="CHAR" />
+	  	<result column="ush_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	 	<result column="ush_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  	<result column="ush_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  	<result column="ush_deleted" jdbcType="TINYINT" property="deleted" />
+      </association>
+      
+	  <collection property="userList" resultMap="userResultMap" />
+  	  <collection property="destinationList" resultMap="destinationResultMap" />
+    </association>
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.example.domain.Schedule" extends="BaseResultMap" >
-   
+  
+  <resultMap id="userResultMap" type="com.example.domain.user.User" >
+  	<id column="u_id" property="id" jdbcType="INTEGER" />
+	<result column="u_name" property="name" jdbcType="VARCHAR" />
+	<result column="u_email" property="email" jdbcType="VARCHAR" />
+	<result column="u_password" property="password" jdbcType="CHAR" />
+	<result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	<result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	<result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	<result column="u_deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  
+  <resultMap id="destinationResultMap" type="com.example.domain.shiori.Destination" >
+  	<id column="d_id" property="id" jdbcType="INTEGER"/>
+  	<result column="d_shiori_id" property="shioriId" jdbcType="INTEGER"/>
+  	<result column="d_destination" property="destination" jdbcType="VARCHAR"/>
+  	<result column="d_creator_id" property="creatorId" jdbcType="INTEGER"/>
+  	<result column="d_created_at" property="creatorAt" jdbcType="TIMESTAMP"/>
+  	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
+  	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+  	<result column="d_version" property="version" jdbcType="INTEGER"/>
+  	<association property="user" javaType="com.example.domain.user.User">
+  	  <id column="ud_id" property="id" jdbcType="INTEGER" />
+	  <result column="ud_name" property="name" jdbcType="VARCHAR" />
+	  <result column="ud_email" property="email" jdbcType="VARCHAR" />
+	  <result column="ud_password" property="password" jdbcType="CHAR" />
+	  <result column="ud_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	  <result column="ud_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  <result column="ud_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  <result column="ud_deleted" jdbcType="TINYINT" property="deleted" />
+  	</association>
+  </resultMap>
+  
+  <resultMap id="ResultMapWithBLOBs" type="com.example.domain.schedule.Schedule" extends="BaseResultMap" >
     <result column="url" property="url" jdbcType="LONGVARCHAR" />
   </resultMap>
+  
+  <!-- SQL OPTIONS -->
   <sql id="Example_Where_Clause" >
-   
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -54,8 +145,8 @@
       </foreach>
     </where>
   </sql>
+  
   <sql id="Update_By_Example_Where_Clause" >
-   
     <where >
       <foreach collection="example.oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -84,16 +175,93 @@
       </foreach>
     </where>
   </sql>
+  
   <sql id="Base_Column_List" >
-    id, shiori_id, title, start_at, finish_at, icon_id, destination, address, tel, 
+    id, shiori_id, title, start_at, finish_at, icon_path, url, address, tel, 
     memo, cost, creator_id, created_at, updater_id, updated_at, version
   </sql>
+  
+   <sql id="Schedule_Column_List" >
+    sc.id sc_id, sc.shiori_id sc_shiori_id, sc.title sc_title, sc.start_at sc_start_at, sc.finish_at sc_finish_at, sc.icon_path sc_icon_path, sc.url sc_url, sc.address sc_address, sc.tel sc_tel, 
+    sc.memo sc_memo, sc.cost sc_cost, sc.creator_id sc_creator_id, sc.created_at sc_created_at, sc.updater_id sc_updater_id, sc.updated_at sc_updated_at, sc.version sc_version
+  </sql>
+  
+  <sql id="User_For_Schedule_Column_List">
+  	, us.id us_id, us.name us_name, us.email us_email, us.password us_password, 
+  	us.created_at us_created_at, us.updated_at us_updated_at, us.image_path us_image_path, us.deleted us_deleted
+  </sql>
+
+  <sql id="Shiori_Column_List">
+  	, sh.id sh_id, sh.title sh_title, sh.dep_at sh_dep_at, sh.return_at sh_return_at, sh.image_path sh_image_path, 
+  	sh.total_cost sh_total_cost, sh.creator_id sh_creator_id, sh.created_at sh_created_at, sh.updater_id sh_updater_id,
+ 	sh.updated_at sh_updated_at, sh.version sh_version
+  </sql>
+  
+  <sql id="User_For_Shiori_Column_List">
+  	, ush.id ush_id, ush.name ush_name, ush.email ush_email, ush.password ush_password, 
+  	ush.created_at ush_created_at, ush.updated_at ush_updated_at, ush.image_path ush_image_path, ush.deleted ush_deleted
+  </sql>
+  
+  <sql id="Destination_Column_List">
+  	, d.id d_id, d.shiori_id d_shiori_id, d.destination d_destination, d.creator_id d_creator_id, d.created_at d_created_at, 
+  	d.updater_id d_updater_id, d.updated_at d_updated_at, d.version d_version
+  </sql>
+  
+  <sql id="User_For_Destination_Column_List">
+  	, ud.id ud_id, ud.name ud_name, ud.email ud_email, ud.password ud_password, 
+  	ud.created_at ud_created_at, ud.updated_at ud_updated_at, ud.image_path ud_image_path, ud.deleted ud_deleted
+  </sql>
+  
+  <sql id="Schedules_Table">
+  	FROM schedules sc
+  </sql>
+  
+  <sql id="Users_For_Schedules_Table">
+  	LEFT OUTER JOIN users us ON sc.creator_id = us.id
+  </sql>
+
+  <sql id="Shioris_For Schedules_Table">
+  	LEFT OUTER JOIN shioris sh ON sc.shiori_id = sh.id
+  </sql>
+  
+   <sql id="Users_For_Shioris_Table">
+  	LEFT OUTER JOIN users ush ON sh.creator_id = ush.id
+  </sql>
+  
+  <sql id="Destinations_Table">
+  	LEFT JOIN destinations d
+  	ON d.shiori_id = sh.id
+  </sql>
+  
+   <sql id="Users_For_Destinations_Table">
+	LEFT JOIN users ud
+	ON d.creator_id = ud.id
+  </sql>
+  
   <sql id="Blob_Column_List" >
-   
     url
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.example.example.ScheduleExample" >
-   
+  
+  <!-- SELECT -->
+  <!-- しおりIDに紐づくスケジュール情報取得 -->
+  <select id="selectByShioriId" resultMap="ScheduleResultMap" parameterType="java.lang.Integer">
+  	SELECT
+  	<include refid="Schedule_Column_List" />
+  	<include refid="User_For_Schedule_Column_List" />
+  	<include refid="Shiori_Column_List" />
+  	<include refid="User_For_Shiori_Column_List" />
+  	<include refid="Destination_Column_List" />
+  	<include refid="Schedules_Table" />
+  	<include refid="Users_For_Schedules_Table" />
+  	<include refid="Shioris_For Schedules_Table" />
+	<include refid="Users_For_Shioris_Table" />
+  	<include refid="Destinations_Table" />
+  	<include refid="Users_For_Destinations_Table" />
+  	WHERE sh.id in (SELECT shiori_id FROM members mb WHERE mb.user_id=#{userId,jdbcType=INTEGER})
+   	ORDER BY sc.start_at ASC;
+  </select>
+  
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.example.example.schedule.ScheduleExample" >
     select
     <if test="distinct" >
       distinct
@@ -109,8 +277,8 @@
       order by $orderByClause$
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.ScheduleExample" >
-   
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.schedule.ScheduleExample" >
     select
     <if test="distinct" >
       distinct
@@ -124,8 +292,8 @@
       order by ${orderByClause}
     </if>
   </select>
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-   
     select 
     <include refid="Base_Column_List" />
     ,
@@ -133,35 +301,44 @@
     from schedules
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="countByExample" parameterType="com.example.example.schedule.ScheduleExample" resultType="java.lang.Integer" >
+    select count(*) from schedules
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <!-- DELETE -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-   
     delete from schedules
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.ScheduleExample" >
-    
+  
+  <delete id="deleteByExample" parameterType="com.example.example.schedule.ScheduleExample" >
     delete from schedules
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.Schedule" >
-    
+  
+  <!-- INSERT -->
+  <insert id="insert" parameterType="com.example.domain.schedule.Schedule" >
     insert into schedules (id, shiori_id, title, 
-      start_at, finish_at, icon_id, 
-      destination, address, tel, 
+      start_at, finish_at, icon_path, url, 
+      address, tel, 
       memo, cost, creator_id, 
       created_at, updater_id, updated_at, 
       version, url)
     values (#{id,jdbcType=INTEGER}, #{shioriId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, #{iconId,jdbcType=INTEGER}, 
-      #{destination,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, #{iconPath,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
       #{memo,jdbcType=VARCHAR}, #{cost,jdbcType=INTEGER}, #{creatorId,jdbcType=INTEGER}, 
       #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=INTEGER}, #{url,jdbcType=LONGVARCHAR})
   </insert>
   
-  <insert id="insertSelective" parameterType="com.example.domain.Schedule" >
+  <insert id="insertSelective" parameterType="com.example.domain.schedule.Schedule" useGeneratedKeys="true" keyProperty="id">
     insert into schedules
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -179,11 +356,11 @@
       <if test="finishAt != null" >
         finish_at,
       </if>
-      <if test="iconId != null" >
-        icon_id,
+      <if test="iconPath != null" >
+        icon_path,
       </if>
-      <if test="destination != null" >
-        destination,
+      <if test="url != null" >
+        url,
       </if>
       <if test="address != null" >
         address,
@@ -232,11 +409,11 @@
       <if test="finishAt != null" >
         #{finishAt,jdbcType=TIME},
       </if>
-      <if test="iconId != null" >
-        #{iconId,jdbcType=INTEGER},
+      <if test="iconPath != null" >
+        #{iconPath,jdbcType=VARCHAR},
       </if>
-      <if test="destination != null" >
-        #{destination,jdbcType=VARCHAR},
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -271,15 +448,8 @@
     </trim>
   </insert>
   
-  <select id="countByExample" parameterType="com.example.example.ScheduleExample" resultType="java.lang.Integer" >
-   
-    select count(*) from schedules
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
+  <!-- UPDATE -->
   <update id="updateByExampleSelective" parameterType="map" >
-    
     update schedules
     <set >
       <if test="record.id != null" >
@@ -297,11 +467,11 @@
       <if test="record.finishAt != null" >
         finish_at = #{record.finishAt,jdbcType=TIME},
       </if>
-      <if test="record.iconId != null" >
-        icon_id = #{record.iconId,jdbcType=INTEGER},
+      <if test="record.iconPath != null" >
+        icon_path = #{record.iconPath,jdbcType=VARCHAR},
       </if>
-      <if test="record.destination != null" >
-        destination = #{record.destination,jdbcType=VARCHAR},
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
@@ -338,16 +508,16 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-   
     update schedules
     set id = #{record.id,jdbcType=INTEGER},
       shiori_id = #{record.shioriId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       start_at = #{record.startAt,jdbcType=TIME},
       finish_at = #{record.finishAt,jdbcType=TIME},
-      icon_id = #{record.iconId,jdbcType=INTEGER},
-      destination = #{record.destination,jdbcType=VARCHAR},
+      icon_path = #{record.iconPath,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       memo = #{record.memo,jdbcType=VARCHAR},
@@ -362,16 +532,16 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
   <update id="updateByExample" parameterType="map" >
-   
     update schedules
     set id = #{record.id,jdbcType=INTEGER},
       shiori_id = #{record.shioriId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       start_at = #{record.startAt,jdbcType=TIME},
       finish_at = #{record.finishAt,jdbcType=TIME},
-      icon_id = #{record.iconId,jdbcType=INTEGER},
-      destination = #{record.destination,jdbcType=VARCHAR},
+      icon_path = #{record.iconPath,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       memo = #{record.memo,jdbcType=VARCHAR},
@@ -385,8 +555,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.Schedule" >
-   
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.schedule.Schedule" >
     update schedules
     <set >
       <if test="shioriId != null" >
@@ -401,11 +571,11 @@
       <if test="finishAt != null" >
         finish_at = #{finishAt,jdbcType=TIME},
       </if>
-      <if test="iconId != null" >
-        icon_id = #{iconId,jdbcType=INTEGER},
+      <if test="iconPath != null" >
+        icon_path = #{iconPath,jdbcType=VARCHAR},
       </if>
-      <if test="destination != null" >
-        destination = #{destination,jdbcType=VARCHAR},
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -440,15 +610,15 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.domain.Schedule" >
-   
+  
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.domain.schedule.Schedule" >
     update schedules
     set shiori_id = #{shioriId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       start_at = #{startAt,jdbcType=TIME},
       finish_at = #{finishAt,jdbcType=TIME},
-      icon_id = #{iconId,jdbcType=INTEGER},
-      destination = #{destination,jdbcType=VARCHAR},
+      icon_path = #{iconPath,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       memo = #{memo,jdbcType=VARCHAR},
@@ -461,15 +631,15 @@
       url = #{url,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.Schedule" >
-   
+  
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.schedule.Schedule" >
     update schedules
     set shiori_id = #{shioriId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       start_at = #{startAt,jdbcType=TIME},
       finish_at = #{finishAt,jdbcType=TIME},
-      icon_id = #{iconId,jdbcType=INTEGER},
-      destination = #{destination,jdbcType=VARCHAR},
+      icon_path = #{iconPath,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       memo = #{memo,jdbcType=VARCHAR},

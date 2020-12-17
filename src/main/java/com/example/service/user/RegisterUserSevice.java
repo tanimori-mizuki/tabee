@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.user;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.user.User;
 import com.example.example.user.UserExample;
-import com.example.form.RegisterUserForm;
+import com.example.form.user.RegisterUserForm;
 import com.example.mapper.user.UserMapper;
 
 

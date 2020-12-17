@@ -4,9 +4,20 @@ import com.example.domain.schedule.Schedule;
 import com.example.example.schedule.ScheduleExample;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ScheduleMapper {
+	
+	/**
+	 * しおりIDに紐づくスケジュールデータ取得
+	 * 
+	 * @param shioriId しおりID
+	 * @return　スケジュールデータリスト
+	 */
+	List<Schedule> selectByShioriId(@Param("userId") Integer userId);
  
     int countByExample(ScheduleExample example);
 

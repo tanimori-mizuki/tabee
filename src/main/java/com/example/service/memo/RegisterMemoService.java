@@ -27,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.memo.Memo;
 import com.example.domain.memo.MemoImage;
-import com.example.form.RegisterMemoForm;
+import com.example.form.memo.RegisterMemoForm;
 import com.example.mapper.memo.MemoImageMapper;
 import com.example.mapper.memo.MemoMapper;
 

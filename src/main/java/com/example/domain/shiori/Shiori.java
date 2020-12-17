@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * しおり情報のドメイン.
+ * 
  * @author yuri.okada
  *
  */
@@ -19,31 +20,33 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Shiori {
-    /**しおりID*/
-    private Integer id;
-    /**タイトル*/
-    private String title;
-    /**出発日*/
-    private Date depAt;
-    /**帰着日*/
-    private Date returnAt;
-    /**画像名*/
-    private String imagePath;
-    /**費用合計*/   
-    private Integer totalCost;
-    /**作成者ID*/
-    private Integer creatorId;
-    /**作成日時*/
-    private LocalDateTime createdAt;
-    /**更新者ID*/
-    private Integer updaterId;
-    /**更新日時*/
-    private LocalDateTime updatedAt;
-    /**バージョン*/
-    private Integer version;
-    /**ユーザリスト*/
-    private List<User> userList;
-    /**目的地リスト*/    
-    private List <Destination> destinationList;
-    
+	/** しおりID */
+	private Integer id;
+	/** タイトル */
+	private String title;
+	/** 出発日 */
+	private Date depAt;
+	/** 帰着日 */
+	private Date returnAt;
+	/** 画像名 */
+	private String imagePath;
+	/** 費用合計 */
+	private Integer totalCost;
+	/** 作成者ID */
+	private Integer creatorId;
+	/** 作成日時 */
+	private LocalDateTime createdAt;
+	/** 更新者ID */
+	private Integer updaterId;
+	/** 更新日時 */
+	private LocalDateTime updatedAt;
+	/** バージョン */
+	private Integer version;
+	/** ユーザー情報 */
+	private User user;
+	/** ユーザリスト */
+	private List<User> userList;
+	/** 目的地リスト */
+	private List<Destination> destinationList;
+
 }

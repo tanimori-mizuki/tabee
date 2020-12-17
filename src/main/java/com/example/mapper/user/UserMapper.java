@@ -1,5 +1,6 @@
 package com.example.mapper.user;
 
+import com.example.domain.schedule.Schedule;
 import com.example.domain.user.User;
 import com.example.example.user.UserExample;
 
@@ -45,6 +46,7 @@ public interface UserMapper {
 	 */
 	public User findByUserId(Integer userId);
 	
+	User selectByPrimaryKey(Integer id);
 	
 	int countByExample(UserExample example);
 

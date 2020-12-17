@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.user.User;
-import com.example.form.RegisterUserForm;
-import com.example.service.RegisterUserSevice;
+import com.example.form.user.RegisterUserForm;
+import com.example.service.user.RegisterUserSevice;
 
 /**
  * ユーザー情報を登録するコントローラ.

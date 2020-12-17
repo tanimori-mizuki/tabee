@@ -152,7 +152,7 @@
    <include refid="Members_Table"/>
    <include refid="Users_Table"/>
    <include refid="Destinations_Table"/>   
-   WHERE s.id=(SELECT shiori_id FROM members WHERE user_id=#{userId,jdbcType=INTEGER})
+   WHERE s.id in (SELECT shiori_id FROM members WHERE user_id=#{userId,jdbcType=INTEGER})
    ORDER BY s.created_at DESC;
   </select>
   
