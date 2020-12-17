@@ -4,7 +4,6 @@ import com.example.common.MailConfiguration;
 import com.example.domain.common.Contact;
 import com.example.form.common.ContactForm;
 import com.example.mapper.common.ContactMapper;
-import com.sun.tools.doclets.standard.Standard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,10 +16,8 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.swing.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
