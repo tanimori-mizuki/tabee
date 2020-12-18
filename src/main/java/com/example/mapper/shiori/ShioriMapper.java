@@ -31,6 +31,12 @@ public interface ShioriMapper {
 
     int insert(Shiori record);
 
+    /**
+     * しおり情報を登録する.
+     * 自動採番で主キーが返ってくる
+     * @param record
+     * @return　成功件数
+     */
     int insertSelective(Shiori record);
 
     List<Shiori> selectByExample(ShioriExample example);

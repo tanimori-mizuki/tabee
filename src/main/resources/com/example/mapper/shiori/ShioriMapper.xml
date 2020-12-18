@@ -196,7 +196,8 @@
       #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.shiori.Shiori" >
+<!--しおり情報を登録する。useGeneratedKeys="true"で自動採番されたidを返す  -->
+  <insert id="insertSelective" parameterType="com.example.domain.shiori.Shiori" useGeneratedKeys="true" keyProperty="id">
     insert into shioris
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
