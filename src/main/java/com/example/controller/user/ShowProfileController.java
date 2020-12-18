@@ -20,12 +20,7 @@ public class ShowProfileController {
     @GetMapping("")
     public User showUserInfo(@AuthenticationPrincipal LoginUser loginUser){
         System.out.println("ログインしてるユーザーID"+loginUser.getUser().getId());
-        return updateUserService.findByUserId(loginUser.getUser().getId());
-    }
-
-    @GetMapping("/showProfile")
-    public User showProfile(Integer userId){
-        User profileList = updateUserService.findByUserId(userId);
+        User profileList = updateUserService.findByUserId(loginUser.getUser().getId());
         return profileList;
     }
 }

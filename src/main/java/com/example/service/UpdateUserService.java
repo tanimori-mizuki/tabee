@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 
+import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -200,4 +201,14 @@ public class UpdateUserService {
 		User profileList = userMapper.selectByUserId(userId);
 		return profileList;
 	}
+
+	public void deleteUser(UpdateUserForm updateUserForm){
+
+		User user = new User();
+		user.setId(updateUserForm.getUserId());
+		user.setUpdatedAt(LocalDateTime.now());
+		user.setDeleted(1);
+		userMapper.deleteByUserId(user);
+	}
+
 }

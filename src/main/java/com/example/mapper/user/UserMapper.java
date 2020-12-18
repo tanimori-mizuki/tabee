@@ -44,7 +44,13 @@ public interface UserMapper {
 	 * @return ユーザー情報
 	 */
 	public User selectByUserId(@Param("userId") Integer userId);
-	
+
+	/**
+	 * ユーザーIDでユーザー情報を削除
+	 *
+	 * @param user　ユーザー
+	 */
+	public void deleteByUserId(User user);
 	
 	int countByExample(UserExample example);
 

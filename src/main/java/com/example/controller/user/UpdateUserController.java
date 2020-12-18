@@ -1,6 +1,7 @@
 package com.example.controller.user;
 
 
+import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -79,4 +80,10 @@ public class UpdateUserController {
 			throw new UsernameNotFoundException("メールアドレス更新処理が正常に行われませんでした。");
 		}
 	}
+
+	@PutMapping("/deleteUser")
+	public void deleteUser(@RequestBody UpdateUserForm updateUserForm){
+		updateUserService.deleteUser(updateUserForm);
+	}
+
 }
