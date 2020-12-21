@@ -33,5 +33,6 @@ public class User {
     /**削除フラグ*/
     private Integer deleted;
 
+
    
 }
