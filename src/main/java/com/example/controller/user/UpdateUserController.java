@@ -1,12 +1,10 @@
 package com.example.controller.user;
 
 
+import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.domain.user.ResetPassword;
 import com.example.domain.user.User;
@@ -82,4 +80,16 @@ public class UpdateUserController {
 			throw new UsernameNotFoundException("メールアドレス更新処理が正常に行われませんでした。");
 		}
 	}
+
+	@PostMapping("/updateProfile")
+	public User updateNameAndImagePath(@RequestBody UpdateUserForm form) throws Exception {
+		System.out.println(form);
+		return updateUserService.updateProfile(form);
+	}
+
+//	@utMapping("/deleteUser")
+//	public void deleteUser(@RequestBody UpdateUserForm updateUserForm){
+//		updateUserService.deleteUser(updateUserForm);
+//	}
+
 }

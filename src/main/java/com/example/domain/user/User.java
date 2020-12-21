@@ -31,7 +31,8 @@ public class User {
     /**アイコン画像*/
     private String imagePath;
     /**削除フラグ*/
-    private Boolean deleted;
+    private Integer deleted;
+
 
    
 }

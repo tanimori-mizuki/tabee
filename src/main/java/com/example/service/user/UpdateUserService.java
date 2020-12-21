@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 
+import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -189,4 +190,47 @@ public class UpdateUserService {
 			throw new UsernameNotFoundException("入力されたメールアドレスでの更新処理が正常に処理できませんでした。");
 		}
 	}
+
+	/**
+	 * ユーザーIDでユーザー情報を取得するメソッド.
+	 *
+	 * @param userId ユーザーID
+	 * @return ユーザー情報
+	 */
+	public User findByUserId(Integer userId){
+		User profileList = userMapper.findByUserId(userId);
+		return profileList;
+	}
+
+	/**
+	 * ユーザー名とアイコン画像を更新するメソッド.
+	 *
+	 * @param form 更新ユーザーフォーム
+	 * @return　
+	 * @throws Exception
+	 */
+	public User updateProfile(UpdateUserForm form) throws Exception {
+		User user = new User();
+		user.setId(Integer.parseInt(form.getId()));
+//		user.setId(9);
+		user.setName(form.getName());
+//		user.setImagePath(form.getImagePath());
+
+		user.setUpdatedAt(LocalDateTime.now());
+
+		userMapper.updateByPrimaryKeySelective(user);
+		return user;
+	}
+
+
+
+//	public void deleteUser(UpdateUserForm updateUserForm){
+//
+//		User user = new User();
+//		user.setId(Integer.parseInt(updateUserForm.getUserId()));
+//		user.setUpdatedAt(LocalDateTime.now());
+//		user.setDeleted(1);
+//		userMapper.deleteByUserId(user);
+//	}
+
 }
