@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import com.example.domain.schedule.Schedule;
 import com.example.form.schedule.EditScheduleForm;
@@ -37,14 +38,24 @@ public class EditScheduleService {
 		
 		schedule.setId(id);
 		schedule.setTitle(form.getTitle());
-		schedule.setStartAt(LocalDateTime.parse(form.getStartAt()));
-		schedule.setFinishAt(LocalDateTime.parse(form.getFinishAt()));
+		
+		if (!ObjectUtils.isEmpty(form.getStartAt())) {
+			schedule.setStartAt(LocalDateTime.parse(form.getStartAt()));
+		}
+
+		if (!ObjectUtils.isEmpty(form.getFinishAt())) {
+			schedule.setFinishAt(LocalDateTime.parse(form.getFinishAt()));
+		}
 		schedule.setIconPath(form.getIconPath());
 		schedule.setShioriId(shioriId);
 		schedule.setAddress(form.getAddress());
 		schedule.setUrl(form.getUrl());
 		schedule.setMemo(form.getMemo());
-		schedule.setCost(Integer.parseInt(form.getCost()));
+		
+		if (!ObjectUtils.isEmpty(form.getCost())) {
+			schedule.setCost(Integer.parseInt(form.getCost()));
+		}
+		
 		schedule.setUpdaterId(userId);
 		schedule.setUpdatedAt(LocalDateTime.now());
 		schedule.setVersion(Integer.parseInt(form.getVersion()) +1);
