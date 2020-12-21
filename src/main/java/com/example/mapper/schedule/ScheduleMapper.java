@@ -10,40 +10,46 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ScheduleMapper {
-	
+
 	/**
 	 * しおりIDに紐づくスケジュールデータ取得
 	 * 
 	 * @param shioriId しおりID
-	 * @return　スケジュールデータリスト
+	 * @return スケジュールデータリスト
 	 */
 	List<Schedule> selectByShioriId(@Param("userId") Integer userId);
- 
-    int countByExample(ScheduleExample example);
 
-    int deleteByExample(ScheduleExample example);
-  
-    int deleteByPrimaryKey(Integer id);
- 
-    int insert(Schedule record);
+	int countByExample(ScheduleExample example);
 
-    int insertSelective(Schedule record);
+	int deleteByExample(ScheduleExample example);
 
-    List<Schedule> selectByExampleWithBLOBs(ScheduleExample example);
+	/**
+	 * 主キーでスケジュールデータ削除
+	 * 
+	 * @param id スケジュールID
+	 * @return　削除件数
+	 */
+	int deleteByPrimaryKey(Integer id);
 
-    List<Schedule> selectByExample(ScheduleExample example);
+	int insert(Schedule record);
 
-    Schedule selectByPrimaryKey(Integer id);
+	int insertSelective(Schedule record);
 
-    int updateByExampleSelective(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	List<Schedule> selectByExampleWithBLOBs(ScheduleExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	List<Schedule> selectByExample(ScheduleExample example);
 
-    int updateByExample(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	Schedule selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Schedule record);
+	int updateByExampleSelective(@Param("record") Schedule record, @Param("example") ScheduleExample example);
 
-    int updateByPrimaryKeyWithBLOBs(Schedule record);
+	int updateByExampleWithBLOBs(@Param("record") Schedule record, @Param("example") ScheduleExample example);
 
-    int updateByPrimaryKey(Schedule record);
+	int updateByExample(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+
+	int updateByPrimaryKeySelective(Schedule record);
+
+	int updateByPrimaryKeyWithBLOBs(Schedule record);
+
+	int updateByPrimaryKey(Schedule record);
 }

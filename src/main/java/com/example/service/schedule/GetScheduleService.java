@@ -1,6 +1,5 @@
 package com.example.service.schedule;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +36,16 @@ public class GetScheduleService {
 			System.out.println("size = 0");
 		}
 		return scheduleList;
+	}
+	
+	/**
+	 * スケジュールIDで1件取得
+	 * 
+	 * @param id スケジュールID
+	 * @return　スケジュールデータ
+	 */
+	public Schedule getScheduleById(Integer id) {
+		return scheduleMapper.selectByPrimaryKey(id);
+		
 	}
 }

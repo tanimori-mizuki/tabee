@@ -325,17 +325,17 @@
   <!-- INSERT -->
   <insert id="insert" parameterType="com.example.domain.schedule.Schedule" >
     insert into schedules (id, shiori_id, title, 
-      start_at, finish_at, icon_path, url, 
+      start_at, finish_at, icon_path, url,
       address, tel, 
       memo, cost, creator_id, 
       created_at, updater_id, updated_at, 
-      version, url)
+      version)
     values (#{id,jdbcType=INTEGER}, #{shioriId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, #{iconPath,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, #{iconPath,jdbcType=VARCHAR}, #{url,jdbcType=LONGVARCHAR} 
       #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
       #{memo,jdbcType=VARCHAR}, #{cost,jdbcType=INTEGER}, #{creatorId,jdbcType=INTEGER}, 
       #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, 
-      #{version,jdbcType=INTEGER}, #{url,jdbcType=LONGVARCHAR})
+      #{version,jdbcType=INTEGER})
   </insert>
   
   <insert id="insertSelective" parameterType="com.example.domain.schedule.Schedule" useGeneratedKeys="true" keyProperty="id">
@@ -389,9 +389,6 @@
       <if test="version != null" >
         version,
       </if>
-      <if test="url != null" >
-        url,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -441,9 +438,6 @@
       </if>
       <if test="version != null" >
         #{version,jdbcType=INTEGER},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -500,9 +494,6 @@
       <if test="record.version != null" >
         version = #{record.version,jdbcType=INTEGER},
       </if>
-      <if test="record.url != null" >
-        url = #{record.url,jdbcType=LONGVARCHAR},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -527,7 +518,6 @@
       updater_id = #{record.updaterId,jdbcType=INTEGER},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       version = #{record.version,jdbcType=INTEGER},
-      url = #{record.url,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -602,10 +592,7 @@
         updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="version != null" >
-        version = #{version,jdbcType=INTEGER},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=LONGVARCHAR},
+        version = #{version,jdbcType=INTEGER}
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -627,8 +614,7 @@
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updater_id = #{updaterId,jdbcType=INTEGER},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-      version = #{version,jdbcType=INTEGER},
-      url = #{url,jdbcType=LONGVARCHAR}
+      version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   
