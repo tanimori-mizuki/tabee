@@ -198,17 +198,39 @@ public class UpdateUserService {
 	 * @return ユーザー情報
 	 */
 	public User findByUserId(Integer userId){
-		User profileList = userMapper.selectByUserId(userId);
+		User profileList = userMapper.findByUserId(userId);
 		return profileList;
 	}
 
-	public void deleteUser(UpdateUserForm updateUserForm){
-
+	/**
+	 * ユーザー名とアイコン画像を更新するメソッド.
+	 *
+	 * @param form 更新ユーザーフォーム
+	 * @return　
+	 * @throws Exception
+	 */
+	public User updateProfile(UpdateUserForm form) throws Exception {
 		User user = new User();
-		user.setId(updateUserForm.getUserId());
+		user.setId(Integer.parseInt(form.getId()));
+//		user.setId(9);
+		user.setName(form.getName());
+//		user.setImagePath(form.getImagePath());
+
 		user.setUpdatedAt(LocalDateTime.now());
-		user.setDeleted(1);
-		userMapper.deleteByUserId(user);
+
+		userMapper.updateByPrimaryKeySelective(user);
+		return user;
 	}
+
+
+
+//	public void deleteUser(UpdateUserForm updateUserForm){
+//
+//		User user = new User();
+//		user.setId(Integer.parseInt(updateUserForm.getUserId()));
+//		user.setUpdatedAt(LocalDateTime.now());
+//		user.setDeleted(1);
+//		userMapper.deleteByUserId(user);
+//	}
 
 }

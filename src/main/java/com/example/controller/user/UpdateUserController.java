@@ -81,9 +81,15 @@ public class UpdateUserController {
 		}
 	}
 
-	@PutMapping("/deleteUser")
-	public void deleteUser(@RequestBody UpdateUserForm updateUserForm){
-		updateUserService.deleteUser(updateUserForm);
+	@PostMapping("/updateProfile")
+	public User updateNameAndImagePath(@RequestBody UpdateUserForm form) throws Exception {
+		System.out.println(form);
+		return updateUserService.updateProfile(form);
 	}
+
+//	@utMapping("/deleteUser")
+//	public void deleteUser(@RequestBody UpdateUserForm updateUserForm){
+//		updateUserService.deleteUser(updateUserForm);
+//	}
 
 }

@@ -44,7 +44,9 @@ public interface UserMapper {
 	 * @param userId ユーザーID
 	 * @return ユーザー情報
 	 */
-	public User selectByUserId(@Param("userId") Integer userId);
+	public User findByUserId(@Param("userId") Integer userId);
+
+	public Integer updateUser(User user);
 
 	/**
 	 * ユーザーIDでユーザー情報を削除
@@ -69,7 +71,7 @@ public interface UserMapper {
 	int updateByExampleSelective(@Param("user") User user, @Param("example") UserExample example);
 
 	int updateByExample(@Param("user") User user, @Param("example") UserExample example);
-	
-	public int updateByPrimaryKeySelective(@Param("user") User user);
+
+	public int updateByPrimaryKeySelective(User user);
 	
 }

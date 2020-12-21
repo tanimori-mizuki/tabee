@@ -92,7 +92,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  
+
+  <!-- ログインユーザーIDからプロフィール情報取得 -->
+  <select id="findByUserId" resultMap="BaseResultMap">
+    SELECT
+        id,
+        name,
+        email,
+        password,
+        image_path
+    FROM
+        users
+    WHERE
+        id = #{userId,jdbcType=INTEGER}
+  </select>
+
+
   <select id="findByEmail" resultMap="BaseResultMap" parameterType="java.lang.String">
   	SELECT 
   		id,
@@ -245,6 +260,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+  <select id="updateUser" resultType="java.lang.Integer">
+    UPDATE users
+    SET id = #{id,jdbcType=INTEGER},
+    name = #{name,jdbcType=VARCHAR},
+    updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+    image_path = #{imagePath,jdbcType=VARCHAR}
+  </select>
   
   <update id="updateByExample" parameterType="map">
     update users
