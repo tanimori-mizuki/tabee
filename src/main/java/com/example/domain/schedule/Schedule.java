@@ -1,7 +1,6 @@
 package com.example.domain.schedule;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.example.domain.shiori.Shiori;
 import com.example.domain.user.User;
@@ -26,10 +25,8 @@ public class Schedule {
 	private LocalDateTime startAt;
 	/** 終了日時 */
 	private LocalDateTime finishAt;
-	/** アイコンID */
-	private Integer iconId;
-	/** 目的地 */
-	private String destination;
+	/** アイコンパス */
+	private String iconPath;
 	/** 住所 */
 	private String address;
 	/** 電話 */
@@ -43,17 +40,15 @@ public class Schedule {
 	/** 作成者ID */
 	private Integer creatorId;
 	/** 作成日時 */
-	private Date createdAt;
+	private LocalDateTime createdAt;
 	/** 更新者ID */
 	private Integer updaterId;
 	/** 更新日時 */
-	private Date updatedAt;
+	private LocalDateTime updatedAt;
 	/** バージョン */
 	private Integer version;
 	/** しおり情報 */
 	private Shiori shiori;
-	/** スケジュールアイコン情報 */
-	private ScheduleIcon scheduleIcon;
 	/** ユーザー情報 */
 	private User user;
 

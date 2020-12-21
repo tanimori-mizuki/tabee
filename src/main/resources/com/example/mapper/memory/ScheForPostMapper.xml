@@ -2,20 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mapper.memory.ScheForPostMapper" >
   <resultMap id="BaseResultMap" type="com.example.domain.memory.ScheForPost" >
-   
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="schedule_id" property="scheduleId" jdbcType="INTEGER" />
     <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
+    <result column="shiori_id_id" property="shioriId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="start_at" property="startAt" jdbcType="TIMESTAMP" />
     <result column="finish_at" property="finishAt" jdbcType="TIMESTAMP" />
-    <result column="icon_id" property="iconId" jdbcType="INTEGER" />
+    <result column="icon_path" property="iconPath" jdbcType="VARCHAR" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
-    <result column="destination" property="destination" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="memo" property="memo" jdbcType="VARCHAR" />
     <result column="cost" property="cost" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updater_id" property="updaterId" jdbcType="INTEGER" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
    
@@ -78,12 +81,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-   
-    id, schedule_id, memory_id, title, start_at, finish_at, date, icon_id, tel, destination, 
-    url, address, memo, cost
+    id, schedule_id, memory_id, shiori_id, title, start_at, finish_at, icon_path, tel,
+    url, address, memo, cost, creator_id, created_at, updater_id, updated_at
   </sql>
+  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memory.ScheForPostExample" >
-   
     select
     <if test="distinct" >
       distinct
@@ -97,40 +99,40 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
   
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from sche_for_posts
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-   
     delete from sche_for_posts
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
   <delete id="deleteByExample" parameterType="com.example.example.memory.ScheForPostExample" >
-   
     delete from sche_for_posts
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.memory.ScheForPost" >
   
-    insert into sche_for_posts (id, schedule_id, memory_id, 
+  <insert id="insert" parameterType="com.example.domain.memory.ScheForPost" >
+    insert into sche_for_posts (id, schedule_id, memory_id, shiori_id,
       title, start_at, finish_at, 
-      icon_id, tel, destination, 
+      icon_path, tel, 
       url, address, memo, 
-      cost)
-    values (#{id,jdbcType=INTEGER}, #{scheduleId,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, 
-      #{title,jdbcType=VARCHAR}, #{startAt,jdbcType=TIME}, #{finishAt,jdbcType=TIME}, 
-      #{iconId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
+      cost, creator_id, created_at, updater_id, updated_at)
+    values (#{id,jdbcType=INTEGER}, #{scheduleId,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, #{shioriId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{startAt,jdbcType=TIMESTAMP}, #{finishAt,jdbcType=TIMESTAMP}, 
+      #{iconPath,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
-      #{cost,jdbcType=INTEGER})
+      #{cost,jdbcType=INTEGER}, #{creator_id,jdbcType=INTEGER}, #{created_at,jdbcType=TIMESTAMP}, #{updater_id,jdbcType=INTEGER}, #{updater_at,jdbcType=TIMESTAMP})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.example.domain.memory.ScheForPost" >
-    
     insert into sche_for_posts
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -142,6 +144,9 @@
       <if test="memoryId != null" >
         memory_id,
       </if>
+      <if test="shioriId != null" >
+        shiori_id,
+      </if>
       <if test="title != null" >
         title,
       </if>
@@ -151,14 +156,11 @@
       <if test="finishAt != null" >
         finish_at,
       </if>
-      <if test="iconId != null" >
-        icon_id,
+      <if test="iconPath != null" >
+        icon_path,
       </if>
       <if test="tel != null" >
         tel,
-      </if>
-      <if test="destination != null" >
-        destination,
       </if>
       <if test="url != null" >
         url,
@@ -172,6 +174,18 @@
       <if test="cost != null" >
         cost,
       </if>
+        <if test="creatorId != null" >
+        creator_id,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updaterId != null" >
+        updater_id,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -183,23 +197,23 @@
       <if test="memoryId != null" >
         #{memoryId,jdbcType=INTEGER},
       </if>
+      <if test="shioriId != null" >
+        #{shioriId,jdbcType=INTEGER},
+      </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
       <if test="startAt != null" >
-        #{startAt,jdbcType=TIME},
+        #{startAt,jdbcType=TIMESTAMP},
       </if>
       <if test="finishAt != null" >
-        #{finishAt,jdbcType=TIME},
+        #{finishAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="iconId != null" >
-        #{iconId,jdbcType=INTEGER},
+      <if test="iconPath != null" >
+        #{iconPath, jdbcType=VARCHAR},
       </if>
       <if test="tel != null" >
         #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="destination != null" >
-        #{destination,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
@@ -213,17 +227,29 @@
       <if test="cost != null" >
         #{cost,jdbcType=INTEGER},
       </if>
+      <if test="creatorId != null" >
+        #{creator_id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{created_at,jdbcType=INTEGER},
+      </if>
+      <if test="updaterId != null" >
+        #{updater_id,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null " >
+        #{updated_at,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
+  
   <select id="countByExample" parameterType="com.example.example.memory.ScheForPostExample" resultType="java.lang.Integer" >
-   
     select count(*) from sche_for_posts
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  
   <update id="updateByExampleSelective" parameterType="map" >
-   
     update sche_for_posts
     <set >
       <if test="record.id != null" >
@@ -235,23 +261,23 @@
       <if test="record.memoryId != null" >
         memory_id = #{record.memoryId,jdbcType=INTEGER},
       </if>
+      <if test="record.shioriId != null" >
+        shiori_id = #{record.shioriId,jdbcType=INTEGER},
+      </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
       </if>
       <if test="record.startAt != null" >
-        start_at = #{record.startAt,jdbcType=TIME},
+        start_at = #{record.startAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.finishAt != null" >
-        finish_at = #{record.finishAt,jdbcType=TIME},
+        finish_at = #{record.finishAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.iconId != null" >
-        icon_id = #{record.iconId,jdbcType=INTEGER},
+      <if test="record.iconPath != null" >
+        icon_path = #{record.iconPath,jdbcType=VARCHAR},
       </if>
       <if test="record.tel != null" >
         tel = #{record.tel,jdbcType=VARCHAR},
-      </if>
-      <if test="record.destination != null" >
-        destination = #{record.destination,jdbcType=VARCHAR},
       </if>
       <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
@@ -265,33 +291,49 @@
       <if test="record.cost != null" >
         cost = #{record.cost,jdbcType=INTEGER},
       </if>
+       <if test="record.creatorId != null" >
+        creator_id = #{record.creatorId,jdbcType=INTEGER},
+      </if>
+       <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+       <if test="record.updaterId != null" >
+        updater_id = #{record.updaterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
   <update id="updateByExample" parameterType="map" >
-   
     update sche_for_posts
     set id = #{record.id,jdbcType=INTEGER},
       schedule_id = #{record.scheduleId,jdbcType=INTEGER},
       memory_id = #{record.memoryId,jdbcType=INTEGER},
+      shiori_id = #{record.shioriId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      start_at = #{record.startAt,jdbcType=TIME},
-      finish_at = #{record.finishAt,jdbcType=TIME},
-      icon_id = #{record.iconId,jdbcType=INTEGER},
+      start_at = #{record.startAt,jdbcType=TIMESTAMP},
+      finish_at = #{record.finishAt,jdbcType=TIMESTAMP},
+      icon_path = #{record.iconPath,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
-      destination = #{record.destination,jdbcType=VARCHAR},
       url = #{record.url,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       memo = #{record.memo,jdbcType=VARCHAR},
-      cost = #{record.cost,jdbcType=INTEGER}
+      cost = #{record.cost,jdbcType=INTEGER},
+      creator_id = #{record.creator_id,jdbcType=INTEGER},
+      created_at = #{record.created_at,jdbcType=TIMESTAMP},
+      updater_id = #{record.updater_id,jdbcType=INTEGER},
+      updated_at = #{record.updated_at,jdbcType=INTEGER},
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.memory.ScheForPost" >
-   
     update sche_for_posts
     <set >
       <if test="scheduleId != null" >
@@ -300,23 +342,23 @@
       <if test="memoryId != null" >
         memory_id = #{memoryId,jdbcType=INTEGER},
       </if>
+      <if test="shiori != null" >
+        shiori_id = #{shioriId,jdbcType=INTEGER},
+      </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="startAt != null" >
-        start_at = #{startAt,jdbcType=TIME},
+        start_at = #{startAt,jdbcType=TIMESTAMP},
       </if>
       <if test="finishAt != null" >
-        finish_at = #{finishAt,jdbcType=TIME},
+        finish_at = #{finishAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="iconId != null" >
-        icon_id = #{iconId,jdbcType=INTEGER},
+      <if test="iconPath != null" >
+        icon_path = #{iconPath, jdbcType=VARCHAR},
       </if>
       <if test="tel != null" >
         tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="destination != null" >
-        destination = #{destination,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
@@ -330,24 +372,40 @@
       <if test="cost != null" >
         cost = #{cost,jdbcType=INTEGER},
       </if>
+         <if test="record.creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+       <if test="record.createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+       <if test="record.updaterId != null" >
+        updater_id = #{updaterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.example.domain.memory.ScheForPost" >
-   
     update sche_for_posts
     set schedule_id = #{scheduleId,jdbcType=INTEGER},
       memory_id = #{memoryId,jdbcType=INTEGER},
+      shiori_id = #{shioriId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      start_at = #{startAt,jdbcType=TIME},
-      finish_at = #{finishAt,jdbcType=TIME},
-      icon_id = #{iconId,jdbcType=INTEGER},
+      start_at = #{startAt,jdbcType=TIMESTAMP},
+      finish_at = #{finishAt,jdbcType=TIMESTAMP},
+      icon_path = #{iconPath,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
-      destination = #{destination,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       memo = #{memo,jdbcType=VARCHAR},
-      cost = #{cost,jdbcType=INTEGER}
+      cost = #{cost,jdbcType=INTEGER},
+      creator_id = #{creator_id,jdbcType=INTEGER},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      updater_id = #{updater_id,jdbcType=INTEGER},
+      updated_at = #{updated_at,jdbcType=INTEGER},
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

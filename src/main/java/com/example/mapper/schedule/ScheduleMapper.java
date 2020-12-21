@@ -4,35 +4,52 @@ import com.example.domain.schedule.Schedule;
 import com.example.example.schedule.ScheduleExample;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ScheduleMapper {
- 
-    int countByExample(ScheduleExample example);
 
-    int deleteByExample(ScheduleExample example);
-  
-    int deleteByPrimaryKey(Integer id);
- 
-    int insert(Schedule record);
+	/**
+	 * しおりIDに紐づくスケジュールデータ取得
+	 * 
+	 * @param shioriId しおりID
+	 * @return スケジュールデータリスト
+	 */
+	List<Schedule> selectByShioriId(@Param("userId") Integer userId);
 
-    int insertSelective(Schedule record);
+	int countByExample(ScheduleExample example);
 
-    List<Schedule> selectByExampleWithBLOBs(ScheduleExample example);
+	int deleteByExample(ScheduleExample example);
 
-    List<Schedule> selectByExample(ScheduleExample example);
+	/**
+	 * 主キーでスケジュールデータ削除
+	 * 
+	 * @param id スケジュールID
+	 * @return　削除件数
+	 */
+	int deleteByPrimaryKey(Integer id);
 
-    Schedule selectByPrimaryKey(Integer id);
+	int insert(Schedule record);
 
-    int updateByExampleSelective(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	int insertSelective(Schedule record);
 
-    int updateByExampleWithBLOBs(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	List<Schedule> selectByExampleWithBLOBs(ScheduleExample example);
 
-    int updateByExample(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+	List<Schedule> selectByExample(ScheduleExample example);
 
-    int updateByPrimaryKeySelective(Schedule record);
+	Schedule selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeyWithBLOBs(Schedule record);
+	int updateByExampleSelective(@Param("record") Schedule record, @Param("example") ScheduleExample example);
 
-    int updateByPrimaryKey(Schedule record);
+	int updateByExampleWithBLOBs(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+
+	int updateByExample(@Param("record") Schedule record, @Param("example") ScheduleExample example);
+
+	int updateByPrimaryKeySelective(Schedule record);
+
+	int updateByPrimaryKeyWithBLOBs(Schedule record);
+
+	int updateByPrimaryKey(Schedule record);
 }

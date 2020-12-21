@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.domain.user.ResetPassword;
 import com.example.domain.user.User;
-import com.example.form.CheckEmailForm;
-import com.example.form.UpdateEmailForm;
-import com.example.form.UpdatePasswordForm;
-import com.example.service.UpdateUserService;
+import com.example.form.user.CheckEmailForm;
+import com.example.form.user.UpdateEmailForm;
+import com.example.form.user.UpdatePasswordForm;
+import com.example.service.user.UpdateUserService;
 
 
 /**

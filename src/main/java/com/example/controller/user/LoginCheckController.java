@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.user.User;
-import com.example.form.LoginForm;
-import com.example.service.LoginCheckService;
+import com.example.form.user.LoginForm;
+import com.example.service.user.LoginCheckService;
 
 /**
  * メールアドレスとパスワードが合っているか確認するコントローラ.

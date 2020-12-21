@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.user.User;
-import com.example.service.ShowLoginInfoService;
+import com.example.service.user.ShowLoginInfoService;
 
 /**
  * ログインユーザー情報を返すコントローラ.

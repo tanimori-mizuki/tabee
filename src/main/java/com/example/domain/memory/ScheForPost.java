@@ -1,11 +1,10 @@
 package com.example.domain.memory;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.example.domain.schedule.Schedule;
-import com.example.domain.schedule.ScheduleIcon;
 import com.example.domain.shiori.Shiori;
+import com.example.domain.user.User;
 
 import lombok.Data;
 
@@ -30,13 +29,11 @@ public class ScheForPost {
 	/** 開始日時 */
 	private LocalDateTime startAt;
 	/** 終了日時 */
-	private Date finishAt;
+	private LocalDateTime finishAt;
 	/** アイコンID */
-	private Integer iconId;
+	private Integer iconPath;
 	/** 電話番号 */
 	private String tel;
-	/** 目的地 */
-	private String destination;
 	/** URL */
 	private String url;
 	/** 住所 */
@@ -45,13 +42,21 @@ public class ScheForPost {
 	private String memo;
 	/** 費用 */
 	private Integer cost;
+	/** 作成者ID */
+	private Integer creatorId;
+	/** 作成日時 */
+	private LocalDateTime createdAt;
+	/** 更新者ID */
+	private Integer updaterId;
+	/** 更新日時 */
+	private LocalDateTime updateAt;
 	/** スケジュール情報 */
 	private Schedule schedule;
 	/** しおり情報 */
 	private Shiori shiori;
 	/** 思い出情報 */
 	private Memory memory;
-	/** スケジュールアイコン情報 */
-	private ScheduleIcon scheduleIcon;
+	/** ユーザー情報 */
+	private User user;
 
 }
