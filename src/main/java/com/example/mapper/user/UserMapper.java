@@ -54,8 +54,7 @@ public interface UserMapper {
 	 * @param user　ユーザー
 	 */
 	public void deleteByUserId(User user);
-
-	public User findByUserId(Integer userId);
+	
 	
 	User selectByPrimaryKey(Integer id);
 
