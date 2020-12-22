@@ -19,6 +19,12 @@ public interface ScheForPostMapper {
 
     int insert(ScheForPost record);
 
+    /**
+     * スケジュール登録時に投稿用スケジュールテーブルにもインサート.
+     * 
+     * @param record スケジュールデータ
+     * @return 登録件数
+     */
     int insertSelective(ScheForPost record);
 
     List<ScheForPost> selectByExample(ScheForPostExample example);

@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="schedule_id" property="scheduleId" jdbcType="INTEGER" />
     <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
-    <result column="shiori_id_id" property="shioriId" jdbcType="INTEGER" />
+    <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="start_at" property="startAt" jdbcType="TIMESTAMP" />
     <result column="finish_at" property="finishAt" jdbcType="TIMESTAMP" />
@@ -80,6 +80,7 @@
       </foreach>
     </where>
   </sql>
+  
   <sql id="Base_Column_List" >
     id, schedule_id, memory_id, shiori_id, title, start_at, finish_at, icon_path, tel,
     url, address, memo, cost, creator_id, created_at, updater_id, updated_at
@@ -129,10 +130,10 @@
       #{title,jdbcType=VARCHAR}, #{startAt,jdbcType=TIMESTAMP}, #{finishAt,jdbcType=TIMESTAMP}, 
       #{iconPath,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
-      #{cost,jdbcType=INTEGER}, #{creator_id,jdbcType=INTEGER}, #{created_at,jdbcType=TIMESTAMP}, #{updater_id,jdbcType=INTEGER}, #{updater_at,jdbcType=TIMESTAMP})
+      #{cost,jdbcType=INTEGER}, #{creator_id,jdbcType=INTEGER}, #{created_at,jdbcType=TIMESTAMP}, #{updater_id,jdbcType=INTEGER}, #{updated_at,jdbcType=TIMESTAMP})
   </insert>
   
-  <insert id="insertSelective" parameterType="com.example.domain.memory.ScheForPost" >
+  <insert id="insertSelective" parameterType="com.example.domain.memory.ScheForPost">
     insert into sche_for_posts
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -228,16 +229,16 @@
         #{cost,jdbcType=INTEGER},
       </if>
       <if test="creatorId != null" >
-        #{creator_id,jdbcType=INTEGER},
+        #{creatorId,jdbcType=INTEGER},
       </if>
       <if test="createdAt != null" >
-        #{created_at,jdbcType=INTEGER},
+        #{createdAt,jdbcType=INTEGER},
       </if>
       <if test="updaterId != null" >
-        #{updater_id,jdbcType=INTEGER},
+        #{updaterId,jdbcType=INTEGER},
       </if>
       <if test="updatedAt != null " >
-        #{updated_at,jdbcType=INTEGER},
+        #{updatedAt,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>

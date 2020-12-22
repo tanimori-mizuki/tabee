@@ -31,7 +31,7 @@ public class ScheForPost {
 	/** 終了日時 */
 	private LocalDateTime finishAt;
 	/** アイコンID */
-	private Integer iconPath;
+	private String iconPath;
 	/** 電話番号 */
 	private String tel;
 	/** URL */
@@ -49,7 +49,7 @@ public class ScheForPost {
 	/** 更新者ID */
 	private Integer updaterId;
 	/** 更新日時 */
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 	/** スケジュール情報 */
 	private Schedule schedule;
 	/** しおり情報 */
