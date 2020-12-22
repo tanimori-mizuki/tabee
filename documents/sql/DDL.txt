@@ -160,6 +160,7 @@ CONSTRAINT `destination_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris
 ); 
 
 /*スケジュールアイコン*/
+/*不要になったので、DROP TABLEしてOKです。*/
 DROP TABLE IF EXISTS `tabee`.`schedule_icons` ;
 CREATE TABLE `schedule_icons` (
 `id` int NOT NULL AUTO_INCREMENT,
@@ -176,8 +177,7 @@ CREATE TABLE `schedules` (
 `title` varchar(255) NOT NULL,
 `start_at` datetime DEFAULT NULL,
 `finish_at` datetime DEFAULT NULL,
-`icon_id` int DEFAULT NULL,
-`destination` varchar(255) DEFAULT NULL,
+`icon_path` text,
 `url` text,
 `address` varchar(255) DEFAULT NULL,
 `tel` varchar(255) DEFAULT NULL,
@@ -193,12 +193,11 @@ UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `sche_shiori_id_idx` (`shiori_id`),
 KEY `sche_creator_id_idx` (`creator_id`),
 KEY `sche_updater_id_idx` (`updater_id`),
-KEY `sche_icon_id_idx` (`icon_id`),
 CONSTRAINT `sche_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `sche_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `sche_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-);
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
 
 /*スクラップ*/
 DROP TABLE IF EXISTS `tabee`.`scraps` ;
@@ -420,26 +419,26 @@ DROP TABLE IF EXISTS `tabee`.`sche_for_posts` ;
 CREATE TABLE `sche_for_posts` (
 `id` int NOT NULL AUTO_INCREMENT,
 `schedule_id` int NOT NULL,
-`memory_id` int NOT NULL,
+`memory_id` int DEFAULT NULL,
 `title` varchar(255) NOT NULL,
 `start_at` datetime DEFAULT NULL,
 `finish_at` datetime DEFAULT NULL,
-`icon_id` int DEFAULT NULL,
+`icon_path` text,
 `tel` varchar(255) DEFAULT NULL,
-`destination` varchar(255) DEFAULT NULL,
 `url` varchar(255) DEFAULT NULL,
 `address` varchar(255) DEFAULT NULL,
 `memo` varchar(255) DEFAULT NULL,
 `cost` int DEFAULT NULL,
+`creator_id` int NOT NULL,
+`created_at` datetime NOT NULL,
+`updater_id` int NOT NULL,
+`updated_at` datetime NOT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `post_sche_id_idx` (`schedule_id`),
-KEY `post_memory_id_idx` (`memory_id`),
-KEY `post_sche_icon_id_idx` (`icon_id`),
-CONSTRAINT `post_memory_id` FOREIGN KEY (`memory_id`) REFERENCES `memories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `post_sche_icon_id` FOREIGN KEY (`icon_id`) REFERENCES `schedule_icons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `post_sche_id` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-); 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
 
 /*ハッシュタグ*/
 DROP TABLE IF EXISTS `tabee`.`hashtags` ;
