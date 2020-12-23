@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.DestinationMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.Destination" >
+<mapper namespace="com.example.mapper.shiori.DestinationMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.shiori.Destination" >
    
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
@@ -76,7 +76,18 @@
    
     id, shiori_id, destination, creator_id, created_at, updater_id, updated_at, version
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.DestinationExample" >
+  <insert id="insertDestinationList">
+  	  insert into destinations (shiori_id, destination, 
+      creator_id, created_at, updater_id, 
+      updated_at, version) values 
+     <foreach item="d" collection="destinationList" separator=",">
+      (#{d.shioriId,jdbcType=INTEGER}, #{d.destination,jdbcType=VARCHAR}, 
+      #{d.creatorId,jdbcType=INTEGER}, #{d.createdAt,jdbcType=TIMESTAMP}, #{d.updaterId,jdbcType=INTEGER}, 
+      #{d.updatedAt,jdbcType=TIMESTAMP}, #{d.version,jdbcType=INTEGER})
+      </foreach>
+  </insert>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.DestinationExample" >
    
     select
     <if test="distinct" >
@@ -103,14 +114,14 @@
     delete from destinations
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.DestinationExample" >
+  <delete id="deleteByExample" parameterType="com.example.example.shiori.DestinationExample" >
   
     delete from destinations
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.Destination" >
+  <insert id="insert" parameterType="com.example.domain.shiori.Destination" >
   
     insert into destinations (id, shiori_id, destination, 
       creator_id, created_at, updater_id, 
@@ -119,7 +130,7 @@
       #{creatorId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, 
       #{updatedAt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.Destination" >
+  <insert id="insertSelective" parameterType="com.example.domain.shiori.Destination" >
   
     insert into destinations
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -175,7 +186,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.DestinationExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.example.example.shiori.DestinationExample" resultType="java.lang.Integer" >
    
     select count(*) from destinations
     <if test="_parameter != null" >
@@ -230,7 +241,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.Destination" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.shiori.Destination" >
  
     update destinations
     <set >
@@ -258,7 +269,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.Destination" >
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.shiori.Destination" >
    
     update destinations
     set shiori_id = #{shioriId,jdbcType=INTEGER},

@@ -26,8 +26,6 @@ public class RegisterShioriController {
 	@PostMapping("/do")
 	public void registerShiori(@RequestPart("OBJ")RegisterShioriForm form,
 			@RequestParam(value = "file", required = false) MultipartFile uploadFile)throws Exception{
-		System.out.println(form);
-		System.out.println(uploadFile);
 		registerShioriService.registerShiori(form, uploadFile);
 	}
 	

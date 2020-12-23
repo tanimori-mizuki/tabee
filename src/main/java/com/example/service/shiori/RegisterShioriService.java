@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
@@ -23,9 +25,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.common.UploadPathConfiguration;
+import com.example.domain.shiori.Destination;
 import com.example.domain.shiori.Member;
 import com.example.domain.shiori.Shiori;
 import com.example.form.shiori.RegisterShioriForm;
+import com.example.mapper.shiori.DestinationMapper;
 import com.example.mapper.shiori.MemberMapper;
 import com.example.mapper.shiori.ShioriMapper;
 
@@ -41,9 +45,12 @@ public class RegisterShioriService {
 
 	@Autowired
 	private ShioriMapper shioriMapper;
-	
+
 	@Autowired
 	private MemberMapper memberMapper;
+
+	@Autowired
+	private DestinationMapper destinationMapper;
 
 	@Autowired
 	private UploadPathConfiguration uploadPathConfiguration;
@@ -56,7 +63,6 @@ public class RegisterShioriService {
 	 * @throws Exception
 	 */
 	public void registerShiori(RegisterShioriForm form, MultipartFile uploadFile) throws Exception {
-
 		Shiori shiori = new Shiori();
 		BeanUtils.copyProperties(form, shiori);
 		shiori.setCreatedAt(LocalDateTime.now());
@@ -113,11 +119,33 @@ public class RegisterShioriService {
 			}
 		}
 		shioriMapper.insertSelective(shiori);
-		
-		Member member=new Member();
+
+		Member member = new Member();
 		member.setShioriId(shiori.getId());
 		member.setUserId(form.getCreatorId());
 		memberMapper.insertSelective(member);
+
+		List<String> destinationNameList = form.getDestinationList();
+		//セレクトボックスが未選択の時nullとなるため、nullを全て削除
+		if (destinationNameList.contains(null)) {
+			while (destinationNameList.remove(null));
+		}
+		if (destinationNameList.size() != 0) {
+			List<Destination> destinationList = new ArrayList<>();
+			for (String destinationName : destinationNameList) {
+				Destination destination = new Destination();
+				destination.setShioriId(shiori.getId());
+				destination.setDestination(destinationName);
+				destination.setCreatorId(form.getCreatorId());
+				destination.setCreatedAt(LocalDateTime.now());
+				destination.setUpdaterId(form.getCreatorId());
+				destination.setUpdatedAt(LocalDateTime.now());
+				destination.setVersion(1);
+				destinationList.add(destination);
+			}
+			destinationMapper.insertDestinationList(destinationList);
+		}
+
 	}
 
 	/*

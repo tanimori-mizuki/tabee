@@ -3,7 +3,6 @@ package com.example.form.shiori;
 import java.util.Date;
 import java.util.List;
 
-import com.example.domain.shiori.Destination;
 
 import lombok.Data;
 
@@ -26,6 +25,6 @@ public class RegisterShioriForm {
     /**作成者ID*/
     private Integer creatorId;
     /**目的地リスト*/    
-    private Destination destination;
+    private List<String> destinationList;
 
 }
