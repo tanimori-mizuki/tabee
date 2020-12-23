@@ -10,32 +10,40 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ScheForPostMapper {
- 
-    int countByExample(ScheForPostExample example);
-  
-    int deleteByExample(ScheForPostExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	/**
+	 * ユーザーが属するしおりIDから投稿用スケジュールリストを取得.
+	 * 
+	 * @param userId ユーザーID
+	 * @return　しおり情報リスト
+	 */
+	public List<ScheForPost> selectByShioriId(@Param("userId") Integer userId);
 
-    int insert(ScheForPost record);
+	int countByExample(ScheForPostExample example);
 
-    /**
-     * スケジュール登録時に投稿用スケジュールテーブルにもインサート.
-     * 
-     * @param record スケジュールデータ
-     * @return 登録件数
-     */
-    int insertSelective(ScheForPost record);
+	int deleteByExample(ScheForPostExample example);
 
-    List<ScheForPost> selectByExample(ScheForPostExample example);
+	int deleteByPrimaryKey(Integer id);
 
-    ScheForPost selectByPrimaryKey(Integer id);
+	int insert(ScheForPost record);
 
-    int updateByExampleSelective(@Param("record") ScheForPost record, @Param("example") ScheForPostExample example);
+	/**
+	 * スケジュール登録時に投稿用スケジュールテーブルにもインサート.
+	 * 
+	 * @param record スケジュールデータ
+	 * @return 登録件数
+	 */
+	int insertSelective(ScheForPost record);
 
-    int updateByExample(@Param("record") ScheForPost record, @Param("example") ScheForPostExample example);
+	List<ScheForPost> selectByExample(ScheForPostExample example);
 
-    int updateByPrimaryKeySelective(ScheForPost record);
+	ScheForPost selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKey(ScheForPost record);
+	int updateByExampleSelective(@Param("record") ScheForPost record, @Param("example") ScheForPostExample example);
+
+	int updateByExample(@Param("record") ScheForPost record, @Param("example") ScheForPostExample example);
+
+	int updateByPrimaryKeySelective(ScheForPost record);
+
+	int updateByPrimaryKey(ScheForPost record);
 }

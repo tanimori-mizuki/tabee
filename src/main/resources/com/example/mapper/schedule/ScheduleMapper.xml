@@ -181,7 +181,7 @@
     memo, cost, creator_id, created_at, updater_id, updated_at, version
   </sql>
   
-   <sql id="Schedule_Column_List" >
+  <sql id="Schedule_Column_List" >
     sc.id sc_id, sc.shiori_id sc_shiori_id, sc.title sc_title, sc.start_at sc_start_at, sc.finish_at sc_finish_at, sc.icon_path sc_icon_path, sc.url sc_url, sc.address sc_address, sc.tel sc_tel, 
     sc.memo sc_memo, sc.cost sc_cost, sc.creator_id sc_creator_id, sc.created_at sc_created_at, sc.updater_id sc_updater_id, sc.updated_at sc_updated_at, sc.version sc_version
   </sql>
