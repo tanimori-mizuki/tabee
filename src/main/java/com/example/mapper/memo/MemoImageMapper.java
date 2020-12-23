@@ -40,6 +40,11 @@ public interface MemoImageMapper {
 
     List<MemoImage> selectByExample(MemoImageExample example);
 
+    /**
+     * 主キーからメモ画像を取得する.
+     * @param id メモ画像ID
+     * @return　メモ情報
+     */
     MemoImage selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") MemoImage record, @Param("example") MemoImageExample example);
