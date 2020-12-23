@@ -27,6 +27,11 @@ public interface ShioriMapper {
 
     int deleteByExample(ShioriExample example);
 
+    /**
+     * 主キーからしおりを削除する.
+     * @param id しおりID
+     * @return　成功件数
+     */
     int deleteByPrimaryKey(Integer id);
 
     int insert(Shiori record);
