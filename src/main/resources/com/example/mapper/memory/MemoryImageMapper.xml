@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.MemoryImageMapper" >
-  <resultMap id="BaseResultMap" type="com.example.domain.MemoryImage" >
-   
+<mapper namespace="com.example.mapper.memory.MemoryImageMapper" >
+  <resultMap id="BaseResultMap" type="com.example.domain.memory.MemoryImage" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
     <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
   
+  <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -37,8 +36,8 @@
       </foreach>
     </where>
   </sql>
+  
   <sql id="Update_By_Example_Where_Clause" >
-   
     <where >
       <foreach collection="example.oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -67,12 +66,13 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
   
+  <sql id="Base_Column_List" >
     id, memory_id, image_path
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.MemoryImageExample" >
   
+ <!-- SELECT -->
+ <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.memory.MemoryImageExample" >
     select
     <if test="distinct" >
       distinct
@@ -86,34 +86,49 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
   
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from memory_images
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="countByExample" parameterType="com.example.example.memory.MemoryImageExample" resultType="java.lang.Integer" >
+    select count(*) from memory_images
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <!-- DELETE -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-   
     delete from memory_images
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.example.MemoryImageExample" >
   
+  <delete id="deleteByExample" parameterType="com.example.example.memory.MemoryImageExample" >
     delete from memory_images
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.domain.MemoryImage" >
   
-    insert into memory_images (id, memory_id, image_path
-      )
-    values (#{id,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}
-      )
+  <!-- INSERT -->
+  <!--思い出画像を複数件一括挿入 -->
+  <insert id="insertMemoryImageList" useGeneratedKeys="true" keyProperty="id">
+  	insert into memory_images (memory_id, image_path) values 
+    <foreach item="mi" collection="memoryImageList" separator=",">
+    (#{mi.memoryId}, #{mi.imagePath})
+  	</foreach>
+ </insert> 
+  
+  <insert id="insert" parameterType="com.example.domain.memory.MemoryImage" >
+    insert into memory_images (id, memory_id, image_path)
+    values (#{id,jdbcType=INTEGER}, #{memoryId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.domain.MemoryImage" >
-   
+  
+  <insert id="insertSelective" parameterType="com.example.domain.memory.MemoryImage" >
     insert into memory_images
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -138,15 +153,9 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.example.MemoryImageExample" resultType="java.lang.Integer" >
   
-    select count(*) from memory_images
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
+  <!-- UPDATE -->
   <update id="updateByExampleSelective" parameterType="map" >
-  
     update memory_images
     <set >
       <if test="record.id != null" >
@@ -163,8 +172,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
   
+  <update id="updateByExample" parameterType="map" >
     update memory_images
     set id = #{record.id,jdbcType=INTEGER},
       memory_id = #{record.memoryId,jdbcType=INTEGER},
@@ -173,8 +182,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.MemoryImage" >
   
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.memory.MemoryImage" >
     update memory_images
     <set >
       <if test="memoryId != null" >
@@ -186,8 +195,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.domain.MemoryImage" >
-   
+  
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.memory.MemoryImage" >
     update memory_images
     set memory_id = #{memoryId,jdbcType=INTEGER},
       image_path = #{imagePath,jdbcType=VARCHAR}

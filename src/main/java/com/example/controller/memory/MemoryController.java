@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.memory.Memory;
 import com.example.domain.memory.ScheForPost;
@@ -51,7 +54,7 @@ public class MemoryController {
 	/**
 	 * 思い出投稿用スケジュールを編集.
 	 * 
-	 * @param form 
+	 * @param form
 	 */
 	@PostMapping("/editSchedule")
 	public void editMemorySchedule(@RequestBody EditMemoryScheduleForm form) {
@@ -66,9 +69,11 @@ public class MemoryController {
 	 * @param memory 思い出情報
 	 */
 	@PostMapping("/post")
-	public void postMemory(@RequestBody RegisterMemoryForm form) {
+	public void postMemory(@RequestPart("memory") RegisterMemoryForm form,
+			@RequestParam(value = "file", required = false) List<MultipartFile> uploadFileList) throws Exception {
 		System.out.println(form);
-		registerMemoryService.registerMemory(form);
+		System.out.println(uploadFileList);
+		registerMemoryService.registerMemory(form, uploadFileList);
 
 	}
 

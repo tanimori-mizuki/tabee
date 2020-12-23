@@ -127,7 +127,7 @@
       )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.example.domain.memory.Memory" >
+  <insert id="insertSelective" parameterType="com.example.domain.memory.Memory" useGeneratedKeys="true" keyProperty="id">
     insert into memories
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
