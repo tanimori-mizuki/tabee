@@ -18,6 +18,7 @@ import com.example.form.memory.EditMemoryScheduleForm;
 import com.example.form.memory.RegisterMemoryForm;
 import com.example.service.memory.EditMemoryScheduleService;
 import com.example.service.memory.GetMemoryScheduleService;
+import com.example.service.memory.GetMemoryService;
 import com.example.service.memory.RegisterMemoryService;
 
 /**
@@ -38,6 +39,9 @@ public class MemoryController {
 
 	@Autowired
 	private EditMemoryScheduleService editMemoryScheduleService;
+
+	@Autowired
+	private GetMemoryService getMemoryService;
 
 	/**
 	 * ユーザーIDに紐づくしおりIDから思い出投稿用スケジュールリストを取得.
@@ -75,6 +79,27 @@ public class MemoryController {
 		System.out.println(uploadFileList);
 		registerMemoryService.registerMemory(form, uploadFileList);
 
+	}
+
+	/**
+	 * 思い出を全件取得.
+	 * 
+	 * @return 思い出リスト
+	 */
+	@GetMapping("getMemories")
+	public List<Memory> getMemoryList() {
+		return getMemoryService.findAllMemories();
+	}
+
+	/**
+	 * ユーザーIDに紐づく思い出全件取得.
+	 * 
+	 * @param userId　ユーザーID
+	 * @return　思い出リスト
+	 */
+	@GetMapping
+	public List<Memory> getMemoryListByUserId(Integer userId) {
+		return getMemoryService.findAllMemoriesByUserId(userId);
 	}
 
 }

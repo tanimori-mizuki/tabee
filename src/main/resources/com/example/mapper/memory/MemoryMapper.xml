@@ -218,7 +218,7 @@
   </select>
   
   <!-- ユーザーIDに紐づく思い出情報一覧表示 -->
-  <select id="selectAll"  resultMap="MemoryResultMap">
+  <select id="selectByUserId"  resultMap="MemoryResultMap" parameterType="java.lang.Integer">
 	SELECT
 	<include refid="Memories_Column_List" />  
 	<include refid="Users_Column_List" />  

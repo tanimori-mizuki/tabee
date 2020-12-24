@@ -26,6 +26,21 @@ public interface MemoryMapper {
 	 */
 	public int insertSelective(Memory record);
 
+	/**
+	 * 思い出全件取得.
+	 * 
+	 * @return　思い出リスト
+	 */
+	public List<Memory> selectAll();
+
+	/**
+	 * ユーザIDに紐づく思い出を全件取得.
+	 * 
+	 * @param userId ユーザーID
+	 * @return　思い出リスト
+	 */
+	public List<Memory> selectByUserId(Integer userId);
+
 	List<Memory> selectByExample(MemoryExample example);
 
 	Memory selectByPrimaryKey(Integer id);
