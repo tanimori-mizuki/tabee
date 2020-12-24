@@ -21,6 +21,7 @@ import javax.imageio.stream.ImageOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.common.UploadPathConfiguration;
@@ -68,7 +69,12 @@ public class RegisterMemoryService {
 		memory.setContent(form.getContent());
 		memory.setUserId(Integer.parseInt(form.getUserId()));
 		memory.setPostAt(LocalDateTime.now());
-		memory.setPublicSche(form.getIsPublicSche());
+		
+		if(ObjectUtils.isEmpty(form.getIsPublicSche())) {
+			memory.setPublicSche(false);
+		}else {
+			memory.setPublicSche(form.getIsPublicSche());
+		}
 		memory.setShioriId(Integer.parseInt(form.getShioriId()));
 
 		System.out.println(memory);

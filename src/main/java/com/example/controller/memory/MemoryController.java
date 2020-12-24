@@ -1,5 +1,6 @@
 package com.example.controller.memory;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,21 +86,10 @@ public class MemoryController {
 	 * 思い出を全件取得.
 	 * 
 	 * @return 思い出リスト
+	 * @throws IOException
 	 */
-	@GetMapping("getMemories")
-	public List<Memory> getMemoryList() {
+	@GetMapping("/getMemories")
+	public List<Memory> getMemoryList() throws IOException {
 		return getMemoryService.findAllMemories();
 	}
-
-	/**
-	 * ユーザーIDに紐づく思い出全件取得.
-	 * 
-	 * @param userId　ユーザーID
-	 * @return　思い出リスト
-	 */
-	@GetMapping
-	public List<Memory> getMemoryListByUserId(Integer userId) {
-		return getMemoryService.findAllMemoriesByUserId(userId);
-	}
-
 }

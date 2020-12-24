@@ -13,30 +13,30 @@
   
   <!-- 結合用ResultMap -->
   <resultMap id="MemoryResultMap" type="com.example.domain.memory.Memory" >
-   	<id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="is_public_sche" property="isPublicSche" jdbcType="TINYINT" />
-    <result column="post_at" property="postAt" jdbcType="TIMESTAMP" />
+   	<id column="m_id" property="id" jdbcType="INTEGER" />
+    <result column="m_user_id" property="userId" jdbcType="INTEGER" />
+    <result column="m_shiori_id" property="shioriId" jdbcType="INTEGER" />
+    <result column="m_title" property="title" jdbcType="VARCHAR" />
+    <result column="m_content" property="content" jdbcType="VARCHAR" />
+    <result column="m_is_public_sche" property="isPublicSche" jdbcType="TINYINT" />
+    <result column="m_post_at" property="postAt" jdbcType="TIMESTAMP" />
   
   	<association property="user" javaType="com.example.domain.user.User">
-  	  <id column="us_id" property="id" jdbcType="INTEGER" />
-	  <result column="us_name" property="name" jdbcType="VARCHAR" />
-	  <result column="us_email" property="email" jdbcType="VARCHAR" />
-	  <result column="us_password" property="password" jdbcType="CHAR" />
-	  <result column="us_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	  <result column="us_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-	  <result column="us_image_path" property="imagePath" jdbcType="VARCHAR" />
-	  <result column="us_deleted" jdbcType="TINYINT" property="deleted" />
+  	  <id column="u_id" property="id" jdbcType="INTEGER" />
+	  <result column="u_name" property="name" jdbcType="VARCHAR" />
+	  <result column="u_email" property="email" jdbcType="VARCHAR" />
+	  <result column="u_password" property="password" jdbcType="CHAR" />
+	  <result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	  <result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  <result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  <result column="u_deleted" jdbcType="TINYINT" property="deleted" />
   	</association>
   	
-  	<collection property="scheduleForPostList" resultMap="scheduleForPostResultMap" />
-  	<collection property="memoryImageList" resultMap="memoryImageResultMap" />
+  	<collection property="scheduleForPostList" resultMap="ScheForPostResultMap" />
+  	<collection property="memoryImageList" resultMap="MemoryImageResultMap" />
   </resultMap>
   
-  <resultMap id="ScheduleForPostResultMap" type="com.example.domain.memory.ScheForPost">
+  <resultMap id="ScheForPostResultMap" type="com.example.domain.memory.ScheForPost">
   <id column="sfp_id" property="id" jdbcType="INTEGER" />
     <result column="sfp_schedule_id" property="scheduleId" jdbcType="INTEGER" />
     <result column="sfp_memory_id" property="memoryId" jdbcType="INTEGER" />
@@ -56,49 +56,81 @@
     <result column="sfp_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   	
   	<association property="user" javaType="com.example.domain.user.User">
-  	  <id column="us_id" property="id" jdbcType="INTEGER" />
-	  <result column="us_name" property="name" jdbcType="VARCHAR" />
-	  <result column="us_email" property="email" jdbcType="VARCHAR" />
-	  <result column="us_password" property="password" jdbcType="CHAR" />
-	  <result column="us_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	  <result column="us_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-	  <result column="us_image_path" property="imagePath" jdbcType="VARCHAR" />
-	  <result column="us_deleted" jdbcType="TINYINT" property="deleted" />
+  	  <id column="u_id" property="id" jdbcType="INTEGER" />
+	  <result column="u_name" property="name" jdbcType="VARCHAR" />
+	  <result column="u_email" property="email" jdbcType="VARCHAR" />
+	  <result column="u_password" property="password" jdbcType="CHAR" />
+	  <result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	  <result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  <result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  <result column="u_deleted" jdbcType="TINYINT" property="deleted" />
   	</association>
   	
   	<association property="shiori" javaType="com.example.domain.shiori.Shiori">
-  	  <id column="sh_id" property="id" jdbcType="INTEGER"/>
-  	  <result column="sh_title" property="title" jdbcType="VARCHAR"/>
-  	  <result column="sh_dep_at" property="depAt" jdbcType="VARCHAR"/>
-  	  <result column="sh_return_at" property="returnAt" jdbcType="VARCHAR"/>
-  	  <result column="sh_image_path" property="imagePath" jdbcType="VARCHAR"/>
-  	  <result column="sh_total_cost" property="totalCost" jdbcType="INTEGER"/>
-  	  <result column="sh_creator_id" property="creatorId" jdbcType="INTEGER"/>
-  	  <result column="sh_created_at" property="createdAt" jdbcType="TIMESTAMP"/>
-  	  <result column="sh_updater_id" property="updaterId" jdbcType="INTEGER"/>
-  	  <result column="sh_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
-  	  <result column="sh_version" property="version" jdbcType="INTEGER"/>
+  	  <id column="s_id" property="id" jdbcType="INTEGER"/>
+  	  <result column="s_title" property="title" jdbcType="VARCHAR"/>
+  	  <result column="s_dep_at" property="depAt" jdbcType="VARCHAR"/>
+  	  <result column="s_return_at" property="returnAt" jdbcType="VARCHAR"/>
+  	  <result column="s_image_path" property="imagePath" jdbcType="VARCHAR"/>
+  	  <result column="s_total_cost" property="totalCost" jdbcType="INTEGER"/>
+  	  <result column="s_creator_id" property="creatorId" jdbcType="INTEGER"/>
+  	  <result column="s_created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+  	  <result column="s_updater_id" property="updaterId" jdbcType="INTEGER"/>
+  	  <result column="s_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+  	  <result column="s_version" property="version" jdbcType="INTEGER"/>
 	  
 	  <association property="user" javaType="com.example.domain.user.User">
-  	  	<id column="ush_id" property="id" jdbcType="INTEGER" />
-	  	<result column="ush_name" property="name" jdbcType="VARCHAR" />
-	  	<result column="ush_email" property="email" jdbcType="VARCHAR" />
-	  	<result column="ush_password" property="password" jdbcType="CHAR" />
-	  	<result column="ush_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	 	<result column="ush_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-	  	<result column="ush_image_path" property="imagePath" jdbcType="VARCHAR" />
-	  	<result column="ush_deleted" jdbcType="TINYINT" property="deleted" />
+  	  	<id column="u_id" property="id" jdbcType="INTEGER" />
+	  	<result column="u_name" property="name" jdbcType="VARCHAR" />
+	  	<result column="u_email" property="email" jdbcType="VARCHAR" />
+	  	<result column="u_password" property="password" jdbcType="CHAR" />
+	  	<result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	 	<result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  	<result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  	<result column="u_deleted" jdbcType="TINYINT" property="deleted" />
       </association>
       
-	  <collection property="userList" resultMap="userResultMap" />
-  	  <collection property="destinationList" resultMap="destinationResultMap" />
+	  <collection property="userList" resultMap="UserResultMap" />
+  	  <collection property="destinationList" resultMap="DestinationResultMap" />
     </association>
   </resultMap>
   
+  <resultMap id="UserResultMap" type="com.example.domain.user.User" >
+  	<id column="u_id" property="id" jdbcType="INTEGER" />
+	<result column="u_name" property="name" jdbcType="VARCHAR" />
+	<result column="u_email" property="email" jdbcType="VARCHAR" />
+	<result column="u_password" property="password" jdbcType="CHAR" />
+	<result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	<result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	<result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	<result column="u_deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  
+  <resultMap id="DestinationResultMap" type="com.example.domain.shiori.Destination" >
+  	<id column="d_id" property="id" jdbcType="INTEGER"/>
+  	<result column="d_shiori_id" property="shioriId" jdbcType="INTEGER"/>
+  	<result column="d_destination" property="destination" jdbcType="VARCHAR"/>
+  	<result column="d_creator_id" property="creatorId" jdbcType="INTEGER"/>
+  	<result column="d_created_at" property="creatorAt" jdbcType="TIMESTAMP"/>
+  	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
+  	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+  	<result column="d_version" property="version" jdbcType="INTEGER"/>
+  	<association property="user" javaType="com.example.domain.user.User">
+  	  <id column="ud_id" property="id" jdbcType="INTEGER" />
+	  <result column="ud_name" property="name" jdbcType="VARCHAR" />
+	  <result column="ud_email" property="email" jdbcType="VARCHAR" />
+	  <result column="ud_password" property="password" jdbcType="CHAR" />
+	  <result column="ud_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	  <result column="ud_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  <result column="ud_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  <result column="ud_deleted" jdbcType="TINYINT" property="deleted" />
+  	</association>
+  </resultMap>
+  
   <resultMap id="MemoryImageResultMap" type="com.example.domain.memory.MemoryImage" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="memory_id" property="memoryId" jdbcType="INTEGER" />
-    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <id column="mi_id" property="id" jdbcType="INTEGER" />
+    <result column="mi_memory_id" property="memoryId" jdbcType="INTEGER" />
+    <result column="mi_image_path" property="imagePath" jdbcType="VARCHAR" />
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -166,13 +198,12 @@
   </sql>
   
   <sql id="Memories_Column_List">
-    m.id m_id, m.user_id m_user_id, m.shiori_id m_shiori_id, m.title m_title, m.is_public_sche m_is_public_sche, m.post_at m_post_at 
+    m.id m_id, m.user_id m_user_id, m.shiori_id m_shiori_id, m.title m_title, m.content m_content, m.is_public_sche m_is_public_sche, m.post_at m_post_at 
   </sql>
   
   <sql id="Users_Column_List">
   	, u.id u_id, u.name u_name, u.email u_email, u.password u_password, u.created_at u_created_at, u.updated_at u_updated_at, u.image_path u_image_path, u.deleted u_deleted
   </sql>
-  
   
   <sql id="Shioris_Column_List">
   	, s.id s_id,s.title s_title,s.dep_at s_dep_at
@@ -184,6 +215,10 @@
   <sql id="ScheForPosts_Column_List" >
     , sfp.id sfp_id, sfp.shiori_id sfp_shiori_id, sfp.title sfp_title, sfp.start_at sfp_start_at, sfp.finish_at sfp_finish_at, sfp.icon_path sfp_icon_path, sfp.url sfp_url, sfp.address sfp_address, sfp.tel sfp_tel 
     , sfp.memo sfp_memo, sfp.cost sfp_cost, sfp.creator_id sfp_creator_id, sfp.created_at sfp_created_at, sfp.updater_id sfp_updater_id, sfp.updated_at sfp_updated_at
+  </sql>
+  
+  <sql id="MemoryImages_Column_List" >
+    , mi.id mi_id, mi.memory_id mi_memory_id, mi.image_path mi_image_path
   </sql>
   
   <sql id="Memories_Table">
@@ -202,6 +237,10 @@
   	LEFT OUTER JOIN sche_for_posts sfp ON sfp.shiori_id = s.id
   </sql>
   
+  <sql id="MemoryImage_Table">
+  	LEFT OUTER JOIN memory_images mi ON mi.memory_id = m.id
+  </sql>
+  
   <!-- SELECT -->
   <!-- 思い出情報一覧表示 -->
   <select id="selectAll"  resultMap="MemoryResultMap">
@@ -210,11 +249,13 @@
 	<include refid="Users_Column_List" />  
 	<include refid="Shioris_Column_List" />  
 	<include refid="ScheForPosts_Column_List" />  
-	<include refid="Memory_Table" />  
+	<include refid="MemoryImages_Column_List" />  
+	<include refid="Memories_Table" />  
 	<include refid="Users_Table" />  
 	<include refid="Shioris_Table" />  
 	<include refid="ScheForPosts_Table" />
-	ORDER BY m.post_at ASC;  
+	<include refid="MemoryImage_Table" />
+	ORDER BY m_post_at ASC;  
   </select>
   
   <!-- ユーザーIDに紐づく思い出情報一覧表示 -->
@@ -224,7 +265,7 @@
 	<include refid="Users_Column_List" />  
 	<include refid="Shioris_Column_List" />  
 	<include refid="ScheForPosts_Column_List" />  
-	<include refid="Memory_Table" />  
+	<include refid="Memories_Table" />  
 	<include refid="Users_Table" />  
 	<include refid="Shioris_Table" />  
 	<include refid="ScheForPosts_Table" />

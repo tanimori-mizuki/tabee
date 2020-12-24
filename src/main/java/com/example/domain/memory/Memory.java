@@ -3,7 +3,6 @@ package com.example.domain.memory;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.domain.schedule.Schedule;
 import com.example.domain.shiori.Shiori;
 import com.example.domain.user.User;
 
@@ -42,6 +41,6 @@ public class Memory {
 	/** 思い出画像リスト */
 	private List<MemoryImage> memoryImageList;
 	/** スケジュールリスト */
-	private List<Schedule> scheduleList;
+	private List<ScheForPost> scheduleForPostList;
 
 }
