@@ -1,10 +1,18 @@
 package com.example.service.user;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 
+import com.example.common.UploadPathConfiguration;
 import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -21,6 +29,7 @@ import com.example.form.user.UpdateEmailForm;
 import com.example.form.user.UpdatePasswordForm;
 import com.example.mapper.user.ResetPasswordMapper;
 import com.example.mapper.user.UserMapper;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * ユーザー情報更新系のサービス
@@ -43,6 +52,9 @@ public class UpdateUserService {
 
 	@Autowired
 	private MailSender sender;
+
+	@Autowired
+	private UploadPathConfiguration uploadPathConfiguration;
 
 	/**
 	 * メールアドレスで1件検索.
@@ -192,17 +204,6 @@ public class UpdateUserService {
 	}
 
 	/**
-	 * ユーザーIDでユーザー情報を取得するメソッド.
-	 *
-	 * @param userId ユーザーID
-	 * @return ユーザー情報
-	 */
-	public User findByUserId(Integer userId){
-		User profileList = userMapper.findByUserId(userId);
-		return profileList;
-	}
-
-	/**
 	 * ユーザー名とアイコン画像を更新するメソッド.
 	 *
 	 * @param form 更新ユーザーフォーム
@@ -210,17 +211,54 @@ public class UpdateUserService {
 	 * @throws Exception
 	 */
 	public User updateProfile(UpdateUserForm form) throws Exception {
+
+		MultipartFile imagePath = form.getImagePath();
+		String fileExtension = null;
+		try{
+			fileExtension=getExtension(imagePath.getOriginalFilename());
+			if(!"jpg".equals(fileExtension) && !"png".equals(fileExtension)){
+				System.err.println("拡張子エラー");
+				throw new IllegalArgumentException();
+			}
+		} catch(Exception e){
+			System.out.println("例外発生："+e.getMessage());
+		}
 		User user = new User();
 		user.setId(Integer.parseInt(form.getId()));
-//		user.setId(9);
 		user.setName(form.getName());
-//		user.setImagePath(form.getImagePath());
-
+		user.setImagePath(form.getImagePath().getOriginalFilename());
 		user.setUpdatedAt(LocalDateTime.now());
 
+		String filename = user.getImagePath();
+		Path uploadfile = Paths.get(uploadPathConfiguration.getUploadPath()+"userIcon/"+filename);
+		try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
+			byte[] bytes = form.getImagePath().getBytes();
+			os.write(bytes);
+		} catch (IOException ex) {
+			System.err.println(ex);
+		}
 		userMapper.updateByPrimaryKeySelective(user);
 		return user;
 	}
+
+	/**
+	 * ファイル名から拡張子を返すメソッド.
+	 *
+	 * @param originalFileName ファイル名
+	 * @return .を除いたファイルの拡張子
+	 * @throws Exception
+	 */
+	private String getExtension(String originalFileName) throws Exception {
+		if (originalFileName == null) {
+			throw new FileNotFoundException();
+		}
+		int point = originalFileName.lastIndexOf(".");
+		if (point == -1) {
+			throw new FileNotFoundException();
+		}
+		return originalFileName.substring(point + 1);
+	}
+
 
 
 

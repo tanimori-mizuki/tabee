@@ -12,6 +12,7 @@ import com.example.form.user.CheckEmailForm;
 import com.example.form.user.UpdateEmailForm;
 import com.example.form.user.UpdatePasswordForm;
 import com.example.service.user.UpdateUserService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -80,7 +81,7 @@ public class UpdateUserController {
 			throw new UsernameNotFoundException("メールアドレス更新処理が正常に行われませんでした。");
 		}
 	}
-
+//	@RequestMapping(value = "/updateProfile" , method = RequestMethod.POST, consumes = {"multipart/mixed"})
 	@PostMapping("/updateProfile")
 	public User updateNameAndImagePath(@RequestBody UpdateUserForm form) throws Exception {
 		System.out.println(form);
