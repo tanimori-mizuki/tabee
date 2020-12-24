@@ -1,6 +1,5 @@
 package com.example.mapper.user;
 
-import com.example.domain.schedule.Schedule;
 import com.example.domain.user.User;
 import com.example.example.user.UserExample;
 
@@ -54,8 +53,7 @@ public interface UserMapper {
 	 * @param user　ユーザー
 	 */
 	public void deleteByUserId(User user);
-	
-	
+
 	User selectByPrimaryKey(Integer id);
 
 	
