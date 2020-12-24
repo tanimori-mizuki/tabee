@@ -69,6 +69,12 @@ public interface UserMapper {
 
 	int updateByExample(@Param("user") User user, @Param("example") UserExample example);
 
+	/**
+	 * ユーザー情報(名前、アイコン画像)更新
+	 *
+	 * @param user
+	 * @return
+	 */
 	public int updateByPrimaryKeySelective(User user);
 	
 }
