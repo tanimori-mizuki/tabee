@@ -47,11 +47,6 @@ public interface UserMapper {
 
 	public Integer updateUser(User user);
 
-	/**
-	 * ユーザーIDでユーザー情報を削除
-	 *
-	 * @param user　ユーザー
-	 */
 	public void deleteByUserId(User user);
 
 	User selectByPrimaryKey(Integer id);
