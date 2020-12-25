@@ -12,6 +12,7 @@ import com.example.form.user.CheckEmailForm;
 import com.example.form.user.UpdateEmailForm;
 import com.example.form.user.UpdatePasswordForm;
 import com.example.service.user.UpdateUserService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -81,15 +82,28 @@ public class UpdateUserController {
 		}
 	}
 
+	/**
+	 * ユーザー名とアイコン画像を更新.
+	 *
+	 * @param form
+	 * @param uploadFile
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/updateProfile")
-	public User updateNameAndImagePath(@RequestBody UpdateUserForm form) throws Exception {
-		System.out.println(form);
-		return updateUserService.updateProfile(form);
+	public User updateNameAndImagePath(@RequestPart("user")UpdateUserForm form,
+									   @RequestParam(value = "imagePath", required = false) MultipartFile uploadFile) throws Exception {
+		return updateUserService.updateProfile(form,uploadFile);
 	}
 
-//	@utMapping("/deleteUser")
-//	public void deleteUser(@RequestBody UpdateUserForm updateUserForm){
-//		updateUserService.deleteUser(updateUserForm);
-//	}
+	/**
+	 * ユーザーアカウントを削除(論理削除).
+	 *
+	 * @param form
+	 */
+	@PostMapping("/deleteUser")
+	public void deleteUser(@RequestBody UpdateUserForm form){
+		updateUserService.deleteUser(form);
+	}
 
 }

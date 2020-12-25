@@ -1,10 +1,18 @@
 package com.example.service.user;
 
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 
+import com.example.common.UploadPathConfiguration;
 import com.example.form.user.UpdateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -21,6 +29,14 @@ import com.example.form.user.UpdateEmailForm;
 import com.example.form.user.UpdatePasswordForm;
 import com.example.mapper.user.ResetPasswordMapper;
 import com.example.mapper.user.UserMapper;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
+import javax.imageio.stream.ImageOutputStream;
 
 /**
  * ユーザー情報更新系のサービス
@@ -43,6 +59,9 @@ public class UpdateUserService {
 
 	@Autowired
 	private MailSender sender;
+
+	@Autowired
+	private UploadPathConfiguration uploadPathConfiguration;
 
 	/**
 	 * メールアドレスで1件検索.
@@ -192,45 +211,104 @@ public class UpdateUserService {
 	}
 
 	/**
-	 * ユーザーIDでユーザー情報を取得するメソッド.
-	 *
-	 * @param userId ユーザーID
-	 * @return ユーザー情報
-	 */
-	public User findByUserId(Integer userId){
-		User profileList = userMapper.findByUserId(userId);
-		return profileList;
-	}
-
-	/**
 	 * ユーザー名とアイコン画像を更新するメソッド.
 	 *
 	 * @param form 更新ユーザーフォーム
 	 * @return　
 	 * @throws Exception
 	 */
-	public User updateProfile(UpdateUserForm form) throws Exception {
+	public User updateProfile(UpdateUserForm form, MultipartFile uploadFile) throws Exception {
+
 		User user = new User();
 		user.setId(Integer.parseInt(form.getId()));
-//		user.setId(9);
 		user.setName(form.getName());
-//		user.setImagePath(form.getImagePath());
 
 		user.setUpdatedAt(LocalDateTime.now());
 
+		if (uploadFile != null) {
+			String fileExtension = getExtension(uploadFile.getOriginalFilename());
+			if (!"jpg".equals(fileExtension) && !"png".equals(fileExtension)) {
+				System.err.println("拡張子エラー");
+				throw new IllegalArgumentException();
+			}
+
+			try {
+				// 保存先を定義
+				String uploadPath = uploadPathConfiguration.getUploadPath() + "userIcon/";
+				byte[] bytes = uploadFile.getBytes();
+				Iterator<ImageWriter> writers = null;
+
+				// 指定ファイルへ読み込みファイルを書き込み
+				BufferedOutputStream stream = new BufferedOutputStream(
+						new FileOutputStream(new File(uploadPath + new File(uploadFile.getOriginalFilename()))));
+				stream.write(bytes);
+				stream.close();
+
+				// 圧縮
+				File input = new File(uploadPath + new File(uploadFile.getOriginalFilename()));
+				BufferedImage image = ImageIO.read(input);
+				OutputStream os = new FileOutputStream(input);
+				// 拡張子に応じて処理
+				if ("jpg".equals(fileExtension)) {
+					writers = ImageIO.getImageWritersByFormatName("jpg");
+				} else {
+					writers = ImageIO.getImageWritersByFormatName("png");
+				}
+				ImageWriter writer = writers.next();
+				ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+				writer.setOutput(ios);
+				ImageWriteParam param = new JPEGImageWriteParam(null);
+				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+				param.setCompressionQuality(0.30f);
+				writer.write(null, new IIOImage(image, null, null), param);
+				os.close();
+				ios.close();
+				writer.dispose();
+
+				File fileName = new File(uploadFile.getOriginalFilename());
+				String imagePath = fileName.toString();
+				user.setImagePath(imagePath);
+
+			} catch (Exception e) {
+				System.out.println("例外発生：" + e.getMessage());
+			}
+		}
 		userMapper.updateByPrimaryKeySelective(user);
+
 		return user;
 	}
 
+	/**
+	 * ファイル名から拡張子を返すメソッド.
+	 *
+	 * @param originalFileName ファイル名
+	 * @return .を除いたファイルの拡張子
+	 * @throws Exception
+	 */
+	private String getExtension(String originalFileName) throws Exception {
+		if (originalFileName == null) {
+			throw new FileNotFoundException();
+		}
+		int point = originalFileName.lastIndexOf(".");
+		if (point == -1) {
+			throw new FileNotFoundException();
+		}
+		return originalFileName.substring(point + 1);
+	}
 
 
-//	public void deleteUser(UpdateUserForm updateUserForm){
-//
-//		User user = new User();
-//		user.setId(Integer.parseInt(updateUserForm.getUserId()));
-//		user.setUpdatedAt(LocalDateTime.now());
-//		user.setDeleted(1);
-//		userMapper.deleteByUserId(user);
-//	}
+	/**
+	 * ユーザーアカウントを削除するメソッド.
+	 *
+	 * @param form
+	 */
+	public void deleteUser(UpdateUserForm form){
+
+		User user = new User();
+		user.setId(Integer.parseInt(form.getId()));
+		user.setUpdatedAt(LocalDateTime.now());
+		user.setDeleted(1);
+		userMapper.updateByPrimaryKeySelective(user);
+	}
 
 }

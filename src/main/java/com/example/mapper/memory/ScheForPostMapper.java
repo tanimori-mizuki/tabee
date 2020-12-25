@@ -43,6 +43,12 @@ public interface ScheForPostMapper {
 
 	int updateByExample(@Param("record") ScheForPost record, @Param("example") ScheForPostExample example);
 
+	/**
+	 * スケジュール更新時にスケジュールIDで紐づいた投稿用スケジュールテーブルも更新.
+	 * 
+	 * @param record 投稿用スケジュールデータ
+	 * @return 更新件数
+	 */
 	int updateByPrimaryKeySelective(ScheForPost record);
 
 	int updateByPrimaryKey(ScheForPost record);

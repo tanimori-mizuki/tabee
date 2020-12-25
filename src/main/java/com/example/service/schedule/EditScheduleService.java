@@ -2,13 +2,16 @@ package com.example.service.schedule;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import com.example.domain.memory.ScheForPost;
 import com.example.domain.schedule.Schedule;
 import com.example.form.schedule.EditScheduleForm;
+import com.example.mapper.memory.ScheForPostMapper;
 import com.example.mapper.schedule.ScheduleMapper;
 
 /**
@@ -24,8 +27,12 @@ public class EditScheduleService {
 	@Autowired
 	private ScheduleMapper scheduleMapper;
 	
+	@Autowired
+	private ScheForPostMapper scheForPostMapper;
+	
 	/**
 	 * スケジュールを更新.
+	 * 思い出投稿用スケジュールも更新
 	 * 
 	 * @param form
 	 * @return 更新されたスケジュールデータ
@@ -61,8 +68,14 @@ public class EditScheduleService {
 		schedule.setVersion(Integer.parseInt(form.getVersion()) +1);
 		
 		scheduleMapper.updateByPrimaryKeySelective(schedule);
-		
 		Schedule updatedSchedule = scheduleMapper.selectByPrimaryKey(id);
+		
+		ScheForPost scheForPost = new ScheForPost();
+		BeanUtils.copyProperties(updatedSchedule, scheForPost);
+		scheForPost.setScheduleId(updatedSchedule.getId());
+		
+		scheForPostMapper.updateByPrimaryKeySelective(scheForPost);
+		
 		return updatedSchedule;
 	}
 
