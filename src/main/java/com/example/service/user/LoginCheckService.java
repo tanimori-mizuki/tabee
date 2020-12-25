@@ -35,20 +35,15 @@ public class LoginCheckService {
 	 * @return
 	 */
 	public User findByEmailAndPassword(String email, String password) {
-
-		System.out.println("----------ログインチェックサービス到達----------");
-		
 		UserExample example = new UserExample();
-		example.createCriteria().andEmailEqualTo(email);
+		example.createCriteria().andEmailEqualTo(email).andDeletedEqualTo((byte) 0);
 
 		List<User> userList = userMapper.selectByExample(example);
 
 		if (userList.size() != 0 && bCryptPasswordEncoder.matches(password, userList.get(0).getPassword())) {
-			System.out.println("【メルアド＆パスワード一致】");
 			return userList.get(0);
 			
 		} else {
-			System.out.println("email & passoword NOT matched!");
 			User holdUser = new User();
 			holdUser.setId(0);
 			
