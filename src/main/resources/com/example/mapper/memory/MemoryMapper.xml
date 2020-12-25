@@ -255,7 +255,7 @@
 	<include refid="Shioris_Table" />  
 	<include refid="ScheForPosts_Table" />
 	<include refid="MemoryImage_Table" />
-	ORDER BY m_post_at ASC;  
+	ORDER BY m.id ASC;  
   </select>
   
   <!-- ユーザーIDに紐づく思い出情報一覧表示 -->

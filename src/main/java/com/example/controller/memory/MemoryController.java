@@ -17,6 +17,7 @@ import com.example.domain.memory.Memory;
 import com.example.domain.memory.ScheForPost;
 import com.example.form.memory.EditMemoryScheduleForm;
 import com.example.form.memory.RegisterMemoryForm;
+import com.example.service.memory.DeleteMemoryService;
 import com.example.service.memory.EditMemoryScheduleService;
 import com.example.service.memory.GetMemoryScheduleService;
 import com.example.service.memory.GetMemoryService;
@@ -43,6 +44,9 @@ public class MemoryController {
 
 	@Autowired
 	private GetMemoryService getMemoryService;
+
+	@Autowired
+	private DeleteMemoryService deleteMemoryService;
 
 	/**
 	 * ユーザーIDに紐づくしおりIDから思い出投稿用スケジュールリストを取得.
@@ -91,5 +95,16 @@ public class MemoryController {
 	@GetMapping("/getMemories")
 	public List<Memory> getMemoryList() throws IOException {
 		return getMemoryService.findAllMemories();
+	}
+
+	/**
+	 * 思い出を削除.
+	 * 
+	 * @param id ID
+	 */
+	@GetMapping("/deleteMemory")
+	public void deleteMemory(Integer id) {
+		System.out.println("ID: " + id);
+		deleteMemoryService.deleteMemory(id);
 	}
 }

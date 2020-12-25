@@ -54,12 +54,7 @@ public interface UserMapper {
 	 */
 	public void deleteByUserId(User user);
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 20c4935b722aec9c06db6da0ecea596a44c702b0
 	User selectByPrimaryKey(Integer id);
-
 	
 	int countByExample(UserExample example);
 

@@ -14,6 +14,12 @@ public interface MemoryMapper {
 
 	int deleteByExample(MemoryExample example);
 
+	/**
+	 * IDで思い出削除.
+	 * 
+	 * @param id ID
+	 * @return 削除件数
+	 */
 	int deleteByPrimaryKey(Integer id);
 
 	int insert(Memory record);
