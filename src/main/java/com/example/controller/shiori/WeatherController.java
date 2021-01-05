@@ -28,8 +28,9 @@ public class WeatherController {
 	 * @return　5日分の天気予報情報
 	 */
 	@GetMapping("")
-	public WeatherResponse getWeather(String city) {
-		WeatherEntity weatherEntity= weatherApiClient.getWeather(city);
+	public WeatherResponse getWeather(String destination) {
+		System.out.println(destination);
+		WeatherEntity weatherEntity= weatherApiClient.getWeather(destination);
 		return new WeatherResponse(weatherEntity.getList());
 	}
 	
