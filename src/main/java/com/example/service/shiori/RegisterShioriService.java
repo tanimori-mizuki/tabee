@@ -130,6 +130,10 @@ public class RegisterShioriService {
 		if (destinationNameList.contains(null)) {
 			while (destinationNameList.remove(null));
 		}
+		//上記同様、未定の時も削除
+		if(destinationNameList.contains("未定")) {
+			while(destinationNameList.remove("未定"));
+		}
 		if (destinationNameList.size() != 0) {
 			List<Destination> destinationList = new ArrayList<>();
 			for (String destinationName : destinationNameList) {
