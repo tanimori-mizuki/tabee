@@ -7,7 +7,7 @@ import java.util.List;
 import lombok.Data;
 
 /**
- * しおりの登録情報を
+ * しおりの登録情報を受け取るフォーム.
  * @author yuri.okada
  *
  */

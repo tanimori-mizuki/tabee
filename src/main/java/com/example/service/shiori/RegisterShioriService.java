@@ -134,17 +134,12 @@ public class RegisterShioriService {
 		if(destinationNameList.contains("未定")) {
 			while(destinationNameList.remove("未定"));
 		}
-		if (destinationNameList.size() != 0) {
+		if (destinationNameList.size() > 0) {
 			List<Destination> destinationList = new ArrayList<>();
 			for (String destinationName : destinationNameList) {
 				Destination destination = new Destination();
 				destination.setShioriId(shiori.getId());
 				destination.setDestination(destinationName);
-				destination.setCreatorId(form.getCreatorId());
-				destination.setCreatedAt(LocalDateTime.now());
-				destination.setUpdaterId(form.getCreatorId());
-				destination.setUpdatedAt(LocalDateTime.now());
-				destination.setVersion(1);
 				destinationList.add(destination);
 			}
 			destinationMapper.insertDestinationList(destinationList);

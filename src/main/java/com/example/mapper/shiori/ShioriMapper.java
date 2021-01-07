@@ -52,6 +52,11 @@ public interface ShioriMapper {
 
     int updateByExample(@Param("record") Shiori record, @Param("example") ShioriExample example);
 
+    /**
+     * 主キーでしおり情報を更新する.
+     * @param record　しおり情報
+     * @return　成功件数
+     */
     int updateByPrimaryKeySelective(Shiori record);
     
     int updateByPrimaryKey(Shiori record);

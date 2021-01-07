@@ -23,6 +23,13 @@ public interface DestinationMapper {
 	 */
 	int insertDestinationList(@Param("destinationList")List <Destination> destinationList);
 
+	/**
+	 * 目的地を一括更新する.
+	 * @param destinationList　目的地リスト
+	 * @return　成功件数
+	 */
+	int updateDestinations(@Param("destinationList")List <Destination> destinationList,@Param("destinationIdList")List<Integer> destinationIdList);
+	
     int countByExample(DestinationExample example);
 
     int deleteByExample(DestinationExample example);
@@ -33,6 +40,11 @@ public interface DestinationMapper {
 
     int insertSelective(Destination record);
 
+    /**
+     * 検索条件から目的地情報を取得する.
+     * @param example
+     * @return
+     */
     List<Destination> selectByExample(DestinationExample example);
 
     Destination selectByPrimaryKey(Integer id);
