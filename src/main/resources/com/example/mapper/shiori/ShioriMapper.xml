@@ -44,11 +44,6 @@
     <id column="d_id" property="id" jdbcType="INTEGER" />
     <result column="d_shiori_id" property="shioriId" jdbcType="INTEGER" />
     <result column="d_destination" property="destination" jdbcType="VARCHAR" />
-    <result column="d_creator_id" property="creatorId" jdbcType="INTEGER" />
-    <result column="d_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-    <result column="d_updater_id" property="updaterId" jdbcType="INTEGER" />
-    <result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-    <result column="d_version" property="version" jdbcType="INTEGER" />
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -124,8 +119,7 @@
 	,u.updated_at AS u_updated_at,u.image_path AS u_image_path,u.deleted AS u_deleted
   </sql>
   <sql id="Destinations_Column_List">
-  	,d.id AS d_id, d.shiori_id AS d_shiori_id, d.destination AS d_destination,d.creator_id AS d_creator_id
-	,d.created_at AS d_created_at, d.updater_id AS d_updater_id, d.updated_at AS d_updated_at, d.version AS d_version
+  	,d.id AS d_id, d.shiori_id AS d_shiori_id, d.destination AS d_destination
   </sql>
   <sql id="Shioris_Table">
   	FROM shioris s
@@ -154,6 +148,18 @@
    <include refid="Destinations_Table"/>   
    WHERE s.id in (SELECT shiori_id FROM members WHERE user_id=#{userId,jdbcType=INTEGER})
    ORDER BY s.created_at DESC;
+  </select>
+    <!--しおりIDからしおり情報、目的地情報取得  -->
+  <select id="selectByShioriId" resultMap="ShioriResultMap">
+   SELECT
+   <include refid="Shioris_Column_List"/>
+   <include refid="Users_Column_List"/>
+   <include refid="Destinations_Column_List"/>
+   <include refid="Shioris_Table"/>
+   <include refid="Members_Table"/>
+   <include refid="Users_Table"/>
+   <include refid="Destinations_Table"/>   
+   WHERE s.id =#{shioriId,jdbcType=INTEGER};
   </select>
   
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.ShioriExample" >

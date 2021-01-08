@@ -35,7 +35,7 @@ public class EditMemoController {
 	 */
 	@PostMapping("/do")
 	public String editMemo(@RequestPart("OBJ") EditMemoForm form,@RequestParam(value = "file", required = false) List<MultipartFile> uploadFileList )throws Exception {
-		//楽観ロック,処理は
+		//楽観ロック
 		Integer version=getMemoService.getMemo(form.getId()).getVersion();
 		if(!form.getVersion().equals(version)) {
 			return "fail";
