@@ -144,20 +144,16 @@ public class EditShioriService {
 			}
 		//目的地のDB登録数、入力数に応じて条件分岐
 		if (registeredDestinationCount==0) {
-			System.err.println("登録情報なし");
 			destinationMapper.insertDestinationList(destinationList);
 		}else if(registeredDestinationCount==inputDestinationCount) {
-			System.err.println("数一致");
 			destinationMapper.updateDestinations(destinationList, form.getDestinationIdList());
 		}else if(registeredDestinationCount>inputDestinationCount) {
-			System.err.println("登録数＞入力");
 			//差分を削除、入力分を更新
 				List <Integer> updateIdList=destinationIdList.subList(0,inputDestinationCount);
 				List <Integer> deleteIdList=destinationIdList.subList(inputDestinationCount, registeredDestinationCount);
 				destinationMapper.updateDestinations(destinationList,updateIdList);
 				destinationMapper.deleteDetinations(deleteIdList);
 		}else if(registeredDestinationCount<inputDestinationCount) {
-			System.err.println("登録数<入力");
 			//差分をインサート、入力分を更新
 			List <Destination> updateDestinationList=destinationList.subList(0, registeredDestinationCount);
 			List <Destination> insertDestinationList=destinationList.subList(registeredDestinationCount,inputDestinationCount);
