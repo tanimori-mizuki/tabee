@@ -20,8 +20,6 @@ public class RegisterShioriForm {
     private Date depAt;
     /**帰着日*/
     private Date returnAt;
-    /**画像名*/
-    private String imagePath;
     /**作成者ID*/
     private Integer creatorId;
     /**目的地リスト*/    
