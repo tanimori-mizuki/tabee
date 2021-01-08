@@ -22,6 +22,13 @@ public interface ShioriMapper {
 	 * @return　しおり情報
 	 */
 	List <Shiori> selectByUserId(@Param("userId") Integer userId);
+	
+    /**
+     * 主キーからしおり情報,目的地情報を取得する.
+     * @param id しおりID
+     * @return　しおり情報
+     */
+    Shiori selectByShioriId(@Param("shioriId") Integer shioriId);
 
     int countByExample(ShioriExample example);
 
@@ -46,6 +53,11 @@ public interface ShioriMapper {
 
     List<Shiori> selectByExample(ShioriExample example);
 
+    /**
+     * 主キーからしおり情報を取得する.
+     * @param id しおりID
+     * @return　しおり情報
+     */
     Shiori selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Shiori record, @Param("example") ShioriExample example);

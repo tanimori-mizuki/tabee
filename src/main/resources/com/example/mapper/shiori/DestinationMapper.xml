@@ -81,15 +81,26 @@
   <!--目的地を一括更新する  -->
   <update id="updateDestinations">
   	update destinations set 
-  	 <foreach item="d" collection="destinationList" separator="OR ">
-      destination = #{d.destination,jdbcType=VARCHAR}
+  	 destination =elt(field(id,
+  	 <foreach item="destinationId" collection="destinationIdList" separator=",">
+      #{destinationId,jdbcType=INTEGER}
      </foreach>
-      where
-     <foreach item="destinationId" collection="destinationIdList" separator="OR ">
-      id = #{destinationId,jdbcType=INTEGER}
+     ), <foreach item="d" collection="destinationList" separator=",">
+      #{d.destination,jdbcType=VARCHAR}
+     </foreach>)
+      where id in
+     <foreach item="destinationId" collection="destinationIdList" open="(" separator="," close=")">
+      #{destinationId,jdbcType=INTEGER}
      </foreach>
   </update>
-  
+  <!--一括削除  -->
+  <delete id="deleteDetinations" parameterType="java.lang.Integer" >
+    delete from destinations
+    where id in
+     <foreach item="destinationId" collection="destinationIdList" open="(" separator="," close=")">
+      #{destinationId,jdbcType=INTEGER}
+     </foreach>
+  </delete>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.DestinationExample" >
    
     select

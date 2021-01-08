@@ -29,7 +29,6 @@ public class WeatherController {
 	 */
 	@GetMapping("")
 	public WeatherResponse getWeather(String destination) {
-		System.out.println(destination);
 		WeatherEntity weatherEntity= weatherApiClient.getWeather(destination);
 		return new WeatherResponse(weatherEntity.getList());
 	}
