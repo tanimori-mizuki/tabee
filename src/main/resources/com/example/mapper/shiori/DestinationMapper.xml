@@ -6,11 +6,6 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="shiori_id" property="shioriId" jdbcType="INTEGER" />
     <result column="destination" property="destination" jdbcType="VARCHAR" />
-    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
-    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
-    <result column="updater_id" property="updaterId" jdbcType="INTEGER" />
-    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-    <result column="version" property="version" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
    
@@ -74,19 +69,38 @@
   </sql>
   <sql id="Base_Column_List" >
    
-    id, shiori_id, destination, creator_id, created_at, updater_id, updated_at, version
+    id, shiori_id, destination
   </sql>
+  <!--目的地を一括挿入する  -->
   <insert id="insertDestinationList">
-  	  insert into destinations (shiori_id, destination, 
-      creator_id, created_at, updater_id, 
-      updated_at, version) values 
+  	  insert into destinations (shiori_id, destination) values 
      <foreach item="d" collection="destinationList" separator=",">
-      (#{d.shioriId,jdbcType=INTEGER}, #{d.destination,jdbcType=VARCHAR}, 
-      #{d.creatorId,jdbcType=INTEGER}, #{d.createdAt,jdbcType=TIMESTAMP}, #{d.updaterId,jdbcType=INTEGER}, 
-      #{d.updatedAt,jdbcType=TIMESTAMP}, #{d.version,jdbcType=INTEGER})
+      (#{d.shioriId,jdbcType=INTEGER}, #{d.destination,jdbcType=VARCHAR})
       </foreach>
   </insert>
-  
+  <!--目的地を一括更新する  -->
+  <update id="updateDestinations">
+  	update destinations set 
+  	 destination =elt(field(id,
+  	 <foreach item="destinationId" collection="destinationIdList" separator=",">
+      #{destinationId,jdbcType=INTEGER}
+     </foreach>
+     ), <foreach item="d" collection="destinationList" separator=",">
+      #{d.destination,jdbcType=VARCHAR}
+     </foreach>)
+      where id in
+     <foreach item="destinationId" collection="destinationIdList" open="(" separator="," close=")">
+      #{destinationId,jdbcType=INTEGER}
+     </foreach>
+  </update>
+  <!--一括削除  -->
+  <delete id="deleteDetinations" parameterType="java.lang.Integer" >
+    delete from destinations
+    where id in
+     <foreach item="destinationId" collection="destinationIdList" open="(" separator="," close=")">
+      #{destinationId,jdbcType=INTEGER}
+     </foreach>
+  </delete>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.DestinationExample" >
    
     select
@@ -123,12 +137,8 @@
   </delete>
   <insert id="insert" parameterType="com.example.domain.shiori.Destination" >
   
-    insert into destinations (id, shiori_id, destination, 
-      creator_id, created_at, updater_id, 
-      updated_at, version)
-    values (#{id,jdbcType=INTEGER}, #{shioriId,jdbcType=INTEGER}, #{destination,jdbcType=VARCHAR}, 
-      #{creatorId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=INTEGER}, 
-      #{updatedAt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER})
+    insert into destinations (id, shiori_id, destination)
+    values (#{id,jdbcType=INTEGER}, #{shioriId,jdbcType=INTEGER}, #{destination,jdbcType=VARCHAR}
   </insert>
   <insert id="insertSelective" parameterType="com.example.domain.shiori.Destination" >
   
@@ -143,21 +153,6 @@
       <if test="destination != null" >
         destination,
       </if>
-      <if test="creatorId != null" >
-        creator_id,
-      </if>
-      <if test="createdAt != null" >
-        created_at,
-      </if>
-      <if test="updaterId != null" >
-        updater_id,
-      </if>
-      <if test="updatedAt != null" >
-        updated_at,
-      </if>
-      <if test="version != null" >
-        version,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -168,21 +163,6 @@
       </if>
       <if test="destination != null" >
         #{destination,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorId != null" >
-        #{creatorId,jdbcType=INTEGER},
-      </if>
-      <if test="createdAt != null" >
-        #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updaterId != null" >
-        #{updaterId,jdbcType=INTEGER},
-      </if>
-      <if test="updatedAt != null" >
-        #{updatedAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="version != null" >
-        #{version,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -206,21 +186,6 @@
       <if test="record.destination != null" >
         destination = #{record.destination,jdbcType=VARCHAR},
       </if>
-      <if test="record.creatorId != null" >
-        creator_id = #{record.creatorId,jdbcType=INTEGER},
-      </if>
-      <if test="record.createdAt != null" >
-        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updaterId != null" >
-        updater_id = #{record.updaterId,jdbcType=INTEGER},
-      </if>
-      <if test="record.updatedAt != null" >
-        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.version != null" >
-        version = #{record.version,jdbcType=INTEGER},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -231,12 +196,7 @@
     update destinations
     set id = #{record.id,jdbcType=INTEGER},
       shiori_id = #{record.shioriId,jdbcType=INTEGER},
-      destination = #{record.destination,jdbcType=VARCHAR},
-      creator_id = #{record.creatorId,jdbcType=INTEGER},
-      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      updater_id = #{record.updaterId,jdbcType=INTEGER},
-      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
-      version = #{record.version,jdbcType=INTEGER}
+      destination = #{record.destination,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -249,36 +209,15 @@
         shiori_id = #{shioriId,jdbcType=INTEGER},
       </if>
       <if test="destination != null" >
-        destination = #{destination,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorId != null" >
-        creator_id = #{creatorId,jdbcType=INTEGER},
-      </if>
-      <if test="createdAt != null" >
-        created_at = #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updaterId != null" >
-        updater_id = #{updaterId,jdbcType=INTEGER},
-      </if>
-      <if test="updatedAt != null" >
-        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="version != null" >
-        version = #{version,jdbcType=INTEGER},
+        destination = #{destination,jdbcType=VARCHAR}
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.domain.shiori.Destination" >
-   
     update destinations
     set shiori_id = #{shioriId,jdbcType=INTEGER},
-      destination = #{destination,jdbcType=VARCHAR},
-      creator_id = #{creatorId,jdbcType=INTEGER},
-      created_at = #{createdAt,jdbcType=TIMESTAMP},
-      updater_id = #{updaterId,jdbcType=INTEGER},
-      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-      version = #{version,jdbcType=INTEGER}
+      destination = #{destination,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

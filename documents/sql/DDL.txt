@@ -144,18 +144,9 @@ CREATE TABLE `destinations` (
 `id` int NOT NULL AUTO_INCREMENT,
 `shiori_id` int NOT NULL,
 `destination` varchar(255) DEFAULT NULL,
-`creator_id` int NOT NULL,
-`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`updater_id` int NOT NULL,
-`updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`version` int NOT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `id_UNIQUE` (`id`),
 KEY `destination_shiori_id_idx` (`shiori_id`),
-KEY `des_creator_id_idx` (`creator_id`),
-KEY `des_updater_id_idx` (`updater_id`),
-CONSTRAINT `des_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `des_updater_id` FOREIGN KEY (`updater_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `destination_shiori_id` FOREIGN KEY (`shiori_id`) REFERENCES `shioris` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 

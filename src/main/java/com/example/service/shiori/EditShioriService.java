@@ -26,49 +26,43 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.shiori.Destination;
-import com.example.domain.shiori.Member;
 import com.example.domain.shiori.Shiori;
-import com.example.form.shiori.RegisterShioriForm;
+import com.example.form.shiori.EditShioriForm;
 import com.example.mapper.shiori.DestinationMapper;
-import com.example.mapper.shiori.MemberMapper;
 import com.example.mapper.shiori.ShioriMapper;
 
 /**
- * しおりの登録を行うサービス.
- * 
+ * しおりの編集を行うサービス.
  * @author yuri.okada
  *
  */
-@Service
 @Transactional
-public class RegisterShioriService {
-
+@Service
+public class EditShioriService {
+	
 	@Autowired
 	private ShioriMapper shioriMapper;
-
-	@Autowired
-	private MemberMapper memberMapper;
-
+	
 	@Autowired
 	private DestinationMapper destinationMapper;
-
+	
 	@Autowired
 	private UploadPathConfiguration uploadPathConfiguration;
-
+	
 	/**
-	 * しおりの登録を行う
-	 * 
-	 * @param form        フォーム
-	 * @param uploadImage 画像情報
+	 * しおりを編集する.
+	 * @param form　しおりの編集情報.
+	 * @param uploadFile 画像ファイル情報
 	 * @throws Exception
 	 */
-	public void registerShiori(RegisterShioriForm form, MultipartFile uploadFile) throws Exception {
+	public void editShiori(EditShioriForm form,MultipartFile uploadFile) throws Exception {
+		
 		Shiori shiori = new Shiori();
 		BeanUtils.copyProperties(form, shiori);
 		shiori.setCreatedAt(LocalDateTime.now());
 		shiori.setUpdatedAt(LocalDateTime.now());
 		shiori.setUpdaterId(form.getCreatorId());
-		shiori.setVersion(1);
+		shiori.setVersion(form.getVersion()+1);
 
 		if (uploadFile != null) {
 			String fileExtension = getExtension(uploadFile.getOriginalFilename());
@@ -118,13 +112,16 @@ public class RegisterShioriService {
 				System.out.println("例外発生：" + e.getMessage());
 			}
 		}
-		shioriMapper.insertSelective(shiori);
 
-		Member member = new Member();
-		member.setShioriId(shiori.getId());
-		member.setUserId(form.getCreatorId());
-		memberMapper.insertSelective(member);
-
+		//更新をする
+		shioriMapper.updateByPrimaryKeySelective(shiori);
+		
+		//DBに登録されている目的地情報
+		List <Destination> registeredDestinationList=form.getRegisterdDestinationList();
+		int registeredDestinationCount=registeredDestinationList.size();
+		List <Integer> destinationIdList=form.getDestinationIdList();
+	
+		
 		List<String> destinationNameList = form.getDestinationList();
 		//セレクトボックスが未選択の時nullとなるため、nullを全て削除
 		if (destinationNameList.contains(null)) {
@@ -134,17 +131,40 @@ public class RegisterShioriService {
 		if(destinationNameList.contains("未定")) {
 			while(destinationNameList.remove("未定"));
 		}
-		if (destinationNameList.size() > 0) {
-			List<Destination> destinationList = new ArrayList<>();
+		int inputDestinationCount=destinationNameList.size();
+		
+		//入力値が存在する時
+		if(inputDestinationCount>0) {
+			List <Destination> destinationList=new ArrayList<>();
 			for (String destinationName : destinationNameList) {
 				Destination destination = new Destination();
 				destination.setShioriId(shiori.getId());
 				destination.setDestination(destinationName);
 				destinationList.add(destination);
 			}
+		//目的地のDB登録数、入力数に応じて条件分岐
+		if (registeredDestinationCount==0) {
+			System.err.println("登録情報なし");
 			destinationMapper.insertDestinationList(destinationList);
+		}else if(registeredDestinationCount==inputDestinationCount) {
+			System.err.println("数一致");
+			destinationMapper.updateDestinations(destinationList, form.getDestinationIdList());
+		}else if(registeredDestinationCount>inputDestinationCount) {
+			System.err.println("登録数＞入力");
+			//差分を削除、入力分を更新
+				List <Integer> updateIdList=destinationIdList.subList(0,inputDestinationCount);
+				List <Integer> deleteIdList=destinationIdList.subList(inputDestinationCount, registeredDestinationCount);
+				destinationMapper.updateDestinations(destinationList,updateIdList);
+				destinationMapper.deleteDetinations(deleteIdList);
+		}else if(registeredDestinationCount<inputDestinationCount) {
+			System.err.println("登録数<入力");
+			//差分をインサート、入力分を更新
+			List <Destination> updateDestinationList=destinationList.subList(0, registeredDestinationCount);
+			List <Destination> insertDestinationList=destinationList.subList(registeredDestinationCount,inputDestinationCount);
+			destinationMapper.updateDestinations(updateDestinationList,destinationIdList);
+			destinationMapper.insertDestinationList(insertDestinationList);
 		}
-
+		}
 	}
 
 	/*
@@ -167,5 +187,6 @@ public class RegisterShioriService {
 		// .がある位置の後の文字列(拡張子)を返す
 		return originalFileName.substring(point + 1);
 	}
+
 
 }
