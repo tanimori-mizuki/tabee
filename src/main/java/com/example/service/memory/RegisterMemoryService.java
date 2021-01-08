@@ -77,8 +77,6 @@ public class RegisterMemoryService {
 		}
 		memory.setShioriId(Integer.parseInt(form.getShioriId()));
 
-		System.out.println(memory);
-
 		memoryMapper.insertSelective(memory);
 		
 		List<MemoryImage> memoryImageList = new ArrayList<>();

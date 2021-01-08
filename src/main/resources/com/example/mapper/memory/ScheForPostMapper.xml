@@ -97,7 +97,7 @@
   	<result column="d_shiori_id" property="shioriId" jdbcType="INTEGER"/>
   	<result column="d_destination" property="destination" jdbcType="VARCHAR"/>
   	<result column="d_creator_id" property="creatorId" jdbcType="INTEGER"/>
-  	<result column="d_created_at" property="creatorAt" jdbcType="TIMESTAMP"/>
+  	<result column="d_created_at" property="createdAt" jdbcType="TIMESTAMP"/>
   	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
   	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
   	<result column="d_version" property="version" jdbcType="INTEGER"/>

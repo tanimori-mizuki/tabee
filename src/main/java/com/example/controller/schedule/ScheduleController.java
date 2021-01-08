@@ -72,6 +72,7 @@ public class ScheduleController {
 	 */
 	@PostMapping("/edit")
 	public Schedule editSchedule(@RequestBody EditScheduleForm form) throws Exception {
+		System.out.println("コントローラー" + form);
 		Integer currentVersion = getScheduleService.getScheduleById(Integer.parseInt(form.getId())).getVersion();
 		Integer inputVersion = Integer.parseInt(form.getVersion());
 		if(currentVersion != inputVersion) {

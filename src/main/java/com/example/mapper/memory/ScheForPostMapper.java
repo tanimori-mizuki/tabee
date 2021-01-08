@@ -18,7 +18,7 @@ public interface ScheForPostMapper {
 	 * @return　しおり情報リスト
 	 */
 	public List<ScheForPost> selectByShioriId(@Param("userId") Integer userId);
-
+	
 	int countByExample(ScheForPostExample example);
 
 	int deleteByExample(ScheForPostExample example);

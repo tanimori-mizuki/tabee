@@ -38,6 +38,7 @@ public class EditScheduleService {
 	 * @return 更新されたスケジュールデータ
 	 */
 	public Schedule updateSchedule(EditScheduleForm form) {
+		System.out.println("サービス " + form);
 		Schedule schedule = new Schedule();
 		Integer userId = Integer.parseInt(form.getUserId());
 		Integer shioriId = Integer.parseInt(form.getShioriId());
@@ -46,26 +47,34 @@ public class EditScheduleService {
 		schedule.setId(id);
 		schedule.setTitle(form.getTitle());
 		
-		if (!ObjectUtils.isEmpty(form.getStartAt())) {
+		if(!ObjectUtils.isEmpty(form.getStartAt())) {
 			schedule.setStartAt(LocalDateTime.parse(form.getStartAt()));
+		}else {
+			schedule.setStartAt(null);
 		}
-
-		if (!ObjectUtils.isEmpty(form.getFinishAt())) {
+		
+		if(!ObjectUtils.isEmpty(form.getFinishAt())) {
 			schedule.setFinishAt(LocalDateTime.parse(form.getFinishAt()));
+		}else {
+			schedule.setFinishAt(null);
 		}
+		
 		schedule.setIconPath(form.getIconPath());
 		schedule.setShioriId(shioriId);
 		schedule.setAddress(form.getAddress());
 		schedule.setUrl(form.getUrl());
 		schedule.setMemo(form.getMemo());
 		
-		if (!ObjectUtils.isEmpty(form.getCost())) {
+		if (ObjectUtils.isEmpty(form.getCost())) {
+			schedule.setCost(null);
+		}else {
 			schedule.setCost(Integer.parseInt(form.getCost()));
 		}
 		
 		schedule.setUpdaterId(userId);
 		schedule.setUpdatedAt(LocalDateTime.now());
 		schedule.setVersion(Integer.parseInt(form.getVersion()) +1);
+		System.out.println("formから詰められたschedule" + schedule);
 		
 		scheduleMapper.updateByPrimaryKeySelective(schedule);
 		Schedule updatedSchedule = scheduleMapper.selectByPrimaryKey(id);
