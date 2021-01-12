@@ -4,8 +4,11 @@ import com.example.domain.memory.Favorite;
 import com.example.example.memory.FavoriteExample;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface FavoriteMapper {
     int countByExample(FavoriteExample example);
     
