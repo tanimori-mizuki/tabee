@@ -18,6 +18,11 @@ public interface MemberMapper {
 
     int countByExample(MemberExample example);
 
+    /**
+     * 指定条件のメンバー情報を削除する
+     * @param example
+     * @return
+     */
     int deleteByExample(MemberExample example);
 
     int deleteByPrimaryKey(Integer id);
