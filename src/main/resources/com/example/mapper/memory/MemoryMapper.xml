@@ -34,6 +34,7 @@
   	
   	<collection property="scheduleForPostList" resultMap="ScheForPostResultMap" />
   	<collection property="memoryImageList" resultMap="MemoryImageResultMap" />
+  	<collection property="favoriteList" resultMap="FavoriteResultMap" />
   </resultMap>
   
   <resultMap id="ScheForPostResultMap" type="com.example.domain.memory.ScheForPost">
@@ -115,22 +116,29 @@
   	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
   	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
   	<result column="d_version" property="version" jdbcType="INTEGER"/>
-  	<association property="user" javaType="com.example.domain.user.User">
-  	  <id column="ud_id" property="id" jdbcType="INTEGER" />
-	  <result column="ud_name" property="name" jdbcType="VARCHAR" />
-	  <result column="ud_email" property="email" jdbcType="VARCHAR" />
-	  <result column="ud_password" property="password" jdbcType="CHAR" />
-	  <result column="ud_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	  <result column="ud_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-	  <result column="ud_image_path" property="imagePath" jdbcType="VARCHAR" />
-	  <result column="ud_deleted" jdbcType="TINYINT" property="deleted" />
-  	</association>
   </resultMap>
   
   <resultMap id="MemoryImageResultMap" type="com.example.domain.memory.MemoryImage" >
     <id column="mi_id" property="id" jdbcType="INTEGER" />
     <result column="mi_memory_id" property="memoryId" jdbcType="INTEGER" />
     <result column="mi_image_path" property="imagePath" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="FavoriteResultMap" type="com.example.domain.memory.Favorite" >
+  	<id column="f_id" property="id" jdbcType="INTEGER"/>
+  	<result column="f_memory_id" property="memoryId" jdbcType="INTEGER"/>
+  	<result column="f_user_id" property="userId" jdbcType="INTEGER"/>
+  	<association property="user" javaType="com.example.domain.user.User">
+  	  	<id column="u_id" property="id" jdbcType="INTEGER" />
+	  	<result column="u_name" property="name" jdbcType="VARCHAR" />
+	  	<result column="u_email" property="email" jdbcType="VARCHAR" />
+	  	<result column="u_password" property="password" jdbcType="CHAR" />
+	  	<result column="u_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	 	<result column="u_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	  	<result column="u_image_path" property="imagePath" jdbcType="VARCHAR" />
+	  	<result column="u_deleted" jdbcType="TINYINT" property="deleted" />
+      </association>
+  	
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -221,6 +229,10 @@
     , mi.id mi_id, mi.memory_id mi_memory_id, mi.image_path mi_image_path
   </sql>
   
+  <sql id="Favorite_Column_List">
+  	, f.id f_id, f.memory_id f_memory_id, f.user_id f_user_id
+  </sql>
+  
   <sql id="Memories_Table">
   	FROM memories m
   </sql>
@@ -241,6 +253,10 @@
   	LEFT OUTER JOIN memory_images mi ON mi.memory_id = m.id
   </sql>
   
+  <sql id="Favorite_Table">
+  	LEFT OUTER JOIN favorites f ON f.memory_id = m.id
+  </sql>
+  
   <!-- SELECT -->
   <!-- 思い出情報一覧表示 -->
   <select id="selectAll"  resultMap="MemoryResultMap">
@@ -255,7 +271,9 @@
 	<include refid="Shioris_Table" />  
 	<include refid="ScheForPosts_Table" />
 	<include refid="MemoryImage_Table" />
-	ORDER BY m.id ASC;  
+	<include refid="Favorite_Table" />
+	GROUP BY f.id
+	ORDER BY m.post_at DESC;
   </select>
   
   <!-- ユーザーIDに紐づく思い出情報一覧表示 -->
@@ -269,6 +287,8 @@
 	<include refid="Users_Table" />  
 	<include refid="Shioris_Table" />  
 	<include refid="ScheForPosts_Table" />
+	<include refid="MemoryImage_Table" />
+	<include refid="Favorite_Table" />
  	WHERE user_id = #{userId,jdbcType=INTEGER}
 	ORDER BY m.post_at ASC;  
   </select>
