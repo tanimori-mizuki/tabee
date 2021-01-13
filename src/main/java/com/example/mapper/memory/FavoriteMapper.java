@@ -12,6 +12,12 @@ import org.apache.ibatis.annotations.Param;
 public interface FavoriteMapper {
     int countByExample(FavoriteExample example);
     
+    /**
+     * 思い出IDとユーザーIDでいいね削除
+     * 
+     * @param example
+     * @return
+     */
     int deleteByExample(FavoriteExample example);
 
     int deleteByPrimaryKey(Integer id);
@@ -26,6 +32,12 @@ public interface FavoriteMapper {
 
     int insertSelective(Favorite record);
 
+    /**
+     * 思い出IDとユーザーIDでいいね検索.
+     * 
+     * @param example
+     * @return
+     */
     List<Favorite> selectByExample(FavoriteExample example);
 
     Favorite selectByPrimaryKey(Integer id);

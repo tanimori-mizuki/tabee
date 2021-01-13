@@ -106,6 +106,7 @@
     delete from favorites
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
   <delete id="deleteByExample" parameterType="com.example.example.memory.FavoriteExample" >
     delete from favorites
     <if test="_parameter != null" >

@@ -39,6 +39,11 @@ public interface MemoryMapper {
 	 */
 	public List<Memory> selectAll();
 
+	/**
+	 * 
+	 * @param example
+	 * @return
+	 */
 	List<Memory> selectByExample(MemoryExample example);
 
 	Memory selectByPrimaryKey(Integer id);
