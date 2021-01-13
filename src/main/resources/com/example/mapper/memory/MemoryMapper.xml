@@ -111,11 +111,6 @@
   	<id column="d_id" property="id" jdbcType="INTEGER"/>
   	<result column="d_shiori_id" property="shioriId" jdbcType="INTEGER"/>
   	<result column="d_destination" property="destination" jdbcType="VARCHAR"/>
-  	<result column="d_creator_id" property="creatorId" jdbcType="INTEGER"/>
-  	<result column="d_created_at" property="creatorAt" jdbcType="TIMESTAMP"/>
-  	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
-  	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
-  	<result column="d_version" property="version" jdbcType="INTEGER"/>
   </resultMap>
   
   <resultMap id="MemoryImageResultMap" type="com.example.domain.memory.MemoryImage" >
@@ -125,9 +120,9 @@
   </resultMap>
   
   <resultMap id="FavoriteResultMap" type="com.example.domain.memory.Favorite" >
-  	<id column="f_id" property="id" jdbcType="INTEGER"/>
-  	<result column="f_memory_id" property="memoryId" jdbcType="INTEGER"/>
-  	<result column="f_user_id" property="userId" jdbcType="INTEGER"/>
+  	<id column="fa_id" property="id" jdbcType="INTEGER"/>
+  	<result column="fa_memory_id" property="memoryId" jdbcType="INTEGER"/>
+  	<result column="fa_user_id" property="userId" jdbcType="INTEGER"/>
   	<association property="user" javaType="com.example.domain.user.User">
   	  	<id column="fu_id" property="id" jdbcType="INTEGER" />
 	  	<result column="fu_name" property="name" jdbcType="VARCHAR" />
@@ -138,7 +133,6 @@
 	  	<result column="fu_image_path" property="imagePath" jdbcType="VARCHAR" />
 	  	<result column="fu_deleted" jdbcType="TINYINT" property="deleted" />
       </association>
-  	
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -230,13 +224,12 @@
   </sql>
   
   <sql id="Favorite_Column_List">
-  	, f.id f_id, f.memory_id f_memory_id, f.user_id f_user_id
+  	, fa.id fa_id, fa.memory_id fa_memory_id, fa.user_id fa_user_id
   </sql>
   
   <sql id="Fav_Users_Column_List">
   	, fu.id fu_id, fu.name fu_name, fu.email fu_email, fu.password fu_password, fu.created_at fu_created_at, fu.updated_at fu_updated_at, fu.image_path fu_image_path, fu.deleted fu_deleted
   </sql>
-  
   
   <sql id="Memories_Table">
   	FROM memories m
@@ -259,11 +252,11 @@
   </sql>
   
   <sql id="Favorite_Table">
-  	LEFT OUTER JOIN favorites f ON f.memory_id = m.id
+  	LEFT OUTER JOIN favorites fa ON fa.memory_id = m.id
   </sql>
   
   <sql id="Fav_Users_Table">
-  	LEFT OUTER JOIN users fu ON f.user_id = fu.id
+  	LEFT OUTER JOIN users fu ON fa.user_id = fu.id
   </sql>
   
   <!-- SELECT -->
@@ -283,7 +276,7 @@
 	<include refid="MemoryImage_Table" />
 	<include refid="Favorite_Table" />
 	<include refid="Fav_Users_Table" />
-	GROUP BY f.id
+	GROUP BY m.id
 	ORDER BY m.post_at DESC;
   </select>
   

@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.memory.Favorite;
+import com.example.domain.memory.Memory;
 import com.example.example.memory.FavoriteExample;
 import com.example.form.memory.RegisterFavoriteForm;
 import com.example.mapper.memory.FavoriteMapper;
+import com.example.mapper.memory.MemoryMapper;
 
 /**
  * いいねする、またはいいね削除するサービス.
@@ -23,6 +25,9 @@ public class RegisterFavoriteService {
 
 	@Autowired
 	private FavoriteMapper favoriteMapper;
+	
+	@Autowired
+	private MemoryMapper memoryMapper;
 
 	/**
 	 * いいね登録 すでにいいね登録済みの場合は削除.
@@ -32,6 +37,11 @@ public class RegisterFavoriteService {
 	public void registerFavorite(RegisterFavoriteForm form) {
 		Integer memoryId = Integer.parseInt(form.getMemoryId());
 		Integer userId = Integer.parseInt(form.getUserId());
+		
+		List<Memory> memoryList = memoryMapper.selectAll();
+		for(Memory memory : memoryList) {
+			System.out.println("service: " + memory.getFavoriteList());
+		}
 
 		FavoriteExample example = new FavoriteExample();
 		example.createCriteria().andMemoryIdEqualTo(memoryId).andUserIdEqualTo(userId);
@@ -40,12 +50,14 @@ public class RegisterFavoriteService {
 
 		if (favoriteList.size() == 0) {
 			Favorite favorite = new Favorite();
-			favorite.setMemoryId(Integer.parseInt(form.getMemoryId()));
-			favorite.setUserId(Integer.parseInt(form.getUserId()));
+			favorite.setMemoryId(memoryId);
+			favorite.setUserId(userId);
 			favoriteMapper.insert(favorite);
 
 		} else {
 			favoriteMapper.deleteByExample(example);
 		}
+		
+		
 	}
 }

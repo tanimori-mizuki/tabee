@@ -96,21 +96,6 @@
   	<id column="d_id" property="id" jdbcType="INTEGER"/>
   	<result column="d_shiori_id" property="shioriId" jdbcType="INTEGER"/>
   	<result column="d_destination" property="destination" jdbcType="VARCHAR"/>
-  	<result column="d_creator_id" property="creatorId" jdbcType="INTEGER"/>
-  	<result column="d_created_at" property="createdAt" jdbcType="TIMESTAMP"/>
-  	<result column="d_updater_id" property="updaterId" jdbcType="INTEGER"/>
-  	<result column="d_updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
-  	<result column="d_version" property="version" jdbcType="INTEGER"/>
-  	<association property="user" javaType="com.example.domain.user.User">
-  	  <id column="ud_id" property="id" jdbcType="INTEGER" />
-	  <result column="ud_name" property="name" jdbcType="VARCHAR" />
-	  <result column="ud_email" property="email" jdbcType="VARCHAR" />
-	  <result column="ud_password" property="password" jdbcType="CHAR" />
-	  <result column="ud_created_at" property="createdAt" jdbcType="TIMESTAMP" />
-	  <result column="ud_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-	  <result column="ud_image_path" property="imagePath" jdbcType="VARCHAR" />
-	  <result column="ud_deleted" jdbcType="TINYINT" property="deleted" />
-  	</association>
   </resultMap>
   
   <sql id="ScheForPost_Column_List" >
@@ -135,8 +120,7 @@
   </sql>
   
   <sql id="Destination_Column_List">
-  	, d.id d_id, d.shiori_id d_shiori_id, d.destination d_destination, d.creator_id d_creator_id, d.created_at d_created_at, 
-  	d.updater_id d_updater_id, d.updated_at d_updated_at, d.version d_version
+  	, d.id d_id, d.shiori_id d_shiori_id, d.destination d_destination
   </sql>
   
   <sql id="User_For_Destination_Column_List">
@@ -165,11 +149,6 @@
   	ON d.shiori_id = sh.id
   </sql>
   
-   <sql id="Users_For_Destinations_Table">
-	LEFT JOIN users ud
-	ON d.creator_id = ud.id
-  </sql>
-  
   <sql id="Blob_Column_List" >
     url
   </sql>
@@ -188,7 +167,6 @@
   	<include refid="Shioris_For Schedules_Table" />
 	<include refid="Users_For_Shioris_Table" />
   	<include refid="Destinations_Table" />
-  	<include refid="Users_For_Destinations_Table" />
   	WHERE sh.id in (SELECT shiori_id FROM members mb WHERE mb.user_id=#{userId,jdbcType=INTEGER})
    	ORDER BY sfp.start_at ASC;
   </select>
