@@ -268,6 +268,7 @@
 	<include refid="Shioris_Column_List" />  
 	<include refid="ScheForPosts_Column_List" />  
 	<include refid="MemoryImages_Column_List" />  
+	<include refid="Favorite_Column_List" />  
 	<include refid="Fav_Users_Column_List" />  
 	<include refid="Memories_Table" />  
 	<include refid="Users_Table" />  
