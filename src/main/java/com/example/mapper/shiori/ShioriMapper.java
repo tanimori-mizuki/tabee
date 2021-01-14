@@ -29,6 +29,13 @@ public interface ShioriMapper {
      * @return　しおり情報
      */
     Shiori selectByShioriId(@Param("shioriId") Integer shioriId);
+    
+    /**
+     * 公開しおりIDからしおり情報を取得する.
+     * @param publicUid　公開しおりID
+     * @return　しおり情報
+     */
+    Shiori selectByPublicUid(@Param("publicUid")String publicUid);
 
     int countByExample(ShioriExample example);
 

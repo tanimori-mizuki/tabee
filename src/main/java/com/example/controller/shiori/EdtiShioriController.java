@@ -32,7 +32,7 @@ public class EdtiShioriController {
 	@PostMapping("/do")
 	public String editShiori(@RequestPart("OBJ") EditShioriForm form,@RequestParam(value = "file", required = false) MultipartFile uploadFile )throws Exception{
 		//楽観ロック
-		Integer version=getShioriService.getShiori(form.getId()).getVersion();
+		Integer version=getShioriService.getShioriByShioriId(form.getId()).getVersion();
 		if(!form.getVersion().equals(version)) {
 			return "fail";
 		}

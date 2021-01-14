@@ -35,7 +35,7 @@ public class GetShioriService {
 	 * @param shioriId しおりID
 	 * @return しおり情報
 	 */
-	public Shiori getShiori(Integer shioriId) {
+	public Shiori getShioriByShioriId(Integer shioriId) {
 		return shioriMapper.selectByPrimaryKey(shioriId);
 	}
 
@@ -46,10 +46,31 @@ public class GetShioriService {
 	 * @return しおり情報
 	 */
 	public Shiori getShioriDetail(Integer shioriId) {
-
 		Shiori shiori = shioriMapper.selectByShioriId(shioriId);
+		shiori = getShiori(shiori);
+		return shiori;
+	}
 
-		// ユーザーが登録した画像がある場合サーバーサイドで処理
+	/**
+	 * publicUidからしおり情報を取得する.
+	 * 
+	 * @param publicUid 公開しおりID
+	 * @return しおり情報
+	 */
+	public Shiori getShioriDetailByPublicUid(String publicUid) {
+		Shiori shiori=shioriMapper.selectByPublicUid(publicUid);
+		shiori = getShiori(shiori);		
+		return shiori;
+	}
+
+	/**
+	 * しおり情報の取得、画像の変換処理を行う.
+	 * 
+	 * @param shiori しおり
+	 * @return 変換したしおり情報
+	 */
+	private Shiori getShiori(Shiori shiori) {
+
 		for (User user : shiori.getUserList()) {
 			if (user.getImagePath() != null) {
 				// ファイルディレクトリは後日確認する
@@ -84,6 +105,7 @@ public class GetShioriService {
 		}
 
 		return shiori;
+
 	}
 
 	/**
@@ -92,7 +114,7 @@ public class GetShioriService {
 	 * @param imagePath
 	 * @param fileDirectory
 	 */
-	public void setUserImage(User user, String imagePath, String fileDirectory) {
+	private void setUserImage(User user, String imagePath, String fileDirectory) {
 		String uploadPath = uploadPathConfiguration.getUploadPath() + fileDirectory + imagePath;
 		try (FileInputStream fis = new FileInputStream(uploadPath);) {
 			StringBuffer data = new StringBuffer();

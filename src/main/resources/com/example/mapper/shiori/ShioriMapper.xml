@@ -3,6 +3,7 @@
 <mapper namespace="com.example.mapper.shiori.ShioriMapper" >
   <resultMap id="BaseResultMap" type="com.example.domain.shiori.Shiori" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="public_uid" property="publicUid" jdbcType="VARCHAR" />    
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="dep_at" property="depAt" jdbcType="DATE" />
     <result column="return_at" property="returnAt" jdbcType="DATE" />
@@ -17,6 +18,7 @@
   <!--テーブル結合用ResultMap  -->
     <resultMap id="ShioriResultMap" type="com.example.domain.shiori.Shiori" >
 	    <id column="s_id" property="id" jdbcType="INTEGER" />
+    	<result column="s_public_uid" property="publicUid" jdbcType="VARCHAR" />    	    
 	    <result column="s_title" property="title" jdbcType="VARCHAR" />
 	    <result column="s_dep_at" property="depAt" jdbcType="DATE" />
 	    <result column="s_return_at" property="returnAt" jdbcType="DATE" />
@@ -44,6 +46,22 @@
     <id column="d_id" property="id" jdbcType="INTEGER" />
     <result column="d_shiori_id" property="shioriId" jdbcType="INTEGER" />
     <result column="d_destination" property="destination" jdbcType="VARCHAR" />
+  </resultMap>
+    <!--テーブル結合用ResultMap2  -->
+    <resultMap id="ShioriResultForJoinMap" type="com.example.domain.shiori.Shiori" >
+	    <id column="s_id" property="id" jdbcType="INTEGER" />
+    	<result column="s_public_uid" property="publicUid" jdbcType="VARCHAR" />    	    
+	    <result column="s_title" property="title" jdbcType="VARCHAR" />
+	    <result column="s_dep_at" property="depAt" jdbcType="DATE" />
+	    <result column="s_return_at" property="returnAt" jdbcType="DATE" />
+	    <result column="s_image_path" property="imagePath" jdbcType="VARCHAR" />
+	    <result column="s_total_cost" property="totalCost" jdbcType="INTEGER" />
+	    <result column="s_creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="s_created_at" property="createdAt" jdbcType="TIMESTAMP" />
+	    <result column="s_updater_id" property="updaterId" jdbcType="INTEGER" />
+	    <result column="s_updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	    <result column="s_version" property="version" jdbcType="INTEGER" />
+	    <collection property="userList" resultMap="UserResultMap" />
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -105,11 +123,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, dep_at, return_at, image_path, total_cost,creator_id, created_at, updater_id, updated_at, 
+    id, public_uid,title, dep_at, return_at, image_path, total_cost,creator_id, created_at, updater_id, updated_at, 
     version
   </sql>
   <sql id="Shioris_Column_List">
-  	s.id AS s_id,s.title AS s_title,s.dep_at AS s_dep_at
+  	s.id AS s_id,s.public_uid AS s_public_uid,s.title AS s_title,s.dep_at AS s_dep_at
 	,s.return_at AS s_return_at,s.image_path AS s_image_path,s.total_cost AS s_total_cost
 	,s.creator_id AS s_creator_id,s.created_at AS s_created_at
 	,s.updater_id AS s_updater_id,s.updated_at s_updated_at,s.version AS s_version
@@ -161,6 +179,16 @@
    <include refid="Destinations_Table"/>   
    WHERE s.id =#{shioriId,jdbcType=INTEGER};
   </select>
+   <!--公開しおりIDからしおり情報取得  -->
+   <select id="selectByPublicUid" resultMap="ShioriResultForJoinMap">
+   SELECT
+   <include refid="Shioris_Column_List"/>
+   <include refid="Users_Column_List"/>
+   <include refid="Shioris_Table"/>
+   <include refid="Members_Table"/>
+   <include refid="Users_Table"/>
+   WHERE s.public_uid =#{publicUid,jdbcType=VARCHAR};
+  </select>
   
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.example.shiori.ShioriExample" >
     select
@@ -209,6 +237,9 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="publicUid != null" >
+        public_uid,
+      </if>
       <if test="title != null" >
         title,
       </if>
@@ -241,6 +272,9 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="publicUid != null" >
+        #{publicUid,jdbcType=VARCHAR},
+      </if>      
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
