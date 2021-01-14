@@ -122,7 +122,6 @@ public class MemoryController {
 	 */
 	@PostMapping("/favorite")
 	public void favorite(@RequestBody RegisterFavoriteForm form) {
-		System.out.println("fav!!!");
 		registerFavoriteService.registerFavorite(form);
 	}
 }

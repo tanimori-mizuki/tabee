@@ -45,7 +45,6 @@ public class GetMemoryService {
 		}
 
 		for (Memory memory : memoryList) {
-			System.out.println("getmemoryservice " + memory.getFavoriteList());
 			List<MemoryImage> memoryImageList = memory.getMemoryImageList();
 			if (memoryImageList.size() != 0) {
 				int count = 0;

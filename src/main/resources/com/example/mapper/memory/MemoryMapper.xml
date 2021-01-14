@@ -277,7 +277,6 @@
 	<include refid="MemoryImage_Table" />
 	<include refid="Favorite_Table" />
 	<include refid="Fav_Users_Table" />
-	GROUP BY m.id
 	ORDER BY m.post_at DESC;
   </select>
   
