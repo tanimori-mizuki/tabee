@@ -116,7 +116,7 @@ public class MemoryController {
 	}
 	
 	/**
-	 * いいねを登録.
+	 * いいねを登録/削除.
 	 * 
 	 * @param form
 	 */

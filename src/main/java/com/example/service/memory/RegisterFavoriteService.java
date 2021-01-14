@@ -26,9 +26,9 @@ public class RegisterFavoriteService {
 	
 
 	/**
-	 * いいね登録 すでにいいね登録済みの場合は削除.
+	 * いいね登録 or すでにいいね登録済みの場合は削除.
 	 * 
-	 * @param favorite
+	 * @param form
 	 */
 	public void registerFavorite(RegisterFavoriteForm form) {
 		Integer memoryId = Integer.parseInt(form.getMemoryId());
