@@ -23,6 +23,7 @@ UNIQUE KEY `id_UNIQUE` (`id`)
 DROP TABLE IF EXISTS `tabee`.`shioris` ;
 CREATE TABLE `shioris` (
 `id` int NOT NULL AUTO_INCREMENT,
+'public_uid' varchar(255) NOT NULL,
 `title` varchar(255) NOT NULL,
 `dep_at` date DEFAULT NULL,
 `return_at` date DEFAULT NULL,

@@ -188,6 +188,11 @@ public class ShioriExample {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
+        
+        public Criteria andPublicUidEqualTo(String value) {
+            addCriterion("public_uid =", value, "publicUid");
+            return (Criteria) this;
+        }
 
         public Criteria andTitleIsNull() {
             addCriterion("title is null");

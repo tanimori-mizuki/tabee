@@ -36,7 +36,7 @@ insert into tabee.users (name, email, password, created_at, updated_at, image_pa
 ('渋谷ハチ公', 'hachi-pochi@mail.com', 'password', '2020-11-18 15:00:00', '2020-11-19 14:00:00', 'masako.jpg');
 
 /*しおりサンプルデータ*/
-insert into tabee.shioris (title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('旅のしおり2', '2020-10-25', '2020-10-26', 'ponshu.jpg', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
+insert into tabee.shioris (public_uid,title, dep_at, return_at, image_path, creator_id, created_at, updater_id, updated_at, version) values ('OxVwAeopXVnPXWhMwLyE','旅のしおり2', '2020-10-25', '2020-10-26', 'ponshu.jpg', 1,  '2020-10-18 15:00:00', 1,  '2020-10-18 15:00:00', 1);
 
 -- 目的地 
 insert into destinations (shiori_id, destination, creator_id, created_at, updater_id, updated_at, version)

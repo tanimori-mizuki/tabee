@@ -22,6 +22,8 @@ import lombok.NoArgsConstructor;
 public class Shiori {
 	/** しおりID */
 	private Integer id;
+	/** 招待URLに使用するuid*/
+	private String publicUid;
 	/** タイトル */
 	private String title;
 	/** 出発日 */

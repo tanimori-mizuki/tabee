@@ -18,6 +18,7 @@ import javax.imageio.ImageWriter;
 import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
 import javax.imageio.stream.ImageOutputStream;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,11 +66,13 @@ public class RegisterShioriService {
 	public void registerShiori(RegisterShioriForm form, MultipartFile uploadFile) throws Exception {
 		Shiori shiori = new Shiori();
 		BeanUtils.copyProperties(form, shiori);
+		String publicUid=RandomStringUtils.random(20,"012345678910abcdefghijklmnopqrstuvwxyz");
+		shiori.setPublicUid(publicUid);
 		shiori.setCreatedAt(LocalDateTime.now());
 		shiori.setUpdatedAt(LocalDateTime.now());
 		shiori.setUpdaterId(form.getCreatorId());
 		shiori.setVersion(1);
-
+		
 		if (uploadFile != null) {
 			String fileExtension = getExtension(uploadFile.getOriginalFilename());
 			if (!"jpg".equals(fileExtension) && !"png".equals(fileExtension)) {
