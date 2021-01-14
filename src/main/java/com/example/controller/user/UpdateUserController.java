@@ -40,7 +40,6 @@ public class UpdateUserController {
 	@PostMapping("/checkEmail")
 	public User sendResetPasswordMail(@RequestBody CheckEmailForm form, ResetPassword resetPassword) throws Exception {
 		try {
-
 			User user = updateUserService.registerResetPassword(resetPassword, form.getEmail());
 			updateUserService.sendResetPasswordMail(resetPassword, form.getEmail());
 			return user;
@@ -100,5 +99,4 @@ public class UpdateUserController {
 	public void deleteUser(@RequestBody UpdateUserForm form){
 		updateUserService.deleteUser(form);
 	}
-
 }

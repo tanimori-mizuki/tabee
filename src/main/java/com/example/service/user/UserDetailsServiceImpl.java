@@ -37,12 +37,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-		System.out.println("----------UserDetailsServiceimpl called!----------");
 		com.example.domain.user.User user = userMapper.findByEmail(email);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("そのメールアドレスは登録されていません。");
-			
 		}
 		
 		//権限付与
@@ -50,7 +48,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
 		UserDetails loginUser = User.withUsername(user.getEmail()).password(user.getPassword()).authorities(authorityList).build();
 
-		System.out.println("【ログインユーザー】" + loginUser);
 		return loginUser;
 	}
 }

@@ -29,13 +29,7 @@ public class GetScheduleService {
 	 * @return　しおりデータリスト
 	 */
 	public List<Schedule> getScheduleList(Integer userId){
-		System.out.println(userId);
-		List<Schedule> scheduleList = scheduleMapper.selectByShioriId(userId);
-		System.out.println(scheduleList);
-		if(scheduleList.size() == 0) {
-			System.out.println("size = 0");
-		}
-		return scheduleList;
+		return scheduleMapper.selectByShioriId(userId);
 	}
 	
 	/**

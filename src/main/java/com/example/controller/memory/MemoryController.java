@@ -94,14 +94,6 @@ public class MemoryController {
 	 */
 	@GetMapping("/getMemories")
 	public List<Memory> getMemoryList() throws IOException {
-		List<Memory> memoryList = getMemoryService.findAllMemories();
-		
-		if(memoryList.size() != 0) {
-			for(Memory memory : memoryList) {
-				System.out.println("fav list" + memory.getFavoriteList());
-			}
-		}
-		
 		return getMemoryService.findAllMemories();
 	}
 

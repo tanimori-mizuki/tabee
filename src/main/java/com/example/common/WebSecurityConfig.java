@@ -2,11 +2,9 @@ package com.example.common;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -79,7 +76,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 }
 	 
 	 private CorsConfigurationSource corsConfigurationSource() {
-		 System.out.println("----------corsConfiguration----------");
 		 CorsConfiguration corsConfiguration = new CorsConfiguration();
 		 corsConfiguration.addAllowedHeader(corsConfiguration.ALL);
 		 corsConfiguration.addAllowedMethod(corsConfiguration.ALL);
@@ -87,8 +83,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 corsConfiguration.addAllowedOrigin("http://localhost:8888/ROOT");
 		 corsConfiguration.addAllowedOrigin(envConfig.getOriginUrl()+"/**");
 		 corsConfiguration.setAllowCredentials(true);
-		 
-		 System.out.println("【許可されたオリジン】" + corsConfiguration.getAllowedOrigins());
 		 
 		 //デフォルト以外のヘッダはexposeに設定しないとJS側で読み取れない
 		 List<String> exposedHeaderList = new ArrayList<>();
@@ -99,8 +93,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 corsSource.registerCorsConfiguration("/**", corsConfiguration);
 		 
 		 return corsSource;
-		 
-		 
 	 }
 	 
 	 /**
