@@ -58,7 +58,6 @@ public class ScheduleController {
 	 */
 	@GetMapping("/getScheduleList")
 	public List<Schedule> getScheduleByShioriId(Integer userId) {
-		System.out.println("【ユーザーID】:　" + userId);
 		List<Schedule> scheduleList = getScheduleService.getScheduleList(userId);
 		return scheduleList;
 	}
@@ -72,7 +71,6 @@ public class ScheduleController {
 	 */
 	@PostMapping("/edit")
 	public Schedule editSchedule(@RequestBody EditScheduleForm form) throws Exception {
-		System.out.println("コントローラー" + form);
 		Integer currentVersion = getScheduleService.getScheduleById(Integer.parseInt(form.getId())).getVersion();
 		Integer inputVersion = Integer.parseInt(form.getVersion());
 		if(currentVersion != inputVersion) {
@@ -90,11 +88,7 @@ public class ScheduleController {
 	 */
 	@GetMapping("/delete")
 	public String deleteSchedule(Integer scheduleId) {
-		System.out.println("【スケジュールID】: " + scheduleId);
 		deleteScheduleService.deleteSchedule(scheduleId);
 		return "deleted!";
-		
 	}
-	
-	
 }

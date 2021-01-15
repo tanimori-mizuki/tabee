@@ -58,9 +58,6 @@ public class EditMemoryScheduleService {
 		scheForPost.setUpdaterId(userId);
 		scheForPost.setUpdatedAt(LocalDateTime.now());
 		
-		System.out.println("service called!");
-		System.out.println(scheForPost);
-
 		scheForPostMapper.updateByPrimaryKeySelective(scheForPost);
 
 	}

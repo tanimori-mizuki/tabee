@@ -5,8 +5,6 @@ import static com.example.common.SecurityConstants.SECRET;
 import static com.example.common.SecurityConstants.TOKEN_PREFIX;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -35,19 +33,13 @@ import io.jsonwebtoken.Jwts;
  */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 
-	private AuthenticationManager authenticationManager;
-	
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
 		super(authenticationManager);
 	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException{
-		System.out.println("-----JWT認可処理（doFilterInternalメソッド）-----");
-		
 		String header = req.getHeader(HEADER_STRING);
-		
-		System.out.println("【Authorizationヘッダーの中身】" + header);
 		
 		if(header == null || !header.startsWith(TOKEN_PREFIX)) {
 			System.out.println("ヘッダーがnullだよ");
@@ -58,7 +50,6 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		//AuthorizationヘッダのBearer Prefixである場合
 		//リクエストからsuthentication認証情報取得
 		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
-		System.out.println("【Authentication】" + authentication);
 		
 		//取得した認証情報をログイン情報としてセット
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -73,15 +64,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 	 * @return
 	 */
 	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request){
-		System.out.println("-----getAuthenticationメソッド-----");
-		
 		String token = request.getHeader(HEADER_STRING);
-		System.out.println("【トークン】" + token);
 		
 		if(token != null) {
-			
 			try {
-				
 				//JWTをデコードし、ユーザーのメールアドレス取得
 				String userEmail = Jwts.parser()
 						.setSigningKey(SECRET.getBytes())
@@ -89,17 +75,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 						.getBody()
 						.getSubject();
 				
-				System.out.println("【userEmail】" + userEmail);
-				
 				//JWTをデコードし、claimを取得
 				//ClaimとはJSONのkey, valueの一対（例: {"iss":"joe", "exp":1300819380,}）
 				Claims claims = Jwts.parser().setSigningKey(SECRET.getBytes())
 						.parseClaimsJws(token.replace(TOKEN_PREFIX, "").replace(TOKEN_PREFIX, "").trim()).getBody();
-				System.out.println("【claims】" + claims);
 				
 				//取得したclaimからキー【role】を取得→権限が取得
 				List grants = (List) claims.get("role");
-				System.out.println("【grantsリスト】" + grants);
 				
 				String[] arrayRole = new String[grants.size()];
 				
@@ -107,12 +89,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 					LinkedHashMap grant = (LinkedHashMap) grants.get(i);
 					String roleStr = (String)grant.get("authority");
 					arrayRole[i] = roleStr;
-					
 				}
 				
 				if(userEmail != null) {
 					List<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(arrayRole);
-					System.out.println("【roles】" + roles);
 					return new UsernamePasswordAuthenticationToken(userEmail, null, roles);
 				}
 				

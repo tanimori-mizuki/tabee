@@ -42,5 +42,7 @@ public class Memory {
 	private List<MemoryImage> memoryImageList;
 	/** スケジュールリスト */
 	private List<ScheForPost> scheduleForPostList;
+	/** いいねリスト */
+	private List<Favorite> favoriteList;
 
 }

@@ -38,7 +38,6 @@ public class EditScheduleService {
 	 * @return 更新されたスケジュールデータ
 	 */
 	public Schedule updateSchedule(EditScheduleForm form) {
-		System.out.println("サービス " + form);
 		Schedule schedule = new Schedule();
 		Integer userId = Integer.parseInt(form.getUserId());
 		Integer shioriId = Integer.parseInt(form.getShioriId());
@@ -74,7 +73,6 @@ public class EditScheduleService {
 		schedule.setUpdaterId(userId);
 		schedule.setUpdatedAt(LocalDateTime.now());
 		schedule.setVersion(Integer.parseInt(form.getVersion()) +1);
-		System.out.println("formから詰められたschedule" + schedule);
 		
 		scheduleMapper.updateByPrimaryKeySelective(schedule);
 		Schedule updatedSchedule = scheduleMapper.selectByPrimaryKey(id);

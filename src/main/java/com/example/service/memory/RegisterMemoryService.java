@@ -27,11 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.common.UploadPathConfiguration;
 import com.example.domain.memory.Memory;
 import com.example.domain.memory.MemoryImage;
-import com.example.domain.memory.ScheForPost;
 import com.example.form.memory.RegisterMemoryForm;
 import com.example.mapper.memory.MemoryImageMapper;
 import com.example.mapper.memory.MemoryMapper;
-import com.example.mapper.memory.ScheForPostMapper;
 
 /**
  * 思い出を登録するサービス.
@@ -43,8 +41,6 @@ import com.example.mapper.memory.ScheForPostMapper;
 @Transactional
 public class RegisterMemoryService {
 
-	@Autowired
-	private ScheForPostMapper scheForPostMapper;
 
 	@Autowired
 	private MemoryMapper memoryMapper;
@@ -61,9 +57,6 @@ public class RegisterMemoryService {
 	 * @param memory 思い出情報.
 	 */
 	public void registerMemory(RegisterMemoryForm form, List<MultipartFile> uploadFileList) throws Exception {
-		System.out.println(form);
-		System.out.println(uploadFileList);
-
 		Memory memory = new Memory();
 		memory.setTitle(form.getTitle());
 		memory.setContent(form.getContent());

@@ -16,11 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.domain.memory.Memory;
 import com.example.domain.memory.ScheForPost;
 import com.example.form.memory.EditMemoryScheduleForm;
+import com.example.form.memory.RegisterFavoriteForm;
 import com.example.form.memory.RegisterMemoryForm;
 import com.example.service.memory.DeleteMemoryService;
 import com.example.service.memory.EditMemoryScheduleService;
 import com.example.service.memory.GetMemoryScheduleService;
 import com.example.service.memory.GetMemoryService;
+import com.example.service.memory.RegisterFavoriteService;
 import com.example.service.memory.RegisterMemoryService;
 
 /**
@@ -47,6 +49,9 @@ public class MemoryController {
 
 	@Autowired
 	private DeleteMemoryService deleteMemoryService;
+	
+	@Autowired
+	private RegisterFavoriteService registerFavoriteService;
 
 	/**
 	 * ユーザーIDに紐づくしおりIDから思い出投稿用スケジュールリストを取得.
@@ -56,7 +61,6 @@ public class MemoryController {
 	 */
 	@GetMapping("/getMemoryScheduleList")
 	public List<ScheForPost> getMemoryScheduleList(Integer userId) {
-		System.out.println(userId);
 		return getMemoryScheduleService.getMemoryScheduleList(userId);
 	}
 
@@ -67,8 +71,6 @@ public class MemoryController {
 	 */
 	@PostMapping("/editSchedule")
 	public void editMemorySchedule(@RequestBody EditMemoryScheduleForm form) {
-		System.out.println("edit called!");
-		System.out.println(form);
 		editMemoryScheduleService.editMemorySchedule(form);
 	}
 
@@ -80,8 +82,6 @@ public class MemoryController {
 	@PostMapping("/post")
 	public void postMemory(@RequestPart("memory") RegisterMemoryForm form,
 			@RequestParam(value = "file", required = false) List<MultipartFile> uploadFileList) throws Exception {
-		System.out.println(form);
-		System.out.println(uploadFileList);
 		registerMemoryService.registerMemory(form, uploadFileList);
 
 	}
@@ -104,7 +104,16 @@ public class MemoryController {
 	 */
 	@GetMapping("/deleteMemory")
 	public void deleteMemory(Integer id) {
-		System.out.println("ID: " + id);
 		deleteMemoryService.deleteMemory(id);
+	}
+	
+	/**
+	 * いいねを登録/削除.
+	 * 
+	 * @param form
+	 */
+	@PostMapping("/favorite")
+	public void favorite(@RequestBody RegisterFavoriteForm form) {
+		registerFavoriteService.registerFavorite(form);
 	}
 }

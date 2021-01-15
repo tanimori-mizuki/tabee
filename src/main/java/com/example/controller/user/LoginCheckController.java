@@ -31,14 +31,6 @@ public class LoginCheckController {
 	 */
 	@PostMapping("/loginCheck")
 	public User loginCheck(@RequestBody LoginForm form) {
-		System.out.println("----------ログインチェックコントローラ到達----------");
-		System.out.println("【Formのメルアド】" + form.getEmail());
-		System.out.println("【Formのパスワード】" + form.getPassword());
-		
-		User user = loginCheckService.findByEmailAndPassword(form.getEmail(), form.getPassword());
-		System.out.println("【検索されたユーザー結果】：" + user);
-//		return loginCheckService.findByEmailAndPassword(form.getEmail(), form.getPassword());
-		return user;
+		return loginCheckService.findByEmailAndPassword(form.getEmail(), form.getPassword());
 	}
-	
 }
